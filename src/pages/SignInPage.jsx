@@ -1,7 +1,7 @@
 import { Button, Container, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../context/globalcontext";
 
 const styles = {
@@ -26,7 +26,7 @@ const styles = {
 
 const SignInPage = () => {
   //getting value from global context
-  const { loading, setLoading, alert, setAlert } = useGlobalContext();
+  const {setAlert } = useGlobalContext();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
