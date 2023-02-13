@@ -1,10 +1,11 @@
+import SignInPage from "./pages/SignInPage"
 
 function App() {
 
   return (
-    <div>
-      New setup
-    </div>
+   <>
+   <SignInPage />
+   </>
   )
 }
 
