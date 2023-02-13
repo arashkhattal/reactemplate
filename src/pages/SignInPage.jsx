@@ -1,7 +1,8 @@
 import { Button, Container, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useGlobalContext } from "../context/globalcontext";
 
 const styles = {
   title: {
@@ -24,22 +25,25 @@ const styles = {
 };
 
 const SignInPage = () => {
+  //getting value from global context
+  const { loading, setLoading, alert, setAlert } = useGlobalContext();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  //to navigate to another page
+   const navigate = useNavigate();
 
-    // Perform authentication logic here
-    if (username === "admin" && password === "password") {
-      setErrorMessage("");
-      props.history.push("/home");
-      // Redirect the user to the home page or display a success message
-    } else {
-      setErrorMessage("Incorrect username or password");
-    }
-  };
+
+
+  const handleSubmitButton = () => {
+      setAlert({
+        flag: true,
+        type: "success",
+        msg: "Login successful",
+      });
+    navigate("/home");
+  }
 
   return (
     <>
@@ -60,7 +64,7 @@ const SignInPage = () => {
             {errorMessage}
           </Typography>
         )}
-        <form className={styles.form} onSubmit={handleSubmit}>
+        <form className={styles.form} >
           <TextField
             label="Username"
             value={username}
@@ -78,16 +82,15 @@ const SignInPage = () => {
           />
           <br />
           <br />
-          <Link to="/home">
             <Button
               variant="contained"
               color="primary"
               type="submit"
               className={styles.button}
+              onClick={handleSubmitButton}
             >
               Login
             </Button>
-          </Link>
         </form>
       </Box>
     </>
