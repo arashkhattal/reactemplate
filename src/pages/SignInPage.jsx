@@ -1,4 +1,27 @@
+import { Button, Container, TextField, Typography } from "@mui/material";
+import { Box } from "@mui/system";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
+const styles = {
+  title: {
+    fontSize: "32px",
+    marginBottom: "24px",
+  },
+  form: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  textField: {
+    margin: 1,
+    width: "25ch",
+  },
+  button: {
+    margin: 1,
+    width: "10ch",
+  },
+};
 
 const SignInPage = () => {
   const [username, setUsername] = useState("");
@@ -11,6 +34,7 @@ const SignInPage = () => {
     // Perform authentication logic here
     if (username === "admin" && password === "password") {
       setErrorMessage("");
+      props.history.push("/home");
       // Redirect the user to the home page or display a success message
     } else {
       setErrorMessage("Incorrect username or password");
@@ -18,83 +42,56 @@ const SignInPage = () => {
   };
 
   return (
-    <div style={styles.container}>
-      <h1 style={styles.title}>Login</h1>
-      {errorMessage && <p style={styles.errorMessage}>{errorMessage}</p>}
-      <form style={styles.form} onSubmit={handleSubmit}>
-        <label style={styles.label}>
-          Username:
-          <input
-            type="text"
+    <>
+      <Box
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "100vh",
+        }}
+      >
+        <Typography variant="h6" className={styles.title}>
+          Login
+        </Typography>
+        {errorMessage && (
+          <Typography variant="body1" color="error">
+            {errorMessage}
+          </Typography>
+        )}
+        <form className={styles.form} onSubmit={handleSubmit}>
+          <TextField
+            label="Username"
             value={username}
             onChange={(event) => setUsername(event.target.value)}
-            style={styles.input}
+            className={styles.textField}
           />
-        </label>
-        <br />
-        <br />
-        <label style={styles.label}>
-          Password:
-          <input
+          <br />
+          <br />
+          <TextField
+            label="Password"
             type="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
-            style={styles.input}
+            className={styles.textField}
           />
-        </label>
-        <br />
-        <br />
-        <button type="submit" style={styles.button}>
-          Login
-        </button>
-      </form>
-    </div>
+          <br />
+          <br />
+          <Link to="/home">
+            <Button
+              variant="contained"
+              color="primary"
+              type="submit"
+              className={styles.button}
+            >
+              Login
+            </Button>
+          </Link>
+        </form>
+      </Box>
+    </>
   );
-};
-
-const styles = {
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    height: "100vh",
-  },
-  title: {
-    fontSize: "32px",
-    marginBottom: "24px",
-  },
-  form: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  },
-  label: {
-    fontSize: "20px",
-    marginBottom: "8px",
-  },
-  input: {
-    height: "32px",
-    width: "200px",
-    fontSize: "16px",
-    padding: "8px",
-    borderRadius: "4px",
-    border: "1px solid gray",
-  },
-  button: {
-    height: "40px",
-    width: "100px",
-    fontSize: "16px",
-    borderRadius: "4px",
-    backgroundColor: "lightblue",
-    border: "none",
-    color: "white",
-    marginTop: "16px",
-  },
-  errorMessage: {
-    color: "red",
-    marginTop: "16px",
-  },
 };
 
 export default SignInPage;
