@@ -48,7 +48,7 @@ export default function PermanentDrawerLeft() {
       <List>
         <ListItem key={"Dashboard"} disablePadding>
           <Link
-            to={"/home"}
+            to={"/dashboard"}
             style={{
               textDecoration: "none",
               color: "black",
