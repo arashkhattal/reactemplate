@@ -7,7 +7,10 @@ import AppBar from "../components/AppBar";
 const Index = () => {
   return (
     <>
+    {/* AppBar is common component available for all pages */}
       <AppBar />
+
+      {/* Outlet will fetch tyhe remaing component */}
       <Outlet />
     </>
   );
