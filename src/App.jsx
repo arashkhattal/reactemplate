@@ -9,7 +9,10 @@ const ForgetPassWord = lazy(() =>
 );
 //global context
 import { useGlobalContext } from "./context/globalContext";
+
+// adminRoutes imported from Routes.jsx file
 import { adminRoutes } from "../routes";
+
 //imported from MUI
 import {
   Alert,
@@ -20,9 +23,12 @@ import {
 } from "@mui/material";
 
 function App() {
+  // state to store adminRoutes
   const [curRoute, setCurRoute] = useState(adminRoutes);
+
   //getting value from global context
   const { loading, alert, setAlert } = useGlobalContext();
+
   //to close Alert
   const handleAlertClose = () => {
     setAlert({
@@ -32,6 +38,7 @@ function App() {
     });
   };
 
+  // function to call routes
   const getRoutes = (allRoutes) =>
     allRoutes.map((route) => {
       if (route.collapse) {
@@ -54,10 +61,13 @@ function App() {
   return (
     <>
       <CssBaseline />
+
       {/* Loading - Imported from MUI */}
       <Backdrop style={{ zIndex: "10000", color: "#fff" }} open={loading}>
+        {/* Circular Progress imported from MUI */}
         <CircularProgress />
       </Backdrop>
+
       {/* Alert - Imported from MUI*/}
       <Snackbar
         open={alert?.flag}
@@ -72,11 +82,15 @@ function App() {
           {alert?.msg}
         </Alert>
       </Snackbar>
-      {/* for routing from one page to another */}
 
+      {/* for routing from one page to another */}
       <Routes>
         <Route path="/" element={<Login />} />
+
+        {/* added layout feature */}
+        {/* from getRoutes(curRoute) we are getting the routes from the adminRoutes array */}
         <Route element={<PrimaryLayout />}>{getRoutes(curRoute)}</Route>
+
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/forgetpassWord" element={<ForgetPassWord />} />
       </Routes>
