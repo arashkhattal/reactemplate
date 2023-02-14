@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
 import Sidebar from "./Sidebar";
-import "./HomePage.css";
 
 const AppBar = () => {
   return (
     <>
       <div class="navbar">
-        <a class="active" href="#">
+        <a  href="#">
           <i class="fa fa-fw fa-home"></i> Home
         </a>
         <a href="#">

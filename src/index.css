@@ -6,6 +6,17 @@
 }
 /* /////////////////////////////// */
 /* ////////////////Global Class/////// */
+/* //////////////////////////////// */
+
+:root {
+  --main-color: #0d80d8;
+  --main-bg: #03001C;
+}
+
+
+
+/* /////////////////////////////// */
+/* ////////////////Global Class/////// */
 /* ////////////////signin, signup and reset password/////// */
 /* //////////////////////////////// */
 .google-signing {
@@ -32,4 +43,35 @@
 }
 .active{
   background-color: #0d80d8 !important;
+}
+
+ /* css for navbar */
+
+.navbar {
+  width: 100%;
+  background-color: var(--main-bg);
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar a {
+  float: left;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background-color:var(--main-bg);
+}
+
+
+
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }
 }
