@@ -30,6 +30,7 @@ export default function PermanentDrawerLeft() {
     },
   ];
   return (
+    // drawer component imported from mui
     <Drawer
       sx={{
         marginTop: 64,
@@ -44,9 +45,13 @@ export default function PermanentDrawerLeft() {
       anchor="left"
     >
       <Toolbar />
+      {/*Divider - simply add the line  */}
       <Divider />
+
+      {/* this will list the items in the side bar */}
       <List>
         <ListItem key={"Dashboard"} disablePadding>
+          {/* addded link to page */}
           <Link
             to={"/dashboard"}
             style={{
@@ -55,15 +60,18 @@ export default function PermanentDrawerLeft() {
               width: "100%",
             }}
           >
+            {/* ListItemButton - added button   */}
             <ListItemButton>
               <ListItemIcon>
                 <ListItemIcon sx={{ color: "black" }} />
               </ListItemIcon>
+              {/* text */}
               <ListItemText primary={"Dashboard"} />
             </ListItemButton>
           </Link>
         </ListItem>
         <ListItem key={"Contact"} disablePadding>
+          {/* addded link to page */}
           <Link
             to={"/contact"}
             style={{
@@ -72,15 +80,18 @@ export default function PermanentDrawerLeft() {
               width: "100%",
             }}
           >
+            {/* ListItemButton - added button   */}
             <ListItemButton>
               <ListItemIcon>
                 <ListItemIcon sx={{ color: "black" }} />
               </ListItemIcon>
+              {/* text */}
               <ListItemText primary={"Contact"} />
             </ListItemButton>
           </Link>
         </ListItem>
         <ListItem key={"About"} disablePadding>
+          {/* addded link to page */}
           <Link
             to={"/about"}
             style={{
@@ -89,10 +100,12 @@ export default function PermanentDrawerLeft() {
               width: "100%",
             }}
           >
+            {/* ListItemButton - added button   */}
             <ListItemButton>
               <ListItemIcon>
                 <ListItemIcon sx={{ color: "black" }} />
               </ListItemIcon>
+              {/* text */}
               <ListItemText primary={"About"} />
             </ListItemButton>
           </Link>

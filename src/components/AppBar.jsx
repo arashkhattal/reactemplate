@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
+// sidebar component
 import Sidebar from "./Sidebar";
 
 const AppBar = () => {
   return (
     <>
+    {/* simple app bar contain 3 options */}
       <div class="navbar">
         <a  href="#">
           <i class="fa fa-fw fa-home"></i> Home
@@ -16,6 +18,7 @@ const AppBar = () => {
         </a>
 
       </div>
+      {/* importing sidebar component */}
       <Sidebar />
     </>
   );
