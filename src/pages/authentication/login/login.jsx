@@ -13,7 +13,7 @@ const Login = () => {
   //to navigate to another page
   const navigate = useNavigate();
   const { setAlert } = useGlobalContext();
-  // 
+  //
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -23,7 +23,7 @@ const Login = () => {
       type: "success",
       msg: "Login successful",
     });
-    navigate("/home");
+    navigate("/dashboard");
   };
   return (
     <Box

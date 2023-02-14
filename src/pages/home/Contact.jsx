@@ -1,6 +1,5 @@
 import { Typography } from '@mui/material';
 import React, { useEffect } from 'react'
-import AppBar from '../../components/AppBar';
 import { useGlobalContext } from "../../context/globalContext";
 
 const Contact = () => {
@@ -16,7 +15,7 @@ const Contact = () => {
      }, 4000);
   return (
     <>
-      <AppBar />
+
       <div
         style={{
           maxHeight: "93vh",
