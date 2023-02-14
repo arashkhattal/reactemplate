@@ -1,13 +1,14 @@
-import { Box, Checkbox, Divider, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Checkbox,
+  Divider,
+  TextField,
+  Typography,
+} from "@mui/material";
 import React, { useState } from "react";
 import Google from "../../../assets/icon/google.png";
 import { useGlobalContext } from "../../../context/globalContext";
 import { useNavigate } from "react-router-dom";
-
-const style = {
-  display: "flex",
-  justifyContent: "center",
-};
 
 const Login = () => {
   //to navigate to another page
@@ -17,6 +18,7 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  // Login function
   const handleSubmitButton = () => {
     setAlert({
       flag: true,
@@ -28,114 +30,135 @@ const Login = () => {
   return (
     <Box
       // component="form"
-      sx={{
-        marginTop: "200px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
+      className="container-center "
       noValidate
       autoComplete="off"
     >
       <Box
-        sx={{
+        style={{
           m: 1,
-          width: "26%",
+          width: "330px",
           padding: "20px",
           border: "1px solid #c5c7c5",
         }}
       >
         <form>
-          <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+          <Typography
+            variant="h5"
+            style={{
+              fontWeight: "bold",
+              textAlign: "center",
+            }}
+          >
             Login
           </Typography>
           <Typography
-            sx={{
-              my: "15px",
+            style={{
+              marginTop: "15px",
+              marginBottom: "15px",
               color: "gray",
               fontSize: "14px",
+              textAlign: "center",
             }}
           >
-            See your growth get consulting support!
+            See your growth get consulting
+            support!
           </Typography>
 
           <Box
-            style={
-              ({
-                alignItems: "center",
-              },
-              style)
-            }
+            className="global-display-flex"
+            style={{
+              alignItems: "center",
+            }}
           >
-            <button className="google-signing google-signingBtn ">
+            <button className="signing-btn google-signingBtn-bg">
               <Box
-                sx={{
+                style={{
                   display: "flex",
                   alignItems: "center",
                   gap: "10px",
                 }}
               >
-                <img style={{ width: "16px" }} src={Google} alt="" />
-                <Typography>Signin with Google</Typography>
+                <img
+                  style={{ width: "16px" }}
+                  src={Google}
+                  alt=""
+                />
+                <Typography>
+                  Login with Google
+                </Typography>
               </Box>
             </button>
           </Box>
           <Divider
-            sx={{
+            style={{
               color: "gray",
-              my: "25px",
+              marginTop: "25px",
+              marginBottom: "25px",
             }}
           >
-            or Signin with Email
+            or Login with Email
           </Divider>
           <TextField
-            sx={{
+            style={{
               width: "100%",
             }}
             id="outlined-basic"
             label="Username Email"
             value={username}
-            onChange={(event) => setUsername(event.target.value)}
+            onChange={(event) =>
+              setUsername(event.target.value)
+            }
             placeholder="mail@email.com"
             variant="outlined"
           />
           <TextField
-            sx={{
+            style={{
               width: "100%",
               marginTop: "20px",
             }}
             id="outlined-basic"
             label="password"
             value={password}
-            onChange={(event) => setPassword(event.target.value)}
+            onChange={(event) =>
+              setPassword(event.target.value)
+            }
             variant="outlined"
             placeholder="Min. 8 character"
           />
           <Box
-            sx={{
+            style={{
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              my: "15px",
+              marginTop: "15px",
+              marginBottom: "15px",
             }}
           >
             <Box
-              sx={{
+              style={{
                 display: "flex",
                 alignItems: "center",
               }}
             >
-              <Checkbox size="10px" defaultChecked />
-              <Typography sx={{ fontSize: "14px" }}>Remember me</Typography>
+              <Checkbox
+                size="10px"
+                defaultChecked
+              />
+              <Typography
+                style={{ fontSize: "13px" }}
+              >
+                Remember me
+              </Typography>
             </Box>
 
             <a
               style={{
-                fontSize: "14px",
+                fontSize: "13px",
                 color: "#0D80D8",
                 textDecoration: "none",
               }}
-              href="/forgetpassWord"
+              href="/resetPassword"
             >
               Forgot Password
             </a>
@@ -147,23 +170,28 @@ const Login = () => {
               color: "white",
             }}
             onClick={handleSubmitButton}
-            className="google-signing signing-btn"
+            className="signing-btn signing-btn-bg"
             value="Login"
           >
-            <Typography>Sign In</Typography>
+            <Typography>Login</Typography>
           </button>
 
           <Box
-            sx={{
+            style={{
               display: "flex",
               gap: "10px",
-              my: "20px",
+              marginTop: "20px",
+              marginBottom: "20px",
             }}
           >
-            <Typography sx={{ fontSize: "16px" }}>Not registered yet?</Typography>
+            <Typography
+              style={{ fontSize: "13px" }}
+            >
+              Not registered yet?
+            </Typography>
             <a
               style={{
-                fontSize: "16px",
+                fontSize: "13px",
                 color: "#0D80D8",
                 textDecoration: "none",
               }}

@@ -2,10 +2,10 @@ import { lazy, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 //added lazy loading
 const PrimaryLayout = lazy(() => import("./layouts/Index"));
-const Login = lazy(() => import("./pages/authentication/login/login"));
-const SignUp = lazy(() => import("./pages/authentication/signUp/signUp"));
-const ForgetPassWord = lazy(() =>
-  import("./pages/authentication/forgotPassword/forgetPassword")
+const Login = lazy(() => import("./pages/auth/login/login"));
+const SignUp = lazy(() => import("./pages/auth/signUp/signUp"));
+const ResetPassword = lazy(() =>
+  import("./pages/auth/resetPassword/resetPassword")
 );
 //global context
 import { useGlobalContext } from "./context/globalContext";
@@ -92,7 +92,7 @@ function App() {
         <Route element={<PrimaryLayout />}>{getRoutes(curRoute)}</Route>
 
         <Route path="/SignUp" element={<SignUp />} />
-        <Route path="/forgetpassWord" element={<ForgetPassWord />} />
+        <Route path="/resetPassword" element={<ResetPassword />} />
       </Routes>
     </>
   );
