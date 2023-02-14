@@ -1,21 +1,14 @@
 import { lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 //added lazy loading
-const HomePage = lazy(() =>
-  import("./pages/home/HomePage")
-);
-const SignInPage = lazy(() =>
-  import("./pages/auth/SignInPage")
-);
-const Login = lazy(() =>
-  import("./pages/auth/login/login")
-);
-const SignUp = lazy(() =>
-  import("./pages/auth/signUp/signUp")
-);
-const ForgetPassWord = lazy(() =>
+const HomePage = lazy(() => import("./pages/home/HomePage"));
+const Contact = lazy(() => import("./pages/home/Contact"));
+const About = lazy(() => import("./pages/home/About"));
+const Login = lazy(() => import("./pages/auth/login/login"));
+const SignUp = lazy(() => import("./pages/auth/signUp/signUp"));
+const ResetPassword = lazy(() =>
   import(
-    "./pages/auth/forgotPassword/forgetPassword"
+    "./pages/auth/resetPassword/resetPassword"
   )
 );
 //global context
@@ -31,8 +24,7 @@ import {
 
 function App() {
   //getting value from global context
-  const { loading, setLoading, alert, setAlert } =
-    useGlobalContext();
+  const { loading, alert, setAlert } = useGlobalContext();
   //to close Alert
   const handleAlertClose = () => {
     setAlert({
@@ -45,10 +37,7 @@ function App() {
     <>
       <CssBaseline />
       {/* Loading - Imported from MUI */}
-      <Backdrop
-        style={{ zIndex: "10000", color: "#fff" }}
-        open={loading}
-      >
+      <Backdrop style={{ zIndex: "10000", color: "#fff" }} open={loading}>
         <CircularProgress />
       </Backdrop>
       {/* Alert - Imported from MUI*/}
@@ -61,28 +50,18 @@ function App() {
         autoHideDuration={5000}
         onClose={handleAlertClose}
       >
-        <Alert
-          onClose={handleAlertClose}
-          severity={alert?.type}
-        >
+        <Alert onClose={handleAlertClose} severity={alert?.type}>
           {alert?.msg}
         </Alert>
       </Snackbar>
       {/* for routing from one page to another */}
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route
-          path="/home"
-          element={<HomePage />}
-        />
-        <Route
-          path="/SignUp"
-          element={<SignUp />}
-        />
-        <Route
-          path="/forgetpassWord"
-          element={<ForgetPassWord />}
-        />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/SignUp" element={<SignUp />} />
+        <Route path="/resetPassword" element={<ResetPassword />} />
       </Routes>
     </>
   );

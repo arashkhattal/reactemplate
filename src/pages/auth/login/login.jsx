@@ -14,6 +14,7 @@ const Login = () => {
   //to navigate to another page
   const navigate = useNavigate();
   const { setAlert } = useGlobalContext();
+  //
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -29,23 +30,25 @@ const Login = () => {
   return (
     <Box
       // component="form"
-      className="container-center"
+      className="container-center "
       noValidate
       autoComplete="off"
     >
       <Box
-        sx={{
+        style={{
           m: 1,
           width: "330px",
           padding: "20px",
           border: "1px solid #c5c7c5",
         }}
       >
-        {" "}
         <form>
           <Typography
             variant="h5"
-            style={{ fontWeight: "bold" }}
+            style={{
+              fontWeight: "bold",
+              textAlign: "center",
+            }}
           >
             Login
           </Typography>
@@ -55,6 +58,7 @@ const Login = () => {
               marginBottom: "15px",
               color: "gray",
               fontSize: "14px",
+              textAlign: "center",
             }}
           >
             See your growth get consulting
@@ -67,7 +71,7 @@ const Login = () => {
               alignItems: "center",
             }}
           >
-            <button className="signing-btn google-signingBtn-bg ">
+            <button className="signing-btn google-signingBtn-bg">
               <Box
                 style={{
                   display: "flex",
@@ -132,7 +136,7 @@ const Login = () => {
             }}
           >
             <Box
-              sx={{
+              style={{
                 display: "flex",
                 alignItems: "center",
               }}
@@ -142,7 +146,7 @@ const Login = () => {
                 defaultChecked
               />
               <Typography
-                sx={{ fontSize: "14px" }}
+                style={{ fontSize: "13px" }}
               >
                 Remember me
               </Typography>
@@ -150,11 +154,11 @@ const Login = () => {
 
             <a
               style={{
-                fontSize: "14px",
+                fontSize: "13px",
                 color: "#0D80D8",
                 textDecoration: "none",
               }}
-              href="/forgetpassWord"
+              href="/resetPassword"
             >
               Forgot Password
             </a>
@@ -180,12 +184,12 @@ const Login = () => {
               marginBottom: "20px",
             }}
           >
-            <Typography sx={{ fontSize: "16px" }}>
+            <Typography style={{ fontSize: "13px" }}>
               Not registered yet?
             </Typography>
             <a
               style={{
-                fontSize: "16px",
+                fontSize: "13px",
                 color: "#0D80D8",
                 textDecoration: "none",
               }}

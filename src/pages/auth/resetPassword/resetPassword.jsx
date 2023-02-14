@@ -4,25 +4,19 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-import "./forgetPassword.css";
 
 const forgotPassword = () => {
   return (
     <Box
       // component="form"
-      sx={{
-        marginTop: "200px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
+      className="container-center"
       noValidate
       autoComplete="off"
     >
       <Box
-        sx={{
+        style={{
           m: 1,
-          width: "26%",
+          width: "330px",
           padding: "20px",
           border: "1px solid #c5c7c5",
         }}
@@ -31,13 +25,16 @@ const forgotPassword = () => {
         <form>
           <Typography
             variant="h5"
-            sx={{ fontWeight: "bold" }}
+            style={{
+              fontWeight: "bold",
+              textAlign: "center",
+            }}
           >
             reset password
           </Typography>
 
           <TextField
-            sx={{
+            style={{
               width: "100%",
               marginTop: "20px",
             }}
@@ -47,11 +44,12 @@ const forgotPassword = () => {
             placeholder="Min. 8 character"
           />
           <Box
-            sx={{
+            style={{
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              my: "15px",
+              marginTop: "15px",
+              marginBottom: "15px",
             }}
           ></Box>
 
@@ -60,22 +58,23 @@ const forgotPassword = () => {
             style={{
               color: "white",
             }}
-            className="google-signing signing-btn"
+            className="signing-btn-bg signing-btn"
             value=" reset password"
           >
             <Typography>Reset</Typography>
           </button>
 
           <Box
-            sx={{
+            style={{
               display: "flex",
               gap: "10px",
-              my: "20px",
+              marginTop: "20px",
+              marginBottom: "20px",
             }}
           >
             <a
               style={{
-                fontSize: "16px",
+                fontSize: "13px",
                 color: "#0D80D8",
                 textDecoration: "none",
               }}

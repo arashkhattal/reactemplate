@@ -1,5 +1,6 @@
 import { Typography } from "@mui/material";
 import React, { useEffect } from "react";
+import AppBar from "../../components/AppBar";
 import { useGlobalContext } from "../../context/globalContext";
 
 const HomePage = () => {
@@ -17,17 +18,22 @@ const HomePage = () => {
   }, 4000);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        height: "100vh",
-      }}
-    >
-      <Typography variant="h2">Home Page</Typography>
-    </div>
+    <>
+      <AppBar  />
+      <div
+        style={{
+          maxHeight:"93vh",
+          marginTop: "-71vh",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "100vh",
+        }}
+      >
+        <Typography variant="h2">Home Page</Typography>
+      </div>
+    </>
   );
 };
 

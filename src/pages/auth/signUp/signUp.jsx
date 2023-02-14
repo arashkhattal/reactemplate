@@ -6,7 +6,6 @@ import {
 } from "@mui/material";
 import React from "react";
 import Google from "../../../assets/icon/google.png";
-import "./signUp.css";
 const style = {
   display: "flex",
   justifyContent: "center",
@@ -15,19 +14,14 @@ const signUp = () => {
   return (
     <Box
       // component="form"
-      sx={{
-        marginTop: "200px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
+      className="container-center "
       noValidate
       autoComplete="off"
     >
       <Box
-        sx={{
+        style={{
           m: 1,
-          width: "26%",
+          width: "330px",
           padding: "20px",
           border: "1px solid #c5c7c5",
         }}
@@ -36,25 +30,25 @@ const signUp = () => {
         <form>
           <Typography
             variant="h5"
-            sx={{
+            style={{
               fontWeight: "bold",
-              my: "15px",
+              marginTop: "15px",
+              marginBottom: "15px",
+              textAlign: "center",
             }}
           >
             Sign up
           </Typography>
 
           <Box
-            style={
-              ({
-                alignItems: "center",
-              },
-              style)
-            }
+            className="global-display-flex"
+            style={{
+              alignItems: "center",
+            }}
           >
-            <button className="google-signing google-signingBtn ">
+            <button className="signing-btn google-signingBtn-bg">
               <Box
-                sx={{
+                style={{
                   display: "flex",
                   alignItems: "center",
                   gap: "10px",
@@ -72,15 +66,16 @@ const signUp = () => {
             </button>
           </Box>
           <Divider
-            sx={{
+            style={{
               color: "gray",
-              my: "25px",
+              marginTop: "15px",
+              marginBottom: "15px",
             }}
           >
             or Sign up with Email
           </Divider>
           <TextField
-            sx={{
+            style={{
               width: "100%",
             }}
             id="outlined-basic"
@@ -89,7 +84,7 @@ const signUp = () => {
             variant="outlined"
           />
           <TextField
-            sx={{
+            style={{
               width: "100%",
               marginTop: "20px",
             }}
@@ -99,9 +94,10 @@ const signUp = () => {
             placeholder="Min. 8 character"
           />
           <TextField
-            sx={{
+            style={{
               width: "100%",
               marginTop: "20px",
+              marginBottom: "20px",
             }}
             id="outlined-basic"
             label="confirm Password"
@@ -115,27 +111,30 @@ const signUp = () => {
               color: "white",
               marginTop: "10px",
             }}
-            className="google-signing signing-btn"
+            className="signing-btn signing-btn-bg"
             value="Login"
           >
             <Typography>Sign Up</Typography>
           </button>
 
           <Box
-            sx={{
+            style={{
               display: "flex",
-              alignItems: "center",
               justifyContent: "space-between",
               gap: "10px",
-              my: "20px",
+              marginTop: "20px",
+              marginBottom: "20px",
+              fontSize: "12px",
             }}
           >
-            <Typography sx={{ fontSize: "16px" }}>
+            <Typography
+              style={{ fontSize: "13px" }}
+            >
               Are you registered already?
             </Typography>
             <a
               style={{
-                fontSize: "16px",
+                fontSize: "13px",
                 color: "#0D80D8",
                 textDecoration: "none",
               }}

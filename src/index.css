@@ -6,6 +6,15 @@
 }
 /* /////////////////////////////// */
 /* ////////////////Global Class/////// */
+/* //////////////////////////////// */
+
+:root {
+  --main-color: #0d80d8;
+  --main-bg: #03001c;
+}
+
+/* /////////////////////////////// */
+/* ////////////////Global Class/////// */
 /* ////////////////signin, signup and reset password/////// */
 /* //////////////////////////////// */
 .signing-btn {
@@ -15,17 +24,17 @@
   width: 100%;
   padding: 8px;
   border-radius: 25px;
-  border: 1px solid #d9d9d9;
+  border: 1px solid #e6e4e4;
   cursor: pointer;
 }
 .google-signingBtn-bg {
   background-color: transparent;
 }
 .google-signingBtn-bg:hover {
-  background-color: #d1d1d1;
+  background-color: #ececec;
 }
 .signing-btn-bg {
-  background-color: #0d80d8;
+  background-color: var(--main-color);
 }
 .signing-btn-bg:hover {
   background-color: #0669b4;
@@ -40,4 +49,36 @@
 .global-display-flex {
   display: flex;
   justify-content: center;
+}
+.active {
+  background-color: #0d80d8 !important;
+}
+
+/* css for navbar */
+
+.navbar {
+  width: 100%;
+  background-color: var(--main-bg);
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar a {
+  float: left;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background-color: var(--main-bg);
+}
+
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }
 }
