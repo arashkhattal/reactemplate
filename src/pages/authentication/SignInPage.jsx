@@ -2,7 +2,7 @@ import { Button, Container, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useGlobalContext } from "../context/globalcontext";
+import { useGlobalContext } from "../../context/globalContext";
 
 const styles = {
   title: {
@@ -26,24 +26,22 @@ const styles = {
 
 const SignInPage = () => {
   //getting value from global context
-  const {setAlert } = useGlobalContext();
+  const { setAlert } = useGlobalContext();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   //to navigate to another page
-   const navigate = useNavigate();
-
-
+  const navigate = useNavigate();
 
   const handleSubmitButton = () => {
-      setAlert({
-        flag: true,
-        type: "success",
-        msg: "Login successful",
-      });
+    setAlert({
+      flag: true,
+      type: "success",
+      msg: "Login successful",
+    });
     navigate("/home");
-  }
+  };
 
   return (
     <>
@@ -64,7 +62,7 @@ const SignInPage = () => {
             {errorMessage}
           </Typography>
         )}
-        <form className={styles.form} >
+        <form className={styles.form}>
           <TextField
             label="Username"
             value={username}
@@ -82,15 +80,15 @@ const SignInPage = () => {
           />
           <br />
           <br />
-            <Button
-              variant="contained"
-              color="primary"
-              type="submit"
-              className={styles.button}
-              onClick={handleSubmitButton}
-            >
-              Login
-            </Button>
+          <Button
+            variant="contained"
+            color="primary"
+            type="submit"
+            className={styles.button}
+            onClick={handleSubmitButton}
+          >
+            Login
+          </Button>
         </form>
       </Box>
     </>
