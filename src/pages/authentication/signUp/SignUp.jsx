@@ -5,14 +5,13 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-import google from "/assets/icon/google.png";
-import "./SignUp.css";
-import "index.css";
+import Google from "../../../assets/icon/google.png";
+import "./signUp.css";
 const style = {
   display: "flex",
   justifyContent: "center",
 };
-const SignUp = () => {
+const signUp = () => {
   return (
     <Box
       // component="form"
@@ -37,7 +36,10 @@ const SignUp = () => {
         <form>
           <Typography
             variant="h5"
-            sx={{ fontWeight: "bold" }}
+            sx={{
+              fontWeight: "bold",
+              my: "15px",
+            }}
           >
             Sign up
           </Typography>
@@ -60,7 +62,7 @@ const SignUp = () => {
               >
                 <img
                   style={{ width: "16px" }}
-                  src={google}
+                  src={Google}
                   alt=""
                 />
                 <Typography>
@@ -107,7 +109,7 @@ const SignUp = () => {
             placeholder="Min. 8 character"
           />
 
-          <input
+          <button
             type="submit"
             style={{
               color: "white",
@@ -115,7 +117,9 @@ const SignUp = () => {
             }}
             className="google-signing signing-btn"
             value="Login"
-          />
+          >
+            <Typography>Sign Up</Typography>
+          </button>
 
           <Box
             sx={{
@@ -127,7 +131,7 @@ const SignUp = () => {
             }}
           >
             <Typography sx={{ fontSize: "16px" }}>
-              Are you registered already??
+              Are you registered already?
             </Typography>
             <a
               style={{
@@ -135,7 +139,7 @@ const SignUp = () => {
                 color: "#0D80D8",
                 textDecoration: "none",
               }}
-              href="#"
+              href="/"
             >
               go to login page.
             </a>
@@ -146,4 +150,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default signUp;

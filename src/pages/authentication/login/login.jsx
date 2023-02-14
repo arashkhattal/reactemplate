@@ -5,16 +5,33 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React from "react";
-import google from "/assets/icon/google.png";
-import "./Login.css";
-import "index.css";
+import React, { useState } from "react";
+import Google from "../../../assets/icon/google.png";
+import { useGlobalContext } from "../../../context/globalContext";
+import { useNavigate } from "react-router-dom";
 
 const style = {
   display: "flex",
   justifyContent: "center",
 };
 const Login = () => {
+  const { setAlert } = useGlobalContext();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] =
+    useState("");
+
+  //to navigate to another page
+  const navigate = useNavigate();
+
+  const handleSubmitButton = () => {
+    setAlert({
+      flag: true,
+      type: "success",
+      msg: "Login successful",
+    });
+    navigate("/home");
+  };
   return (
     <Box
       // component="form"
@@ -72,7 +89,7 @@ const Login = () => {
               >
                 <img
                   style={{ width: "16px" }}
-                  src={google}
+                  src={Google}
                   alt=""
                 />
                 <Typography>
@@ -94,7 +111,11 @@ const Login = () => {
               width: "100%",
             }}
             id="outlined-basic"
-            label="Email"
+            label="Username Email"
+            value={username}
+            onChange={(event) =>
+              setUsername(event.target.value)
+            }
             placeholder="mail@email.com"
             variant="outlined"
           />
@@ -105,6 +126,10 @@ const Login = () => {
             }}
             id="outlined-basic"
             label="password"
+            value={password}
+            onChange={(event) =>
+              setPassword(event.target.value)
+            }
             variant="outlined"
             placeholder="Min. 8 character"
           />
@@ -139,20 +164,23 @@ const Login = () => {
                 color: "#0D80D8",
                 textDecoration: "none",
               }}
-              href="#"
+              href="/forgetpassWord"
             >
               Forgot Password
             </a>
           </Box>
 
-          <input
+          <button
             type="submit"
             style={{
               color: "white",
             }}
+            onClick={handleSubmitButton}
             className="google-signing signing-btn"
             value="Login"
-          />
+          >
+            <Typography>Sign In</Typography>
+          </button>
 
           <Box
             sx={{
@@ -170,7 +198,7 @@ const Login = () => {
                 color: "#0D80D8",
                 textDecoration: "none",
               }}
-              href="#"
+              href="/signup"
             >
               Create an Account
             </a>

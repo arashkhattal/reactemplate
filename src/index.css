@@ -1,4 +1,13 @@
-/* authentication signin, signup and reset password */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif !important;
+}
+/* /////////////////////////////// */
+/* ////////////////Global Class/////// */
+/* ////////////////signin, signup and reset password/////// */
+/* //////////////////////////////// */
 .google-signing {
   display: flex;
   align-items: center;
@@ -19,5 +28,5 @@
   background-color: #0d80d8;
 }
 .signing-btn:hover {
-  background-color: #065fa3;
+  background-color: #131313;
 }

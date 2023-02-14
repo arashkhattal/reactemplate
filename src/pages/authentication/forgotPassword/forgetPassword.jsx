@@ -4,8 +4,7 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-import "./forgotPassword.css";
-import "index.css";
+import "../forgotPassword/forgetPassword.css";
 
 const forgotPassword = () => {
   return (
@@ -56,14 +55,16 @@ const forgotPassword = () => {
             }}
           ></Box>
 
-          <input
+          <button
             type="submit"
             style={{
               color: "white",
             }}
             className="google-signing signing-btn"
             value=" reset password"
-          />
+          >
+            <Typography>Reset</Typography>
+          </button>
 
           <Box
             sx={{
@@ -78,7 +79,7 @@ const forgotPassword = () => {
                 color: "#0D80D8",
                 textDecoration: "none",
               }}
-              href="#"
+              href="/"
             >
               Back to Login
             </a>
