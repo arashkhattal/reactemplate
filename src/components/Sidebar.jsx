@@ -10,7 +10,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import { adminRoutes } from "../routes";
 
@@ -46,8 +46,8 @@ export default function PermanentDrawerLeft() {
         {/* curRoute will map the items in the side bar */}
         {curRoute?.map((data) => (
           <ListItem key={data?.key} disablePadding>
-            {/* addded link to page */}
-            <Link
+            {/* addded NavLink to page */}
+            <NavLink
               to={data?.route}
               style={{
                 textDecoration: "none",
@@ -61,7 +61,7 @@ export default function PermanentDrawerLeft() {
                 {/* text */}
                 <ListItemText primary={data?.name} />
               </ListItemButton>
-            </Link>
+            </NavLink>
           </ListItem>
         ))}
       </List>

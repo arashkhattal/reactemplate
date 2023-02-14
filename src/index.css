@@ -12,6 +12,11 @@
   --main-color: #0d80d8;
   --main-bg: #03001c;
 }
+.active {
+  margin: 10px;
+  background-color: #0d80d8 !important;
+  border-radius: 5px;
+}
 .cp {
   cursor: pointer;
 }
@@ -87,9 +92,7 @@
   display: flex;
   justify-content: center;
 }
-.active {
-  background-color: #0d80d8 !important;
-}
+
 
 /* css for navbar */
 
