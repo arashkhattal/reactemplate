@@ -5,9 +5,9 @@ import Sidebar from "./Sidebar";
 const AppBar = () => {
   return (
     <>
-    {/* simple app bar contain 3 options */}
+      {/* simple app bar contain 3 options */}
       <div class="navbar">
-        <a  href="#">
+        <a href="#">
           <i class="fa fa-fw fa-home"></i> Home
         </a>
         <a href="#">
@@ -16,9 +16,9 @@ const AppBar = () => {
         <a href="#">
           <i class="fa fa-fw fa-envelope"></i> Contact
         </a>
-
       </div>
       {/* importing sidebar component */}
+
       <Sidebar />
     </>
   );

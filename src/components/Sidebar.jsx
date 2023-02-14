@@ -12,23 +12,12 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { Link } from "react-router-dom";
 
+import { adminRoutes } from "../routes";
+
 const drawerWidth = 240;
 
 export default function PermanentDrawerLeft() {
-  const sideBarPage = [
-    {
-      name: "Contact",
-      key: "contact",
-      to: "/contact",
-      icon: "<MailIcon/>",
-    },
-    {
-      name: "About",
-      key: "about",
-      to: "/about",
-      icon: "<InboxIcon/>",
-    },
-  ];
+  const [curRoute, setCurRoute] = React.useState(adminRoutes);
   return (
     // drawer component imported from mui
     <Drawer
@@ -37,6 +26,8 @@ export default function PermanentDrawerLeft() {
         width: drawerWidth,
         flexShrink: 0,
         "& .MuiDrawer-paper": {
+         boxShadow: "5px 2px 9px lightgrey",
+          marginTop: 6.1,
           width: drawerWidth,
           boxSizing: "border-box",
         },
@@ -45,71 +36,34 @@ export default function PermanentDrawerLeft() {
       anchor="left"
     >
       <Toolbar />
-      {/*Divider - simply add the line  */}
-      <Divider />
 
       {/* this will list the items in the side bar */}
-      <List>
-        <ListItem key={"Dashboard"} disablePadding>
-          {/* addded link to page */}
-          <Link
-            to={"/dashboard"}
-            style={{
-              textDecoration: "none",
-              color: "black",
-              width: "100%",
-            }}
-          >
-            {/* ListItemButton - added button   */}
-            <ListItemButton>
-              <ListItemIcon>
-                <ListItemIcon sx={{ color: "black" }} />
-              </ListItemIcon>
-              {/* text */}
-              <ListItemText primary={"Dashboard"} />
-            </ListItemButton>
-          </Link>
-        </ListItem>
-        <ListItem key={"Contact"} disablePadding>
-          {/* addded link to page */}
-          <Link
-            to={"/contact"}
-            style={{
-              textDecoration: "none",
-              color: "black",
-              width: "100%",
-            }}
-          >
-            {/* ListItemButton - added button   */}
-            <ListItemButton>
-              <ListItemIcon>
-                <ListItemIcon sx={{ color: "black" }} />
-              </ListItemIcon>
-              {/* text */}
-              <ListItemText primary={"Contact"} />
-            </ListItemButton>
-          </Link>
-        </ListItem>
-        <ListItem key={"About"} disablePadding>
-          {/* addded link to page */}
-          <Link
-            to={"/about"}
-            style={{
-              textDecoration: "none",
-              color: "black",
-              width: "100%",
-            }}
-          >
-            {/* ListItemButton - added button   */}
-            <ListItemButton>
-              <ListItemIcon>
-                <ListItemIcon sx={{ color: "black" }} />
-              </ListItemIcon>
-              {/* text */}
-              <ListItemText primary={"About"} />
-            </ListItemButton>
-          </Link>
-        </ListItem>
+      <List
+      style={{
+        marginTop:"-64px"
+      }}
+      >
+        {/* curRoute will map the items in the side bar */}
+        {curRoute?.map((data) => (
+          <ListItem key={data?.key} disablePadding>
+            {/* addded link to page */}
+            <Link
+              to={data?.route}
+              style={{
+                textDecoration: "none",
+                color: "black",
+                width: "100%",
+              }}
+            >
+              {/* ListItemButton - added button */}
+              <ListItemButton>
+                <ListItemIcon>{data?.icon}</ListItemIcon>
+                {/* text */}
+                <ListItemText primary={data?.name} />
+              </ListItemButton>
+            </Link>
+          </ListItem>
+        ))}
       </List>
     </Drawer>
   );

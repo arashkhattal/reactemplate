@@ -11,7 +11,7 @@ const ResetPassword = lazy(() =>
 import { useGlobalContext } from "./context/globalContext";
 
 // adminRoutes imported from Routes.jsx file
-import { adminRoutes } from "../routes";
+import { adminRoutes } from "./routes";
 
 //imported from MUI
 import {

@@ -2,9 +2,9 @@
 import { lazy } from "react";
 
 // Import components using lazy to load the component
-const HomePage = lazy(() => import("./src/pages/home/HomePage"));
-const Contact = lazy(() => import("./src/pages/home/Contact"));
-const About = lazy(() => import("./src/pages/home/About"));
+const HomePage = lazy(() => import("./pages/home/HomePage"));
+const Contact = lazy(() => import("./pages/home/Contact"));
+const About = lazy(() => import("./pages/home/About"));
 
 // @mui icons
 const Icon = lazy(() => import("@mui/material/Icon"));
@@ -15,7 +15,7 @@ export const adminRoutes = [
     name: "Dashboard",
     key: "dashboard",
     route: "/dashboard",
-    icon: <Icon fontSize="medium">manage_accounts</Icon>,
+    icon: <Icon fontSize="small">D</Icon>,
     component: <HomePage />,
     noCollapse: true,
   },
@@ -23,7 +23,7 @@ export const adminRoutes = [
     name: "Contact",
     key: "contact",
     route: "/contact",
-    icon: <Icon fontSize="medium">manage_accounts</Icon>,
+    icon: <Icon fontSize="small">C</Icon>,
     component: <Contact />,
     noCollapse: true,
   },
@@ -31,7 +31,7 @@ export const adminRoutes = [
     name: "About",
     key: "about",
     route: "/about",
-    icon: <Icon fontSize="medium">manage_accounts</Icon>,
+    icon: <Icon fontSize="small">A</Icon>,
     component: <About />,
     noCollapse: true,
   },
