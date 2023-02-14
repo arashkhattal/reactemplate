@@ -12,6 +12,43 @@
   --main-color: #0d80d8;
   --main-bg: #03001c;
 }
+.cp {
+  cursor: pointer;
+}
+.fs_12 {
+  font-size: 12px !important;
+}
+
+.fs_16 {
+  font-size: 16px !important;
+}
+
+.fs_14 {
+  font-size: 14px !important;
+}
+
+.fw_400 {
+  font-weight: 400 !important;
+}
+
+.fw_600 {
+  font-weight: 600 !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #111827d1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #111827;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar {
+  background: #efefef;
+  max-width: 10px;
+  height: 10px;
+}
 
 /* /////////////////////////////// */
 /* ////////////////Global Class/////// */

@@ -1,18 +1,15 @@
-import { lazy } from "react";
+import { lazy, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 //added lazy loading
-const HomePage = lazy(() => import("./pages/home/HomePage"));
-const Contact = lazy(() => import("./pages/home/Contact"));
-const About = lazy(() => import("./pages/home/About"));
+const PrimaryLayout = lazy(() => import("./layouts/Index"));
 const Login = lazy(() => import("./pages/auth/login/login"));
 const SignUp = lazy(() => import("./pages/auth/signUp/signUp"));
 const ResetPassword = lazy(() =>
-  import(
-    "./pages/auth/resetPassword/resetPassword"
-  )
+  import("./pages/auth/resetPassword/resetPassword")
 );
 //global context
 import { useGlobalContext } from "./context/globalContext";
+import { adminRoutes } from "../routes";
 //imported from MUI
 import {
   Alert,
@@ -23,6 +20,7 @@ import {
 } from "@mui/material";
 
 function App() {
+  const [curRoute, setCurRoute] = useState(adminRoutes);
   //getting value from global context
   const { loading, alert, setAlert } = useGlobalContext();
   //to close Alert
@@ -33,6 +31,26 @@ function App() {
       msg: "",
     });
   };
+
+  const getRoutes = (allRoutes) =>
+    allRoutes.map((route) => {
+      if (route.collapse) {
+        return getRoutes(route.collapse);
+      }
+
+      if (route.route) {
+        return (
+          <Route
+            exact
+            path={route.route}
+            element={route.component}
+            key={route.key}
+          />
+        );
+      }
+
+      return null;
+    });
   return (
     <>
       <CssBaseline />
@@ -55,11 +73,10 @@ function App() {
         </Alert>
       </Snackbar>
       {/* for routing from one page to another */}
+
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/about" element={<About />} />
+        <Route element={<PrimaryLayout />}>{getRoutes(curRoute)}</Route>
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/resetPassword" element={<ResetPassword />} />
       </Routes>

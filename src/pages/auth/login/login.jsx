@@ -25,7 +25,7 @@ const Login = () => {
       type: "success",
       msg: "Login successful",
     });
-    navigate("/home");
+    navigate("/dashboard");
   };
   return (
     <Box
