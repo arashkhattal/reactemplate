@@ -85,7 +85,7 @@ const Login = () => {
                   alt=""
                 />
                 <Typography>
-                  Signin with Google
+                  Login with Google
                 </Typography>
               </Box>
             </button>
@@ -97,7 +97,7 @@ const Login = () => {
               marginBottom: "25px",
             }}
           >
-            or Signin with Email
+            or Login with Email
           </Divider>
           <TextField
             style={{
@@ -173,7 +173,7 @@ const Login = () => {
             className="signing-btn signing-btn-bg"
             value="Login"
           >
-            <Typography>Sign In</Typography>
+            <Typography>Login</Typography>
           </button>
 
           <Box
@@ -184,7 +184,9 @@ const Login = () => {
               marginBottom: "20px",
             }}
           >
-            <Typography style={{ fontSize: "13px" }}>
+            <Typography
+              style={{ fontSize: "13px" }}
+            >
               Not registered yet?
             </Typography>
             <a
