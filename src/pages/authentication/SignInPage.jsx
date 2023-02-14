@@ -1,9 +1,11 @@
-import { Button, Container, TextField, Typography } from "@mui/material";
+import { Button, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../../context/globalContext";
 
+
+// custom styling
 const styles = {
   title: {
     fontSize: "32px",
@@ -27,13 +29,14 @@ const styles = {
 const SignInPage = () => {
   //getting value from global context
   const { setAlert } = useGlobalContext();
+  //state that take username
   const [username, setUsername] = useState("");
+  //state that take password
   const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-
   //to navigate to another page
   const navigate = useNavigate();
 
+  // Function to handle submit
   const handleSubmitButton = () => {
     setAlert({
       flag: true,
@@ -57,11 +60,6 @@ const SignInPage = () => {
         <Typography variant="h6" className={styles.title}>
           Login
         </Typography>
-        {errorMessage && (
-          <Typography variant="body1" color="error">
-            {errorMessage}
-          </Typography>
-        )}
         <form className={styles.form}>
           <TextField
             label="Username"

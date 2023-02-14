@@ -16,7 +16,7 @@ import {
 
 function App() {
   //getting value from global context
-  const { loading, setLoading, alert, setAlert } = useGlobalContext();
+  const { loading, alert, setAlert } = useGlobalContext();
   //to close Alert
   const handleAlertClose = () => {
     setAlert({
