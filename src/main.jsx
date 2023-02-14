@@ -1,14 +1,22 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import React, { Suspense } from "react";
+import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import AppProvider from "./context/globalcontext";
-import App from './App'
-import './index.css'
+import AppProvider from "./context/globalContext";
+import App from "./App";
+//global css file
+import "./index.css";
+import { CircularProgress } from "@mui/material";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
+  // BrowserRouter is a react-router-dom library.
   <BrowserRouter>
-   <AppProvider>
-    <App />
-   </AppProvider>
+    {/* proviver getting from global context */}
+    <AppProvider>
+      {/* lazy loading  */}
+      <Suspense fallback="Loading...">
+        {/* main application component */}
+        <App />
+      </Suspense>
+    </AppProvider>
   </BrowserRouter>
 );

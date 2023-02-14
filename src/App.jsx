@@ -1,10 +1,11 @@
 import { lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 //added lazy loading
-const HomePage = lazy(() => import("./pages/HomePage"));
-import SignInPage from "./pages/SignInPage";
+const HomePage = lazy(() => import("./pages/home/HomePage"));
+const SignInPage = lazy(() => import("./pages/authentication/SignInPage"));
 //global context
-import { useGlobalContext } from "./context/globalcontext";
+import { useGlobalContext } from "./context/globalContext";
+//imported from MUI
 import {
   Alert,
   Backdrop,
@@ -17,21 +18,21 @@ function App() {
   //getting value from global context
   const { loading, setLoading, alert, setAlert } = useGlobalContext();
   //to close Alert
-   const handleAlertClose = () => {
-     setAlert({
-       flag: false,
-       type: "",
-       msg: "",
-     });
-   };
+  const handleAlertClose = () => {
+    setAlert({
+      flag: false,
+      type: "",
+      msg: "",
+    });
+  };
   return (
     <>
       <CssBaseline />
-      {/* Loading */}
+      {/* Loading - Imported from MUI */}
       <Backdrop style={{ zIndex: "10000", color: "#fff" }} open={loading}>
         <CircularProgress />
       </Backdrop>
-      {/* Alert */}
+      {/* Alert - Imported from MUI*/}
       <Snackbar
         open={alert?.flag}
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
@@ -42,6 +43,7 @@ function App() {
           {alert?.msg}
         </Alert>
       </Snackbar>
+      {/* for routing from one page to another */}
       <Routes>
         <Route path="/" element={<SignInPage />} />
         <Route path="/home" element={<HomePage />} />
