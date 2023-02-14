@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
 import React, { useEffect } from "react";
+import AppBar from "../../components/AppBar";
 import { useGlobalContext } from "../../context/globalContext";
-import "./HomePage.css";
 
 const HomePage = () => {
   const { loading, setLoading, alert, setAlert } = useGlobalContext();
@@ -19,22 +19,11 @@ const HomePage = () => {
 
   return (
     <>
-      <div class="navbar">
-        <a class="active" href="#">
-          <i class="fa fa-fw fa-home"></i> Home
-        </a>
-        <a href="#">
-          <i class="fa fa-fw fa-search"></i> Search
-        </a>
-        <a href="#">
-          <i class="fa fa-fw fa-envelope"></i> Contact
-        </a>
-        <a href="#">
-          <i class="fa fa-fw fa-user"></i> Login
-        </a>
-      </div>
+      <AppBar  />
       <div
         style={{
+          maxHeight:"93vh",
+          marginTop: "-71vh",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",

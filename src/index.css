@@ -30,3 +30,6 @@
 .signing-btn:hover {
   background-color: #131313;
 }
+.active{
+  background-color: #0d80d8 !important;
+}

@@ -2,6 +2,8 @@ import { lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 //added lazy loading
 const HomePage = lazy(() => import("./pages/home/HomePage"));
+const Contact = lazy(() => import("./pages/home/Contact"));
+const About = lazy(() => import("./pages/home/About"));
 const SignInPage = lazy(() => import("./pages/authentication/SignInPage"));
 const Login = lazy(() => import("./pages/authentication/login/login"));
 const SignUp = lazy(() => import("./pages/authentication/signUp/signUp"));
@@ -55,6 +57,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/home" element={<HomePage />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/about" element={<About />} />
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/forgetpassWord" element={<ForgetPassWord />} />
       </Routes>
