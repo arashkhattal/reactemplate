@@ -4,7 +4,7 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-import "../forgotPassword/forgetPassword.css";
+import "./forgetPassword.css";
 
 const forgotPassword = () => {
   return (

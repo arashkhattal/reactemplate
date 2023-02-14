@@ -5,17 +5,17 @@ const HomePage = lazy(() =>
   import("./pages/home/HomePage")
 );
 const SignInPage = lazy(() =>
-  import("./pages/authentication/SignInPage")
+  import("./pages/auth/SignInPage")
 );
 const Login = lazy(() =>
-  import("./pages/authentication/login/login")
+  import("./pages/auth/login/login")
 );
 const SignUp = lazy(() =>
-  import("./pages/authentication/signUp/signUp")
+  import("./pages/auth/signUp/signUp")
 );
 const ForgetPassWord = lazy(() =>
   import(
-    "./pages/authentication/forgotPassword/forgetPassword"
+    "./pages/auth/forgotPassword/forgetPassword"
   )
 );
 //global context

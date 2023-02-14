@@ -10,20 +10,14 @@ import Google from "../../../assets/icon/google.png";
 import { useGlobalContext } from "../../../context/globalContext";
 import { useNavigate } from "react-router-dom";
 
-const style = {
-  display: "flex",
-  justifyContent: "center",
-};
 const Login = () => {
+  //to navigate to another page
+  const navigate = useNavigate();
   const { setAlert } = useGlobalContext();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] =
-    useState("");
 
-  //to navigate to another page
-  const navigate = useNavigate();
-
+  // Login function
   const handleSubmitButton = () => {
     setAlert({
       flag: true,
@@ -35,19 +29,14 @@ const Login = () => {
   return (
     <Box
       // component="form"
-      sx={{
-        marginTop: "200px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
+      className="container-center"
       noValidate
       autoComplete="off"
     >
       <Box
         sx={{
           m: 1,
-          width: "26%",
+          width: "330px",
           padding: "20px",
           border: "1px solid #c5c7c5",
         }}
@@ -56,13 +45,14 @@ const Login = () => {
         <form>
           <Typography
             variant="h5"
-            sx={{ fontWeight: "bold" }}
+            style={{ fontWeight: "bold" }}
           >
             Login
           </Typography>
           <Typography
-            sx={{
-              my: "15px",
+            style={{
+              marginTop: "15px",
+              marginBottom: "15px",
               color: "gray",
               fontSize: "14px",
             }}
@@ -72,16 +62,14 @@ const Login = () => {
           </Typography>
 
           <Box
-            style={
-              ({
-                alignItems: "center",
-              },
-              style)
-            }
+            className="global-display-flex"
+            style={{
+              alignItems: "center",
+            }}
           >
-            <button className="google-signing google-signingBtn ">
+            <button className="signing-btn google-signingBtn-bg ">
               <Box
-                sx={{
+                style={{
                   display: "flex",
                   alignItems: "center",
                   gap: "10px",
@@ -99,15 +87,16 @@ const Login = () => {
             </button>
           </Box>
           <Divider
-            sx={{
+            style={{
               color: "gray",
-              my: "25px",
+              marginTop: "25px",
+              marginBottom: "25px",
             }}
           >
             or Signin with Email
           </Divider>
           <TextField
-            sx={{
+            style={{
               width: "100%",
             }}
             id="outlined-basic"
@@ -120,7 +109,7 @@ const Login = () => {
             variant="outlined"
           />
           <TextField
-            sx={{
+            style={{
               width: "100%",
               marginTop: "20px",
             }}
@@ -134,11 +123,12 @@ const Login = () => {
             placeholder="Min. 8 character"
           />
           <Box
-            sx={{
+            style={{
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              my: "15px",
+              marginTop: "15px",
+              marginBottom: "15px",
             }}
           >
             <Box
@@ -176,17 +166,18 @@ const Login = () => {
               color: "white",
             }}
             onClick={handleSubmitButton}
-            className="google-signing signing-btn"
+            className="signing-btn signing-btn-bg"
             value="Login"
           >
             <Typography>Sign In</Typography>
           </button>
 
           <Box
-            sx={{
+            style={{
               display: "flex",
               gap: "10px",
-              my: "20px",
+              marginTop: "20px",
+              marginBottom: "20px",
             }}
           >
             <Typography sx={{ fontSize: "16px" }}>
