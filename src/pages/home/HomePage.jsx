@@ -1,6 +1,7 @@
 import { Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import { useGlobalContext } from "../../context/globalContext";
+import "./HomePage.css";
 
 const HomePage = () => {
   const { loading, setLoading, alert, setAlert } = useGlobalContext();
@@ -17,17 +18,33 @@ const HomePage = () => {
   }, 4000);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        height: "100vh",
-      }}
-    >
-      <Typography variant="h2">Home Page</Typography>
-    </div>
+    <>
+      <div class="navbar">
+        <a class="active" href="#">
+          <i class="fa fa-fw fa-home"></i> Home
+        </a>
+        <a href="#">
+          <i class="fa fa-fw fa-search"></i> Search
+        </a>
+        <a href="#">
+          <i class="fa fa-fw fa-envelope"></i> Contact
+        </a>
+        <a href="#">
+          <i class="fa fa-fw fa-user"></i> Login
+        </a>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "100vh",
+        }}
+      >
+        <Typography variant="h2">Home Page</Typography>
+      </div>
+    </>
   );
 };
 
