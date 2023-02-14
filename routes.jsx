@@ -1,8 +1,7 @@
-
+//imported lazy from react
 import { lazy } from "react";
 
-// Material Dashboard 2 PRO React layouts
-
+// Import components using lazy to load the component
 const HomePage = lazy(() => import("./src/pages/home/HomePage"));
 const Contact = lazy(() => import("./src/pages/home/Contact"));
 const About = lazy(() => import("./src/pages/home/About"));
@@ -10,6 +9,7 @@ const About = lazy(() => import("./src/pages/home/About"));
 // @mui icons
 const Icon = lazy(() => import("@mui/material/Icon"));
 
+// This is routes available in side bar
 export const adminRoutes = [
   {
     name: "Dashboard",
