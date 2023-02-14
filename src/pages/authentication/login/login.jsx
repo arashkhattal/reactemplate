@@ -1,10 +1,4 @@
-import {
-  Box,
-  Checkbox,
-  Divider,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Checkbox, Divider, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import Google from "../../../assets/icon/google.png";
 import { useGlobalContext } from "../../../context/globalContext";
@@ -14,15 +8,14 @@ const style = {
   display: "flex",
   justifyContent: "center",
 };
-const Login = () => {
-  const { setAlert } = useGlobalContext();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] =
-    useState("");
 
+const Login = () => {
   //to navigate to another page
   const navigate = useNavigate();
+  const { setAlert } = useGlobalContext();
+  // 
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmitButton = () => {
     setAlert({
@@ -52,12 +45,8 @@ const Login = () => {
           border: "1px solid #c5c7c5",
         }}
       >
-        {" "}
         <form>
-          <Typography
-            variant="h5"
-            sx={{ fontWeight: "bold" }}
-          >
+          <Typography variant="h5" sx={{ fontWeight: "bold" }}>
             Login
           </Typography>
           <Typography
@@ -67,8 +56,7 @@ const Login = () => {
               fontSize: "14px",
             }}
           >
-            See your growth get consulting
-            support!
+            See your growth get consulting support!
           </Typography>
 
           <Box
@@ -87,14 +75,8 @@ const Login = () => {
                   gap: "10px",
                 }}
               >
-                <img
-                  style={{ width: "16px" }}
-                  src={Google}
-                  alt=""
-                />
-                <Typography>
-                  Signin with Google
-                </Typography>
+                <img style={{ width: "16px" }} src={Google} alt="" />
+                <Typography>Signin with Google</Typography>
               </Box>
             </button>
           </Box>
@@ -113,9 +95,7 @@ const Login = () => {
             id="outlined-basic"
             label="Username Email"
             value={username}
-            onChange={(event) =>
-              setUsername(event.target.value)
-            }
+            onChange={(event) => setUsername(event.target.value)}
             placeholder="mail@email.com"
             variant="outlined"
           />
@@ -127,9 +107,7 @@ const Login = () => {
             id="outlined-basic"
             label="password"
             value={password}
-            onChange={(event) =>
-              setPassword(event.target.value)
-            }
+            onChange={(event) => setPassword(event.target.value)}
             variant="outlined"
             placeholder="Min. 8 character"
           />
@@ -147,15 +125,8 @@ const Login = () => {
                 alignItems: "center",
               }}
             >
-              <Checkbox
-                size="10px"
-                defaultChecked
-              />
-              <Typography
-                sx={{ fontSize: "14px" }}
-              >
-                Remember me
-              </Typography>
+              <Checkbox size="10px" defaultChecked />
+              <Typography sx={{ fontSize: "14px" }}>Remember me</Typography>
             </Box>
 
             <a
@@ -189,9 +160,7 @@ const Login = () => {
               my: "20px",
             }}
           >
-            <Typography sx={{ fontSize: "16px" }}>
-              Not registered yet?
-            </Typography>
+            <Typography sx={{ fontSize: "16px" }}>Not registered yet?</Typography>
             <a
               style={{
                 fontSize: "16px",
