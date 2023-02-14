@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif !important;
+}
+/* /////////////////////////////// */
+/* ////////////////Global Class/////// */
+/* ////////////////signin, signup and reset password/////// */
+/* //////////////////////////////// */
+.google-signing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 8px;
+  border-radius: 25px;
+  border: 1px solid #d9d9d9;
+  cursor: pointer;
+}
+.google-signingBtn {
+  background-color: transparent;
+}
+.google-signingBtn:hover {
+  background-color: #d1d1d1;
+}
+.signing-btn {
+  background-color: #0d80d8;
+}
+.signing-btn:hover {
+  background-color: #131313;
+}
