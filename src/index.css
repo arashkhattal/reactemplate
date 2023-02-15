@@ -8,6 +8,8 @@
 :root {
   --color_primary: #0d80d8;
   --main-bg: #03001c;
+  --color_Btn_Hover: #0574c9;
+  --color_Google-Btn_Hover: #ececec;
 }
 /* /////////////////////////////// */
 /* ////////////////Global Class/////// */
@@ -80,7 +82,7 @@
 .main_content {
   height: 100%;
   max-height: 95vh;
-  overflow:auto;
+  overflow: auto;
 }
 
 /* /////////////////////////////// */
@@ -101,13 +103,13 @@
   background-color: transparent;
 }
 .google-signingBtn-bg:hover {
-  background-color: #ececec;
+  background-color: var(--color_Google-Btn_Hover);
 }
 .signing-btn-bg {
   background-color: var(--color_primary);
 }
 .signing-btn-bg:hover {
-  background-color: var(--color_primary);
+  background-color: var(--color_Btn_Hover);
 }
 /* center any item in the page */
 .container-center {
@@ -136,4 +138,3 @@
   justify-content: center;
   height: 49px;
 }
-

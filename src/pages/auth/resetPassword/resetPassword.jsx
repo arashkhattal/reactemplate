@@ -120,9 +120,8 @@ const forgotPassword = () => {
             }}
           >
             <a
-              className="fs_13"
+              className="fs_13 color_primary"
               style={{
-                color: "#0D80D8",
                 textDecoration: "none",
               }}
               href="/"
