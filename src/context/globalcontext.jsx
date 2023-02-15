@@ -1,8 +1,14 @@
 import React, { useState, useContext, createContext } from "react";
 const AppContext = createContext();
 const AppProvider = ({ children }) => {
+
+  // loader component
   const [loading, setLoading] = useState(false);
+
+  // reload state
   const [reload, setReload] = useState(2);
+
+  // Alert component 
   const [alert, setAlert] = useState({
     flag: false,
     type: "",

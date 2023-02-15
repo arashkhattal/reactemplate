@@ -5,7 +5,6 @@ import AppProvider from "./context/globalContext";
 import App from "./App";
 //global css file
 import "./index.css";
-import { CircularProgress } from "@mui/material";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   // BrowserRouter is a react-router-dom library.
