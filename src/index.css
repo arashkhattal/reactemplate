@@ -7,7 +7,7 @@
 /* css variables */
 :root {
   --color_primary: #0d80d8;
-  --main-bg: #03001c;
+  --font_12: 12px !important;
 }
 /* /////////////////////////////// */
 /* ////////////////Global Class/////// */
@@ -58,12 +58,12 @@
 
 /* css for scroll bar - hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #111827d1;
+  background: var(--color_primary);
 }
 
 /* css for scroll bar  */
 ::-webkit-scrollbar-thumb {
-  background: #111827;
+  background: var(--color_primary);
   border-radius: 5px;
 }
 
@@ -138,6 +138,7 @@
 
 /* profile photo */
 .profile {
+  cursor: pointer;
   height: 25px;
   width: 25px;
   border-radius: 25px;
@@ -147,7 +148,7 @@
 .search input[type="search"] {
   width: 300px;
   padding: 6px;
-  font-size: 12px;
+  font-size: var(--font_12);
   border: 1px solid lightgray;
   border-radius: 5px;
 }
