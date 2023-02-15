@@ -3,11 +3,27 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import React, {
   useEffect,
   useState,
 } from "react";
 
+// mui textField modification
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& .MuiFormLabel-root.Mui-focused": {
+      color: "#0d80d8",
+    },
+    "& .MuiInputBase-root": {
+      "& fieldset": {},
+      "&.Mui-focused fieldset": {
+        borderColor: "#0d80d8",
+      },
+    },
+    width: "100%",
+  },
+}));
 const forgotPassword = () => {
   // screen size condition useState
   const [isDesktop, setDesktop] = useState("");
@@ -30,6 +46,8 @@ const forgotPassword = () => {
         updateMedia
       );
   });
+  // mui textfield class
+  const classes = useStyles();
   return (
     <Box
       // component="form"
@@ -52,7 +70,7 @@ const forgotPassword = () => {
         {" "}
         <form>
           <Typography
-            variant="h5"
+            className="fs_24"
             style={{
               fontWeight: "bold",
               textAlign: "center",
@@ -62,6 +80,7 @@ const forgotPassword = () => {
           </Typography>
 
           <TextField
+            className={classes.root}
             style={{
               width: "100%",
               marginTop: "20px",
@@ -101,8 +120,8 @@ const forgotPassword = () => {
             }}
           >
             <a
+              className="fs_13"
               style={{
-                fontSize: "13px",
                 color: "#0D80D8",
                 textDecoration: "none",
               }}
