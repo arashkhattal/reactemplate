@@ -1,5 +1,12 @@
 import {
+  Box,
+  FilledInput,
+  FormControl,
+  FormHelperText,
+  Input,
+  InputLabel,
   MenuItem,
+  OutlinedInput,
   TextField,
 } from "@mui/material";
 import React from "react";
@@ -24,6 +31,11 @@ const currencies = [
 const Standard = () => {
   return (
     <div>
+      <TextField
+        id="standard-basic"
+        label="Standard"
+        variant="standard"
+      />
       <TextField
         required
         id="standard-required"
@@ -153,6 +165,98 @@ const Standard = () => {
           ))}
         </TextField>
       </div>
+      {/*  */}
+      <div>
+        <TextField
+          label="Size"
+          id="standard-size-small"
+          defaultValue="Small"
+          size="small"
+          variant="standard"
+        />
+        <TextField
+          label="Size"
+          id="standard-size-normal"
+          defaultValue="Normal"
+          variant="standard"
+        />
+      </div>
+      {/*  */}
+      <Box
+        component="form"
+        sx={{
+          "& > :not(style)": { m: 1 },
+        }}
+        noValidate
+        autoComplete="off"
+      >
+        <FormControl variant="standard">
+          <InputLabel htmlFor="component-simple">
+            Name
+          </InputLabel>
+          <Input
+            id="component-simple"
+            defaultValue="Composed TextField"
+          />
+        </FormControl>
+        <FormControl variant="standard">
+          <InputLabel htmlFor="component-helper">
+            Name
+          </InputLabel>
+          <Input
+            id="component-helper"
+            defaultValue="Composed TextField"
+            aria-describedby="component-helper-text"
+          />
+          <FormHelperText id="component-helper-text">
+            Some important helper text
+          </FormHelperText>
+        </FormControl>
+        <FormControl disabled variant="standard">
+          <InputLabel htmlFor="component-disabled">
+            Name
+          </InputLabel>
+          <Input
+            id="component-disabled"
+            defaultValue="Composed TextField"
+          />
+          <FormHelperText>
+            Disabled
+          </FormHelperText>
+        </FormControl>
+        <FormControl error variant="standard">
+          <InputLabel htmlFor="component-error">
+            Name
+          </InputLabel>
+          <Input
+            id="component-error"
+            defaultValue="Composed TextField"
+            aria-describedby="component-error-text"
+          />
+          <FormHelperText id="component-error-text">
+            Error
+          </FormHelperText>
+        </FormControl>
+      </Box>
+      {/*  */}
+      <Box
+        component="form"
+        sx={{
+          "& > :not(style)": {
+            m: 1,
+            width: "25ch",
+          },
+        }}
+        noValidate
+        autoComplete="off"
+      >
+        <TextField
+          label="Standard warning"
+          variant="standard"
+          color="warning"
+          focused
+        />
+      </Box>
     </div>
   );
 };

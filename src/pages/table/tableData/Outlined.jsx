@@ -1,13 +1,31 @@
 import { AccountCircle } from "@mui/icons-material";
 import {
+  Box,
   FormControl,
   Input,
   InputAdornment,
   InputLabel,
   MenuItem,
+  OutlinedInput,
   TextField,
 } from "@mui/material";
 import React from "react";
+const ariaLabel = { 'aria-label': 'description' };
+
+function RedBar() {
+  return (
+    <Box
+      sx={{
+        height: 20,
+        backgroundColor: (theme) =>
+          theme.palette.mode === "light"
+            ? "rgba(255, 0, 0, 0.1)"
+            : "rgb(255 132 132 / 25%)",
+      }}
+    />
+  );
+}
+
 const currencies = [
   {
     value: "USD",
@@ -150,6 +168,195 @@ const Outlined = () => {
         </TextField>
       </div>
       {/* Form control text field */}
+      <Box sx={{ "& > :not(style)": { m: 1 } }}>
+        <FormControl variant="standard">
+          <InputLabel htmlFor="input-with-icon-adornment">
+            With a start adornment
+          </InputLabel>
+          <Input
+            id="input-with-icon-adornment"
+            startAdornment={
+              <InputAdornment position="start">
+                <AccountCircle />
+              </InputAdornment>
+            }
+          />
+        </FormControl>
+        <TextField
+          id="input-with-icon-textfield"
+          label="TextField"
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <AccountCircle />
+              </InputAdornment>
+            ),
+          }}
+          variant="standard"
+        />
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "flex-end",
+          }}
+        >
+          <AccountCircle
+            sx={{
+              color: "action.active",
+              mr: 1,
+              my: 0.5,
+            }}
+          />
+          <TextField
+            id="input-with-sx"
+            label="With sx"
+            variant="standard"
+          />
+        </Box>
+      </Box>
+      <Box>
+        <div>
+          <TextField
+            label="Size"
+            id="outlined-size-small"
+            defaultValue="Small"
+            size="small"
+          />
+          <TextField
+            label="Size"
+            id="outlined-size-normal"
+            defaultValue="Normal"
+          />
+        </div>
+      </Box>
+      {/*  */}
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          "& .MuiTextField-root": {
+            width: "25ch",
+          },
+        }}
+      >
+        <RedBar />
+        <TextField
+          label={'margin="none"'}
+          id="margin-none"
+        />
+        <RedBar />
+        <TextField
+          label={'margin="dense"'}
+          id="margin-dense"
+          margin="dense"
+        />
+        <RedBar />
+        <TextField
+          label={'margin="normal"'}
+          id="margin-normal"
+          margin="normal"
+        />
+        <RedBar />
+      </Box>
+      {/*  */}
+      <Box
+        sx={{
+          width: 500,
+          maxWidth: "100%",
+        }}
+      >
+        <TextField
+          fullWidth
+          label="fullWidth"
+          id="fullWidth"
+        />
+      </Box>
+      {/*  */}
+      <Box
+        component="form"
+        sx={{
+          "& > :not(style)": {
+            m: 1,
+            width: "25ch",
+          },
+        }}
+        noValidate
+        autoComplete="off"
+      >
+        <TextField
+          id="outlined-controlled"
+          label="Controlled"
+          value={name}
+          onChange={(event) => {
+            setName(event.target.value);
+          }}
+        />
+        <TextField
+          id="outlined-uncontrolled"
+          label="Uncontrolled"
+          defaultValue="foo"
+        />
+      </Box>
+      {/*  */}
+      <Box
+        component="form"
+        sx={{
+          "& > :not(style)": { m: 1 },
+        }}
+        noValidate
+        autoComplete="off"
+      >
+        <FormControl>
+          <InputLabel htmlFor="component-outlined">
+            Name
+          </InputLabel>
+          <OutlinedInput
+            id="component-outlined"
+            defaultValue="Composed TextField"
+            label="Name"
+          />
+        </FormControl>
+      </Box>
+      {/*  */}
+      <Box
+        component="form"
+        sx={{
+          "& > :not(style)": { m: 1 },
+        }}
+        noValidate
+        autoComplete="off"
+      >
+        <Input
+          defaultValue="Hello world"
+          inputProps={ariaLabel}
+        />
+        <Input
+          placeholder="Placeholder"
+          inputProps={ariaLabel}
+        />
+        <Input
+          disabled
+          defaultValue="Disabled"
+          inputProps={ariaLabel}
+        />
+        <Input
+          defaultValue="Error"
+          error
+          inputProps={ariaLabel}
+        />
+      </Box>
+      {/*  */}
+      <Box
+      component="form"
+      sx={{
+        '& > :not(style)': { m: 1, width: '25ch' },
+      }}
+      noValidate
+      autoComplete="off"
+    >
+      <TextField label="Outlined secondary" color="secondary" focused />
+      
+    </Box>
     </div>
   );
 };
