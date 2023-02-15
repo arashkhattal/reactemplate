@@ -3,59 +3,38 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { makeStyles } from "@mui/styles";
-import React, {
-  useEffect,
-  useState,
-} from "react";
-
-// mui textField modification
-const useStyles = makeStyles((theme) => ({
-  root: {
-    "& .MuiFormLabel-root.Mui-focused": {
-      color: "#0d80d8",
-    },
-    "& .MuiInputBase-root": {
-      "& fieldset": {},
-      "&.Mui-focused fieldset": {
-        borderColor: "#0d80d8",
-      },
-    },
-    width: "100%",
-  },
-}));
+import React, { useState } from "react";
+import { useGlobalContext } from "../../../context/globalContext";
 const forgotPassword = () => {
-  // screen size condition useState
-  const [isDesktop, setDesktop] = useState("");
-  // screen size condition function
-  const updateMedia = () => {
-    setDesktop(
-      window.innerHeight < 940 &&
-        window.innerWidth < 940
-    );
+  // global context
+  const { setAlert } = useGlobalContext();
+  //store input data
+  const [password, setPassword] = useState("");
+
+  // Reset password function
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (password === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please Enter Password",
+      });
+      return;
+    } else {
+      setAlert({
+        flag: true,
+        type: "success",
+        msg: "Password Successfully Changed",
+      });
+      navigate("/dashboard");
+    }
   };
 
-  useEffect(() => {
-    window.addEventListener(
-      "resize",
-      updateMedia
-    );
-    return () =>
-      window.removeEventListener(
-        "resize",
-        updateMedia
-      );
-  });
-  // mui textfield class
-  const classes = useStyles();
   return (
     <Box
-      // component="form"
-      className={`${
-        !isDesktop
-          ? "container-center"
-          : "container-center auth-screen-size"
-      }`}
+      className="container_center"
       noValidate
       autoComplete="off"
     >
@@ -65,6 +44,7 @@ const forgotPassword = () => {
           width: "330px",
           padding: "20px",
           border: "1px solid #c5c7c5",
+          margin: "20px 0px",
         }}
       >
         {" "}
@@ -80,11 +60,14 @@ const forgotPassword = () => {
           </Typography>
 
           <TextField
-            className={classes.root}
             style={{
               width: "100%",
               marginTop: "20px",
             }}
+            value={password}
+            onChange={(e) =>
+              setPassword(e.target.value)
+            }
             id="outlined-basic"
             label="Reset Password"
             variant="outlined"
@@ -105,7 +88,8 @@ const forgotPassword = () => {
             style={{
               color: "white",
             }}
-            className="signing-btn-bg signing-btn"
+            // onClick={handleSubmit}
+            className="btn_primary btn_primary_hover "
             value=" reset password"
           >
             <Typography>Reset</Typography>
@@ -120,7 +104,7 @@ const forgotPassword = () => {
             }}
           >
             <a
-              className="fs_13 color_primary"
+              className="fs_13 color_primary "
               style={{
                 textDecoration: "none",
               }}

@@ -5,9 +5,12 @@ import { lazy } from "react";
 const HomePage = lazy(() => import("./pages/home/HomePage"));
 const Contact = lazy(() => import("./pages/home/Contact"));
 const About = lazy(() => import("./pages/home/About"));
+const Table = lazy(() => import("./pages/table/Table"));
 
 // @mui icons
-const Icon = lazy(() => import("@mui/material/Icon"));
+const Icon = lazy(() =>
+  import("@mui/material/Icon")
+);
 
 import SettingsIcon from "@material-ui/icons/Settings";
 import DashboardIcon from "@mui/icons-material/Dashboard";
@@ -82,5 +85,13 @@ export const adminRoutes = [
         component: <About />,
       },
     ],
+  },
+  {
+    name: "Table",
+    key: "table",
+    route: "/table",
+    icon: <Icon fontSize="small">T</Icon>,
+    component: <Table />,
+    noCollapse: true,
   },
 ];

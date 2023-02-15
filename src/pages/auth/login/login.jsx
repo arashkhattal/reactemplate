@@ -4,75 +4,27 @@ import {
   Divider,
   TextField,
   Typography,
-  withStyles,
 } from "@mui/material";
-import React, {
-  useEffect,
-  useState,
-} from "react";
+import React, { useState } from "react";
 import Google from "../../../assets/icon/google.png";
 import { useGlobalContext } from "../../../context/globalContext";
 import { useNavigate } from "react-router-dom";
-import { makeStyles } from "@mui/styles";
 import { checkboxClasses } from "@mui/material";
 import { validateEmail } from "../../../helpers/globalFunction";
 
-// mui textField modification
-const useStyles = makeStyles((theme) => ({
-  root: {
-    "& .MuiFormLabel-root.Mui-focused": {
-      color: "#0d80d8",
-    },
-    "& .MuiInputBase-root": {
-      "& fieldset": {},
-      "&.Mui-focused fieldset": {
-        borderColor: "#0d80d8",
-      },
-    },
-    width: "100%",
-  },
-  root1: {
-    "&$checked": {
-      color: "#3D70B2",
-    },
-  },
-  checked: {},
-}));
-
 const Login = () => {
-  // screen size condition useState
-  const [isDesktop, setDesktop] = useState("");
   //to navigate to another page
   const navigate = useNavigate();
+  // global context
   const { setAlert } = useGlobalContext();
-  //
+  //store input data
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  // screen size condition function
-  const updateMedia = () => {
-    setDesktop(
-      window.innerHeight < 940 &&
-        window.innerWidth < 940
-    );
-  };
-
-  useEffect(() => {
-    window.addEventListener(
-      "resize",
-      updateMedia
-    );
-    return () =>
-      window.removeEventListener(
-        "resize",
-        updateMedia
-      );
-  });
 
   // Login function
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (email !== "demo@gmail.com") {
+    if (email === "") {
       setAlert({
         flag: true,
         type: "error",
@@ -80,11 +32,27 @@ const Login = () => {
       });
       return;
     }
+    if (email !== "demo@gmail.com") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please Enter valid Email",
+      });
+      return;
+    }
     if (!validateEmail(email)) {
       setAlert({
         flag: true,
         type: "error",
-        msg: "Please enter Valid Email",
+        msg: "Please Enter Valid Email",
+      });
+      return;
+    }
+    if (password === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please Enter Password",
       });
       return;
     }
@@ -92,7 +60,7 @@ const Login = () => {
       setAlert({
         flag: true,
         type: "error",
-        msg: "Please enter Password",
+        msg: "Please Enter valid Password",
       });
       return;
     } else {
@@ -105,16 +73,10 @@ const Login = () => {
     }
   };
 
-  // mui textfield class
-  const classes = useStyles();
   return (
     <Box
       // component="form"
-      className={`${
-        !isDesktop
-          ? "container-center"
-          : "container-center auth-screen-size"
-      }`}
+      className="container_center"
       noValidate
       autoComplete="off"
     >
@@ -124,6 +86,7 @@ const Login = () => {
           width: "330px",
           padding: "20px",
           border: "1px solid #c5c7c5",
+          margin: "20px 0px",
         }}
       >
         <form>
@@ -150,12 +113,12 @@ const Login = () => {
           </Typography>
 
           <Box
-            className="global-display-flex"
+            className="global_display_flex "
             style={{
               alignItems: "center",
             }}
           >
-            <button className="signing-btn google-signingBtn-bg">
+            <button className="btn_primary btn_google_hover">
               <Box
                 style={{
                   display: "flex",
@@ -184,7 +147,7 @@ const Login = () => {
             or Login with Email
           </Divider>
           <TextField
-            className={classes.root}
+            // className={classes.root}
             style={{
               width: "100%",
             }}
@@ -199,7 +162,7 @@ const Login = () => {
             variant="outlined"
           />
           <TextField
-            className={classes.root}
+            // className={classes.root}
             style={{
               width: "100%",
               marginTop: "20px",
@@ -260,7 +223,7 @@ const Login = () => {
               color: "white",
             }}
             onClick={handleSubmit}
-            className="signing-btn signing-btn-bg"
+            className="btn_primary btn_primary_hover "
             value="Login"
           >
             <Typography>Login</Typography>

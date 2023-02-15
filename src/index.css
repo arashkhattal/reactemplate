@@ -8,6 +8,7 @@
 :root {
   --color_primary: #0d80d8;
   --font_12: 12px !important;
+  --color_primary_btn_hover: #0a73c4;
 }
 /* /////////////////////////////// */
 /* ////////////////Global Class/////// */
@@ -19,9 +20,7 @@
 /* active link for side bar */
 .active {
   margin: 10px;
-  background-color: var(
-    --color_primary
-  ) !important;
+  background-color: var(--color_primary) !important;
   border-radius: 5px;
 }
 /* css cursor */
@@ -87,7 +86,7 @@
 /* ////////////////Global Class/////// */
 /* ////////////////signin, signup and reset password/////// */
 /* //////////////////////////////// */
-.signing-btn {
+.btn_primary {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -97,20 +96,20 @@
   border: 1px solid #e6e4e4;
   cursor: pointer;
 }
-.google-signingBtn-bg {
+.btn_google_hover {
   background-color: transparent;
 }
-.google-signingBtn-bg:hover {
+.btn_google_hover:hover {
   background-color: #e6e4e4;
 }
-.signing-btn-bg {
+.btn_primary_hover {
   background-color: var(--color_primary);
 }
-.signing-btn-bg:hover {
-  background-color: var(--color_primary);
+.btn_primary_hover:hover {
+  background-color: var(--color_primary_btn_hover);
 }
 /* center any item in the page */
-.container-center {
+.container_center {
   display: grid;
   place-items: center;
   min-height: 100vh;
@@ -121,7 +120,7 @@
   margin-bottom: 50px;
 }
 /* display flex Globally */
-.global-display-flex {
+.global_display_flex {
   display: flex;
   justify-content: center;
 }
@@ -130,7 +129,7 @@
 .navbar {
   width: 100%;
   border-bottom: 1px solid lightgrey;
-  background-color: transparent;
+  background-color: #ffffff !important;
   overflow: auto;
   display: flex;
   justify-content: space-between;
