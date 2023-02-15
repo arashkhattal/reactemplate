@@ -1,6 +1,4 @@
-import React, { useEffect } from "react";
-// sidebar component
-import Sidebar from "./Sidebar";
+import React from "react";
 
 const AppBar = () => {
   return (
