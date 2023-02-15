@@ -8,7 +8,7 @@ import React, {
   useEffect,
   useState,
 } from "react";
-
+import { useGlobalContext } from "../../../context/globalContext";
 // mui textField modification
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,6 +27,8 @@ const useStyles = makeStyles((theme) => ({
 const forgotPassword = () => {
   // screen size condition useState
   const [isDesktop, setDesktop] = useState("");
+  const { setAlert } = useGlobalContext();
+  const [password, setPassword] = useState("");
   // screen size condition function
   const updateMedia = () => {
     setDesktop(
@@ -46,6 +48,26 @@ const forgotPassword = () => {
         updateMedia
       );
   });
+  // Reset password function
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (password === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please enter Password",
+      });
+      return;
+    } else {
+      setAlert({
+        flag: true,
+        type: "success",
+        msg: "Password successfully Changed",
+      });
+      navigate("/dashboard");
+    }
+  };
   // mui textfield class
   const classes = useStyles();
   return (
@@ -85,6 +107,10 @@ const forgotPassword = () => {
               width: "100%",
               marginTop: "20px",
             }}
+            value={password}
+            onChange={(e) =>
+              setPassword(e.target.value)
+            }
             id="outlined-basic"
             label="Reset Password"
             variant="outlined"
@@ -105,6 +131,7 @@ const forgotPassword = () => {
             style={{
               color: "white",
             }}
+            onClick={handleSubmit}
             className="signing-btn-bg signing-btn"
             value=" reset password"
           >

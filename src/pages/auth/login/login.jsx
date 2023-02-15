@@ -76,7 +76,7 @@ const Login = () => {
       setAlert({
         flag: true,
         type: "error",
-        msg: "Please enter Email",
+        msg: "Please enter valid Email",
       });
       return;
     }
@@ -92,7 +92,7 @@ const Login = () => {
       setAlert({
         flag: true,
         type: "error",
-        msg: "Please enter Password",
+        msg: "Please enter valid Password",
       });
       return;
     } else {
