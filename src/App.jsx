@@ -1,7 +1,7 @@
 import { lazy, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 //added lazy loading
-const PrimaryLayout = lazy(() => import("./layouts/Index"));
+const PrimaryLayout = lazy(() => import("./layouts/primaryLayout/Index"));
 const Login = lazy(() => import("./pages/auth/login/login"));
 const SignUp = lazy(() => import("./pages/auth/signUp/signUp"));
 const ResetPassword = lazy(() =>

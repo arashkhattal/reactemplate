@@ -48,7 +48,6 @@ const Login = () => {
   //
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  console.log(password);
 
   // screen size condition function
   const updateMedia = () => {
@@ -71,14 +70,6 @@ const Login = () => {
   });
 
   // Login function
-  const handleSubmitButton = () => {
-    setAlert({
-      flag: true,
-      type: "success",
-      msg: "Login successful",
-    });
-    navigate("/dashboard");
-  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (email !== "demo@gmail.com") {

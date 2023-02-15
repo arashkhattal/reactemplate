@@ -18,8 +18,8 @@ const HomePage = () => {
 
   return (
     <>
-      <Card className="main_content"    >
-          <Typography variant="h2">Home Page</Typography>
+      <Card className="main_content">
+        <Typography variant="h2">Home Page</Typography>
       </Card>
     </>
   );

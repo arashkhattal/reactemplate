@@ -1,22 +1,20 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
-import CssBaseline from "@mui/material/CssBaseline";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
-import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { NavLink } from "react-router-dom";
 
-import { adminRoutes } from "../routes";
+import { adminRoutes } from "../../routes";
 
+// default drawer width
 const drawerWidth = 240;
 
 export default function PermanentDrawerLeft() {
+  // get routes data from global context
   const [curRoute, setCurRoute] = React.useState(adminRoutes);
   return (
     // drawer component imported from mui
@@ -26,7 +24,7 @@ export default function PermanentDrawerLeft() {
         width: drawerWidth,
         flexShrink: 0,
         "& .MuiDrawer-paper": {
-         boxShadow: "5px 2px 9px lightgrey",
+          boxShadow: "5px 2px 9px lightgrey",
           marginTop: 6.1,
           width: drawerWidth,
           boxSizing: "border-box",
@@ -39,9 +37,9 @@ export default function PermanentDrawerLeft() {
 
       {/* this will list the items in the side bar */}
       <List
-      style={{
-        marginTop:"-64px"
-      }}
+        style={{
+          marginTop: "-64px",
+        }}
       >
         {/* curRoute will map the items in the side bar */}
         {curRoute?.map((data) => (

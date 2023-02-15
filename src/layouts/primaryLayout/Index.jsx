@@ -1,54 +1,26 @@
-// import React from "react";
-
-// import { Outlet } from "react-router-dom";
-
-// import AppBar from "../components/AppBar";
-// import Sidebar from "../components/Sidebar";
-
-// const Index = () => {
-//   return (
-//     <>
-//       {/* AppBar is common component available for all pages */}
-//       <div>
-//         <AppBar />
-
-//         <div style={{ marginLeft:"calc(100vw - 500px)"}}>
-//           <Sidebar />
-//           <div
-//             style={{
-//               maxHeight: "calc(100vh - 100px)",
-//               maxWidth: "calc(100vw - 500px)",
-//               overflow: "auto",
-//             }}
-//           >
-//             <Outlet />
-//           </div>
-//         </div>
-//       </div>
-//       {/* Outlet will fetch tyhe remaing component */}
-//     </>
-//   );
-// };
-
-// export default Index;
-
 import React from "react";
 import { Outlet } from "react-router-dom";
-import AppBar from "../components/AppBar";
-import Sidebar from "../components/Sidebar";
+import AppBar from "../../components/appBar/AppBar";
+import Sidebar from "../../components/sideBar/Sidebar";
+
+// custom style component from Mui
 import styled from "styled-components";
 
 const Index = () => {
   return (
+    // common component render in every page
     <>
       <AppBarWrapper>
+        {/* App bar component */}
         <AppBar />
       </AppBarWrapper>
       <Wrapper>
         <SidebarWrapper>
+          {/* side bar component */}
           <Sidebar />
         </SidebarWrapper>
         <ContentWrapper>
+          {/* main content */}
           <Outlet />
         </ContentWrapper>
       </Wrapper>
@@ -56,6 +28,7 @@ const Index = () => {
   );
 };
 
+// style for app bar
 const AppBarWrapper = styled.div`
   position: fixed;
   top: 0;
@@ -63,6 +36,7 @@ const AppBarWrapper = styled.div`
   right: 0;
 `;
 
+// style for sidebar and main content
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
@@ -73,12 +47,14 @@ const Wrapper = styled.div`
   height: calc(100vh - 64px);
 `;
 
+// style for sidebar
 const SidebarWrapper = styled.div`
   width: 250px;
   flex-shrink: 0;
   height: 100%;
 `;
 
+// style for main content
 const ContentWrapper = styled.div`
   flex: 1;
   margin-left: 5px;
