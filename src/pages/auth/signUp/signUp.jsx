@@ -4,56 +4,17 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { makeStyles } from "@mui/styles";
-import React, {
-  useEffect,
-  useState,
-} from "react";
+import React, { useState } from "react";
 import Google from "../../../assets/icon/google.png";
 import { validateEmail } from "../../../helpers/globalFunction";
 
-// mui textField modification
-const useStyles = makeStyles((theme) => ({
-  // root: {
-  //   "& .MuiFormLabel-root.Mui-focused": {
-  //     color: "#0d80d8",
-  //   },
-  //   "& .MuiInputBase-root": {
-  //     "& fieldset": {},
-  //     "&.Mui-focused fieldset": {
-  //       borderColor: "#0d80d8",
-  //     },
-  //   },
-  //   width: "100%",
-  // },
-}));
-
 const signUp = () => {
-  // screen size condition useState
-  const [isDesktop, setDesktop] = useState("");
+  //store input data
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] =
     useState("");
-  // screen size condition function
-  const updateMedia = () => {
-    setDesktop(
-      window.innerHeight < 940 &&
-        window.innerWidth < 940
-    );
-  };
 
-  useEffect(() => {
-    window.addEventListener(
-      "resize",
-      updateMedia
-    );
-    return () =>
-      window.removeEventListener(
-        "resize",
-        updateMedia
-      );
-  });
   // signUp function
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -85,7 +46,7 @@ const signUp = () => {
       setAlert({
         flag: true,
         type: "error",
-        msg: "Please enter Correct Password",
+        msg: "Please Enter Valid Password",
       });
       return;
     } else {
@@ -97,17 +58,10 @@ const signUp = () => {
       navigate("/dashboard");
     }
   };
-  // mui textfield class
-  const classes = useStyles();
+
   return (
     <Box
-      // component="form"
-
-      className={`${
-        !isDesktop
-          ? "container-center"
-          : "container-center auth-screen-size"
-      }`}
+      className="container_center"
       noValidate
       autoComplete="off"
     >
@@ -117,6 +71,7 @@ const signUp = () => {
           width: "330px",
           padding: "20px",
           border: "1px solid #c5c7c5",
+          margin: "20px 0px",
         }}
       >
         {" "}
@@ -134,12 +89,12 @@ const signUp = () => {
           </Typography>
 
           <Box
-            className="global-display-flex"
+            className="global_display_flex "
             style={{
               alignItems: "center",
             }}
           >
-            <button className="signing-btn google-signingBtn-bg">
+            <button className="btn_primary btn_google_hover">
               <Box
                 style={{
                   display: "flex",
@@ -168,7 +123,6 @@ const signUp = () => {
             or Sign up with Email
           </Divider>
           <TextField
-            className={classes.root}
             style={{
               width: "100%",
             }}
@@ -182,7 +136,6 @@ const signUp = () => {
             variant="outlined"
           />
           <TextField
-            className={classes.root}
             style={{
               width: "100%",
               marginTop: "20px",
@@ -197,7 +150,6 @@ const signUp = () => {
             placeholder="Min. 8 character"
           />
           <TextField
-            className={classes.root}
             style={{
               width: "100%",
               marginTop: "20px",
@@ -220,7 +172,7 @@ const signUp = () => {
               marginTop: "10px",
             }}
             // onClick={handleSubmit}
-            className="signing-btn signing-btn-bg"
+            className="btn_primary btn_primary_hover "
             value="Login"
           >
             <Typography>Sign Up</Typography>

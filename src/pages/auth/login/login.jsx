@@ -1,62 +1,42 @@
-import { Box, Checkbox, Divider, TextField, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import {
+  Box,
+  Checkbox,
+  Divider,
+  TextField,
+  Typography,
+} from "@mui/material";
+import React, { useState } from "react";
 import Google from "../../../assets/icon/google.png";
 import { useGlobalContext } from "../../../context/globalContext";
 import { useNavigate } from "react-router-dom";
-import { makeStyles } from "@mui/styles";
 import { checkboxClasses } from "@mui/material";
 import { validateEmail } from "../../../helpers/globalFunction";
 
-// mui textField modification
-const useStyles = makeStyles((theme) => ({
-  // root: {
-  //   "& .MuiFormLabel-root.Mui-focused": {
-  //     color: "#0d80d8",
-  //   },
-  //   "& .MuiInputBase-root": {
-  //     "& fieldset": {},
-  //     "&.Mui-focused fieldset": {
-  //       borderColor: "#0d80d8",
-  //     },
-  //   },
-  //   width: "100%",
-  // },
-  // root1: {
-  //   "&$checked": {
-  //     color: "#3D70B2",
-  //   },
-  // },
-  // checked: {},
-}));
-
 const Login = () => {
-  // screen size condition useState
-  const [isDesktop, setDesktop] = useState("");
   //to navigate to another page
   const navigate = useNavigate();
+  // global context
   const { setAlert } = useGlobalContext();
-  //
+  //store input data
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  // screen size condition function
-  const updateMedia = () => {
-    setDesktop(window.innerHeight < 940 && window.innerWidth < 940);
-  };
-
-  useEffect(() => {
-    window.addEventListener("resize", updateMedia);
-    return () => window.removeEventListener("resize", updateMedia);
-  });
 
   // Login function
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (email === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please enter Email",
+      });
+      return;
+    }
     if (email !== "demo@gmail.com") {
       setAlert({
         flag: true,
         type: "error",
-        msg: "Please enter valid Email",
+        msg: "Please Enter valid Email",
       });
       return;
     }
@@ -64,7 +44,15 @@ const Login = () => {
       setAlert({
         flag: true,
         type: "error",
-        msg: "Please enter Valid Email",
+        msg: "Please Enter Valid Email",
+      });
+      return;
+    }
+    if (password === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please Enter Password",
       });
       return;
     }
@@ -72,7 +60,7 @@ const Login = () => {
       setAlert({
         flag: true,
         type: "error",
-        msg: "Please enter valid Password",
+        msg: "Please Enter valid Password",
       });
       return;
     } else {
@@ -85,12 +73,10 @@ const Login = () => {
     }
   };
 
-  // mui textfield class
-  const classes = useStyles();
   return (
     <Box
       // component="form"
-      className={`container-center`}
+      className="container_center"
       noValidate
       autoComplete="off"
     >
@@ -122,16 +108,17 @@ const Login = () => {
             }}
             className="fs_14"
           >
-            See your growth get consulting support!
+            See your growth get consulting
+            support!
           </Typography>
 
           <Box
-            className="global-display-flex"
+            className="global_display_flex "
             style={{
               alignItems: "center",
             }}
           >
-            <button className="signing-btn google-signingBtn-bg">
+            <button className="btn_primary btn_google_hover">
               <Box
                 style={{
                   display: "flex",
@@ -139,8 +126,14 @@ const Login = () => {
                   gap: "10px",
                 }}
               >
-                <img style={{ width: "16px" }} src={Google} alt="" />
-                <Typography>Login with Google</Typography>
+                <img
+                  style={{ width: "16px" }}
+                  src={Google}
+                  alt=""
+                />
+                <Typography>
+                  Login with Google
+                </Typography>
               </Box>
             </button>
           </Box>
@@ -162,7 +155,9 @@ const Login = () => {
             label="User Email"
             type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) =>
+              setEmail(e.target.value)
+            }
             placeholder="mail@email.com"
             variant="outlined"
           />
@@ -175,7 +170,9 @@ const Login = () => {
             id="outlined-basic"
             label="Password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) =>
+              setPassword(e.target.value)
+            }
             variant="outlined"
             placeholder="Min. 8 character"
           />
@@ -196,14 +193,17 @@ const Login = () => {
             >
               <Checkbox
                 sx={{
-                  [`&, &.${checkboxClasses.checked}`]: {
-                    color: "#0d80d8",
-                  },
+                  [`&, &.${checkboxClasses.checked}`]:
+                    {
+                      color: "#0d80d8",
+                    },
                 }}
                 size="10px"
                 defaultChecked
               />
-              <Typography className="fs_13 ">Remember me</Typography>
+              <Typography className="fs_13 ">
+                Remember me
+              </Typography>
             </Box>
 
             <a
@@ -223,7 +223,7 @@ const Login = () => {
               color: "white",
             }}
             onClick={handleSubmit}
-            className="signing-btn signing-btn-bg"
+            className="btn_primary btn_primary_hover "
             value="Login"
           >
             <Typography>Login</Typography>
@@ -237,7 +237,9 @@ const Login = () => {
               marginBottom: "20px",
             }}
           >
-            <Typography className="fs_13">Not registered yet?</Typography>
+            <Typography className="fs_13">
+              Not registered yet?
+            </Typography>
             <a
               className="fs_13 color_primary"
               style={{
