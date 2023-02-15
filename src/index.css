@@ -4,19 +4,22 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif !important;
 }
+/* css variables */
+:root {
+  --color_primary: #0d80d8;
+  --main-bg: #03001c;
+}
 /* /////////////////////////////// */
 /* ////////////////Global Class/////// */
 /* //////////////////////////////// */
-
-:root {
-  --main-color: #0d80d8;
-  --main-bg: #03001c;
+.color_primary {
+  color: var(--color_primary) !important;
 }
 
 /* active link for side bar */
 .active {
   margin: 10px;
-  background-color: #0d80d8 !important;
+  background-color: var(--color_primary) !important;
   border-radius: 5px;
 }
 /* css cursor */
@@ -85,10 +88,10 @@
   background-color: #ececec;
 }
 .signing-btn-bg {
-  background-color: var(--main-color);
+  background-color: var(--color_primary);
 }
 .signing-btn-bg:hover {
-  background-color: #0669b4;
+  background-color: var(--color_primary);
 }
 /* center any item in the page */
 .container-center {
@@ -101,7 +104,6 @@
   display: flex;
   justify-content: center;
 }
-
 
 /* css for navbar */
 
