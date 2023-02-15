@@ -58,7 +58,7 @@ const signUp = () => {
         {" "}
         <form>
           <Typography
-            variant="h5"
+            className="fs_24"
             style={{
               fontWeight: "bold",
               marginTop: "15px",
@@ -149,21 +149,17 @@ const signUp = () => {
           <Box
             style={{
               display: "flex",
-
               gap: "10px",
               marginTop: "20px",
               marginBottom: "20px",
-              fontSize: "12px",
             }}
           >
-            <Typography
-              style={{ fontSize: "13px" }}
-            >
+            <Typography className="fs_13">
               Already have an account?
             </Typography>
             <a
+              className="fs_13 "
               style={{
-                fontSize: "13px",
                 color: "#0D80D8",
                 textDecoration: "none",
               }}

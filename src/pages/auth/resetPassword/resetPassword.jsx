@@ -52,7 +52,7 @@ const forgotPassword = () => {
         {" "}
         <form>
           <Typography
-            variant="h5"
+            className="fs_24"
             style={{
               fontWeight: "bold",
               textAlign: "center",
@@ -101,8 +101,8 @@ const forgotPassword = () => {
             }}
           >
             <a
+              className="fs_13"
               style={{
-                fontSize: "13px",
                 color: "#0D80D8",
                 textDecoration: "none",
               }}

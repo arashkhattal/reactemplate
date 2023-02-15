@@ -30,6 +30,7 @@
 }
 
 /* global font size */
+
 .fs_12 {
   font-size: 12px !important;
 }
@@ -40,6 +41,12 @@
 
 .fs_14 {
   font-size: 14px !important;
+}
+.fs_13 {
+  font-size: 13px !important;
+}
+.fs_24 {
+  font-size: 24px !important;
 }
 
 /* global font weight   */

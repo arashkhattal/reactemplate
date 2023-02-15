@@ -73,7 +73,7 @@ const Login = () => {
       >
         <form>
           <Typography
-            variant="h5"
+            className="fs_24"
             style={{
               fontWeight: "bold",
               textAlign: "center",
@@ -86,9 +86,9 @@ const Login = () => {
               marginTop: "15px",
               marginBottom: "15px",
               color: "gray",
-              fontSize: "14px",
               textAlign: "center",
             }}
+            className="fs_14"
           >
             See your growth get consulting
             support!
@@ -174,16 +174,14 @@ const Login = () => {
                 size="10px"
                 defaultChecked
               />
-              <Typography
-                style={{ fontSize: "13px" }}
-              >
+              <Typography className="fs_13 ">
                 Remember me
               </Typography>
             </Box>
 
             <a
+              className="fs_13 "
               style={{
-                fontSize: "13px",
                 color: "#0D80D8",
                 textDecoration: "none",
               }}
@@ -213,14 +211,12 @@ const Login = () => {
               marginBottom: "20px",
             }}
           >
-            <Typography
-              style={{ fontSize: "13px" }}
-            >
+            <Typography className="fs_13">
               Not registered yet?
             </Typography>
             <a
+              className="fs_13 "
               style={{
-                fontSize: "13px",
                 color: "#0D80D8",
                 textDecoration: "none",
               }}
