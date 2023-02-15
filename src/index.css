@@ -19,9 +19,7 @@
 /* active link for side bar */
 .active {
   margin: 10px;
-  background-color: var(
-    --color_primary
-  ) !important;
+  background-color: var(--color_primary) !important;
   border-radius: 5px;
 }
 /* css cursor */
@@ -73,7 +71,7 @@
 .main_content {
   height: 100%;
   max-height: 95vh;
-  overflow:auto;
+  overflow: auto;
 }
 
 /* /////////////////////////////// */
@@ -120,13 +118,33 @@
 }
 
 /* css for navbar */
-
 .navbar {
   width: 100%;
-  background-color: var(--color_primary);
+  border-bottom: 1px solid lightgrey;
+  background-color: transparent;
   overflow: auto;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   height: 49px;
+  padding: 10px 20px;
 }
 
+/* profile photo */
+.profile {
+  height: 25px;
+  width: 25px;
+  border-radius: 25px;
+}
+
+/* search bar in app bar */
+.search input[type="search"] {
+  width: 300px;
+  padding: 6px;
+  font-size: 12px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}
+/* border of search bar when focus */
+input[type="search"]:focus {
+  outline: none;
+}
