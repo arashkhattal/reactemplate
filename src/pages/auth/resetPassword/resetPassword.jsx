@@ -3,13 +3,41 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, {
+  useEffect,
+  useState,
+} from "react";
 
 const forgotPassword = () => {
+  // screen size condition useState
+  const [isDesktop, setDesktop] = useState("");
+  // screen size condition function
+  const updateMedia = () => {
+    setDesktop(
+      window.innerHeight < 940 &&
+        window.innerWidth < 940
+    );
+  };
+
+  useEffect(() => {
+    window.addEventListener(
+      "resize",
+      updateMedia
+    );
+    return () =>
+      window.removeEventListener(
+        "resize",
+        updateMedia
+      );
+  });
   return (
     <Box
       // component="form"
-      className="container-center"
+      className={`${
+        !isDesktop
+          ? "container-center"
+          : "container-center auth-screen-size"
+      }`}
       noValidate
       autoComplete="off"
     >
@@ -30,7 +58,7 @@ const forgotPassword = () => {
               textAlign: "center",
             }}
           >
-            reset password
+            Reset Password
           </Typography>
 
           <TextField
@@ -39,7 +67,7 @@ const forgotPassword = () => {
               marginTop: "20px",
             }}
             id="outlined-basic"
-            label="reset password"
+            label="Reset Password"
             variant="outlined"
             placeholder="Min. 8 character"
           />
