@@ -5,18 +5,42 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, {
+  useEffect,
+  useState,
+} from "react";
 import Google from "../../../assets/icon/google.png";
 import { useGlobalContext } from "../../../context/globalContext";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  // screen size condition useState
+  const [isDesktop, setDesktop] = useState("");
   //to navigate to another page
   const navigate = useNavigate();
   const { setAlert } = useGlobalContext();
   //
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const updateMedia = () => {
+    setDesktop(
+      window.innerHeight < 940 &&
+        window.innerWidth < 940
+    );
+  };
+
+  // screen size condition function
+  useEffect(() => {
+    window.addEventListener(
+      "resize",
+      updateMedia
+    );
+    return () =>
+      window.removeEventListener(
+        "resize",
+        updateMedia
+      );
+  });
 
   // Login function
   const handleSubmitButton = () => {
@@ -30,7 +54,11 @@ const Login = () => {
   return (
     <Box
       // component="form"
-      className="container-center "
+      className={`${
+        !isDesktop
+          ? "container-center"
+          : "container-center auth-screen-size"
+      }`}
       noValidate
       autoComplete="off"
     >

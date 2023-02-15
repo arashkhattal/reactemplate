@@ -19,7 +19,9 @@
 /* active link for side bar */
 .active {
   margin: 10px;
-  background-color: var(--color_primary) !important;
+  background-color: var(
+    --color_primary
+  ) !important;
   border-radius: 5px;
 }
 /* css cursor */
@@ -98,6 +100,10 @@
   display: grid;
   place-items: center;
   min-height: 100vh;
+}
+.auth-screen-size {
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 /* display flex Globally */
 .global-display-flex {
