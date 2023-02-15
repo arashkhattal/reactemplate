@@ -4,6 +4,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import React, {
   useEffect,
   useState,
@@ -13,6 +14,22 @@ const style = {
   display: "flex",
   justifyContent: "center",
 };
+// mui textField modification
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& .MuiFormLabel-root.Mui-focused": {
+      color: "#0d80d8",
+    },
+    "& .MuiInputBase-root": {
+      "& fieldset": {},
+      "&.Mui-focused fieldset": {
+        borderColor: "#0d80d8",
+      },
+    },
+    width: "100%",
+  },
+}));
+
 const signUp = () => {
   // screen size condition useState
   const [isDesktop, setDesktop] = useState("");
@@ -35,6 +52,9 @@ const signUp = () => {
         updateMedia
       );
   });
+
+  // mui textfield class
+  const classes = useStyles();
   return (
     <Box
       // component="form"
@@ -104,6 +124,7 @@ const signUp = () => {
             or Sign up with Email
           </Divider>
           <TextField
+            className={classes.root}
             style={{
               width: "100%",
             }}
@@ -113,6 +134,7 @@ const signUp = () => {
             variant="outlined"
           />
           <TextField
+            className={classes.root}
             style={{
               width: "100%",
               marginTop: "20px",
@@ -123,6 +145,7 @@ const signUp = () => {
             placeholder="Min. 8 character"
           />
           <TextField
+            className={classes.root}
             style={{
               width: "100%",
               marginTop: "20px",

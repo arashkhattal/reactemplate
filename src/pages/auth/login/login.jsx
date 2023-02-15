@@ -4,6 +4,7 @@ import {
   Divider,
   TextField,
   Typography,
+  withStyles,
 } from "@mui/material";
 import React, {
   useEffect,
@@ -12,6 +13,23 @@ import React, {
 import Google from "../../../assets/icon/google.png";
 import { useGlobalContext } from "../../../context/globalContext";
 import { useNavigate } from "react-router-dom";
+import { makeStyles } from "@mui/styles";
+
+// mui textField modification
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& .MuiFormLabel-root.Mui-focused": {
+      color: "#0d80d8",
+    },
+    "& .MuiInputBase-root": {
+      "& fieldset": {},
+      "&.Mui-focused fieldset": {
+        borderColor: "#0d80d8",
+      },
+    },
+    width: "100%",
+  },
+}));
 
 const Login = () => {
   // screen size condition useState
@@ -52,6 +70,8 @@ const Login = () => {
     });
     navigate("/dashboard");
   };
+  // mui textfield class
+  const classes = useStyles();
   return (
     <Box
       // component="form"
@@ -129,6 +149,7 @@ const Login = () => {
             or Login with Email
           </Divider>
           <TextField
+            className={classes.root}
             style={{
               width: "100%",
             }}
@@ -142,6 +163,7 @@ const Login = () => {
             variant="outlined"
           />
           <TextField
+            className={classes.root}
             style={{
               width: "100%",
               marginTop: "20px",
