@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Card, Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import { useGlobalContext } from "../../context/globalContext";
 
@@ -18,20 +18,9 @@ const HomePage = () => {
 
   return (
     <>
-      <div
-        style={{
-          height: "100vh",
-          width: "100vw",
-          background: "red",
-          padding: "200px",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <Typography variant="h2">Home Page</Typography>
-      </div>
+      <Card className="main_content"    >
+          <Typography variant="h2">Home Page</Typography>
+      </Card>
     </>
   );
 };

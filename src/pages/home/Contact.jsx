@@ -1,4 +1,4 @@
-import { Typography } from '@mui/material';
+import { Card, Typography } from '@mui/material';
 import React, { useEffect } from 'react'
 import { useGlobalContext } from "../../context/globalContext";
 
@@ -15,20 +15,9 @@ const Contact = () => {
      }, 4000);
   return (
     <>
-
-      <div
-        style={{
-          maxHeight: "93vh",
-          marginTop: "-71vh",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          height: "100vh",
-        }}
-      >
+        <Card className="main_content"    >
         <Typography variant="h2">Contact Page</Typography>
-      </div>
+      </Card>
     </>
   );
 }
