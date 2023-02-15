@@ -2,12 +2,23 @@
 import { lazy } from "react";
 
 // Import components using lazy to load the component
-const HomePage = lazy(() => import("./pages/home/HomePage"));
-const Contact = lazy(() => import("./pages/home/Contact"));
-const About = lazy(() => import("./pages/home/About"));
+const HomePage = lazy(() =>
+  import("./pages/home/HomePage")
+);
+const Contact = lazy(() =>
+  import("./pages/home/Contact")
+);
+const About = lazy(() =>
+  import("./pages/home/About")
+);
+const Table = lazy(() =>
+  import("./pages/table/Table")
+);
 
 // @mui icons
-const Icon = lazy(() => import("@mui/material/Icon"));
+const Icon = lazy(() =>
+  import("@mui/material/Icon")
+);
 
 // This is routes available in side bar
 export const adminRoutes = [
@@ -33,6 +44,14 @@ export const adminRoutes = [
     route: "/about",
     icon: <Icon fontSize="small">A</Icon>,
     component: <About />,
+    noCollapse: true,
+  },
+  {
+    name: "Table",
+    key: "table",
+    route: "/table",
+    icon: <Icon fontSize="small">T</Icon>,
+    component: <Table />,
     noCollapse: true,
   },
 ];

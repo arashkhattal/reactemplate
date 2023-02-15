@@ -196,7 +196,7 @@ const signUp = () => {
               }}
               href="/"
             >
-              go to login page.
+              Go to login page.
             </a>
           </Box>
         </form>
