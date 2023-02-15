@@ -10,10 +10,8 @@ import React, {
   useState,
 } from "react";
 import Google from "../../../assets/icon/google.png";
-const style = {
-  display: "flex",
-  justifyContent: "center",
-};
+import { validateEmail } from "../../../helpers/globalFunction";
+
 // mui textField modification
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,6 +31,10 @@ const useStyles = makeStyles((theme) => ({
 const signUp = () => {
   // screen size condition useState
   const [isDesktop, setDesktop] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] =
+    useState("");
   // screen size condition function
   const updateMedia = () => {
     setDesktop(
@@ -52,7 +54,49 @@ const signUp = () => {
         updateMedia
       );
   });
-
+  // signUp function
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (email !== "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please enter Email",
+      });
+      return;
+    }
+    if (!validateEmail(email)) {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please enter Valid Email",
+      });
+      return;
+    }
+    if (password === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please enter Password",
+      });
+      return;
+    }
+    if (confirmPassword !== password) {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please enter Correct Password",
+      });
+      return;
+    } else {
+      setAlert({
+        flag: true,
+        type: "success",
+        msg: "SignUp successful",
+      });
+      navigate("/dashboard");
+    }
+  };
   // mui textfield class
   const classes = useStyles();
   return (
@@ -128,6 +172,10 @@ const signUp = () => {
             style={{
               width: "100%",
             }}
+            value={email}
+            onChange={(e) =>
+              setEmail(e.target.value)
+            }
             id="outlined-basic"
             label="Email"
             placeholder="mail@email.com"
@@ -139,6 +187,10 @@ const signUp = () => {
               width: "100%",
               marginTop: "20px",
             }}
+            value={password}
+            onChange={(e) =>
+              setPassword(e.target.value)
+            }
             id="outlined-basic"
             label="Password"
             variant="outlined"
@@ -151,6 +203,10 @@ const signUp = () => {
               marginTop: "20px",
               marginBottom: "20px",
             }}
+            value={confirmPassword}
+            onChange={(e) =>
+              setConfirmPassword(e.target.value)
+            }
             id="outlined-basic"
             label="Confirm Password"
             variant="outlined"
@@ -163,6 +219,7 @@ const signUp = () => {
               color: "white",
               marginTop: "10px",
             }}
+            // onClick={handleSubmit}
             className="signing-btn signing-btn-bg"
             value="Login"
           >
@@ -181,9 +238,8 @@ const signUp = () => {
               Already have an account?
             </Typography>
             <a
-              className="fs_13 "
+              className="fs_13 color_primary"
               style={{
-                color: "#0D80D8",
                 textDecoration: "none",
               }}
               href="/"

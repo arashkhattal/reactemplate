@@ -19,7 +19,9 @@
 /* active link for side bar */
 .active {
   margin: 10px;
-  background-color: var(--color_primary) !important;
+  background-color: var(
+    --color_primary
+  ) !important;
   border-radius: 5px;
 }
 /* css cursor */
@@ -99,7 +101,7 @@
   background-color: transparent;
 }
 .google-signingBtn-bg:hover {
-  background-color: #ececec;
+  background-color: #e6e4e4;
 }
 .signing-btn-bg {
   background-color: var(--color_primary);

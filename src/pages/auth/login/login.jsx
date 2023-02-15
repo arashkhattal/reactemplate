@@ -14,6 +14,8 @@ import Google from "../../../assets/icon/google.png";
 import { useGlobalContext } from "../../../context/globalContext";
 import { useNavigate } from "react-router-dom";
 import { makeStyles } from "@mui/styles";
+import { checkboxClasses } from "@mui/material";
+import { validateEmail } from "../../../helpers/globalFunction";
 
 // mui textField modification
 const useStyles = makeStyles((theme) => ({
@@ -29,6 +31,12 @@ const useStyles = makeStyles((theme) => ({
     },
     width: "100%",
   },
+  root1: {
+    "&$checked": {
+      color: "#3D70B2",
+    },
+  },
+  checked: {},
 }));
 
 const Login = () => {
@@ -38,7 +46,7 @@ const Login = () => {
   const navigate = useNavigate();
   const { setAlert } = useGlobalContext();
   //
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   // screen size condition function
@@ -62,14 +70,41 @@ const Login = () => {
   });
 
   // Login function
-  const handleSubmitButton = () => {
-    setAlert({
-      flag: true,
-      type: "success",
-      msg: "Login successful",
-    });
-    navigate("/dashboard");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (email !== "demo@gmail.com") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please enter Email",
+      });
+      return;
+    }
+    if (!validateEmail(email)) {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please enter Valid Email",
+      });
+      return;
+    }
+    if (password != 123456) {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please enter Password",
+      });
+      return;
+    } else {
+      setAlert({
+        flag: true,
+        type: "success",
+        msg: "Login successful",
+      });
+      navigate("/dashboard");
+    }
   };
+
   // mui textfield class
   const classes = useStyles();
   return (
@@ -154,10 +189,11 @@ const Login = () => {
               width: "100%",
             }}
             id="outlined-basic"
-            label="Username Email"
-            value={username}
-            onChange={(event) =>
-              setUsername(event.target.value)
+            label="User Email"
+            type="email"
+            value={email}
+            onChange={(e) =>
+              setEmail(e.target.value)
             }
             placeholder="mail@email.com"
             variant="outlined"
@@ -171,8 +207,8 @@ const Login = () => {
             id="outlined-basic"
             label="Password"
             value={password}
-            onChange={(event) =>
-              setPassword(event.target.value)
+            onChange={(e) =>
+              setPassword(e.target.value)
             }
             variant="outlined"
             placeholder="Min. 8 character"
@@ -193,6 +229,12 @@ const Login = () => {
               }}
             >
               <Checkbox
+                sx={{
+                  [`&, &.${checkboxClasses.checked}`]:
+                    {
+                      color: "#0d80d8",
+                    },
+                }}
                 size="10px"
                 defaultChecked
               />
@@ -202,9 +244,8 @@ const Login = () => {
             </Box>
 
             <a
-              className="fs_13 "
+              className="fs_13 color_primary"
               style={{
-                color: "#0D80D8",
                 textDecoration: "none",
               }}
               href="/resetPassword"
@@ -218,7 +259,7 @@ const Login = () => {
             style={{
               color: "white",
             }}
-            onClick={handleSubmitButton}
+            onClick={handleSubmit}
             className="signing-btn signing-btn-bg"
             value="Login"
           >
@@ -237,9 +278,8 @@ const Login = () => {
               Not registered yet?
             </Typography>
             <a
-              className="fs_13 "
+              className="fs_13 color_primary"
               style={{
-                color: "#0D80D8",
                 textDecoration: "none",
               }}
               href="/signup"
