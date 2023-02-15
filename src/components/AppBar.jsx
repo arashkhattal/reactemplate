@@ -6,20 +6,17 @@ const AppBar = () => {
   return (
     <>
       {/* simple app bar contain 3 options */}
-      <div class="navbar">
+      <div className="navbar">
         <a href="#">
-          <i class="fa fa-fw fa-home"></i> Home
+          <i className="fa fa-fw fa-home"></i> Home
         </a>
         <a href="#">
-          <i class="fa fa-fw fa-search"></i> Search
+          <i className="fa fa-fw fa-search"></i> Search
         </a>
         <a href="#">
-          <i class="fa fa-fw fa-envelope"></i> Contact
+          <i className="fa fa-fw fa-envelope"></i> Contact
         </a>
       </div>
-      {/* importing sidebar component */}
-
-      <Sidebar />
     </>
   );
 };

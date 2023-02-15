@@ -12,14 +12,19 @@
   --main-color: #0d80d8;
   --main-bg: #03001c;
 }
+
+/* active link for side bar */
 .active {
   margin: 10px;
   background-color: #0d80d8 !important;
   border-radius: 5px;
 }
+/* css cursor */
 .cp {
   cursor: pointer;
 }
+
+/* global font size */
 .fs_12 {
   font-size: 12px !important;
 }
@@ -32,6 +37,7 @@
   font-size: 14px !important;
 }
 
+/* global font weight   */
 .fw_400 {
   font-weight: 400 !important;
 }
@@ -40,15 +46,18 @@
   font-weight: 600 !important;
 }
 
+/* css for scroll bar - hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #111827d1;
 }
 
+/* css for scroll bar  */
 ::-webkit-scrollbar-thumb {
   background: #111827;
   border-radius: 5px;
 }
 
+/* css for backgroud of scroll bar */
 ::-webkit-scrollbar {
   background: #efefef;
   max-width: 10px;
