@@ -14,18 +14,18 @@ import { validateEmail } from "../../../helpers/globalFunction";
 
 // mui textField modification
 const useStyles = makeStyles((theme) => ({
-  root: {
-    "& .MuiFormLabel-root.Mui-focused": {
-      color: "#0d80d8",
-    },
-    "& .MuiInputBase-root": {
-      "& fieldset": {},
-      "&.Mui-focused fieldset": {
-        borderColor: "#0d80d8",
-      },
-    },
-    width: "100%",
-  },
+  // root: {
+  //   "& .MuiFormLabel-root.Mui-focused": {
+  //     color: "#0d80d8",
+  //   },
+  //   "& .MuiInputBase-root": {
+  //     "& fieldset": {},
+  //     "&.Mui-focused fieldset": {
+  //       borderColor: "#0d80d8",
+  //     },
+  //   },
+  //   width: "100%",
+  // },
 }));
 
 const signUp = () => {

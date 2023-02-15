@@ -1,15 +1,5 @@
-import {
-  Box,
-  Checkbox,
-  Divider,
-  TextField,
-  Typography,
-  withStyles,
-} from "@mui/material";
-import React, {
-  useEffect,
-  useState,
-} from "react";
+import { Box, Checkbox, Divider, TextField, Typography } from "@mui/material";
+import React, { useEffect, useState } from "react";
 import Google from "../../../assets/icon/google.png";
 import { useGlobalContext } from "../../../context/globalContext";
 import { useNavigate } from "react-router-dom";
@@ -19,24 +9,24 @@ import { validateEmail } from "../../../helpers/globalFunction";
 
 // mui textField modification
 const useStyles = makeStyles((theme) => ({
-  root: {
-    "& .MuiFormLabel-root.Mui-focused": {
-      color: "#0d80d8",
-    },
-    "& .MuiInputBase-root": {
-      "& fieldset": {},
-      "&.Mui-focused fieldset": {
-        borderColor: "#0d80d8",
-      },
-    },
-    width: "100%",
-  },
-  root1: {
-    "&$checked": {
-      color: "#3D70B2",
-    },
-  },
-  checked: {},
+  // root: {
+  //   "& .MuiFormLabel-root.Mui-focused": {
+  //     color: "#0d80d8",
+  //   },
+  //   "& .MuiInputBase-root": {
+  //     "& fieldset": {},
+  //     "&.Mui-focused fieldset": {
+  //       borderColor: "#0d80d8",
+  //     },
+  //   },
+  //   width: "100%",
+  // },
+  // root1: {
+  //   "&$checked": {
+  //     color: "#3D70B2",
+  //   },
+  // },
+  // checked: {},
 }));
 
 const Login = () => {
@@ -51,22 +41,12 @@ const Login = () => {
 
   // screen size condition function
   const updateMedia = () => {
-    setDesktop(
-      window.innerHeight < 940 &&
-        window.innerWidth < 940
-    );
+    setDesktop(window.innerHeight < 940 && window.innerWidth < 940);
   };
 
   useEffect(() => {
-    window.addEventListener(
-      "resize",
-      updateMedia
-    );
-    return () =>
-      window.removeEventListener(
-        "resize",
-        updateMedia
-      );
+    window.addEventListener("resize", updateMedia);
+    return () => window.removeEventListener("resize", updateMedia);
   });
 
   // Login function
@@ -110,11 +90,7 @@ const Login = () => {
   return (
     <Box
       // component="form"
-      className={`${
-        !isDesktop
-          ? "container-center"
-          : "container-center auth-screen-size"
-      }`}
+      className={`container-center`}
       noValidate
       autoComplete="off"
     >
@@ -124,6 +100,7 @@ const Login = () => {
           width: "330px",
           padding: "20px",
           border: "1px solid #c5c7c5",
+          margin: "20px 0px",
         }}
       >
         <form>
@@ -145,8 +122,7 @@ const Login = () => {
             }}
             className="fs_14"
           >
-            See your growth get consulting
-            support!
+            See your growth get consulting support!
           </Typography>
 
           <Box
@@ -163,14 +139,8 @@ const Login = () => {
                   gap: "10px",
                 }}
               >
-                <img
-                  style={{ width: "16px" }}
-                  src={Google}
-                  alt=""
-                />
-                <Typography>
-                  Login with Google
-                </Typography>
+                <img style={{ width: "16px" }} src={Google} alt="" />
+                <Typography>Login with Google</Typography>
               </Box>
             </button>
           </Box>
@@ -184,7 +154,7 @@ const Login = () => {
             or Login with Email
           </Divider>
           <TextField
-            className={classes.root}
+            // className={classes.root}
             style={{
               width: "100%",
             }}
@@ -192,14 +162,12 @@ const Login = () => {
             label="User Email"
             type="email"
             value={email}
-            onChange={(e) =>
-              setEmail(e.target.value)
-            }
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="mail@email.com"
             variant="outlined"
           />
           <TextField
-            className={classes.root}
+            // className={classes.root}
             style={{
               width: "100%",
               marginTop: "20px",
@@ -207,9 +175,7 @@ const Login = () => {
             id="outlined-basic"
             label="Password"
             value={password}
-            onChange={(e) =>
-              setPassword(e.target.value)
-            }
+            onChange={(e) => setPassword(e.target.value)}
             variant="outlined"
             placeholder="Min. 8 character"
           />
@@ -230,17 +196,14 @@ const Login = () => {
             >
               <Checkbox
                 sx={{
-                  [`&, &.${checkboxClasses.checked}`]:
-                    {
-                      color: "#0d80d8",
-                    },
+                  [`&, &.${checkboxClasses.checked}`]: {
+                    color: "#0d80d8",
+                  },
                 }}
                 size="10px"
                 defaultChecked
               />
-              <Typography className="fs_13 ">
-                Remember me
-              </Typography>
+              <Typography className="fs_13 ">Remember me</Typography>
             </Box>
 
             <a
@@ -274,9 +237,7 @@ const Login = () => {
               marginBottom: "20px",
             }}
           >
-            <Typography className="fs_13">
-              Not registered yet?
-            </Typography>
+            <Typography className="fs_13">Not registered yet?</Typography>
             <a
               className="fs_13 color_primary"
               style={{
