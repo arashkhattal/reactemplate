@@ -101,6 +101,7 @@
   place-items: center;
   min-height: 100vh;
 }
+/* auth page screen size */
 .auth-screen-size {
   margin-top: 50px;
   margin-bottom: 50px;

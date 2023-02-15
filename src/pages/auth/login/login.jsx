@@ -22,6 +22,8 @@ const Login = () => {
   //
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  // screen size condition function
   const updateMedia = () => {
     setDesktop(
       window.innerHeight < 940 &&
@@ -29,7 +31,6 @@ const Login = () => {
     );
   };
 
-  // screen size condition function
   useEffect(() => {
     window.addEventListener(
       "resize",
@@ -146,7 +147,7 @@ const Login = () => {
               marginTop: "20px",
             }}
             id="outlined-basic"
-            label="password"
+            label="Password"
             value={password}
             onChange={(event) =>
               setPassword(event.target.value)

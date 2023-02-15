@@ -4,17 +4,46 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, {
+  useEffect,
+  useState,
+} from "react";
 import Google from "../../../assets/icon/google.png";
 const style = {
   display: "flex",
   justifyContent: "center",
 };
 const signUp = () => {
+  // screen size condition useState
+  const [isDesktop, setDesktop] = useState("");
+  // screen size condition function
+  const updateMedia = () => {
+    setDesktop(
+      window.innerHeight < 940 &&
+        window.innerWidth < 940
+    );
+  };
+
+  useEffect(() => {
+    window.addEventListener(
+      "resize",
+      updateMedia
+    );
+    return () =>
+      window.removeEventListener(
+        "resize",
+        updateMedia
+      );
+  });
   return (
     <Box
       // component="form"
-      className="container-center "
+
+      className={`${
+        !isDesktop
+          ? "container-center"
+          : "container-center auth-screen-size"
+      }`}
       noValidate
       autoComplete="off"
     >
@@ -100,7 +129,7 @@ const signUp = () => {
               marginBottom: "20px",
             }}
             id="outlined-basic"
-            label="confirm Password"
+            label="Confirm Password"
             variant="outlined"
             placeholder="Min. 8 character"
           />
@@ -120,7 +149,7 @@ const signUp = () => {
           <Box
             style={{
               display: "flex",
-              justifyContent: "space-between",
+
               gap: "10px",
               marginTop: "20px",
               marginBottom: "20px",
@@ -130,7 +159,7 @@ const signUp = () => {
             <Typography
               style={{ fontSize: "13px" }}
             >
-              Are you registered already?
+              Already have an account?
             </Typography>
             <a
               style={{
