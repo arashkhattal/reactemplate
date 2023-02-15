@@ -9,13 +9,34 @@ import ListItemText from "@mui/material/ListItemText";
 import { NavLink } from "react-router-dom";
 
 import { adminRoutes } from "../../routes";
+import { ExpandLess, ExpandMore } from "@material-ui/icons";
+import { Collapse } from "@mui/material";
+
+import { makeStyles } from "@material-ui/core/styles";
 
 // default drawer width
 const drawerWidth = 240;
 
+const useStyles = makeStyles((theme) => ({
+  drawer: {
+    width: drawerWidth,
+    flexShrink: 0,
+  },
+  drawerPaper: {
+    width: drawerWidth,
+  },
+  nested: {
+    paddingLeft: theme.spacing(4),
+  },
+}));
+
 export default function PermanentDrawerLeft() {
+  const classes = useStyles();
   // get routes data from global context
   const [curRoute, setCurRoute] = React.useState(adminRoutes);
+
+  const [open, setOpen] = React.useState(false);
+
   return (
     // drawer component imported from mui
     <Drawer
@@ -42,26 +63,89 @@ export default function PermanentDrawerLeft() {
         }}
       >
         {/* curRoute will map the items in the side bar */}
-        {curRoute?.map((data) => (
-          <ListItem key={data?.key} disablePadding>
-            {/* addded NavLink to page */}
-            <NavLink
-              to={data?.route}
-              style={{
-                textDecoration: "none",
-                color: "black",
-                width: "100%",
-              }}
-            >
-              {/* ListItemButton - added button */}
-              <ListItemButton>
-                <ListItemIcon>{data?.icon}</ListItemIcon>
-                {/* text */}
-                <ListItemText primary={data?.name} />
-              </ListItemButton>
-            </NavLink>
-          </ListItem>
-        ))}
+        {curRoute?.map((data) =>
+          data?.type === "collapse" ? (
+            <>
+              <ListItem
+                key={data?.key}
+                disablePadding
+                onClick={() => setOpen(!open)}
+              >
+                {/* addded NavLink to page */}
+                <NavLink
+                  to={data?.route}
+                  style={{
+                    textDecoration: "none",
+                    color: "black",
+                    width: "100%",
+                  }}
+                >
+                  {/* ListItemButton - added button */}
+                  <ListItemButton>
+                    <ListItemIcon>{data?.icon}</ListItemIcon>
+                    {/* text */}
+                    <ListItemText primary={data?.name} />
+                    {data?.type === "collapse" ? (
+                      open ? (
+                        <ExpandLess />
+                      ) : (
+                        <ExpandMore />
+                      )
+                    ) : (
+                      ""
+                    )}
+                  </ListItemButton>
+                </NavLink>
+              </ListItem>
+              {curRoute?.map((data) =>
+                data?.type === "collapse"
+                  ? data?.collapse?.map((data) => (
+                      <Collapse in={open} timeout="auto" unmountOnExit>
+                        <List component="div" disablePadding>
+                          <ListItem key={data?.key} className={classes.nested}>
+                            <NavLink
+                              to={data?.route}
+                              style={{
+                                textDecoration: "none",
+                                color: "black",
+                                width: "100%",
+                              }}
+                            >
+                              {/* ListItemButton - added button */}
+                              <ListItemButton>
+                                <ListItemIcon>{data?.icon}</ListItemIcon>
+                                {/* text */}
+                                <ListItemText primary={data?.name} />
+                              </ListItemButton>
+                            </NavLink>
+                          </ListItem>
+                        </List>
+                      </Collapse>
+                    ))
+                  : null
+              )}
+            </>
+          ) : (
+            <ListItem key={data?.key} disablePadding>
+              {/* addded NavLink to page */}
+              <NavLink
+                to={data?.route}
+                style={{
+                  textDecoration: "none",
+                  color: "black",
+                  width: "100%",
+                }}
+              >
+                {/* ListItemButton - added button */}
+                <ListItemButton>
+                  <ListItemIcon>{data?.icon}</ListItemIcon>
+                  {/* text */}
+                  <ListItemText primary={data?.name} />
+                </ListItemButton>
+              </NavLink>
+            </ListItem>
+          )
+        )}
       </List>
     </Drawer>
   );

@@ -9,30 +9,78 @@ const About = lazy(() => import("./pages/home/About"));
 // @mui icons
 const Icon = lazy(() => import("@mui/material/Icon"));
 
+import SettingsIcon from "@material-ui/icons/Settings";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import ContactsIcon from "@mui/icons-material/Contacts";
+import InfoIcon from "@mui/icons-material/Info";
+
 // This is routes available in side bar
 export const adminRoutes = [
   {
+    type: "menu",
     name: "Dashboard",
     key: "dashboard",
     route: "/dashboard",
-    icon: <Icon fontSize="small">D</Icon>,
+    icon: <DashboardIcon />,
     component: <HomePage />,
     noCollapse: true,
   },
   {
+    type: "menu",
     name: "Contact",
     key: "contact",
     route: "/contact",
-    icon: <Icon fontSize="small">C</Icon>,
+    icon: <ContactsIcon />,
     component: <Contact />,
     noCollapse: true,
   },
   {
+    type: "menu",
     name: "About",
     key: "about",
     route: "/about",
-    icon: <Icon fontSize="small">A</Icon>,
+    icon: <InfoIcon />,
     component: <About />,
     noCollapse: true,
+  },
+  {
+    type: "collapse",
+    name: "Setting",
+    key: "setting",
+    icon: <SettingsIcon />,
+    collapse: [
+      {
+        name: "Contact",
+        key: "contact1",
+        route: "/submenu1/contact1",
+        component: <Contact />,
+      },
+      {
+        name: "About",
+        key: "about1",
+        route: "/submenu2/about1",
+        component: <About />,
+      },
+    ],
+  },
+  {
+    type: "collapse",
+    name: "arash",
+    key: "arash",
+    icon: <Icon fontSize="medium">settings</Icon>,
+    collapse: [
+      {
+        name: "test",
+        key: "test",
+        route: "/submenu3/test",
+        component: <Contact />,
+      },
+      {
+        name: "test",
+        key: "test1",
+        route: "/submenu4/test1",
+        component: <About />,
+      },
+    ],
   },
 ];
