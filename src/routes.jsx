@@ -2,17 +2,25 @@
 import { lazy } from "react";
 
 // Import components using lazy to load the component
-const HomePage = lazy(() => import("./pages/home/HomePage"));
-const Contact = lazy(() => import("./pages/home/Contact"));
-const About = lazy(() => import("./pages/home/About"));
-const Table = lazy(() => import("./pages/table/Table"));
+const HomePage = lazy(() =>
+  import("./pages/home/HomePage")
+);
+const Contact = lazy(() =>
+  import("./pages/home/Contact")
+);
+const About = lazy(() =>
+  import("./pages/home/About")
+);
+const InputField = lazy(() =>
+  import("./pages/table/InputField")
+);
 
 // @mui icons
 const Icon = lazy(() =>
   import("@mui/material/Icon")
 );
 
-// MUI icons 
+// MUI icons
 import SettingsIcon from "@material-ui/icons/Settings";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import ContactsIcon from "@mui/icons-material/Contacts";
@@ -93,11 +101,11 @@ export const adminRoutes = [
     ],
   },
   {
-    name: "Table",
-    key: "table",
-    route: "/table",
-    icon: <Icon fontSize="small">T</Icon>,
-    component: <Table />,
+    name: "InputField",
+    key: "inputfield",
+    route: "/inputfield",
+    icon: <Icon fontSize="small">I</Icon>,
+    component: <InputField />,
     noCollapse: true,
   },
 ];

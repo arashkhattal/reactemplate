@@ -1,7 +1,13 @@
-import { AccountCircle } from "@mui/icons-material";
+import Typography from "@material-ui/core/Typography";
+import {
+  AccountCircle,
+  Visibility,
+  VisibilityOff,
+} from "@mui/icons-material";
 import {
   Box,
   FormControl,
+  IconButton,
   Input,
   InputAdornment,
   InputLabel,
@@ -9,8 +15,8 @@ import {
   OutlinedInput,
   TextField,
 } from "@mui/material";
-import React from "react";
-const ariaLabel = { 'aria-label': 'description' };
+import React, { useState } from "react";
+const ariaLabel = { "aria-label": "description" };
 
 function RedBar() {
   return (
@@ -45,39 +51,119 @@ const currencies = [
   },
 ];
 const Outlined = () => {
+  // show password function
+  const [showPassword, setShowPassword] =
+    useState(false);
+
+  const handleClickShowPassword = () =>
+    setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
   return (
     <div>
-      <TextField
-        id="outlined-basic"
-        label="Outlined"
-        variant="outlined"
-      />
-      <TextField
-        required
-        id="outlined-required"
-        label="Required"
-        defaultValue="Hello World"
-      />
-      <TextField
-        disabled
-        id="outlined-disabled"
-        label="Disabled"
-        defaultValue="Hello World"
-      />
-      <TextField
-        id="outlined-password-input"
-        label="Password"
-        type="password"
-        autoComplete="current-password"
-      />
-      <TextField
-        id="outlined-read-only-input"
-        label="Read Only"
-        defaultValue="Hello World"
-        InputProps={{
-          readOnly: true,
-        }}
-      />
+      <Typography className="fs_24">
+        Input Text
+      </Typography>
+      <div>
+        <TextField
+          id="outlined-basic"
+          label="Outlined"
+          variant="outlined"
+        />
+        <TextField
+          required
+          id="outlined-required"
+          label="Required"
+          defaultValue="Hello World"
+        />
+        <TextField
+          disabled
+          id="outlined-disabled"
+          label="Disabled"
+          defaultValue="Hello World"
+        />
+        <TextField
+          id="outlined-password-input"
+          label="Password"
+          type="password"
+          autoComplete="current-password"
+        />
+        <FormControl
+          sx={{ m: 1, width: "25ch" }}
+          variant="outlined"
+        >
+          <InputLabel htmlFor="outlined-adornment-password">
+            Password
+          </InputLabel>
+          <OutlinedInput
+            id="outlined-adornment-password"
+            type={
+              showPassword ? "text" : "password"
+            }
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={
+                    handleClickShowPassword
+                  }
+                  onMouseDown={
+                    handleMouseDownPassword
+                  }
+                  edge="end"
+                >
+                  {showPassword ? (
+                    <VisibilityOff />
+                  ) : (
+                    <Visibility />
+                  )}
+                </IconButton>
+              </InputAdornment>
+            }
+            label="Password"
+          />
+        </FormControl>
+        <TextField
+          id="outlined-read-only-input"
+          label="Read Only"
+          defaultValue="Hello World"
+          InputProps={{
+            readOnly: true,
+          }}
+        />{" "}
+        <TextField
+          id="outlined-search"
+          label="Search field"
+          type="search"
+        />
+        <TextField
+          id="outlined-helperText"
+          label="Helper text"
+          defaultValue="Default Value"
+          helperText="Some important text"
+        />
+        <TextField
+          id="outlined-multiline-flexible"
+          label="Multiline"
+          multiline
+        />{" "}
+        <TextField
+          id="outlined-textarea"
+          label="Multiline Placeholder"
+          placeholder="Placeholder"
+          multiline
+          maxRows={3}
+        />
+        <TextField
+          id="outlined-multiline-static"
+          label="Multiline"
+          multiline
+          rows={4}
+          defaultValue="Default Value"
+        />
+      </div>
       <TextField
         id="outlined-number"
         label="Number"
@@ -86,17 +172,7 @@ const Outlined = () => {
           shrink: true,
         }}
       />
-      <TextField
-        id="outlined-search"
-        label="Search field"
-        type="search"
-      />
-      <TextField
-        id="outlined-helperText"
-        label="Helper text"
-        defaultValue="Default Value"
-        helperText="Some important text"
-      />
+
       <TextField
         error
         id="outlined-error"
@@ -110,25 +186,7 @@ const Outlined = () => {
         defaultValue="Hello World"
         helperText="Incorrect entry."
       />
-      <TextField
-        id="outlined-multiline-flexible"
-        label="Multiline"
-        multiline
-        maxRows={4}
-      />
-      <TextField
-        id="outlined-textarea"
-        label="Multiline Placeholder"
-        placeholder="Placeholder"
-        multiline
-      />
-      <TextField
-        id="outlined-multiline-static"
-        label="Multiline"
-        multiline
-        rows={4}
-        defaultValue="Default Value"
-      />
+
       {/* currency Outline */}
       <div>
         <TextField
@@ -347,16 +405,22 @@ const Outlined = () => {
       </Box>
       {/*  */}
       <Box
-      component="form"
-      sx={{
-        '& > :not(style)': { m: 1, width: '25ch' },
-      }}
-      noValidate
-      autoComplete="off"
-    >
-      <TextField label="Outlined secondary" color="secondary" focused />
-      
-    </Box>
+        component="form"
+        sx={{
+          "& > :not(style)": {
+            m: 1,
+            width: "25ch",
+          },
+        }}
+        noValidate
+        autoComplete="off"
+      >
+        <TextField
+          label="Outlined secondary"
+          color="secondary"
+          focused
+        />
+      </Box>
     </div>
   );
 };
