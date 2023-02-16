@@ -4,16 +4,15 @@ import { lazy } from "react";
 // MUI icons
 import SettingsIcon from "@material-ui/icons/Settings";
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import ContactsIcon from "@mui/icons-material/Contacts";
 import InsightsIcon from "@mui/icons-material/Insights";
 import InfoIcon from "@mui/icons-material/Info";
-// import AddchartIcon from "@mui/icons-material/Addchart";
+import TableChartIcon from "@mui/icons-material/TableChart";
 
 // Import components using lazy to load the component
 const HomePage = lazy(() => import("./pages/home/HomePage"));
 const Chart = lazy(() => import("./pages/home/charts/Chart"));
-const About = lazy(() => import("./pages/home/About"));
-const Table = lazy(() => import("./pages/table/Table"));
+const Tables = lazy(() => import("./pages/home/tables/Tables"));
+const Inputs = lazy(() => import("./pages/table/Inputs"));
 
 // @mui icons
 const Icon = lazy(() => import("@mui/material/Icon"));
@@ -41,11 +40,11 @@ export const adminRoutes = [
   //object for normal option
   {
     type: "menu",
-    name: "About",
-    key: "about",
-    route: "/about",
-    icon: <InfoIcon fontSize="small" />,
-    component: <About />,
+    name: "Tables",
+    key: "table",
+    route: "/table",
+    icon: <TableChartIcon fontSize="small" />,
+    component: <Tables />,
   },
   // object for collapse (dropdown)
   {
@@ -58,7 +57,7 @@ export const adminRoutes = [
         name: "About",
         key: "about1",
         route: "/about1",
-        component: <About fontSize="small" />,
+        component: <Tables />,
       },
     ],
   },
@@ -73,16 +72,15 @@ export const adminRoutes = [
         name: "test",
         key: "test1",
         route: "/test1",
-        component: <About />,
+        component: <Tables />,
       },
     ],
   },
   {
-    name: "Table",
-    key: "table",
-    route: "/table",
-    icon: <Icon fontSize="small">T</Icon>,
-    component: <Table />,
-    noCollapse: true,
+    name: "Inputs",
+    key: "inputs",
+    route: "/inputs",
+    icon: <Icon fontSize="small">I</Icon>,
+    component: <Inputs />,
   },
 ];

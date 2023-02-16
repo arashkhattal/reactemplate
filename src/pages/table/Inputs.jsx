@@ -5,9 +5,9 @@ import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import { TextField } from "@mui/material";
-import Outlined from "./tableData/Outlined";
-import Filled from "./tableData/Filled";
-import Standard from "./tableData/Standard";
+import Outlined from "./inputData/Outlined";
+import Filled from "./inputData/Filled";
+import Standard from "./inputData/Standard";
 import { Card } from "@material-ui/core";
 
 const Table = () => {
