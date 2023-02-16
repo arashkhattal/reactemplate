@@ -6,13 +6,16 @@ import {
 } from "@mui/icons-material";
 import {
   Box,
+  Checkbox,
   FormControl,
   IconButton,
   Input,
   InputAdornment,
   InputLabel,
+  ListItemText,
   MenuItem,
   OutlinedInput,
+  Select,
   TextField,
 } from "@mui/material";
 import React, { useState } from "react";
@@ -31,7 +34,7 @@ function RedBar() {
     />
   );
 }
-
+// dummy data
 const currencies = [
   {
     value: "USD",
@@ -50,20 +53,52 @@ const currencies = [
     label: "¥",
   },
 ];
+
+// item cal curation of multiple select
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight:
+        ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
+//  dummy data of multiple select
+const names = ["Chinmy", "Jabed", "Arash"];
 const Outlined = () => {
-  // show password function
+  // store show password
   const [showPassword, setShowPassword] =
     useState(false);
-
+  // store multiple item
+  const [personName, setPersonName] = useState(
+    []
+  );
+  // show password function
   const handleClickShowPassword = () =>
     setShowPassword((show) => !show);
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
+  // select multiple item function
+
+  const handleChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setPersonName(
+      // On autofill we get a stringified value.
+      typeof value === "string"
+        ? value.split(",")
+        : value
+    );
+  };
   return (
     <div>
-      <Typography className="fs_24">
+      <Typography className="fs_24 text_Margin ">
         Input Text
       </Typography>
       <div>
@@ -84,6 +119,30 @@ const Outlined = () => {
           label="Disabled"
           defaultValue="Hello World"
         />
+        <TextField
+          id="outlined-read-only-input"
+          label="Read Only"
+          defaultValue="Hello World"
+          InputProps={{
+            readOnly: true,
+          }}
+        />{" "}
+        <TextField
+          id="outlined-search"
+          label="Search field"
+          type="search"
+        />
+        <TextField
+          id="outlined-helperText"
+          label="Helper text"
+          defaultValue="Default Value"
+          helperText="Some important text"
+        />
+      </div>
+      <div>
+        <Typography className="fs_24 text_Margin ">
+          Input Password
+        </Typography>
         <TextField
           id="outlined-password-input"
           label="Password"
@@ -125,28 +184,22 @@ const Outlined = () => {
             label="Password"
           />
         </FormControl>
+      </div>
+      <div>
+        <Typography className="fs_24 text_Margin ">
+          Input Number
+        </Typography>
         <TextField
-          id="outlined-read-only-input"
-          label="Read Only"
-          defaultValue="Hello World"
-          InputProps={{
-            readOnly: true,
+          id="outlined-number"
+          label="Number"
+          type="number"
+          InputLabelProps={{
+            shrink: true,
           }}
-        />{" "}
-        <TextField
-          id="outlined-search"
-          label="Search field"
-          type="search"
-        />
-        <TextField
-          id="outlined-helperText"
-          label="Helper text"
-          defaultValue="Default Value"
-          helperText="Some important text"
         />
       </div>
-      <Typography className="fs_24">
-        Input Multiple Text
+      <Typography className="fs_24 text_Margin ">
+        Input Multiline
       </Typography>
       <div>
         <TextField
@@ -169,31 +222,33 @@ const Outlined = () => {
           defaultValue="Default Value"
         />
       </div>
-      <TextField
-        id="outlined-number"
-        label="Number"
-        type="number"
-        InputLabelProps={{
-          shrink: true,
-        }}
-      />
-
-      <TextField
-        error
-        id="outlined-error"
-        label="Error"
-        defaultValue="Hello World"
-      />
-      <TextField
-        error
-        id="outlined-error-helper-text"
-        label="Error"
-        defaultValue="Hello World"
-        helperText="Incorrect entry."
-      />
-
-      {/* currency Outline */}
       <div>
+        <Typography className="fs_24 text_Margin ">
+          Input Error
+        </Typography>
+        <TextField
+          error
+          id="outlined-error"
+          label="Error"
+          defaultValue="Hello World"
+        />
+        <TextField
+          error
+          id="outlined-error-helper-text"
+          label="Error"
+          defaultValue="Hello World"
+          helperText="Incorrect entry."
+        />
+        <TextField
+          label="Outlined secondary"
+          color="secondary"
+          focused
+        />
+      </div>
+      <div>
+        <Typography className="fs_24 text_Margin ">
+          Input Select Item
+        </Typography>
         <TextField
           id="outlined-select-currency"
           select
@@ -229,55 +284,43 @@ const Outlined = () => {
             </option>
           ))}
         </TextField>
-      </div>
-      {/* Form control text field */}
-      <Box sx={{ "& > :not(style)": { m: 1 } }}>
-        <FormControl variant="standard">
-          <InputLabel htmlFor="input-with-icon-adornment">
-            With a start adornment
+
+        <FormControl sx={{ m: 1, width: 300 }}>
+          <InputLabel id="demo-multiple-checkbox-label">
+            Multiple Select
           </InputLabel>
-          <Input
-            id="input-with-icon-adornment"
-            startAdornment={
-              <InputAdornment position="start">
-                <AccountCircle />
-              </InputAdornment>
+          <Select
+            labelId="demo-multiple-checkbox-label"
+            id="demo-multiple-checkbox"
+            multiple
+            value={personName}
+            onChange={handleChange}
+            input={
+              <OutlinedInput label="Multiple Select" />
             }
-          />
+            renderValue={(selected) =>
+              selected.join(", ")
+            }
+            MenuProps={MenuProps}
+          >
+            {names.map((name) => (
+              <MenuItem key={name} value={name}>
+                <Checkbox
+                  checked={
+                    personName.indexOf(name) > -1
+                  }
+                />
+                <ListItemText primary={name} />
+              </MenuItem>
+            ))}
+          </Select>
         </FormControl>
-        <TextField
-          id="input-with-icon-textfield"
-          label="TextField"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <AccountCircle />
-              </InputAdornment>
-            ),
-          }}
-          variant="standard"
-        />
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "flex-end",
-          }}
-        >
-          <AccountCircle
-            sx={{
-              color: "action.active",
-              mr: 1,
-              my: 0.5,
-            }}
-          />
-          <TextField
-            id="input-with-sx"
-            label="With sx"
-            variant="standard"
-          />
-        </Box>
-      </Box>
+      </div>
+
       <Box>
+        <Typography className="fs_24 text_Margin ">
+          Input Field Different size
+        </Typography>
         <div>
           <TextField
             label="Size"
@@ -291,140 +334,6 @@ const Outlined = () => {
             defaultValue="Normal"
           />
         </div>
-      </Box>
-      {/*  */}
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          "& .MuiTextField-root": {
-            width: "25ch",
-          },
-        }}
-      >
-        <RedBar />
-        <TextField
-          label={'margin="none"'}
-          id="margin-none"
-        />
-        <RedBar />
-        <TextField
-          label={'margin="dense"'}
-          id="margin-dense"
-          margin="dense"
-        />
-        <RedBar />
-        <TextField
-          label={'margin="normal"'}
-          id="margin-normal"
-          margin="normal"
-        />
-        <RedBar />
-      </Box>
-      {/*  */}
-      <Box
-        sx={{
-          width: 500,
-          maxWidth: "100%",
-        }}
-      >
-        <TextField
-          fullWidth
-          label="fullWidth"
-          id="fullWidth"
-        />
-      </Box>
-      {/*  */}
-      <Box
-        component="form"
-        sx={{
-          "& > :not(style)": {
-            m: 1,
-            width: "25ch",
-          },
-        }}
-        noValidate
-        autoComplete="off"
-      >
-        <TextField
-          id="outlined-controlled"
-          label="Controlled"
-          value={name}
-          onChange={(event) => {
-            setName(event.target.value);
-          }}
-        />
-        <TextField
-          id="outlined-uncontrolled"
-          label="Uncontrolled"
-          defaultValue="foo"
-        />
-      </Box>
-      {/*  */}
-      <Box
-        component="form"
-        sx={{
-          "& > :not(style)": { m: 1 },
-        }}
-        noValidate
-        autoComplete="off"
-      >
-        <FormControl>
-          <InputLabel htmlFor="component-outlined">
-            Name
-          </InputLabel>
-          <OutlinedInput
-            id="component-outlined"
-            defaultValue="Composed TextField"
-            label="Name"
-          />
-        </FormControl>
-      </Box>
-      {/*  */}
-      <Box
-        component="form"
-        sx={{
-          "& > :not(style)": { m: 1 },
-        }}
-        noValidate
-        autoComplete="off"
-      >
-        <Input
-          defaultValue="Hello world"
-          inputProps={ariaLabel}
-        />
-        <Input
-          placeholder="Placeholder"
-          inputProps={ariaLabel}
-        />
-        <Input
-          disabled
-          defaultValue="Disabled"
-          inputProps={ariaLabel}
-        />
-        <Input
-          defaultValue="Error"
-          error
-          inputProps={ariaLabel}
-        />
-      </Box>
-      {/*  */}
-      <Box
-        component="form"
-        sx={{
-          "& > :not(style)": {
-            m: 1,
-            width: "25ch",
-          },
-        }}
-        noValidate
-        autoComplete="off"
-      >
-        <TextField
-          label="Outlined secondary"
-          color="secondary"
-          focused
-        />
       </Box>
     </div>
   );

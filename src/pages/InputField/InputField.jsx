@@ -4,12 +4,10 @@ import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
-import { TextField } from "@mui/material";
 import Outlined from "./InputFieldData/Outlined";
 import Filled from "./InputFieldData/Filled";
 import Standard from "./InputFieldData/Standard";
-import { Card } from "@material-ui/core";
-
+import "./InputField.css";
 const Table = () => {
   const [value, setValue] = React.useState("1");
 
@@ -18,7 +16,9 @@ const Table = () => {
   };
 
   return (
-    <Box sx={{ width: "100%", typography: "body1" }}>
+    <Box
+      sx={{ width: "100%", typography: "body1" }}
+    >
       <TabContext value={value}>
         <Box
           className="global_display_flex"
@@ -27,7 +27,10 @@ const Table = () => {
             borderColor: "divider",
           }}
         >
-          <TabList onChange={handleChange} aria-label="lab API tabs example">
+          <TabList
+            onChange={handleChange}
+            aria-label="lab API tabs example"
+          >
             <Tab label="Outlined" value="1" />
             <Tab label="Filled" value="2" />
             <Tab label="Standard" value="3" />
