@@ -98,10 +98,10 @@ const Outlined = () => {
   };
   return (
     <div>
-      <Typography className="fs_24 text_Margin ">
-        Input Text
-      </Typography>
       <div>
+        <Typography className="fs_24 text_Margin ">
+          Input Text
+        </Typography>
         <TextField
           id="outlined-basic"
           label="Outlined"
@@ -198,10 +198,12 @@ const Outlined = () => {
           }}
         />
       </div>
-      <Typography className="fs_24 text_Margin ">
-        Input Multiline
-      </Typography>
+
       <div>
+        {" "}
+        <Typography className="fs_24 text_Margin ">
+          Input Multiline
+        </Typography>
         <TextField
           id="outlined-multiline-flexible"
           label="Multiline"

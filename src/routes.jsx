@@ -22,6 +22,9 @@ const About = lazy(() =>
 const InputField = lazy(() =>
   import("./pages/InputField/InputField")
 );
+const Table = lazy(() =>
+  import("./pages/Table/Table")
+);
 
 // @mui icons
 const Icon = lazy(() =>
@@ -93,6 +96,14 @@ export const adminRoutes = [
     route: "/inputfield",
     icon: <Icon fontSize="small">I</Icon>,
     component: <InputField />,
+    noCollapse: true,
+  },
+  {
+    name: "Table",
+    key: "table",
+    route: "/table",
+    icon: <Icon fontSize="small">T</Icon>,
+    component: <Table />,
     noCollapse: true,
   },
 ];
