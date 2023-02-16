@@ -1,0 +1,32 @@
+/* css for navbar */
+.navbar {
+  width: 100%;
+  border-bottom: 1px solid lightgrey;
+  background-color: #ffffff !important;
+  overflow: auto;
+  display: flex;
+  justify-content: space-between;
+  height: 55px;
+  padding: 10px 20px;
+}
+
+/* profile photo */
+.profile {
+  cursor: pointer;
+  height: 25px;
+  width: 25px;
+  border-radius: 25px;
+}
+
+/* search bar in app bar */
+.search input[type="search"] {
+  width: 700px;
+  padding: 9px;
+  font-size: 12px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}
+/* border of search bar when focus */
+input[type="search"]:focus {
+  outline: none;
+}

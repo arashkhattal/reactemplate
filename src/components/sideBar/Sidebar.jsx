@@ -15,7 +15,7 @@ import { Collapse } from "@mui/material";
 import { makeStyles } from "@material-ui/core/styles";
 
 // default drawer width
-const drawerWidth = 240;
+const drawerWidth = 210;
 
 // custom style for drawer
 const useStyles = makeStyles((theme) => ({
@@ -52,7 +52,7 @@ export default function PermanentDrawerLeft() {
         flexShrink: 0,
         "& .MuiDrawer-paper": {
           boxShadow: "5px 2px 9px lightgrey",
-          marginTop: 6.1,
+          marginTop: 6.9,
           width: drawerWidth,
           boxSizing: "border-box",
         },
@@ -96,11 +96,19 @@ export default function PermanentDrawerLeft() {
                   <ListItemIcon>{data?.icon}</ListItemIcon>
                   {/* text */}
                   <ListItemText primary={data?.name} />
-                  {open?.id === data?.key && open?.state ? <ExpandLess /> : <ExpandMore />}
+                  {open?.id === data?.key && open?.state ? (
+                    <ExpandLess />
+                  ) : (
+                    <ExpandMore />
+                  )}
                 </ListItemButton>
                 {/* </NavLink> */}
               </ListItem>
-              <Collapse in={open?.id === data?.key && open?.state} timeout="auto" unmountOnExit>
+              <Collapse
+                in={open?.id === data?.key && open?.state}
+                timeout="auto"
+                unmountOnExit
+              >
                 {data?.collapse?.map((cdata) => (
                   <List component="div" disablePadding>
                     <ListItem key={cdata?.key} className={classes.nested}>
@@ -140,7 +148,9 @@ export default function PermanentDrawerLeft() {
                 <ListItemButton>
                   <ListItemIcon>{data?.icon}</ListItemIcon>
                   {/* text */}
-                  <ListItemText primary={data?.name} />
+                  <ListItemText
+                    primary={data?.name}
+                  />
                 </ListItemButton>
               </NavLink>
             </ListItem>
