@@ -1,9 +1,9 @@
-import { Card, Typography } from '@mui/material';
+import {  Typography } from '@mui/material';
 import React, { useEffect } from 'react'
 import { useGlobalContext } from "../../context/globalContext";
 
 const Contact = () => {
-    const { loading, setLoading, alert, setAlert } = useGlobalContext();
+    const {setLoading } = useGlobalContext();
      useEffect(() => {
        setTimeout(() => {
          setLoading(true);
@@ -15,9 +15,9 @@ const Contact = () => {
      }, 4000);
   return (
     <>
-        <Card className="main_content"    >
+        <div>
         <Typography variant="h2">Contact Page</Typography>
-      </Card>
+      </div>
     </>
   );
 }

@@ -12,6 +12,7 @@ const Icon = lazy(() =>
   import("@mui/material/Icon")
 );
 
+// MUI icons 
 import SettingsIcon from "@material-ui/icons/Settings";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import ContactsIcon from "@mui/icons-material/Contacts";
@@ -19,6 +20,7 @@ import InfoIcon from "@mui/icons-material/Info";
 
 // This is routes available in side bar
 export const adminRoutes = [
+  //object for normal option
   {
     type: "menu",
     name: "Dashboard",
@@ -28,6 +30,7 @@ export const adminRoutes = [
     component: <HomePage />,
     noCollapse: true,
   },
+  //object for normal option
   {
     type: "menu",
     name: "Contact",
@@ -37,6 +40,7 @@ export const adminRoutes = [
     component: <Contact />,
     noCollapse: true,
   },
+  //object for normal option
   {
     type: "menu",
     name: "About",
@@ -46,7 +50,6 @@ export const adminRoutes = [
     component: <About />,
     noCollapse: true,
   },
-
   // object for collapse (dropdown)
   {
     type: "collapse",
