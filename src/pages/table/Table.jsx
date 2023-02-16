@@ -18,68 +18,68 @@ const Table = () => {
   };
 
   return (
-      <Box className="main_content"  sx={{ width: "100%", typography: "body1" }}>
-        <TabContext value={value}>
+    <Box sx={{ width: "100%", typography: "body1" }}>
+      <TabContext value={value}>
+        <Box
+          className="global_display_flex"
+          sx={{
+            borderBottom: 1,
+            borderColor: "divider",
+          }}
+        >
+          <TabList onChange={handleChange} aria-label="lab API tabs example">
+            <Tab label="Outlined" value="1" />
+            <Tab label="Filled" value="2" />
+            <Tab label="Standard" value="3" />
+          </TabList>
+        </Box>
+        <TabPanel value="1">
           <Box
-            className="global_display_flex"
+            component="form"
             sx={{
-              borderBottom: 1,
-              borderColor: "divider",
+              "& .MuiTextField-root": {
+                m: 1,
+                width: "25ch",
+              },
             }}
+            noValidate
+            autoComplete="off"
           >
-            <TabList onChange={handleChange} aria-label="lab API tabs example">
-              <Tab label="Outlined" value="1" />
-              <Tab label="Filled" value="2" />
-              <Tab label="Standard" value="3" />
-            </TabList>
+            <Outlined />
           </Box>
-          <TabPanel value="1">
-            <Box
-              component="form"
-              sx={{
-                "& .MuiTextField-root": {
-                  m: 1,
-                  width: "25ch",
-                },
-              }}
-              noValidate
-              autoComplete="off"
-            >
-              <Outlined />
-            </Box>
-          </TabPanel>
-          <TabPanel value="2">
-            <Box
-              component="form"
-              sx={{
-                "& .MuiTextField-root": {
-                  m: 1,
-                  width: "25ch",
-                },
-              }}
-              noValidate
-              autoComplete="off"
-            >
-              <Filled />
-            </Box>
-          </TabPanel>
-          <TabPanel value="3">
-            <Box
-              component="form"
-              sx={{
-                "& .MuiTextField-root": {
-                  m: 1,
-                  width: "25ch",
-                },
-              }}
-              noValidate
-              autoComplete="off"
-            >
-              <Standard />
-            </Box>
-          </TabPanel>
-        </TabContext>
-      </Box>
+        </TabPanel>
+        <TabPanel value="2">
+          <Box
+            component="form"
+            sx={{
+              "& .MuiTextField-root": {
+                m: 1,
+                width: "25ch",
+              },
+            }}
+            noValidate
+            autoComplete="off"
+          >
+            <Filled />
+          </Box>
+        </TabPanel>
+        <TabPanel value="3">
+          <Box
+            component="form"
+            sx={{
+              "& .MuiTextField-root": {
+                m: 1,
+                width: "25ch",
+              },
+            }}
+            noValidate
+            autoComplete="off"
+          >
+            <Standard />
+          </Box>
+        </TabPanel>
+      </TabContext>
+    </Box>
   );
 };
 export default Table;

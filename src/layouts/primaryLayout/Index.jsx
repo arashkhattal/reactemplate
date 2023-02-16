@@ -56,10 +56,12 @@ const SidebarWrapper = styled.div`
 
 // style for main content
 const ContentWrapper = styled.div`
+  height: 100%;
+  max-height: 95vh;
+  overflow: auto;
   flex: 1;
   margin-left: 5px;
   margin-right: 5px;
-  overflow-y: auto;
 `;
 
 export default Index;
