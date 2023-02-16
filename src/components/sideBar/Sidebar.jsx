@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import Drawer from "@mui/material/Drawer";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
@@ -39,7 +39,9 @@ export default function PermanentDrawerLeft() {
   const [curRoute, setCurRoute] = React.useState(adminRoutes);
 
   // state to maintain dropdown
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState({});
+  console.log(open);
+  useEffect(() => {}, []);
 
   return (
     // drawer component imported from mui
@@ -73,54 +75,54 @@ export default function PermanentDrawerLeft() {
               <ListItem
                 key={data?.key}
                 disablePadding
-                onClick={() => setOpen(!open)}
+                onClick={() =>
+                  setOpen({
+                    state: open?.id === data?.key && open?.state ? false : true,
+                    id: data?.key,
+                  })
+                }
               >
                 {/* addded NavLink to page */}
-                <NavLink
+                {/* <NavLink
                   to={data?.route}
                   style={{
                     textDecoration: "none",
                     color: "black",
                     width: "100%",
                   }}
-                >
-                  {/* ListItemButton - added button */}
-                  <ListItemButton>
-                    <ListItemIcon>{data?.icon}</ListItemIcon>
-                    {/* text */}
-                    <ListItemText primary={data?.name} />
-                    {open ? <ExpandLess /> : <ExpandMore />}
-                  </ListItemButton>
-                </NavLink>
+                > */}
+                {/* ListItemButton - added button */}
+                <ListItemButton>
+                  <ListItemIcon>{data?.icon}</ListItemIcon>
+                  {/* text */}
+                  <ListItemText primary={data?.name} />
+                  {open?.id === data?.key && open?.state ? <ExpandLess /> : <ExpandMore />}
+                </ListItemButton>
+                {/* </NavLink> */}
               </ListItem>
-              {curRoute?.map((data) =>
-                data?.type === "collapse"
-                  ? data?.collapse?.map((data) => (
-                      // collapse component from MUI
-                      <Collapse in={open} timeout="auto" unmountOnExit>
-                        <List component="div" disablePadding>
-                          <ListItem key={data?.key} className={classes.nested}>
-                            <NavLink
-                              to={data?.route}
-                              style={{
-                                textDecoration: "none",
-                                color: "black",
-                                width: "100%",
-                              }}
-                            >
-                              {/* ListItemButton - added button */}
-                              <ListItemButton>
-                                <ListItemIcon>{data?.icon}</ListItemIcon>
-                                {/* text */}
-                                <ListItemText primary={data?.name} />
-                              </ListItemButton>
-                            </NavLink>
-                          </ListItem>
-                        </List>
-                      </Collapse>
-                    ))
-                  : null
-              )}
+              <Collapse in={open?.id === data?.key && open?.state} timeout="auto" unmountOnExit>
+                {data?.collapse?.map((cdata) => (
+                  <List component="div" disablePadding>
+                    <ListItem key={cdata?.key} className={classes.nested}>
+                      <NavLink
+                        to={cdata?.route}
+                        style={{
+                          textDecoration: "none",
+                          color: "black",
+                          width: "100%",
+                        }}
+                      >
+                        {/* ListItemButton - added button */}
+                        <ListItemButton>
+                          <ListItemIcon>{cdata?.icon}</ListItemIcon>
+                          {/* text */}
+                          <ListItemText primary={cdata?.name} />
+                        </ListItemButton>
+                      </NavLink>
+                    </ListItem>
+                  </List>
+                ))}
+              </Collapse>
             </>
           ) : (
             // sidebar option without dropdown
