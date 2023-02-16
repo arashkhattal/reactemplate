@@ -9,7 +9,7 @@ import Google from "../../../assets/icon/google.png";
 import { useGlobalContext } from "../../../context/globalContext";
 import { useNavigate } from "react-router-dom";
 import { validateEmail } from "../../../helpers/globalFunction";
-
+import "../auth.css";
 const Login = () => {
   //to navigate to another page
   const navigate = useNavigate();
@@ -21,7 +21,6 @@ const Login = () => {
 
   // Login function
   const handleSubmit = async (e) => {
-
     if (email === "") {
       setAlert({
         flag: true,
@@ -70,15 +69,6 @@ const Login = () => {
       navigate("/dashboard");
     }
   };
-  // enter key function
-  const handleKeyDown = (e) => {
-    e.preventDefault();
-    if (e.key === "Enter" || e.which === 13) {
-      console.log("enter key pressed");
-      // call your method here
-    }
-  };
-
   return (
     <Box
       // component="form"
@@ -151,7 +141,6 @@ const Login = () => {
           or Login with Email
         </Divider>
         <TextField
-          // className={classes.root}
           style={{
             width: "100%",
           }}
@@ -171,7 +160,6 @@ const Login = () => {
           variant="outlined"
         />
         <TextField
-          // className={classes.root}
           style={{
             width: "100%",
             marginTop: "20px",
@@ -203,6 +191,8 @@ const Login = () => {
             style={{
               display: "flex",
               alignItems: "center",
+              display: "flex",
+              gap: "5px",
             }}
           >
             <input

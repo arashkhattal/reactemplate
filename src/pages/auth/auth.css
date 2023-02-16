@@ -1,0 +1,7 @@
+/* google button */
+.btn_google_hover {
+  background-color: transparent;
+}
+.btn_google_hover:hover {
+  background-color: #e6e4e4;
+}
