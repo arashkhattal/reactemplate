@@ -10,6 +10,11 @@
   --font_12: 12px !important;
   --color_primary_btn_hover: #0a73c4;
 }
+/* default tags */
+/* Checkbox */
+input[type="checkbox"] {
+  accent-color: #0d80d8 !important;
+}
 /* /////////////////////////////// */
 /* ////////////////Global Class/////// */
 /* //////////////////////////////// */
@@ -97,17 +102,17 @@
   border: 1px solid #e6e4e4;
   cursor: pointer;
 }
-.btn_google_hover {
-  background-color: transparent;
-}
-.btn_google_hover:hover {
-  background-color: #e6e4e4;
-}
 .btn_primary_hover {
   background-color: var(--color_primary);
 }
 .btn_primary_hover:hover {
   background-color: var(--color_primary_btn_hover);
+}
+.btn_google_hover {
+  background-color: transparent;
+}
+.btn_google_hover:hover {
+  background-color: #e6e4e4;
 }
 /* center any item in the page */
 .container_center {

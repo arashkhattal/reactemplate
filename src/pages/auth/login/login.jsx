@@ -1,10 +1,4 @@
-import {
-  Box,
-  Checkbox,
-  Divider,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Checkbox, Divider, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import Google from "../../../assets/icon/google.png";
 import { useGlobalContext } from "../../../context/globalContext";
@@ -108,8 +102,7 @@ const Login = () => {
             }}
             className="fs_14"
           >
-            See your growth get consulting
-            support!
+            See your growth get consulting support!
           </Typography>
 
           <Box
@@ -126,14 +119,8 @@ const Login = () => {
                   gap: "10px",
                 }}
               >
-                <img
-                  style={{ width: "16px" }}
-                  src={Google}
-                  alt=""
-                />
-                <Typography>
-                  Login with Google
-                </Typography>
+                <img style={{ width: "16px" }} src={Google} alt="" />
+                <Typography>Login with Google</Typography>
               </Box>
             </button>
           </Box>
@@ -155,9 +142,7 @@ const Login = () => {
             label="User Email"
             type="email"
             value={email}
-            onChange={(e) =>
-              setEmail(e.target.value)
-            }
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="mail@email.com"
             variant="outlined"
           />
@@ -170,9 +155,7 @@ const Login = () => {
             id="outlined-basic"
             label="Password"
             value={password}
-            onChange={(e) =>
-              setPassword(e.target.value)
-            }
+            onChange={(e) => setPassword(e.target.value)}
             variant="outlined"
             placeholder="Min. 8 character"
           />
@@ -191,21 +174,9 @@ const Login = () => {
                 alignItems: "center",
               }}
             >
-              <Checkbox
-                sx={{
-                  [`&, &.${checkboxClasses.checked}`]:
-                    {
-                      color: "#0d80d8",
-                    },
-                }}
-                size="10px"
-                defaultChecked
-              />
-              <Typography className="fs_13 ">
-                Remember me
-              </Typography>
+              <input type="checkbox" size="10px" defaultChecked />
+              <Typography className="fs_13 ">Remember me</Typography>
             </Box>
-
             <a
               className="fs_13 color_primary"
               style={{
@@ -237,9 +208,7 @@ const Login = () => {
               marginBottom: "20px",
             }}
           >
-            <Typography className="fs_13">
-              Not registered yet?
-            </Typography>
+            <Typography className="fs_13">Not registered yet?</Typography>
             <a
               className="fs_13 color_primary"
               style={{
