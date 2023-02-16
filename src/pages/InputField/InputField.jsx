@@ -34,6 +34,8 @@ const Table = () => {
             <Tab label="Outlined" value="1" />
             <Tab label="Filled" value="2" />
             <Tab label="Standard" value="3" />
+            {/* <Tab label="Toggle" value="4" />
+            <Tab label="Radio" value="5" /> */}
           </TabList>
         </Box>
         <TabPanel value="1">

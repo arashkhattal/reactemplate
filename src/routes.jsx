@@ -9,15 +9,19 @@ import InfoIcon from "@mui/icons-material/Info";
 import TableChartIcon from "@mui/icons-material/TableChart";
 
 // Import components using lazy to load the component
-const HomePage = lazy(() => import("./pages/home/HomePage"));
-const Chart = lazy(() => import("./pages/home/charts/Chart"));
-const Tables = lazy(() => import("./pages/home/tables/Tables"));
+const HomePage = lazy(() =>
+  import("./pages/home/HomePage")
+);
+const Chart = lazy(() =>
+  import("./pages/home/charts/Chart")
+);
+const Tables = lazy(() =>
+  import("./pages/home/tables/Tables")
+);
 const InputField = lazy(() =>
   import("./pages/InputField/InputField")
 );
-const Table = lazy(() =>
-  import("./pages/Table/Table")
-);
+
 
 // @mui icons
 const Icon = lazy(() =>
@@ -91,12 +95,5 @@ export const adminRoutes = [
     component: <InputField />,
     noCollapse: true,
   },
-  {
-    name: "Table",
-    key: "table",
-    route: "/table",
-    icon: <Icon fontSize="small">T</Icon>,
-    component: <Table />,
-    noCollapse: true,
-  },
+
 ];
