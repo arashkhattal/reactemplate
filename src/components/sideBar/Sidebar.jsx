@@ -17,6 +17,7 @@ import { makeStyles } from "@material-ui/core/styles";
 // default drawer width
 const drawerWidth = 240;
 
+// custom style for drawer
 const useStyles = makeStyles((theme) => ({
   drawer: {
     width: drawerWidth,
@@ -31,10 +32,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function PermanentDrawerLeft() {
+  // custom style
   const classes = useStyles();
+
   // get routes data from global context
   const [curRoute, setCurRoute] = React.useState(adminRoutes);
 
+  // state to maintain dropdown
   const [open, setOpen] = React.useState(false);
 
   return (
@@ -85,21 +89,14 @@ export default function PermanentDrawerLeft() {
                     <ListItemIcon>{data?.icon}</ListItemIcon>
                     {/* text */}
                     <ListItemText primary={data?.name} />
-                    {data?.type === "collapse" ? (
-                      open ? (
-                        <ExpandLess />
-                      ) : (
-                        <ExpandMore />
-                      )
-                    ) : (
-                      ""
-                    )}
+                    {open ? <ExpandLess /> : <ExpandMore />}
                   </ListItemButton>
                 </NavLink>
               </ListItem>
               {curRoute?.map((data) =>
                 data?.type === "collapse"
                   ? data?.collapse?.map((data) => (
+                      // collapse component from MUI
                       <Collapse in={open} timeout="auto" unmountOnExit>
                         <List component="div" disablePadding>
                           <ListItem key={data?.key} className={classes.nested}>
@@ -126,6 +123,7 @@ export default function PermanentDrawerLeft() {
               )}
             </>
           ) : (
+            // sidebar option without dropdown
             <ListItem key={data?.key} disablePadding>
               {/* addded NavLink to page */}
               <NavLink

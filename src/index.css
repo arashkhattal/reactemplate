@@ -71,7 +71,6 @@
 
 /* css for backgroud of scroll bar */
 ::-webkit-scrollbar {
-  display: none;
   background: #efefef;
   max-width: 10px;
   height: 10px;

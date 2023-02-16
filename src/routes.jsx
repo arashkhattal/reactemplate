@@ -46,6 +46,8 @@ export const adminRoutes = [
     component: <About />,
     noCollapse: true,
   },
+
+  // object for collapse (dropdown)
   {
     type: "collapse",
     name: "Setting",
@@ -66,6 +68,7 @@ export const adminRoutes = [
       },
     ],
   },
+  // object for collapse (dropdown)
   {
     type: "collapse",
     name: "arash",
