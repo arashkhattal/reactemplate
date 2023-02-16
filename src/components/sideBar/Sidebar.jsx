@@ -41,7 +41,20 @@ export default function PermanentDrawerLeft() {
   // state to maintain dropdown
   const [open, setOpen] = useState({});
   console.log(open);
-  useEffect(() => {}, []);
+
+
+  // useEffects that will maintain state of dropdown when refresh
+
+  useEffect(() => {
+    const localStorageOpenState = localStorage.getItem("openState");
+    if (localStorageOpenState) {
+      setOpen(JSON.parse(localStorageOpenState));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("openState", JSON.stringify(open));
+  }, [open]);
 
   return (
     // drawer component imported from mui
@@ -82,15 +95,6 @@ export default function PermanentDrawerLeft() {
                   })
                 }
               >
-                {/* addded NavLink to page */}
-                {/* <NavLink
-                  to={data?.route}
-                  style={{
-                    textDecoration: "none",
-                    color: "black",
-                    width: "100%",
-                  }}
-                > */}
                 {/* ListItemButton - added button */}
                 <ListItemButton>
                   <ListItemIcon>{data?.icon}</ListItemIcon>
@@ -102,7 +106,6 @@ export default function PermanentDrawerLeft() {
                     <ExpandMore />
                   )}
                 </ListItemButton>
-                {/* </NavLink> */}
               </ListItem>
               <Collapse
                 in={open?.id === data?.key && open?.state}
@@ -148,9 +151,7 @@ export default function PermanentDrawerLeft() {
                 <ListItemButton>
                   <ListItemIcon>{data?.icon}</ListItemIcon>
                   {/* text */}
-                  <ListItemText
-                    primary={data?.name}
-                  />
+                  <ListItemText primary={data?.name} />
                 </ListItemButton>
               </NavLink>
             </ListItem>
