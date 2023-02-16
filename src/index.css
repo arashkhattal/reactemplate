@@ -11,10 +11,7 @@
   --color_primary_btn_hover: #0a73c4;
 }
 /* default tags */
-/* Checkbox */
-input[type="checkbox"] {
-  accent-color: #0d80d8 !important;
-}
+
 /* /////////////////////////////// */
 /* ////////////////Global Class/////// */
 /* //////////////////////////////// */
@@ -125,39 +122,14 @@ input[type="checkbox"] {
   justify-content: center;
 }
 
-/* css for navbar */
-.navbar {
-  width: 100%;
-  border-bottom: 1px solid lightgrey;
-  background-color: #ffffff !important;
-  overflow: auto;
-  display: flex;
-  justify-content: space-between;
-  height: 49px;
-  padding: 10px 20px;
-}
-
-/* profile photo */
-.profile {
-  cursor: pointer;
-  height: 25px;
-  width: 25px;
-  border-radius: 25px;
-}
-
-/* search bar in app bar */
-.search input[type="search"] {
-  width: 300px;
-  padding: 6px;
-  font-size: var(--font_12);
-  border: 1px solid lightgray;
-  border-radius: 5px;
-}
-/* border of search bar when focus */
-input[type="search"]:focus {
-  outline: none;
-}
 /* input checkbox color */
 input[type="checkbox"] {
   accent-color: var(--color_primary) !important;
+}
+
+/*Remove up/down arrow dials from number input field  */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

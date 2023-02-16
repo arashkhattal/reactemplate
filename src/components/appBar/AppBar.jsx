@@ -1,6 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
+
+// css file for appbar
+import "./AppBar.css";
+
+//global context
+import { useGlobalContext } from "../../context/globalContext";
 
 const AppBar = () => {
+  // state to maintain search results
+  const [search, setSearch] = useState("");
+
+  const { setAlert } = useGlobalContext();
+
+  // funciton for search bar
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+    setAlert({
+      flag: true,
+      type: "success",
+      msg: search,
+    });
+  };
+
   return (
     <>
       {/* simple app bar contain 3 options */}
@@ -16,7 +37,18 @@ const AppBar = () => {
         </div>
         <div className="search">
           {/* search bar */}
-          <input type="search" placeholder="Search.." name="search" />
+          <input
+            type="search"
+            placeholder="Search.."
+            name="search"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleSearch(e);
+              }
+            }}
+          />
         </div>
         <div>
           {/* profile img */}
