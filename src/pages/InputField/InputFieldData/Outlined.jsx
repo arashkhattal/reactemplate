@@ -1,6 +1,5 @@
 import Typography from "@material-ui/core/Typography";
 import {
-  AccountCircle,
   Visibility,
   VisibilityOff,
 } from "@mui/icons-material";
@@ -19,7 +18,6 @@ import {
   TextField,
 } from "@mui/material";
 import React, { useState } from "react";
-const ariaLabel = { "aria-label": "description" };
 
 function RedBar() {
   return (

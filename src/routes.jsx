@@ -21,7 +21,9 @@ const Tables = lazy(() =>
 const InputField = lazy(() =>
   import("./pages/InputField/InputField")
 );
-
+const UploadFiles = lazy(() =>
+  import("./pages/UploadFiles/UploadFiles")
+);
 
 // @mui icons
 const Icon = lazy(() =>
@@ -95,5 +97,12 @@ export const adminRoutes = [
     component: <InputField />,
     noCollapse: true,
   },
-
+  {
+    name: "Upload File",
+    key: "uploadfiles",
+    route: "/uploadfiles",
+    icon: <Icon fontSize="small">U</Icon>,
+    component: <UploadFiles />,
+    noCollapse: true,
+  },
 ];

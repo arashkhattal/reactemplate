@@ -9,6 +9,7 @@
   --color_primary: #0d80d8;
   --font_12: 12px !important;
   --color_primary_btn_hover: #0a73c4;
+  --color_warning: #ef5350;
 }
 /* default tags */
 
@@ -22,7 +23,9 @@
 /* active link for side bar */
 .active {
   margin: 6px;
-  background-color: var(--color_primary) !important;
+  background-color: var(
+    --color_primary
+  ) !important;
   border-radius: 5px;
 }
 /* css cursor */
@@ -102,9 +105,13 @@
   background-color: var(--color_primary);
 }
 .btn_primary_hover:hover {
-  background-color: var(--color_primary_btn_hover);
+  background-color: var(
+    --color_primary_btn_hover
+  );
 }
-
+.warning_btn {
+  background-color: var(--color_warning);
+}
 /* center any item in the page */
 .container_center {
   display: grid;
