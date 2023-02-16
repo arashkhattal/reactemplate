@@ -5,6 +5,7 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import { useGlobalContext } from "../../../context/globalContext";
+import "../auth.css";
 const forgotPassword = () => {
   // global context
   const { setAlert } = useGlobalContext();

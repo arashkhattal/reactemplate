@@ -7,7 +7,7 @@ import {
 import React, { useState } from "react";
 import Google from "../../../assets/icon/google.png";
 import { validateEmail } from "../../../helpers/globalFunction";
-
+import "../auth.css";
 const signUp = () => {
   //store input data
   const [email, setEmail] = useState("");

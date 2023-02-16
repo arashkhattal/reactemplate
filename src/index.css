@@ -11,10 +11,7 @@
   --color_primary_btn_hover: #0a73c4;
 }
 /* default tags */
-/* Checkbox */
-input[type="checkbox"] {
-  accent-color: #0d80d8 !important;
-}
+
 /* /////////////////////////////// */
 /* ////////////////Global Class/////// */
 /* //////////////////////////////// */
@@ -25,7 +22,9 @@ input[type="checkbox"] {
 /* active link for side bar */
 .active {
   margin: 10px;
-  background-color: var(--color_primary) !important;
+  background-color: var(
+    --color_primary
+  ) !important;
   border-radius: 5px;
 }
 /* css cursor */
@@ -69,7 +68,6 @@ input[type="checkbox"] {
 
 /* css for scroll bar  */
 ::-webkit-scrollbar-thumb {
-
   background: var(--color_primary);
   border-radius: 5px;
 }
@@ -90,8 +88,8 @@ input[type="checkbox"] {
 
 /* /////////////////////////////// */
 /* ////////////////Global Class/////// */
-/* ////////////////signin, signup and reset password/////// */
 /* //////////////////////////////// */
+
 .btn_primary {
   display: flex;
   align-items: center;
@@ -106,28 +104,25 @@ input[type="checkbox"] {
   background-color: var(--color_primary);
 }
 .btn_primary_hover:hover {
-  background-color: var(--color_primary_btn_hover);
+  background-color: var(
+    --color_primary_btn_hover
+  );
 }
-.btn_google_hover {
-  background-color: transparent;
-}
-.btn_google_hover:hover {
-  background-color: #e6e4e4;
-}
+
 /* center any item in the page */
 .container_center {
   display: grid;
   place-items: center;
   min-height: 100vh;
 }
-/* auth page screen size */
-.auth-screen-size {
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
+
 /* display flex Globally */
 .global_display_flex {
   display: flex;
   justify-content: center;
 }
 
+/* input checkbox color */
+input[type="checkbox"] {
+  accent-color: var(--color_primary) !important;
+}
