@@ -1,39 +1,16 @@
 import Typography from "@material-ui/core/Typography";
-import {
-  AccountCircle,
-  Visibility,
-  VisibilityOff,
-} from "@mui/icons-material";
+
 import {
   Box,
-  Checkbox,
-  FormControl,
-  IconButton,
-  Input,
-  InputAdornment,
-  InputLabel,
-  ListItemText,
+
   MenuItem,
-  OutlinedInput,
-  Select,
+
   TextField,
 } from "@mui/material";
-import React, { useState } from "react";
-const ariaLabel = { "aria-label": "description" };
+import React from "react"; 
 
-function RedBar() {
-  return (
-    <Box
-      sx={{
-        height: 20,
-        backgroundColor: (theme) =>
-          theme.palette.mode === "light"
-            ? "rgba(255, 0, 0, 0.1)"
-            : "rgb(255 132 132 / 25%)",
-      }}
-    />
-  );
-}
+
+
 // dummy data
 const currencies = [
   {
@@ -54,48 +31,10 @@ const currencies = [
   },
 ];
 
-// item cal curation of multiple select
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight:
-        ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-};
-//  dummy data of multiple select
-const names = ["Chinmy", "Jabed", "Arash"];
+
 const Standard = () => {
-  // store show password
-  const [showPassword, setShowPassword] =
-    useState(false);
-  // store multiple item
-  const [personName, setPersonName] = useState(
-    []
-  );
-  // show password function
-  const handleClickShowPassword = () =>
-    setShowPassword((show) => !show);
 
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
   // select multiple item function
-
-  const handleChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setPersonName(
-      // On autofill we get a stringified value.
-      typeof value === "string"
-        ? value.split(",")
-        : value
-    );
-  };
   return (
     <div>
       <div>
