@@ -9,24 +9,13 @@ import InfoIcon from "@mui/icons-material/Info";
 import TableChartIcon from "@mui/icons-material/TableChart";
 
 // Import components using lazy to load the component
-const HomePage = lazy(() =>
-  import("./pages/home/HomePage")
-);
-const Chart = lazy(() =>
-  import("./pages/home/charts/Chart")
-);
-const Tables = lazy(() =>
-  import("./pages/home/tables/Tables")
-);
-const InputField = lazy(() =>
-  import("./pages/InputField/InputField")
-);
-
+const HomePage = lazy(() => import("./pages/home/HomePage"));
+const Chart = lazy(() => import("./pages/home/charts/Chart"));
+const Tables = lazy(() => import("./pages/home/tables/Tables"));
+const InputField = lazy(() => import("./pages/InputField/InputField"));
 
 // @mui icons
-const Icon = lazy(() =>
-  import("@mui/material/Icon")
-);
+const Icon = lazy(() => import("@mui/material/Icon"));
 
 // This is routes available in side bar
 export const adminRoutes = [
@@ -72,21 +61,6 @@ export const adminRoutes = [
       },
     ],
   },
-  // object for collapse (dropdown)
-  {
-    type: "collapse",
-    name: "arash",
-    key: "arash",
-    icon: <Icon fontSize="medium">settings</Icon>,
-    collapse: [
-      {
-        name: "test",
-        key: "test1",
-        route: "/test1",
-        component: <Tables />,
-      },
-    ],
-  },
   {
     name: "Input Field",
     key: "inputfield",
@@ -95,5 +69,4 @@ export const adminRoutes = [
     component: <InputField />,
     noCollapse: true,
   },
-
 ];

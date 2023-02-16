@@ -1,6 +1,9 @@
+import { Card, Grid } from "@material-ui/core";
 import { Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import { useGlobalContext } from "../../../context/globalContext";
+import Barchart from "./barChart/BarChart";
+import Linechart from "./linechart/Linechart";
 
 const Contact = () => {
   const { setLoading } = useGlobalContext();
@@ -15,53 +18,28 @@ const Contact = () => {
   }, 4000);
   return (
     <>
-      <div>
-        <Typography variant="h2">Chart Page</Typography>
+      <div style={{ overflow: "hidden" }}>
+        <Grid container spacing={2}>
+          <Grid item xs={6} md={12}>
+            <Card style={{ padding: "20px", border: "1px solid lightgrey" }}>
+              <Typography className="global_display_flex fs_16 fw_600">
+                Apex chart - Line Chart
+              </Typography>
+              <Linechart />
+            </Card>
+          </Grid>
+          <Grid item xs={6} md={12}>
+            <Card style={{ padding: "20px", border: "1px solid lightgrey" }}>
+              <Typography className="global_display_flex fs_16 fw_600">
+                Apex chart - Bar Chart
+              </Typography>
+              <Barchart />
+            </Card>
+          </Grid>
+        </Grid>
       </div>
     </>
   );
 };
 
 export default Contact;
-
-// import React, { useEffect, useRef } from "react";
-// import ApexCharts from "apexcharts";
-// import { Card } from "@material-ui/core";
-
-// function LineChartContainer(props) {
-//   const chartRefs = useRef([]);
-
-//   useEffect(() => {
-//     chartRefs.current.forEach((chartRef, index) => {
-//       const options = {
-//         chart: {
-//           type: "line",
-//           height: 350,
-//           width: "100%",
-//         },
-//         series: [
-//           {
-//             name: props.data[index].name,
-//             data: props.data[index].data,
-//           },
-//         ],
-//         xaxis: {
-//           categories: props.data[index].categories,
-//         },
-//       };
-//       new ApexCharts(chartRef, options).render();
-//     });
-//   }, [props.data]);
-
-//   return (
-//     <div className="line-chart-container">
-//       {props.data.map((chartData, index) => (
-//         <Card key={index}>
-//           <div ref={(ref) => (chartRefs.current[index] = ref)}></div>
-//         </Card>
-//       ))}
-//     </div>
-//   );
-// }
-
-// export default LineChartContainer;
