@@ -1,13 +1,40 @@
+import Typography from "@material-ui/core/Typography";
+import {
+  AccountCircle,
+  Visibility,
+  VisibilityOff,
+} from "@mui/icons-material";
 import {
   Box,
-  FilledInput,
+  Checkbox,
   FormControl,
+  IconButton,
+  Input,
+  InputAdornment,
   InputLabel,
+  ListItemText,
   MenuItem,
   OutlinedInput,
+  Select,
   TextField,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
+const ariaLabel = { "aria-label": "description" };
+
+function RedBar() {
+  return (
+    <Box
+      sx={{
+        height: 20,
+        backgroundColor: (theme) =>
+          theme.palette.mode === "light"
+            ? "rgba(255, 0, 0, 0.1)"
+            : "rgb(255 132 132 / 25%)",
+      }}
+    />
+  );
+}
+// dummy data
 const currencies = [
   {
     value: "USD",
@@ -26,112 +53,190 @@ const currencies = [
     label: "¥",
   },
 ];
+
+// item cal curation of multiple select
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight:
+        ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
+//  dummy data of multiple select
+const names = ["Chinmy", "Jabed", "Arash"];
+
 const Filled = () => {
+  // store show password
+  const [showPassword, setShowPassword] =
+    useState(false);
+  // store multiple item
+  const [personName, setPersonName] = useState(
+    []
+  );
+  // show password function
+  const handleClickShowPassword = () =>
+    setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+  // select multiple item function
+
+  const handleChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setPersonName(
+      // On autofill we get a stringified value.
+      typeof value === "string"
+        ? value.split(",")
+        : value
+    );
+  };
   return (
     <div>
-      <TextField
-        id="filled-basic"
-        label="Filled"
-        variant="filled"
-      />
-      <TextField
-        required
-        id="filled-required"
-        label="Required"
-        defaultValue="Hello World"
-        variant="filled"
-      />
-      <TextField
-        disabled
-        id="filled-disabled"
-        label="Disabled"
-        defaultValue="Hello World"
-        variant="filled"
-      />
-      <TextField
-        id="filled-password-input"
-        label="Password"
-        type="password"
-        autoComplete="current-password"
-        variant="filled"
-      />
-      <TextField
-        id="filled-read-only-input"
-        label="Read Only"
-        defaultValue="Hello World"
-        InputProps={{
-          readOnly: true,
-        }}
-        variant="filled"
-      />
-      <TextField
-        id="filled-number"
-        label="Number"
-        type="number"
-        InputLabelProps={{
-          shrink: true,
-        }}
-        variant="filled"
-      />
-      <TextField
-        id="filled-search"
-        label="Search field"
-        type="search"
-        variant="filled"
-      />
-      <TextField
-        id="filled-helperText"
-        label="Helper text"
-        defaultValue="Default Value"
-        helperText="Some important text"
-        variant="filled"
-      />
-      <TextField
-        error
-        id="filled-error"
-        label="Error"
-        defaultValue="Hello World"
-        variant="filled"
-      />
-      <TextField
-        error
-        id="filled-error-helper-text"
-        label="Error"
-        defaultValue="Hello World"
-        helperText="Incorrect entry."
-        variant="filled"
-      />
-      <TextField
-        id="filled-multiline-flexible"
-        label="Multiline"
-        multiline
-        maxRows={4}
-        variant="filled"
-      />
-      <TextField
-        id="filled-textarea"
-        label="Multiline Placeholder"
-        placeholder="Placeholder"
-        multiline
-        variant="filled"
-      />
-      <TextField
-        id="filled-multiline-static"
-        label="Multiline"
-        multiline
-        rows={4}
-        defaultValue="Default Value"
-        variant="filled"
-      />
-      {/*  currency TextField*/}
       <div>
+        <Typography className="fs_24 text_Margin ">
+          Input Text
+        </Typography>
         <TextField
-          id="filled-select-currency"
+          id="outlined-basic"
+          label="Outlined"
+          variant="filled"
+        />
+        <TextField
+          required
+          id="outlined-required"
+          label="Required"
+          defaultValue="Hello World"
+          variant="filled"
+        />
+        <TextField
+          disabled
+          id="outlined-disabled"
+          label="Disabled"
+          defaultValue="Hello World"
+          variant="filled"
+        />
+        <TextField
+          id="outlined-read-only-input"
+          label="Read Only"
+          variant="filled"
+          defaultValue="Hello World"
+          InputProps={{
+            readOnly: true,
+          }}
+        />{" "}
+        <TextField
+          id="outlined-search"
+          label="Search field"
+          type="search"
+          variant="filled"
+        />
+        <TextField
+          id="outlined-helperText"
+          label="Helper text"
+          defaultValue="Default Value"
+          helperText="Some important text"
+          variant="filled"
+        />
+      </div>
+      <div>
+        <Typography className="fs_24 text_Margin ">
+          Input Password
+        </Typography>
+        <TextField
+          id="outlined-password-input"
+          label="Password"
+          type="password"
+          autoComplete="current-password"
+          variant="filled"
+        />
+      </div>
+      <div>
+        <Typography className="fs_24 text_Margin ">
+          Input Number
+        </Typography>
+        <TextField
+          id="outlined-number"
+          label="Number"
+          type="number"
+          variant="filled"
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
+      </div>
+
+      <div>
+        {" "}
+        <Typography className="fs_24 text_Margin ">
+          Input Multiline
+        </Typography>
+        <TextField
+          id="outlined-multiline-flexible"
+          label="Multiline"
+          multiline
+          variant="filled"
+        />{" "}
+        <TextField
+          id="outlined-textarea"
+          label="Multiline Placeholder"
+          placeholder="Placeholder"
+          variant="filled"
+          multiline
+          maxRows={3}
+        />
+        <TextField
+          id="outlined-multiline-static"
+          label="Multiline"
+          variant="filled"
+          multiline
+          rows={4}
+          defaultValue="Default Value"
+        />
+      </div>
+      <div>
+        <Typography className="fs_24 text_Margin ">
+          Input Error
+        </Typography>
+        <TextField
+          error
+          id="outlined-error"
+          label="Error"
+          defaultValue="Hello World"
+          variant="filled"
+        />
+        <TextField
+          error
+          id="outlined-error-helper-text"
+          label="Error"
+          defaultValue="Hello World"
+          helperText="Incorrect entry."
+          variant="filled"
+        />
+        <TextField
+          label="Outlined secondary"
+          color="secondary"
+          variant="filled"
+          focused
+        />
+      </div>
+      <div>
+        <Typography className="fs_24 text_Margin ">
+          Input Select Item
+        </Typography>
+        <TextField
+          id="outlined-select-currency"
           select
           label="Select"
           defaultValue="EUR"
-          helperText="Please select your currency"
           variant="filled"
+          helperText="Please select your currency"
         >
           {currencies.map((option) => (
             <MenuItem
@@ -143,15 +248,15 @@ const Filled = () => {
           ))}
         </TextField>
         <TextField
-          id="filled-select-currency-native"
+          id="outlined-select-currency-native"
           select
           label="Native select"
           defaultValue="EUR"
+          variant="filled"
           SelectProps={{
             native: true,
           }}
           helperText="Please select your currency"
-          variant="filled"
         >
           {currencies.map((option) => (
             <option
@@ -163,73 +268,26 @@ const Filled = () => {
           ))}
         </TextField>
       </div>
-      {/*  */}
-      <div>
-        <TextField
-          label="Size"
-          id="filled-size-small"
-          defaultValue="Small"
-          variant="filled"
-          size="small"
-        />
-        <TextField
-          label="Size"
-          id="filled-size-normal"
-          defaultValue="Normal"
-          variant="filled"
-        />
-      </div>
-      {/*  */}
-      <TextField
-        hiddenLabel
-        id="filled-hidden-label-small"
-        defaultValue="Small"
-        variant="filled"
-        size="small"
-      />
-      <TextField
-        hiddenLabel
-        id="filled-hidden-label-normal"
-        defaultValue="Normal"
-        variant="filled"
-      />
-      {/*  */}
-      <Box
-        component="form"
-        sx={{
-          "& > :not(style)": { m: 1 },
-        }}
-        noValidate
-        autoComplete="off"
-      >
-        <FormControl variant="filled">
-          <InputLabel htmlFor="component-filled">
-            Name
-          </InputLabel>
-          <FilledInput
-            id="component-filled"
-            defaultValue="Composed TextField"
+
+      <Box>
+        <Typography className="fs_24 text_Margin ">
+          Input Field Different size
+        </Typography>
+        <div>
+          <TextField
+            label="Size"
+            variant="filled"
+            id="outlined-size-small"
+            defaultValue="Small"
+            size="small"
           />
-        </FormControl>
-      </Box>
-      {/*  */}
-      <Box
-        component="form"
-        sx={{
-          "& > :not(style)": {
-            m: 1,
-            width: "25ch",
-          },
-        }}
-        noValidate
-        autoComplete="off"
-      >
-        <TextField
-          label="Filled success"
-          variant="filled"
-          color="success"
-          focused
-        />
+          <TextField
+            label="Size"
+            variant="filled"
+            id="outlined-size-normal"
+            defaultValue="Normal"
+          />
+        </div>
       </Box>
     </div>
   );
