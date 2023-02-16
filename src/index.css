@@ -21,10 +21,8 @@
 
 /* active link for side bar */
 .active {
-  margin: 10px;
-  background-color: var(
-    --color_primary
-  ) !important;
+  margin: 6px;
+  background-color: var(--color_primary) !important;
   border-radius: 5px;
 }
 /* css cursor */
@@ -104,9 +102,7 @@
   background-color: var(--color_primary);
 }
 .btn_primary_hover:hover {
-  background-color: var(
-    --color_primary_btn_hover
-  );
+  background-color: var(--color_primary_btn_hover);
 }
 
 /* center any item in the page */

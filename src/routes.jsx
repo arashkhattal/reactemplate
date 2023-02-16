@@ -5,20 +5,22 @@ import { lazy } from "react";
 import SettingsIcon from "@material-ui/icons/Settings";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import ContactsIcon from "@mui/icons-material/Contacts";
+import InsightsIcon from "@mui/icons-material/Insights";
 import InfoIcon from "@mui/icons-material/Info";
+// import AddchartIcon from "@mui/icons-material/Addchart";
 
 // Import components using lazy to load the component
 const HomePage = lazy(() =>
   import("./pages/home/HomePage")
 );
-const Contact = lazy(() =>
-  import("./pages/home/Contact")
+const Chart = lazy(() =>
+  import("./pages/home/charts/Chart")
 );
 const About = lazy(() =>
   import("./pages/home/About")
 );
 const InputField = lazy(() =>
-  import("./pages/table/InputField")
+  import("./pages/InputField/InputField")
 );
 
 // @mui icons
@@ -34,19 +36,17 @@ export const adminRoutes = [
     name: "Dashboard",
     key: "dashboard",
     route: "/dashboard",
-    icon: <DashboardIcon />,
+    icon: <DashboardIcon fontSize="small" />,
     component: <HomePage />,
-    noCollapse: true,
   },
   //object for normal option
   {
     type: "menu",
-    name: "Contact",
-    key: "contact",
-    route: "/contact",
-    icon: <ContactsIcon />,
-    component: <Contact />,
-    noCollapse: true,
+    name: "Chart",
+    key: "chart",
+    route: "/chart",
+    icon: <InsightsIcon fontSize="small" />,
+    component: <Chart />,
   },
   //object for normal option
   {
@@ -54,28 +54,21 @@ export const adminRoutes = [
     name: "About",
     key: "about",
     route: "/about",
-    icon: <InfoIcon />,
+    icon: <InfoIcon fontSize="small" />,
     component: <About />,
-    noCollapse: true,
   },
   // object for collapse (dropdown)
   {
     type: "collapse",
     name: "Setting",
     key: "setting",
-    icon: <SettingsIcon />,
+    icon: <SettingsIcon fontSize="small" />,
     collapse: [
-      {
-        name: "Contact",
-        key: "contact1",
-        route: "/submenu1/contact1",
-        component: <Contact />,
-      },
       {
         name: "About",
         key: "about1",
-        route: "/submenu2/about1",
-        component: <About />,
+        route: "/about1",
+        component: <About fontSize="small" />,
       },
     ],
   },
@@ -88,20 +81,14 @@ export const adminRoutes = [
     collapse: [
       {
         name: "test",
-        key: "test",
-        route: "/submenu3/test",
-        component: <Contact />,
-      },
-      {
-        name: "test",
         key: "test1",
-        route: "/submenu4/test1",
+        route: "/test1",
         component: <About />,
       },
     ],
   },
   {
-    name: "InputField",
+    name: "Input Field",
     key: "inputfield",
     route: "/inputfield",
     icon: <Icon fontSize="small">I</Icon>,
