@@ -12,10 +12,14 @@ import TableChartIcon from "@mui/icons-material/TableChart";
 const HomePage = lazy(() => import("./pages/home/HomePage"));
 const Chart = lazy(() => import("./pages/home/charts/Chart"));
 const Tables = lazy(() => import("./pages/home/tables/Tables"));
-const Inputs = lazy(() => import("./pages/table/Inputs"));
+const InputField = lazy(() =>
+  import("./pages/InputField/InputField")
+);
 
 // @mui icons
-const Icon = lazy(() => import("@mui/material/Icon"));
+const Icon = lazy(() =>
+  import("@mui/material/Icon")
+);
 
 // This is routes available in side bar
 export const adminRoutes = [
@@ -77,10 +81,11 @@ export const adminRoutes = [
     ],
   },
   {
-    name: "Inputs",
-    key: "inputs",
-    route: "/inputs",
+    name: "Input Field",
+    key: "inputfield",
+    route: "/inputfield",
     icon: <Icon fontSize="small">I</Icon>,
-    component: <Inputs />,
+    component: <InputField />,
+    noCollapse: true,
   },
 ];
