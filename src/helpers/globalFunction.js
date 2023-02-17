@@ -3,6 +3,11 @@ export const validateEmail = (email) => {
   var re = /\S+@\S+\.\S+/;
   return re.test(email);
 };
+// phone number validation
+export const validatePhone = (phone) => {
+  var re = /^[a-zA-Z0-9\-().\s]{10,15}$/;
+  return re.test(phone);
+};
 // convert file
 export const fileSize = (size) => {
   if (size) {

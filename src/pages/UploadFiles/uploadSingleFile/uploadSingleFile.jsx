@@ -10,11 +10,10 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { fileSize } from "../../helpers/globalFunction";
-import FolderImg from "../../assets/image/dragndrop.png";
-import "./UploadFiles.css";
+import { fileSize } from "../../../helpers/globalFunction";
+import FolderImg from "../../../assets/image/dragndrop.png";
 
-const UploadFiles = () => {
+const uploadSingleFile = () => {
   // modal open and close function and store
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -100,9 +99,9 @@ const UploadFiles = () => {
         <button
           className="btn_primary btn_primary_hover"
           style={{
-            width: "15%",
             color: "white",
             marginTop: "30px",
+            width: "30%",
           }}
           onClick={handleOpen}
         >
@@ -326,4 +325,4 @@ const UploadFiles = () => {
   );
 };
 
-export default UploadFiles;
+export default uploadSingleFile;
