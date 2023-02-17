@@ -21,7 +21,7 @@ import { makeStyles } from "@material-ui/core/styles";
 // custom style for drawer
 
 export default function PermanentDrawerLeft() {
-  const [openMenu, setOpenMenu] = useState(false);
+  const [openMenu, setOpenMenu] = useState(true);
 
     const drawerWidth = openMenu ? 210 : 60;
 
