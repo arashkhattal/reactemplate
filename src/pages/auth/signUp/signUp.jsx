@@ -82,7 +82,6 @@ const signUp = () => {
           margin: "20px 0px",
         }}
       >
-        {" "}
         {/* <form> */}
         <Typography
           className="fs_24"
@@ -144,6 +143,7 @@ const signUp = () => {
           }}
           id="outlined-basic"
           label="Email"
+          type="email"
           placeholder="mail@email.com"
           variant="outlined"
         />
@@ -163,6 +163,7 @@ const signUp = () => {
           }
           id="outlined-basic"
           label="Password"
+          type="password"
           variant="outlined"
           placeholder="Min. 8 character"
         />
@@ -183,6 +184,7 @@ const signUp = () => {
           }}
           id="outlined-basic"
           label="Confirm Password"
+          type="password"
           variant="outlined"
           placeholder="Min. 8 character"
         />
