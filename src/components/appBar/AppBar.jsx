@@ -5,6 +5,15 @@ import "./AppBar.css";
 
 //global context
 import { useGlobalContext } from "../../context/globalContext";
+import {
+  Avatar,
+  Box,
+  Button,
+  IconButton,
+  Menu,
+  Typography,
+} from "@material-ui/core";
+import { useNavigate } from "react-router-dom";
 
 const AppBar = () => {
   // state to maintain search results
@@ -21,6 +30,58 @@ const AppBar = () => {
       msg: search,
     });
   };
+
+  //to navigate to another page
+  const navigate = useNavigate();
+
+  const [openProfileMenu, setOpenProfileMenu] = useState(false);
+  const handleOpenProfileMenu = (event) =>
+    setOpenProfileMenu(event.currentTarget);
+  const handleCloseProfileMenu = () => setOpenProfileMenu(false);
+
+
+
+  const renderProfile = () => (
+    <Menu
+      anchorEl={openProfileMenu}
+      anchorReference={null}
+      anchorOrigin={{
+        vertical: "bottom",
+        horizontal: "left",
+      }}
+      open={Boolean(openProfileMenu)}
+      onClose={handleCloseProfileMenu}
+      sx={{ mt: 2, borderRadius: "20px" }}
+    >
+      <Box
+        sx={{
+          // height: "480px",
+          width: "150px",
+          border: "1px solid #e3e3e3",
+          margin: "-8px",
+          borderRadius: "5px",
+          padding: "10px",
+        }}
+      >
+        <Box
+          sx={{
+            margin: "10px",
+            cursor: "pointer",
+            border: "1px solid #dbdbdb",
+            padding: "10px",
+            borderRadius: "10px",
+            fontSize: "14px",
+            color: "#414548",
+          }}
+          // onClick={handleLogout()}
+        >
+          <Typography className="fs_12" style={{ textAlign: "center" }}>
+            Log Out
+          </Typography>
+        </Box>
+      </Box>
+    </Menu>
+  );
 
   return (
     <>
@@ -52,12 +113,15 @@ const AppBar = () => {
         </div>
         <div>
           {/* profile img */}
+
           <img
+            onClick={handleOpenProfileMenu}
             className="profile"
             src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
             alt="profile"
           />
         </div>
+        {renderProfile()}
       </div>
     </>
   );
