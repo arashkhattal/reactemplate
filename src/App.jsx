@@ -37,7 +37,7 @@ const ResetPassword = lazy(() =>
 
 function App() {
   // get primary color from index.css
-  const color = getComputedStyle(
+  const primaryColor = getComputedStyle(
     document.documentElement
   )
     .getPropertyValue("--color_primary")
@@ -47,7 +47,7 @@ function App() {
     palette: {
       primary: {
         light: "#66b53f",
-        main: color,
+        main: primaryColor,
         dark: "#66b53f",
         contrastText: "#fff",
       },
