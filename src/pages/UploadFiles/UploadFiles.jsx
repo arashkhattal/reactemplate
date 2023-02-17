@@ -25,6 +25,9 @@ const UploadFiles = () => {
   // store the file name and edit
   const [uploadFileName, setUploadFileName] =
     useState("");
+  // store file extension name
+  const [extension, setExtension] = useState("");
+  console.log(uploadFileName);
   // reference a value that’s not needed for rendering.
   const projectSheetRef = useRef();
   // drag file
@@ -61,8 +64,21 @@ const UploadFiles = () => {
   };
   // for edit name
   useEffect(() => {
-    setUploadFileName(projectSheet[0]?.name);
+    const item = projectSheet[0]?.name;
+    const itemSplit = item?.split(".");
+    const extension = itemSplit?.pop();
+    setExtension(extension);
+    const joinItem = itemSplit?.join(".");
+    setUploadFileName(joinItem);
   }, [projectSheet]);
+  
+  // upload file reset
+  useEffect(() => {
+    if (!open) {
+      setProjectSheet([]);
+    }
+  }, [open]);
+
   return (
     <div>
       <div
@@ -180,7 +196,7 @@ const UploadFiles = () => {
                     <span
                       style={{ marginBottom: 1 }}
                     >
-                      {uploadFileName}
+                      {`${uploadFileName}.${extension}`}
                     </span>
                   </Typography>
                 </Box>

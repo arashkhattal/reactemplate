@@ -1,9 +1,11 @@
+/* make border dashed*/
 .combine_section_input_group {
   margin-top: -20px;
   padding: 20px;
   border: 2px dashed #9d9d9d;
   background: #fafafa;
 }
+/* center the upload icon center */
 .drag_img {
   margin-left: 34%;
 }
@@ -21,6 +23,7 @@
   font-size: 12px;
   color: blue !important;
 }
+/* after upload file  */
 .upload_complete {
   border: 1px solid lightgrey;
   padding: 14px;
@@ -31,6 +34,7 @@
   ) !important;
   border-radius: 4px;
 }
+/* showing file error message css */
 .upload_error {
   border: 1px solid lightgrey;
   padding: 14px;
@@ -41,18 +45,15 @@
   ) !important;
   border-radius: 4px;
 }
-.fw_400 {
-  font-weight: 400 !important;
-}
-.upload_ui_design{
-    position: absolute;
+/* main ui design of upload file */
+.upload_ui_design {
+  position: absolute;
   top: 50%;
   left: 50%;
   width: 100%;
   max-width: 700px;
   height: auto;
   transform: translate(-50%, -50%);
-  
   border-radius: 2px solid;
   padding: 40px;
 }
