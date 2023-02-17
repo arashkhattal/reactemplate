@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useGlobalContext } from "../../../context/globalContext";
 import BasicTable from "./basicTable/BasicTable";
 import DataTable from "./dataTable/DataTable";
+import TableComponent from "./htmlTable/TableComponent";
 import SortSelectTable from "./sort&selectTable/SortSelectTable";
 
 const About = () => {
@@ -45,7 +46,14 @@ const About = () => {
               <SortSelectTable />
             </Card>
           </Grid>
-          <Grid item xs={6} md={12}></Grid>
+          <Grid item xs={6} md={12}>
+            <Card style={{ padding: "20px", border: "1px solid lightgrey" }}>
+              <Typography className="global_display_flex fs_16 fw_600">
+                Html Table with Search & sort
+              </Typography>
+              <TableComponent />
+            </Card>
+          </Grid>
         </Grid>
       </div>
     </>
