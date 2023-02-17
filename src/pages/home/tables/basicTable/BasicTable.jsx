@@ -21,22 +21,18 @@ const rows = [
 
 export default function BasicTable() {
   const [searchTerm, setSearchTerm] = React.useState("");
-  const [sortDirection, setSortDirection] = React.useState("asc");
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
-
 
   // Filter data based on search term
   const filteredData = rows.filter((row) =>
     row.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Sort data based on sort direction
-  const sortedData = filteredData.sort((a, b) =>
-    sortDirection === "asc" ? a.age - b.age : b.age - a.age
-  );
+  console.log(filteredData);
+
   return (
     <TableContainer>
       <input type="text" value={searchTerm} onChange={handleSearchChange} />
@@ -51,7 +47,7 @@ export default function BasicTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {sortedData.map((row) => (
+          {filteredData.map((row) => (
             <TableRow
               key={row.name}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
