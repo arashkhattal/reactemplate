@@ -1,0 +1,34 @@
+/* css for table  */
+.my-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.my-table th,
+.my-table td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+/* css for table header */
+.my-table th {
+  background-color: #f2f2f2;
+  color: #555;
+}
+
+/* css for table  searchbar*/
+.my-search-input {
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+/* css for table header with search bar & sort button */
+
+.table-head {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+}

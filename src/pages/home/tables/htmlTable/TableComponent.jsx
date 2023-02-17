@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Table.css";
 
 function TableComponent() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -12,17 +13,22 @@ function TableComponent() {
     setSortDirection(sortDirection === "asc" ? "desc" : "asc");
   };
 
-   const data = [
-     { id: 1, name: "Alice", age: 25 },
-     { id: 2, name: "Bob", age: 30 },
-     { id: 3, name: "Charlie", age: 20 },
-     { id: 4, name: "David", age: 35 },
-   ];
-
+  const data = [
+    { id: 1, name: "Alice", age: 25 },
+    { id: 2, name: "Bob", age: 30 },
+    { id: 3, name: "Charlie", age: 20 },
+    { id: 4, name: "David", age: 35 },
+  ];
 
   // Filter data based on search term
+  // const filteredData = data.filter((row) =>
+  //   row.name.toLowerCase().includes(searchTerm.toLowerCase())
+  // );
+
   const filteredData = data.filter((row) =>
-    row.name.toLowerCase().includes(searchTerm.toLowerCase())
+    Object.values(row).some((value) =>
+      value.toString().toLowerCase().includes(searchTerm.toLowerCase())
+    )
   );
 
   // Sort data based on sort direction
@@ -32,11 +38,20 @@ function TableComponent() {
 
   return (
     <div>
-      <input type="text" value={searchTerm} onChange={handleSearchChange} />
-      <button onClick={handleSortChange}>
-        Sort {sortDirection === "asc" ? "ascending" : "descending"}
-      </button>
-      <table>
+      <div className="table-head">
+        <button onClick={handleSortChange} className="my-search-input">
+          Sort {sortDirection === "asc" ? "ascending" : "descending"}
+        </button>
+        <input
+          className="my-search-input"
+          type="text"
+          value={searchTerm}
+          onChange={handleSearchChange}
+          placeholder="Search.."
+        />
+      </div>
+
+      <table className="my-table">
         <thead>
           <tr>
             <th>Name</th>
