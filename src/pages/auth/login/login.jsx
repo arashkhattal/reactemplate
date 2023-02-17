@@ -85,6 +85,7 @@ const Login = () => {
           margin: "20px 0px",
         }}
       >
+        {/* <form> */}
         <Typography
           className="fs_24"
           style={{
@@ -165,6 +166,7 @@ const Login = () => {
             marginTop: "20px",
           }}
           id="outlined-basic"
+          type="password"
           label="Password"
           value={password}
           onChange={(e) =>
@@ -248,6 +250,7 @@ const Login = () => {
             Create an Account
           </a>
         </Box>
+        {/* </form> */}
       </Box>
     </Box>
   );
