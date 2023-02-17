@@ -9,16 +9,26 @@ import InfoIcon from "@mui/icons-material/Info";
 import TableChartIcon from "@mui/icons-material/TableChart";
 
 // Import components using lazy to load the component
-const HomePage = lazy(() => import("./pages/home/HomePage"));
-const Chart = lazy(() => import("./pages/home/charts/Chart"));
-const Tables = lazy(() => import("./pages/home/tables/Tables"));
-const InputField = lazy(() => import("./pages/InputField/InputField"));
-const UploadFiles = lazy(() =>
-  import("./pages/UploadFiles/UploadFiles")
+const HomePage = lazy(() =>
+  import("./pages/home/HomePage")
+);
+const Chart = lazy(() =>
+  import("./pages/home/charts/Chart")
+);
+const Tables = lazy(() =>
+  import("./pages/home/tables/Tables")
+);
+const InputField = lazy(() =>
+  import("./pages/InputField/InputField")
+);
+const UploadFileList = lazy(() =>
+  import("./pages/UploadFiles/uploadFileList")
 );
 
 // @mui icons
-const Icon = lazy(() => import("@mui/material/Icon"));
+const Icon = lazy(() =>
+  import("@mui/material/Icon")
+);
 
 // This is routes available in side bar
 export const adminRoutes = [
@@ -77,7 +87,7 @@ export const adminRoutes = [
     key: "uploadfiles",
     route: "/uploadfiles",
     icon: <Icon fontSize="small">U</Icon>,
-    component: <UploadFiles />,
+    component: <UploadFileList />,
     noCollapse: true,
   },
 ];

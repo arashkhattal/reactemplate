@@ -6,7 +6,7 @@
 }
 /* css variables */
 :root {
-  --color_primary: #199cff;
+  --color_primary: #0d80d8;
   --font_12: 12px !important;
   --color_primary_btn_hover: #0a73c4;
   --color_warning: #ef5350;
@@ -136,4 +136,3 @@ input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-

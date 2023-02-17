@@ -10,11 +10,10 @@ import React, {
   useRef,
   useState,
 } from "react";
+import { fileSize } from "../../../helpers/globalFunction";
+import FolderImg from "../../../assets/image/dragndrop.png";
 
-import FolderImg from "../../assets/image/dragndrop.png";
-import "./UploadFiles.css";
-
-const UploadFiles = () => {
+const uploadSingleFile = () => {
   // modal open and close function and store
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -25,9 +24,8 @@ const UploadFiles = () => {
   // store the file name and edit
   const [uploadFileName, setUploadFileName] =
     useState("");
-  // store file extension name
-  const [extension, setExtension] = useState("");
-  console.log(uploadFileName);
+  // store file type name
+  const [fileType, setFileType] = useState("");
   // reference a value that’s not needed for rendering.
   const projectSheetRef = useRef();
   // drag file
@@ -59,26 +57,37 @@ const UploadFiles = () => {
       // upload check
       let file = val[0];
       setProjectSheet([file]);
-      console.log(file);
     }
   };
   // for edit name
   useEffect(() => {
     const item = projectSheet[0]?.name;
     const itemSplit = item?.split(".");
-    const extension = itemSplit?.pop();
-    setExtension(extension);
-    const joinItem = itemSplit?.join(".");
-    setUploadFileName(joinItem);
+    const filetype = itemSplit?.pop();
+    setFileType(filetype);
+    const onlyName = itemSplit?.join(".");
+    setUploadFileName(onlyName);
   }, [projectSheet]);
-  
+
   // upload file reset
   useEffect(() => {
     if (!open) {
       setProjectSheet([]);
     }
   }, [open]);
-
+  // upload file function
+  const handleSubmit = async (e) => {
+    console.log(
+      "File_name:",
+      `${uploadFileName}.${fileType}`
+    );
+    console.log(
+      "File_size:",
+      fileSize(projectSheet[0]?.size)
+    );
+    console.log("File_Type:", fileType);
+    setOpen(false);
+  };
   return (
     <div>
       <div
@@ -90,9 +99,9 @@ const UploadFiles = () => {
         <button
           className="btn_primary btn_primary_hover"
           style={{
-            width: "15%",
             color: "white",
             marginTop: "30px",
+            width: "30%",
           }}
           onClick={handleOpen}
         >
@@ -102,7 +111,7 @@ const UploadFiles = () => {
       <Modal open={open} onClose={handleClose}>
         <Card className="upload_ui_design">
           <Typography
-            variant="h4"
+            className="fs_24"
             style={{
               textAlign: "center",
               marginBottom: "30px",
@@ -196,7 +205,7 @@ const UploadFiles = () => {
                     <span
                       style={{ marginBottom: 1 }}
                     >
-                      {`${uploadFileName}.${extension}`}
+                      {`${uploadFileName}.${fileType}`}
                     </span>
                   </Typography>
                 </Box>
@@ -279,7 +288,7 @@ const UploadFiles = () => {
               style={{
                 display: "flex",
                 justifyContent: "space-between",
-                gap: "300px",
+                gap: "350px",
               }}
             >
               <button
@@ -298,7 +307,9 @@ const UploadFiles = () => {
                 style={{
                   color: "white",
                 }}
-                // onClick={handleSubmit}
+                onClick={() => {
+                  handleSubmit();
+                }}
                 className="btn_primary btn_primary_hover "
                 value="Upload"
               >
@@ -314,4 +325,4 @@ const UploadFiles = () => {
   );
 };
 
-export default UploadFiles;
+export default uploadSingleFile;

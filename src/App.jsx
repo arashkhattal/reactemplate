@@ -14,22 +14,40 @@ import {
   CssBaseline,
   Snackbar,
 } from "@mui/material";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import {
+  createTheme,
+  ThemeProvider,
+} from "@mui/material/styles";
 
 //added lazy loading
-const PrimaryLayout = lazy(() => import("./layouts/primaryLayout/Index"));
-const Login = lazy(() => import("./pages/auth/login/login"));
-const SignUp = lazy(() => import("./pages/auth/signUp/signUp"));
+const PrimaryLayout = lazy(() =>
+  import("./layouts/primaryLayout/Index")
+);
+const Login = lazy(() =>
+  import("./pages/auth/login/login")
+);
+const SignUp = lazy(() =>
+  import("./pages/auth/signUp/signUp")
+);
 const ResetPassword = lazy(() =>
-  import("./pages/auth/resetPassword/resetPassword")
+  import(
+    "./pages/auth/resetPassword/resetPassword"
+  )
 );
 
 function App() {
+  // get primary color from index.css
+  const color = getComputedStyle(
+    document.documentElement
+  )
+    .getPropertyValue("--color_primary")
+    .trim();
+  // create mui theme
   const theme = createTheme({
     palette: {
       primary: {
         light: "#66b53f",
-        main: "#0d80d8",
+        main: color,
         dark: "#66b53f",
         contrastText: "#fff",
       },
@@ -42,10 +60,12 @@ function App() {
     },
   });
   // state to store adminRoutes
-  const [curRoute, setCurRoute] = useState(adminRoutes);
+  const [curRoute, setCurRoute] =
+    useState(adminRoutes);
 
   //getting value from global context
-  const { loading, alert, setAlert } = useGlobalContext();
+  const { loading, alert, setAlert } =
+    useGlobalContext();
 
   //to close Alert
   const handleAlertClose = () => {
@@ -103,7 +123,10 @@ function App() {
           autoHideDuration={5000}
           onClose={handleAlertClose}
         >
-          <Alert onClose={handleAlertClose} severity={alert?.type}>
+          <Alert
+            onClose={handleAlertClose}
+            severity={alert?.type}
+          >
             {alert?.msg}
           </Alert>
         </Snackbar>
@@ -114,10 +137,18 @@ function App() {
 
           {/* added layout feature */}
           {/* from getRoutes(curRoute) we are getting the routes from the adminRoutes array */}
-          <Route element={<PrimaryLayout />}>{getRoutes(curRoute)}</Route>
+          <Route element={<PrimaryLayout />}>
+            {getRoutes(curRoute)}
+          </Route>
 
-          <Route path="/SignUp" element={<SignUp />} />
-          <Route path="/resetPassword" element={<ResetPassword />} />
+          <Route
+            path="/SignUp"
+            element={<SignUp />}
+          />
+          <Route
+            path="/resetPassword"
+            element={<ResetPassword />}
+          />
         </Routes>
       </ThemeProvider>
     </>
