@@ -6,6 +6,8 @@ import BarChart from "./barChart/BarChart";
 import StackedBarChart from "./barChart/StackedBarChart";
 import DonutChart from "./donutChart/DonutChart";
 import LineChart from "./linechart/Linechart";
+import PieChart from "./pieCharts/PieChart";
+import TimeLineChart from "./timelineChart/TimeLineChart";
 
 const Contact = () => {
   const { setLoading } = useGlobalContext();
@@ -49,9 +51,25 @@ const Contact = () => {
           <Grid item xs={12} md={6}>
             <Card style={{ padding: "20px", border: "1px solid lightgrey" }}>
               <Typography className="global_display_flex fs_16 fw_600">
+                Apex chart - Time Line chart
+              </Typography>
+              <TimeLineChart />
+            </Card>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Card style={{ padding: "20px", border: "1px solid lightgrey" }}>
+              <Typography className="global_display_flex fs_16 fw_600">
                 Apex chart - Donut chart
               </Typography>
               <DonutChart />
+            </Card>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Card style={{ padding: "20px", border: "1px solid lightgrey" }}>
+              <Typography className="global_display_flex fs_16 fw_600">
+                Apex chart - Pie chart
+              </Typography>
+              <PieChart />
             </Card>
           </Grid>
         </Grid>

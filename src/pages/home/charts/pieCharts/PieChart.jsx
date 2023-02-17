@@ -1,21 +1,9 @@
 import React, { Component } from "react";
 import Chart from "react-apexcharts";
 
-// class Donut extends Component {
-//   constructor(props) {
-//     super(props);
-
-//     this.state = {
-//       options: {
-//         labels: ["A", "B", "C", "D", "E"],
-//       },
-//       series: [44, 55, 41, 17, 15],
-//     };
-//   }
-
-function Donut() {
+function PieChart() {
   return (
-    <div >
+    <div>
       <Chart
         series={[44, 55, 13, 43, 22]}
         options={{
@@ -31,10 +19,10 @@ function Donut() {
             },
           ],
         }}
-        type="donut"
+        type="pie"
       />
     </div>
   );
 }
 
-export default Donut;
+export default PieChart;
