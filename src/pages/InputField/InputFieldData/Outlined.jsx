@@ -8,7 +8,6 @@ import {
   Checkbox,
   FormControl,
   IconButton,
-  Input,
   InputAdornment,
   InputLabel,
   ListItemText,
@@ -19,19 +18,6 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 
-function RedBar() {
-  return (
-    <Box
-      sx={{
-        height: 20,
-        backgroundColor: (theme) =>
-          theme.palette.mode === "light"
-            ? "rgba(255, 0, 0, 0.1)"
-            : "rgb(255 132 132 / 25%)",
-      }}
-    />
-  );
-}
 // dummy data
 const currencies = [
   {
@@ -52,7 +38,7 @@ const currencies = [
   },
 ];
 
-// item cal curation of multiple select
+// calculation of multiple select
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
