@@ -39,14 +39,27 @@ function Linechart() {
     yaxis: {
       title: { text: "Product in K" },
     },
+    responsive: [
+      {
+        breakpoint: 1000,
+        options: {
+          plotOptions: {
+            bar: {
+              horizontal: false,
+            },
+          },
+          legend: {
+            position: "bottom",
+          },
+        },
+      },
+    ],
   });
 
   return (
     <div>
       <Chart
         type="line"
-        width={950}
-        height={550}
         series={product}
         options={option}
       ></Chart>

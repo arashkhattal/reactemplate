@@ -3,11 +3,11 @@ import Chart from "react-apexcharts";
 
 function Barchart() {
   return (
-    <div className="chart-container">
+    <div>
+      {/* chart component  */}
       <Chart
         type="bar"
-        width={950}
-        height={550}
+        // chrt data
         series={[
           {
             name: "Social Media Subscriber",
@@ -18,6 +18,22 @@ function Barchart() {
           colors: ["#0d80d8"],
           theme: { mode: "light" },
 
+          responsive: [
+            {
+              breakpoint: 1000,
+              options: {
+                plotOptions: {
+                  bar: {
+                    horizontal: false,
+                  },
+                },
+                legend: {
+                  position: "bottom",
+                },
+              },
+            },
+          ],
+          //   to display xaxis data
           xaxis: {
             tickPlacement: "on",
             categories: [
@@ -35,6 +51,7 @@ function Barchart() {
             },
           },
 
+          //   to display yaxis data
           yaxis: {
             labels: {
               formatter: (val) => {

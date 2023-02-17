@@ -3,6 +3,7 @@ import { Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import { useGlobalContext } from "../../../context/globalContext";
 import Barchart from "./barChart/BarChart";
+import Stackedbarchart from "./barChart/StackedBarChart";
 import Linechart from "./linechart/Linechart";
 
 const Contact = () => {
@@ -20,7 +21,7 @@ const Contact = () => {
     <>
       <div style={{ overflow: "hidden" }}>
         <Grid container spacing={2}>
-          <Grid item xs={6} md={12}>
+          <Grid item xs={12} md={6}>
             <Card style={{ padding: "20px", border: "1px solid lightgrey" }}>
               <Typography className="global_display_flex fs_16 fw_600">
                 Apex chart - Line Chart
@@ -28,12 +29,20 @@ const Contact = () => {
               <Linechart />
             </Card>
           </Grid>
-          <Grid item xs={6} md={12}>
+          <Grid item xs={12} md={6}>
             <Card style={{ padding: "20px", border: "1px solid lightgrey" }}>
               <Typography className="global_display_flex fs_16 fw_600">
                 Apex chart - Bar Chart
               </Typography>
               <Barchart />
+            </Card>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Card style={{ padding: "20px", border: "1px solid lightgrey" }}>
+              <Typography className="global_display_flex fs_16 fw_600">
+                Apex chart - Stacked Bar chart
+              </Typography>
+              <Stackedbarchart />
             </Card>
           </Grid>
         </Grid>
