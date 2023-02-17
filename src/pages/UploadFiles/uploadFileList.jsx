@@ -1,5 +1,6 @@
 import React from "react";
 import UploadSingleFile from "./uploadSingleFile/uploadSingleFile";
+import UploadMultiFiles from "./uploadMultiFiles/uploadMultiFiles";
 import "./uploadFileList.css";
 import { Typography } from "@mui/material";
 const uploadFileList = () => {
@@ -21,6 +22,7 @@ const uploadFileList = () => {
         >
           Upload Multiple file
         </Typography>
+        <UploadMultiFiles />
       </div>
     </div>
   );
