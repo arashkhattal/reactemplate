@@ -39,8 +39,6 @@ const AppBar = () => {
     setOpenProfileMenu(event.currentTarget);
   const handleCloseProfileMenu = () => setOpenProfileMenu(false);
 
-
-
   const renderProfile = () => (
     <Menu
       anchorEl={openProfileMenu}
@@ -73,7 +71,7 @@ const AppBar = () => {
             fontSize: "14px",
             color: "#414548",
           }}
-          // onClick={handleLogout()}
+          // onClick={navigate("/")}
         >
           <Typography className="fs_12" style={{ textAlign: "center" }}>
             Log Out

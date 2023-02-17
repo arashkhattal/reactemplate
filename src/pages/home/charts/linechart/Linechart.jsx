@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Chart from "react-apexcharts";
 
 function Linechart() {
+  // chrt data
   const [product, setProduct] = useState([
     {
       name: "T-shirt",
@@ -18,7 +19,7 @@ function Linechart() {
   ]);
 
   const [option, setOption] = useState({
-    title: { text: "Product sell in 2021" },
+    //   to display xaxis data
     xaxis: {
       title: { text: "Product Sell in Months" },
       categories: [
@@ -36,6 +37,7 @@ function Linechart() {
         "Dec",
       ],
     },
+    //   to display yaxis data
     yaxis: {
       title: { text: "Product in K" },
     },
@@ -58,11 +60,8 @@ function Linechart() {
 
   return (
     <div>
-      <Chart
-        type="line"
-        series={product}
-        options={option}
-      ></Chart>
+      {/* chart component  */}
+      <Chart type="line" series={product} options={option}></Chart>
     </div>
   );
 }

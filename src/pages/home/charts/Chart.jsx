@@ -2,9 +2,10 @@ import { Card, Grid } from "@material-ui/core";
 import { Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import { useGlobalContext } from "../../../context/globalContext";
-import Barchart from "./barChart/BarChart";
-import Stackedbarchart from "./barChart/StackedBarChart";
-import Linechart from "./linechart/Linechart";
+import BarChart from "./barChart/BarChart";
+import StackedBarChart from "./barChart/StackedBarChart";
+import DonutChart from "./donutChart/DonutChart";
+import LineChart from "./linechart/Linechart";
 
 const Contact = () => {
   const { setLoading } = useGlobalContext();
@@ -26,7 +27,7 @@ const Contact = () => {
               <Typography className="global_display_flex fs_16 fw_600">
                 Apex chart - Line Chart
               </Typography>
-              <Linechart />
+              <LineChart />
             </Card>
           </Grid>
           <Grid item xs={12} md={6}>
@@ -34,7 +35,7 @@ const Contact = () => {
               <Typography className="global_display_flex fs_16 fw_600">
                 Apex chart - Bar Chart
               </Typography>
-              <Barchart />
+              <BarChart />
             </Card>
           </Grid>
           <Grid item xs={12} md={6}>
@@ -42,7 +43,15 @@ const Contact = () => {
               <Typography className="global_display_flex fs_16 fw_600">
                 Apex chart - Stacked Bar chart
               </Typography>
-              <Stackedbarchart />
+              <StackedBarChart />
+            </Card>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Card style={{ padding: "20px", border: "1px solid lightgrey" }}>
+              <Typography className="global_display_flex fs_16 fw_600">
+                Apex chart - Donut chart
+              </Typography>
+              <DonutChart />
             </Card>
           </Grid>
         </Grid>
