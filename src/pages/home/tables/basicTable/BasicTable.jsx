@@ -5,12 +5,13 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
+import "../htmlTable/Table.css";
 
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
 }
 
+// table Data 
 const rows = [
   createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
   createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
@@ -20,22 +21,37 @@ const rows = [
 ];
 
 export default function BasicTable() {
+  // state to maintain searh item
   const [searchTerm, setSearchTerm] = React.useState("");
 
+  // function to handle search
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
   // Filter data based on search term
   const filteredData = rows.filter((row) =>
-    row.name.toLowerCase().includes(searchTerm.toLowerCase())
+    Object.values(row).some((value) =>
+      value.toString().toLowerCase().includes(searchTerm.toLowerCase())
+    )
   );
 
   console.log(filteredData);
 
   return (
     <TableContainer>
-      <input type="text" value={searchTerm} onChange={handleSearchChange} />
+      <div className="table-head">
+        <div></div>
+        {/* search bar for table */}
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={handleSearchChange}
+          className="my-search-input"
+          placeholder="Search..."
+        />
+      </div>
+    {/* table component  */}
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>

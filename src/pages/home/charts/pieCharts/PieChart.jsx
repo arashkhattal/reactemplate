@@ -1,9 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import Chart from "react-apexcharts";
 
-function Donut() {
+function PieChart() {
   return (
-    <div >
+    <div>
       {/* chart component  */}
       <Chart
       // chart data
@@ -22,11 +22,11 @@ function Donut() {
             },
           ],
         }}
-        // type of cahrt 
-        type="donut"
+        // type of chart 
+        type="pie"
       />
     </div>
   );
 }
 
-export default Donut;
+export default PieChart;

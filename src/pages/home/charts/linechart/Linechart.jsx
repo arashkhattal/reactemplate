@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Chart from "react-apexcharts";
 
 function Linechart() {
-  // chrt data
+  // chart data
   const [product, setProduct] = useState([
     {
       name: "T-shirt",
@@ -41,6 +41,7 @@ function Linechart() {
     yaxis: {
       title: { text: "Product in K" },
     },
+    // to display responsive chart
     responsive: [
       {
         breakpoint: 1000,
