@@ -16,15 +16,18 @@ import { Collapse, Typography } from "@mui/material";
 
 import { makeStyles } from "@material-ui/core/styles";
 
-// default drawer width
+h
 
-// custom style for drawer
+
 
 export default function PermanentDrawerLeft() {
+  // state to maintain open close menu
   const [openMenu, setOpenMenu] = useState(true);
 
-    const drawerWidth = openMenu ? 210 : 60;
+  // default drawer widt
+  const drawerWidth = openMenu ? 210 : 60;
 
+  // custom style for drawer
   const useStyles = makeStyles((theme) => ({
     drawer: {
       width: drawerWidth,
@@ -78,6 +81,7 @@ export default function PermanentDrawerLeft() {
       variant="permanent"
       anchor="left"
     >
+      {/* option to close or open menu  */}
       <Typography
         sx={{
           margin: "10px",
