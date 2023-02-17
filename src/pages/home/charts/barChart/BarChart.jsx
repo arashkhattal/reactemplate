@@ -17,7 +17,8 @@ function Barchart() {
         options={{
           colors: ["#0d80d8"],
           theme: { mode: "light" },
-
+          
+          // top display responsive chart
           responsive: [
             {
               breakpoint: 1000,

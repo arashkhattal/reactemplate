@@ -11,6 +11,7 @@ function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
 }
 
+// table Data 
 const rows = [
   createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
   createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
@@ -20,14 +21,15 @@ const rows = [
 ];
 
 export default function BasicTable() {
+  // state to maintain searh item
   const [searchTerm, setSearchTerm] = React.useState("");
 
+  // function to handle search
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
   // Filter data based on search term
-
   const filteredData = rows.filter((row) =>
     Object.values(row).some((value) =>
       value.toString().toLowerCase().includes(searchTerm.toLowerCase())
@@ -40,6 +42,7 @@ export default function BasicTable() {
     <TableContainer>
       <div className="table-head">
         <div></div>
+        {/* search bar for table */}
         <input
           type="text"
           value={searchTerm}
@@ -48,7 +51,7 @@ export default function BasicTable() {
           placeholder="Search..."
         />
       </div>
-
+    {/* table component  */}
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>

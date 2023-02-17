@@ -22,6 +22,7 @@ const columns = [
   },
 ];
 
+// table data
 const rows = [
   { id: 1, lastName: "Snow", firstName: "Jon", age: 35 },
   { id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
@@ -37,6 +38,7 @@ const rows = [
 export default function DataTable() {
   return (
     <div style={{ height: 400, width: "100%" }}>
+      {/* tabel Data grid component  */}
       <DataGrid
         rows={rows}
         columns={columns}
