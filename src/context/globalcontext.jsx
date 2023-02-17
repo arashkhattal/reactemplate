@@ -8,12 +8,14 @@ const AppProvider = ({ children }) => {
   // reload state
   const [reload, setReload] = useState(2);
 
-  // Alert component 
+  // Alert component
   const [alert, setAlert] = useState({
     flag: false,
     type: "",
     msg: "",
   });
+
+
 
   return (
     <AppContext.Provider

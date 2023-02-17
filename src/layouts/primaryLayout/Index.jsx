@@ -6,6 +6,7 @@ import Sidebar from "../../components/sideBar/Sidebar";
 // custom style component from Mui
 import styled from "styled-components";
 
+
 const Index = () => {
   return (
     // common component render in every page

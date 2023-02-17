@@ -7,41 +7,46 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { NavLink } from "react-router-dom";
+import MenuOpenIcon from "@mui/icons-material/MenuOpen";
+import MenuIcon from "@mui/icons-material/Menu";
 
 import { adminRoutes } from "../../routes";
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
-import { Collapse } from "@mui/material";
+import { Collapse, Typography } from "@mui/material";
 
 import { makeStyles } from "@material-ui/core/styles";
 
 // default drawer width
-const drawerWidth = 210;
 
 // custom style for drawer
-const useStyles = makeStyles((theme) => ({
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  nested: {
-    paddingLeft: theme.spacing(4),
-  },
-}));
 
 export default function PermanentDrawerLeft() {
+  const [openMenu, setOpenMenu] = useState(false);
+
+    const drawerWidth = openMenu ? 210 : 60;
+
+  const useStyles = makeStyles((theme) => ({
+    drawer: {
+      width: drawerWidth,
+      flexShrink: 0,
+    },
+    drawerPaper: {
+      width: drawerWidth,
+    },
+    nested: {
+      paddingLeft: theme.spacing(4),
+    },
+  }));
+
   // custom style
   const classes = useStyles();
 
   // get routes data from global context
-  const [curRoute, setCurRoute] = React.useState(adminRoutes);
+  const [curRoute, setCurRoute] = useState(adminRoutes);
 
   // state to maintain dropdown
   const [open, setOpen] = useState({});
   console.log(open);
-
 
   // useEffects that will maintain state of dropdown when refresh
 
@@ -73,6 +78,20 @@ export default function PermanentDrawerLeft() {
       variant="permanent"
       anchor="left"
     >
+      <Typography
+        sx={{
+          margin: "10px",
+          cursor: "pointer",
+          border: "1px solid #dbdbdb",
+          padding: "10px",
+          borderRadius: "10px",
+          fontSize: "14px",
+          color: "#414548",
+        }}
+        onClick={() => setOpenMenu(!openMenu)}
+      >
+        {openMenu ? <MenuOpenIcon /> : <MenuIcon />}
+      </Typography>
       <Toolbar />
 
       {/* this will list the items in the side bar */}
@@ -151,7 +170,10 @@ export default function PermanentDrawerLeft() {
                 <ListItemButton>
                   <ListItemIcon>{data?.icon}</ListItemIcon>
                   {/* text */}
-                  <ListItemText primary={data?.name} />
+                  <ListItemText
+                    primary={data?.name}
+                    style={{ display: openMenu ? "block" : "none" }}
+                  />
                 </ListItemButton>
               </NavLink>
             </ListItem>
