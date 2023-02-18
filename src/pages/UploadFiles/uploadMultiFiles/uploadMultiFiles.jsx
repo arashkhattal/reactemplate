@@ -2,7 +2,6 @@ import {
   Box,
   Card,
   Modal,
-  TextField,
   Typography,
 } from "@mui/material";
 import React, {
@@ -10,7 +9,6 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { fileSize } from "../../../helpers/globalFunction";
 import FolderImg from "../../../assets/image/dragndrop.png";
 
 const uploadSingleFile = () => {
@@ -21,15 +19,13 @@ const uploadSingleFile = () => {
   // get file and details
   const [projectSheet, setProjectSheet] =
     useState([]);
-  // store the file name and edit
-  const [uploadFileName, setUploadFileName] =
-    useState("");
-  // store file type name
-  const [fileType, setFileType] = useState("");
-  // sore present upload item
+  console.log(projectSheet[0]);
+
+  // store present File
   const [presentFile, setPresentFile] = useState(
     []
   );
+
   // reference a value that’s not needed for rendering.
   const projectSheetRef = useRef();
   // drag file
@@ -50,37 +46,37 @@ const uploadSingleFile = () => {
     );
     setProjectSheet(filteredData);
   };
+
   // NOTE: fileUpload and check the file
   const FileInputClicked = (type) => {
     projectSheetRef.current.click();
   };
-  //   const FileDrop = (e, type) => {
-  //     e.preventDefault();
-  //     const files = e.dataTransfer.files;
-  //     if (files.length) {
-  //       let file = files[0];
-  //       setProjectSheet([file]);
-  //     }
-  //   };
-  // select the file
+  // drag and drop file function
+  const FileDrop = (e, type) => {
+    e.preventDefault();
+    const files = e.dataTransfer.files;
+
+    if (
+      files.length &&
+      files[0]?.size < 10000000
+    ) {
+      let file = files[0];
+      setProjectSheet([...projectSheet, file]);
+    }
+    setPresentFile(val);
+  };
+  // select the file function
   const FileSelected = (val, type) => {
     if (val && val[0]?.size < 10000000) {
       // upload check
-      console.log("val", val);
+
       let file = val[0];
       setProjectSheet([...projectSheet, file]);
     }
     setPresentFile(val);
   };
   // for edit name
-  useEffect(() => {
-    const item = projectSheet[0]?.name;
-    const itemSplit = item?.split(".");
-    const filetype = itemSplit?.pop();
-    setFileType(filetype);
-    const onlyName = itemSplit?.join(".");
-    setUploadFileName(onlyName);
-  }, [projectSheet]);
+  useEffect(() => {}, [projectSheet]);
 
   // upload file reset
   useEffect(() => {
@@ -89,18 +85,12 @@ const uploadSingleFile = () => {
     }
   }, [open]);
   // upload file function
-  //   const handleSubmit = async (e) => {
-  //     console.log(
-  //       "File_name:",
-  //       `${uploadFileName}.${fileType}`
-  //     );
-  //     console.log(
-  //       "File_size:",
-  //       fileSize(projectSheet[0]?.size)
-  //     );
-  //     console.log("File_Type:", fileType);
-  //     setOpen(false);
-  //   };
+  const handleSubmit = async (e) => {
+    projectSheet.map((file) => {
+      console.log("File_name:", file?.name);
+    });
+    setOpen(false);
+  };
 
   return (
     <div>
@@ -246,24 +236,7 @@ const uploadSingleFile = () => {
                 </div>
               ))
             : null}
-          {/* Edit name of the file */}
-          {projectSheet?.length !== 0 ? (
-            <Box my={2}>
-              <TextField
-                variant="outlined"
-                fullWidth
-                required
-                type="text"
-                value={uploadFileName}
-                onChange={(e) =>
-                  setUploadFileName(
-                    e.target.value
-                  )
-                }
-              />
-            </Box>
-          ) : null}
-          {/* if the file size is bigger then 10 mb it will show warning */}
+
           {presentFile[0]?.size > 10000000 ? (
             <Box className="upload_error" my={1}>
               <div
@@ -326,9 +299,9 @@ const uploadSingleFile = () => {
               style={{
                 color: "white",
               }}
-              // onClick={() => {
-              //   handleSubmit();
-              // }}
+              onClick={() => {
+                handleSubmit();
+              }}
               className="btn_primary btn_primary_hover "
               value="Upload"
             >
