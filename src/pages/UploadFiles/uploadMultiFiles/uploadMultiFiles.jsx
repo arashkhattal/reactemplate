@@ -26,7 +26,10 @@ const uploadSingleFile = () => {
     useState("");
   // store file type name
   const [fileType, setFileType] = useState("");
-
+  // sore present upload item
+  const [presentFile, setPresentFile] = useState(
+    []
+  );
   // reference a value that’s not needed for rendering.
   const projectSheetRef = useRef();
   // drag file
@@ -61,12 +64,13 @@ const uploadSingleFile = () => {
   //   };
   // select the file
   const FileSelected = (val, type) => {
-    if (val) {
+    if (val && val[0]?.size < 10000000) {
       // upload check
       console.log("val", val);
       let file = val[0];
       setProjectSheet([...projectSheet, file]);
     }
+    setPresentFile(val);
   };
   // for edit name
   useEffect(() => {
@@ -189,8 +193,7 @@ const uploadSingleFile = () => {
             </>
           </section>
           {/* after upload show name and close icon */}
-          {projectSheet?.length !== 0 &&
-          projectSheet[-0]?.size < 10000000
+          {projectSheet?.length !== 0
             ? projectSheet?.map((file, i) => (
                 <div>
                   <Box
@@ -221,9 +224,6 @@ const uploadSingleFile = () => {
                           >
                             {file?.name}
                           </span>
-                          <Typography>
-                            this is
-                          </Typography>
                         </Typography>
                       </Box>
 
@@ -247,8 +247,7 @@ const uploadSingleFile = () => {
               ))
             : null}
           {/* Edit name of the file */}
-          {projectSheet?.length !== 0 &&
-          projectSheet[0]?.size < 10000000 ? (
+          {projectSheet?.length !== 0 ? (
             <Box my={2}>
               <TextField
                 variant="outlined"
@@ -265,7 +264,7 @@ const uploadSingleFile = () => {
             </Box>
           ) : null}
           {/* if the file size is bigger then 10 mb it will show warning */}
-          {projectSheet[0]?.size > 10000000 ? (
+          {presentFile[0]?.size > 10000000 ? (
             <Box className="upload_error" my={1}>
               <div
                 style={{
@@ -275,13 +274,14 @@ const uploadSingleFile = () => {
               >
                 <Box style={{ display: "flex" }}>
                   <Typography className="fs_14 fw_400">
+                    You Can not Upload this File.
                     Upload limit is 10 MB.
                     <br /> Please resize and try
                     again!
                   </Typography>
                 </Box>
                 <div>
-                  <button
+                  {/* <button
                     type="submit"
                     style={{
                       color: "white",
@@ -297,47 +297,44 @@ const uploadSingleFile = () => {
                     <Typography>
                       Try again
                     </Typography>
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </Box>
-          ) : (
-            <Box
-              pt={3}
+          ) : null}
+          <Box
+            pt={3}
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              gap: "350px",
+            }}
+          >
+            <button
+              type="submit"
               style={{
-                display: "flex",
-                justifyContent: "space-between",
-                gap: "350px",
+                color: "white",
               }}
+              onClick={handleClose}
+              className="btn_primary warning_btn"
+              value="Cancel"
             >
-              <button
-                type="submit"
-                style={{
-                  color: "white",
-                }}
-                onClick={handleClose}
-                className="btn_primary warning_btn"
-                value="Cancel"
-              >
-                <Typography>Cancel</Typography>
-              </button>
-              <button
-                type="submit"
-                style={{
-                  color: "white",
-                }}
-                // onClick={() => {
-                //   handleSubmit();
-                // }}
-                className="btn_primary btn_primary_hover "
-                value="Upload"
-              >
-                <Typography>
-                  Upload File
-                </Typography>
-              </button>
-            </Box>
-          )}
+              <Typography>Cancel</Typography>
+            </button>
+            <button
+              type="submit"
+              style={{
+                color: "white",
+              }}
+              // onClick={() => {
+              //   handleSubmit();
+              // }}
+              className="btn_primary btn_primary_hover "
+              value="Upload"
+            >
+              <Typography>Upload File</Typography>
+            </button>
+          </Box>
         </Card>
       </Modal>
     </div>
