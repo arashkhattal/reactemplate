@@ -1,25 +1,21 @@
 import React, { useState } from "react";
+import MenuOpenIcon from "@mui/icons-material/MenuOpen";
+import MenuIcon from "@mui/icons-material/Menu";
 
 // css file for appbar
 import "./AppBar.css";
 
 //global context
 import { useGlobalContext } from "../../context/globalContext";
-import {
-  Avatar,
-  Box,
-  Button,
-  IconButton,
-  Menu,
-  Typography,
-} from "@material-ui/core";
+import { Box, Menu, Typography } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
 
 const AppBar = () => {
   // state to maintain search results
   const [search, setSearch] = useState("");
 
-  const { setAlert } = useGlobalContext();
+  // global context
+  const { setAlert, openMenu, setOpenMenu } = useGlobalContext();
 
   // funciton for search bar
   const handleSearch = (e) => {
@@ -85,7 +81,7 @@ const AppBar = () => {
     <>
       {/* simple app bar contain 3 options */}
       <div className="navbar">
-        <div>
+        <div className="logo-openMenu">
           {/* company logo */}
           <img
             src="https://oyesters.in/wp-content/uploads/2020/06/webhost-225by60.png"
@@ -93,7 +89,13 @@ const AppBar = () => {
             height="30px"
             width="110px"
           />
+
+          {/* option to close or open menu  */}
+          <div onClick={() => setOpenMenu(!openMenu)}>
+            {openMenu ? <MenuOpenIcon /> : <MenuIcon />}
+          </div>
         </div>
+
         <div className="search">
           {/* search bar */}
           <input

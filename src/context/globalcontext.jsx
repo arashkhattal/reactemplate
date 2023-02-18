@@ -1,7 +1,6 @@
 import React, { useState, useContext, createContext } from "react";
 const AppContext = createContext();
 const AppProvider = ({ children }) => {
-
   // loader component
   const [loading, setLoading] = useState(false);
 
@@ -15,11 +14,18 @@ const AppProvider = ({ children }) => {
     msg: "",
   });
 
+  // state to maintain open close menu
+  const [openMenu, setOpenMenu] = useState(true);
 
+  // default drawer width
+  const drawerWidth = openMenu ? 210 : 60;
 
   return (
     <AppContext.Provider
       value={{
+        openMenu,
+        setOpenMenu,
+        drawerWidth,
         loading,
         setLoading,
         reload,

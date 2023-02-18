@@ -30,3 +30,10 @@
 input[type="search"]:focus {
   outline: none;
 }
+
+/* style for logo and openMenu  */
+.logo-openMenu {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}

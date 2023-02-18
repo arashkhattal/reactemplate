@@ -2,12 +2,14 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import AppBar from "../../components/appBar/AppBar";
 import Sidebar from "../../components/sideBar/Sidebar";
-
+import { useGlobalContext } from "../../context/globalContext";
 // custom style component from Mui
 import styled from "styled-components";
 
-
 const Index = () => {
+  // global context to access global state of drawerWidth
+  const { drawerWidth } = useGlobalContext();
+
   return (
     // common component render in every page
     <>
@@ -16,7 +18,14 @@ const Index = () => {
         <AppBar />
       </AppBarWrapper>
       <Wrapper>
-        <SidebarWrapper>
+        <SidebarWrapper
+          style={{
+            width: `${drawerWidth}px`,
+            flexShrink: 0,
+            height: "100%",
+            transition: "0.6s",
+          }}
+        >
           {/* side bar component */}
           <Sidebar />
         </SidebarWrapper>
@@ -28,6 +37,8 @@ const Index = () => {
     </>
   );
 };
+
+export default Index;
 
 // style for app bar
 const AppBarWrapper = styled.div`
@@ -49,11 +60,7 @@ const Wrapper = styled.div`
 `;
 
 // style for sidebar
-const SidebarWrapper = styled.div`
-  width: 250px;
-  flex-shrink: 0;
-  height: 100%;
-`;
+const SidebarWrapper = styled.div``;
 
 // style for main content
 const ContentWrapper = styled.div`
@@ -64,5 +71,3 @@ const ContentWrapper = styled.div`
   margin-left: 5px;
   margin-right: 5px;
 `;
-
-export default Index;

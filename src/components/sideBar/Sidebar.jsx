@@ -12,16 +12,13 @@ import MenuIcon from "@mui/icons-material/Menu";
 
 import { adminRoutes } from "../../routes";
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
-import { Collapse, Typography } from "@mui/material";
-
+import { Collapse, Tooltip, Typography } from "@mui/material";
+import { useGlobalContext } from "../../context/globalContext";
 import { makeStyles } from "@material-ui/core/styles";
 
 export default function PermanentDrawerLeft() {
-  // state to maintain open close menu
-  const [openMenu, setOpenMenu] = useState(true);
-
-  // default drawer widt
-  const drawerWidth = openMenu ? 210 : 60;
+  // global context
+  const { drawerWidth, openMenu, setOpenMenu } = useGlobalContext();
 
   // custom style for drawer
   const useStyles = makeStyles((theme) => ({
@@ -78,20 +75,7 @@ export default function PermanentDrawerLeft() {
       anchor="left"
     >
       {/* option to close or open menu  */}
-      <Typography
-        sx={{
-          margin: "10px",
-          cursor: "pointer",
-          border: "1px solid #dbdbdb",
-          padding: "10px",
-          borderRadius: "10px",
-          fontSize: "14px",
-          color: "#414548",
-        }}
-        onClick={() => setOpenMenu(!openMenu)}
-      >
-        {openMenu ? <MenuOpenIcon /> : <MenuIcon />}
-      </Typography>
+
       <Toolbar />
 
       {/* this will list the items in the side bar */}
@@ -116,9 +100,18 @@ export default function PermanentDrawerLeft() {
               >
                 {/* ListItemButton - added button */}
                 <ListItemButton>
-                  <ListItemIcon>{data?.icon}</ListItemIcon>
+                  {openMenu ? (
+                    <ListItemIcon>{data?.icon}</ListItemIcon>
+                  ) : (
+                    <Tooltip title={data?.name} arrow>
+                      <ListItemIcon>{data?.icon}</ListItemIcon>
+                    </Tooltip>
+                  )}
                   {/* text */}
-                  <ListItemText primary={data?.name} />
+                  <ListItemText
+                    primary={data?.name}
+                    style={{ display: openMenu ? "block" : "none" }}
+                  />
                   {open?.id === data?.key && open?.state ? (
                     <ExpandLess />
                   ) : (
@@ -144,9 +137,19 @@ export default function PermanentDrawerLeft() {
                       >
                         {/* ListItemButton - added button */}
                         <ListItemButton>
-                          <ListItemIcon>{cdata?.icon}</ListItemIcon>
+                          {openMenu ? (
+                            <ListItemIcon>{cdata?.icon}</ListItemIcon>
+                          ) : (
+                            <Tooltip title={cdata?.name} arrow>
+                              <ListItemIcon>{cdata?.icon}</ListItemIcon>
+                            </Tooltip>
+                          )}
+
                           {/* text */}
-                          <ListItemText primary={cdata?.name} />
+                          <ListItemText
+                            primary={cdata?.name}
+                            style={{ display: openMenu ? "block" : "none" }}
+                          />
                         </ListItemButton>
                       </NavLink>
                     </ListItem>
@@ -168,7 +171,14 @@ export default function PermanentDrawerLeft() {
               >
                 {/* ListItemButton - added button */}
                 <ListItemButton>
-                  <ListItemIcon>{data?.icon}</ListItemIcon>
+                  {openMenu ? (
+                    <ListItemIcon>{data?.icon}</ListItemIcon>
+                  ) : (
+                    <Tooltip title={data?.name} arrow>
+                      <ListItemIcon>{data?.icon}</ListItemIcon>
+                    </Tooltip>
+                  )}
+
                   {/* text */}
                   <ListItemText
                     primary={data?.name}
