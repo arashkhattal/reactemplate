@@ -16,10 +16,6 @@ import { Collapse, Typography } from "@mui/material";
 
 import { makeStyles } from "@material-ui/core/styles";
 
-h
-
-
-
 export default function PermanentDrawerLeft() {
   // state to maintain open close menu
   const [openMenu, setOpenMenu] = useState(true);
