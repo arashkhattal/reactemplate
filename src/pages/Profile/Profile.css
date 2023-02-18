@@ -1,0 +1,49 @@
+/* Center the form and give it some margin */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem;
+}
+
+/* Style the labels */
+label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+label > span {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+/* Style the inputs */
+input,
+textarea {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+}
+
+/* Style the submit button */
+button[type="submit"] {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button[type="submit"]:hover {
+  background-color: #0069d9;
+}
+
+/* Style the header */
+h1 {
+  text-align: center;
+  margin: 2rem;
+}

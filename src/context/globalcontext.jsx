@@ -1,4 +1,8 @@
-import React, { useState, useContext, createContext } from "react";
+import React, {
+  useState,
+  useContext,
+  createContext,
+} from "react";
 const AppContext = createContext();
 const AppProvider = ({ children }) => {
   // loader component
@@ -16,6 +20,8 @@ const AppProvider = ({ children }) => {
 
   // state to maintain open close menu
   const [openMenu, setOpenMenu] = useState(true);
+  const [resetModal, setResetModal] =
+    useState(false);
 
   // default drawer width
   const drawerWidth = openMenu ? 210 : 75;
@@ -32,6 +38,8 @@ const AppProvider = ({ children }) => {
         setReload,
         alert,
         setAlert,
+        resetModal,
+        setResetModal,
       }}
     >
       {children}

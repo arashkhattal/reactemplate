@@ -8,6 +8,7 @@ import Outlined from "./InputFieldData/Outlined";
 import Filled from "./InputFieldData/Filled";
 import Standard from "./InputFieldData/Standard";
 import "./InputField.css";
+import { useGlobalContext } from "../../context/globalContext";
 const Table = () => {
   // store tab number
   const [value, setValue] = React.useState("1");
@@ -16,7 +17,16 @@ const Table = () => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  const { setLoading } = useGlobalContext();
+  React.useEffect(() => {
+    setTimeout(() => {
+      setLoading(true);
+    });
+  }, []);
 
+  setTimeout(() => {
+    setLoading(false);
+  }, 2000);
   return (
     <Box
       sx={{ width: "100%", typography: "body1" }}
