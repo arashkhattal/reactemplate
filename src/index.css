@@ -7,6 +7,7 @@
 /* css variables */
 :root {
   --color_primary: #0d80d8;
+  --color_secondary: rgba(173, 216, 230, 0.573);
   --font_12: 12px !important;
   --color_primary_btn_hover: #0a73c4;
   --color_warning: #ef5350;
@@ -24,7 +25,7 @@
 .active {
   margin: 6px;
   border-left: 8px solid var(--color_primary);
-  background-color: rgba(173, 216, 230, 0.573);
+  background-color: var(--color_secondary);
   border-radius: 5px;
 }
 /* css cursor */
