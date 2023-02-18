@@ -34,14 +34,17 @@ function Profile() {
   const [selectedFile, setSelectedFile] =
     useState(null);
   // preview photo
-  const [preview, setPreview] = useState("");
+  const [preview, setPreview] = useState(null);
   console.log(selectedFile);
   // global context
   const { setResetModal, setAlert } =
     useGlobalContext();
-
+  // make URL fOR PREVIEW
   useEffect(() => {
-    // make Photo URL
+    if (!selectedFile) {
+      //  setPreview(undefined);
+      return;
+    }
     const objectUrl =
       URL.createObjectURL(selectedFile);
     setPreview(objectUrl);
@@ -49,7 +52,7 @@ function Profile() {
     return () => URL.revokeObjectURL(objectUrl);
   }, [selectedFile]);
 
-  //   selected photo function
+  //   select photo function
   const onSelectFile = (e) => {
     if (
       !e.target.files ||
@@ -118,7 +121,7 @@ function Profile() {
         msg: "Update successful",
       });
       console.log(
-        `Image URL: ${preview}`,
+        `Image name: ${selectedFile?.name}Image URL: ${preview}`,
         email,
         fullName,
         phoneno,
