@@ -11,6 +11,7 @@ import InfoIcon from "@mui/icons-material/Info";
 import TableChartIcon from "@mui/icons-material/TableChart";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import Calendar from "./pages/fullCalendar/FullCalendar";
+import MuiIconsList from "./pages/muiIcons/MuiIconsList";
 
 // Import components using lazy to load the component
 const HomePage = lazy(() => import("./pages/home/HomePage"));
@@ -50,6 +51,15 @@ export const adminRoutes = [
     route: "/table",
     icon: <TableChartIcon fontSize="small" />,
     component: <Tables />,
+  },
+  //object for normal option
+  {
+    type: "menu",
+    name: <Typography sx={{ fontSize: "14px" }}>Mui Icons</Typography>,
+    key: "tooltips",
+    route: "/tooltips",
+    icon: <Icon sx={{ fontSize: "14px" }}>I</Icon>,
+    component: <MuiIconsList />,
   },
   // object for collapse (dropdown)
   {
