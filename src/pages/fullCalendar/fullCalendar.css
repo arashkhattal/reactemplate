@@ -1,0 +1,6 @@
+/* css for buttons in calendar */
+.fc .fc-button-primary {
+  background-color: #0d80d8 !important;
+  border-color: #3498db !important;
+  color: #fff;
+}

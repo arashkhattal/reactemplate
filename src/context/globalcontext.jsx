@@ -18,7 +18,7 @@ const AppProvider = ({ children }) => {
   const [openMenu, setOpenMenu] = useState(true);
 
   // default drawer width
-  const drawerWidth = openMenu ? 210 : 60;
+  const drawerWidth = openMenu ? 210 : 75;
 
   return (
     <AppContext.Provider
