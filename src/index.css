@@ -23,9 +23,8 @@
 /* active link for side bar */
 .active {
   margin: 6px;
-  background-color: var(
-    --color_primary
-  ) !important;
+  border-left: 8px solid var(--color_primary);
+  background-color: rgba(173, 216, 230, 0.573);
   border-radius: 5px;
 }
 /* css cursor */
@@ -105,9 +104,7 @@
   background-color: var(--color_primary);
 }
 .btn_primary_hover:hover {
-  background-color: var(
-    --color_primary_btn_hover
-  );
+  background-color: var(--color_primary_btn_hover);
 }
 .warning_btn {
   background-color: var(--color_warning);
