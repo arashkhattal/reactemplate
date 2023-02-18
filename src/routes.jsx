@@ -1,5 +1,7 @@
 //imported lazy from react
 import { lazy } from "react";
+import { Typography } from "@mui/material";
+import SunEditor from "./pages/sunEditor/SunEditor";
 
 // MUI icons
 import SettingsIcon from "@material-ui/icons/Settings";
@@ -7,7 +9,8 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import InsightsIcon from "@mui/icons-material/Insights";
 import InfoIcon from "@mui/icons-material/Info";
 import TableChartIcon from "@mui/icons-material/TableChart";
-import { Typography } from "@mui/material";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import Calendar from "./pages/fullCalendar/FullCalendar";
 
 // Import components using lazy to load the component
 const HomePage = lazy(() => import("./pages/home/HomePage"));
@@ -51,15 +54,23 @@ export const adminRoutes = [
   // object for collapse (dropdown)
   {
     type: "collapse",
-    name: <Typography sx={{ fontSize: "14px" }}>Setting</Typography>,
+    name: <Typography sx={{ fontSize: "14px" }}>Options</Typography>,
     key: "setting",
     icon: <SettingsIcon fontSize="small" />,
     collapse: [
       {
-        name: <Typography sx={{ fontSize: "14px" }}>About</Typography>,
-        key: "about1",
-        route: "/about1",
-        component: <Tables />,
+        name: <Typography sx={{ fontSize: "14px" }}>Sun Editor</Typography>,
+        key: "suneditor",
+        route: "/suneditor",
+        icon: <Icon sx={{ fontSize: "14px" }}>S</Icon>,
+        component: <SunEditor />,
+      },
+      {
+        name: <Typography sx={{ fontSize: "14px" }}>Calendar</Typography>,
+        key: "fullcalendar",
+        route: "/fullcalendar",
+        icon: <CalendarMonthIcon sx={{ fontSize: "14px" }} />,
+        component: <Calendar />,
       },
     ],
   },
