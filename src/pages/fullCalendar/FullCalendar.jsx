@@ -7,6 +7,7 @@ import "./fullCalendar.css";
 import { Card, Typography } from "@mui/material";
 
 const Calendar = () => {
+    // default events 
   const [events, setEvents] = useState([
     {
       id: 1,
@@ -22,21 +23,7 @@ const Calendar = () => {
     },
   ]);
 
-  //   const handleDateSelect = (selectInfo) => {
-  //     const title = prompt("Please enter a title for your event");
-  //     if (title) {
-  //       setEvents([
-  //         ...events,
-  //         {
-  //           id: events.length + 1,
-  //           title,
-  //           start: selectInfo.startStr,
-  //           end: selectInfo.endStr,
-  //         },
-  //       ]);
-  //     }
-  //   };
-
+// function to create event by drag (single & multiple)
   const handleDateSelect = (selectInfo) => {
     const title = prompt("Please enter a title for your event");
     if (title) {
@@ -64,6 +51,7 @@ const Calendar = () => {
         >
           Full Calendar
         </Typography>
+        {/* full calendar component  */}
         <FullCalendar
           aspectRatio={2}
           plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
