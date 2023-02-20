@@ -1,4 +1,4 @@
-import {Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import { useGlobalContext } from "../../context/globalContext";
 
@@ -17,7 +17,7 @@ const HomePage = () => {
   return (
     <>
       <div>
-        <Typography variant="h2">Home Page</Typography>
+        <Typography variant="h2">Dashboard</Typography>
       </div>
     </>
   );
