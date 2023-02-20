@@ -8,6 +8,7 @@ import DonutChart from "./donutChart/DonutChart";
 import LineChart from "./linechart/Linechart";
 import PieChart from "./pieCharts/PieChart";
 import TimeLineChart from "./timelineChart/TimeLineChart";
+import TimeLineChartBasic from "./timelineChart/TimeLineChartBasic";
 
 const Contact = () => {
   const { setLoading } = useGlobalContext();
@@ -61,6 +62,15 @@ const Contact = () => {
               </Typography>
               {/* Time Line chart component */}
               <TimeLineChart />
+            </Card>
+          </Grid>
+          <Grid item xs={12} md={12}>
+            <Card style={{ padding: "20px", border: "1px solid lightgrey" }}>
+              <Typography className="global_display_flex fs_16 fw_600">
+                Apex chart - Time Line chart Basic
+              </Typography>
+              {/* Time Line chart component */}
+              <TimeLineChartBasic />
             </Card>
           </Grid>
           <Grid item xs={12} md={6}>
