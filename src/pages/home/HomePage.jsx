@@ -3,24 +3,26 @@ import React, { useEffect } from "react";
 import { useGlobalContext } from "../../context/globalContext";
 
 const HomePage = () => {
-  const { setLoading } = useGlobalContext();
-  useEffect(() => {
+    const { setLoading } = useGlobalContext();
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(true);
+        }, 500);
+    }, []);
+
     setTimeout(() => {
-      setLoading(true);
-    }, 500);
-  }, []);
+        setLoading(false);
+    }, 4000);
 
-  setTimeout(() => {
-    setLoading(false);
-  }, 4000);
-
-  return (
-    <>
-      <div>
-        <Typography variant="h2">Dashboard</Typography>
-      </div>
-    </>
-  );
+    return (
+        <>
+            <div>
+                <Typography variant="h2">
+                    Dashboard pages
+                </Typography>
+            </div>
+        </>
+    );
 };
 
 export default HomePage;
