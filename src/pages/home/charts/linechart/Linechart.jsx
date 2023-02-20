@@ -41,6 +41,14 @@ function Linechart() {
     yaxis: {
       title: { text: "Product in K" },
     },
+    stroke: {
+    show: true,
+    curve: 'smooth',
+    lineCap: 'butt',
+    colors: undefined,
+    width: 4,
+    dashArray: 0,
+},
     // to display responsive chart
     responsive: [
       {
