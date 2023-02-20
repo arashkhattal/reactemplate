@@ -44,6 +44,7 @@ const message = [
   },
 ];
 const Messages = () => {
+  // global context
   const { setCreateChat, setCreateGroup } =
     useGlobalContext();
   return (

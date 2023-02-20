@@ -1,5 +1,14 @@
-import { Box, Card, Modal, Typography } from "@mui/material";
-import React, { useEffect, useRef, useState } from "react";
+import {
+  Box,
+  Card,
+  Modal,
+  Typography,
+} from "@mui/material";
+import React, {
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import FolderImg from "../../../assets/image/dragndrop.png";
 
 const uploadSingleFile = () => {
@@ -8,11 +17,14 @@ const uploadSingleFile = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   // get file and details
-  const [projectSheet, setProjectSheet] = useState([]);
+  const [projectSheet, setProjectSheet] =
+    useState([]);
   console.log(projectSheet[0]);
 
   // store present File
-  const [presentFile, setPresentFile] = useState([]);
+  const [presentFile, setPresentFile] = useState(
+    []
+  );
 
   // reference a value that’s not needed for rendering.
   const projectSheetRef = useRef();
@@ -29,7 +41,9 @@ const uploadSingleFile = () => {
 
   // filter data
   const handleDelete = (e) => {
-    const filteredData = projectSheet.filter((item, index) => index !== e);
+    const filteredData = projectSheet.filter(
+      (item, index) => index !== e
+    );
     setProjectSheet(filteredData);
   };
 
@@ -41,27 +55,23 @@ const uploadSingleFile = () => {
   const FileDrop = (e, type) => {
     e.preventDefault();
     const files = e.dataTransfer.files;
-
-    if (files.length && files?.size < 10000000) {
-      let file = files;
-      setProjectSheet([...projectSheet, ...file]);
+    if (files) {
+      let arrFile = [...files];
+      console.log(arrFile);
+      let newFile = [];
+      arrFile?.forEach((t) => {
+        if (t?.size > 10000000) {
+          alert(`${t?.name} is larger than 10MB`);
+        } else {
+          newFile.push(t);
+        }
+      });
+      setProjectSheet([
+        ...projectSheet,
+        ...newFile,
+      ]);
     }
-    setPresentFile(e);
   };
-
-  // select the file function
-  //   const FileSelected = (val, i) => {
-  //     if (val[i]?.size < 10000000) {
-  //       // upload check
-
-  //       let file = val;
-  //       console.log("Arash", val[0]);
-  //       setProjectSheet([...projectSheet, ...file]);
-  //     }
-  //     setPresentFile(val);
-  //   };
-
-
 
   const FileSelected = (val) => {
     console.log(val);
@@ -70,18 +80,16 @@ const uploadSingleFile = () => {
       console.log(arrFile);
       let newFile = [];
       arrFile?.forEach((t) => {
-        if (t?.size > 15728640) {
-          alert(`${t?.name} is larger than 15MB`);
-          //   setAlert({
-          //     flag: true,
-          //     type: "error",
-          //     msg: `${t?.name} is larger than 15MB`,
-          //   });
+        if (t?.size > 10000000) {
+          alert(`${t?.name} is larger than 10MB`);
         } else {
           newFile.push(t);
         }
       });
-      setProjectSheet([...projectSheet, ...newFile]);
+      setProjectSheet([
+        ...projectSheet,
+        ...newFile,
+      ]);
     }
   };
 
@@ -142,13 +150,25 @@ const uploadSingleFile = () => {
                 onDragOver={dragOver}
                 onDragEnter={dragEnter}
                 onDragLeave={dragLeave}
-                onDrop={(e) => FileSelected(e, "file")}
-                onClick={() => FileInputClicked("file")}
+                onDrop={(e) =>
+                  FileDrop(e, "file")
+                }
+                onClick={() =>
+                  FileInputClicked("file")
+                }
               >
-                <img alt="" src={FolderImg} className="drag_img" />
-                <Typography variant="h6" className="drag_test">
+                <img
+                  alt=""
+                  src={FolderImg}
+                  className="drag_img"
+                />
+                <Typography
+                  variant="h6"
+                  className="drag_test"
+                >
                   {" "}
-                  Drag and Drop your file here <br /> <u>or</u>
+                  Drag and Drop your file here{" "}
+                  <br /> <u>or</u>
                 </Typography>
 
                 <input
@@ -160,13 +180,19 @@ const uploadSingleFile = () => {
                   // accept=".xlsx, .xls .csv"
                   multiple
                   onChange={() =>
-                    FileSelected(projectSheetRef.current.files, "file")
+                    FileSelected(
+                      projectSheetRef.current
+                        .files,
+                      "file"
+                    )
                   }
                 />
               </section>
 
               <Typography
-                onClick={(e) => FileInputClicked("file")}
+                onClick={(e) =>
+                  FileInputClicked("file")
+                }
                 variant="p"
                 className="browser_text"
               >
@@ -178,11 +204,15 @@ const uploadSingleFile = () => {
           {projectSheet?.length !== 0
             ? projectSheet?.map((file, i) => (
                 <div>
-                  <Box className="upload_complete" my={1}>
+                  <Box
+                    className="upload_complete"
+                    my={1}
+                  >
                     <div
                       style={{
                         display: "flex",
-                        justifyContent: "space-between",
+                        justifyContent:
+                          "space-between",
                         alignItems: "center",
                       }}
                     >
@@ -225,28 +255,6 @@ const uploadSingleFile = () => {
               ))
             : null}
 
-          {presentFile[0]?.size > 10000000 ? (
-            <Box className="upload_error" my={1}>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                }}
-              >
-                <Box
-                  style={{
-                    display: "flex",
-                  }}
-                >
-                  <Typography className="fs_14 fw_400">
-                    You Can not Upload this File. Upload limit is 10 MB.
-                    <br /> Please resize and try again!
-                  </Typography>
-                </Box>
-                <div></div>
-              </div>
-            </Box>
-          ) : null}
           <Box
             pt={3}
             style={{

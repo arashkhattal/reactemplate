@@ -5,9 +5,11 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import "./fullCalendar.css";
 import { Card, Typography } from "@mui/material";
+import CreateEvent from "./createEvent";
+import { useGlobalContext } from "../../context/globalContext";
 
 const Calendar = () => {
-    // default events 
+  // default events
   const [events, setEvents] = useState([
     {
       id: 1,
@@ -22,10 +24,13 @@ const Calendar = () => {
       end: "2023-02-22",
     },
   ]);
-
-// function to create event by drag (single & multiple)
+  // global function for create event modal
+  const { setCreateEvent } = useGlobalContext();
+  // function to create event by drag (single & multiple)
   const handleDateSelect = (selectInfo) => {
-    const title = prompt("Please enter a title for your event");
+    const title = prompt(
+      "Please enter a title for your event"
+    );
     if (title) {
       const newEvent = {
         id: events.length + 1,
@@ -41,7 +46,14 @@ const Calendar = () => {
   return (
     <div>
       {/* card component from mui  */}
-      <Card style={{ padding: "20px", margin: "20px" }} className="test">
+      <CreateEvent />
+      <Card
+        style={{
+          padding: "20px",
+          margin: "20px",
+        }}
+        className="test"
+      >
         {/* <button onClick={handleDateSelect}>Create Event</button> */}
 
         {/* Typography component from MUI  */}
@@ -54,7 +66,11 @@ const Calendar = () => {
         {/* full calendar component  */}
         <FullCalendar
           aspectRatio={2}
-          plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+          plugins={[
+            dayGridPlugin,
+            timeGridPlugin,
+            interactionPlugin,
+          ]}
           dayMaxEvents={2}
           initialView="dayGridMonth"
           selectable={true}
@@ -62,10 +78,19 @@ const Calendar = () => {
           select={handleDateSelect}
           editable={true}
           droppable={true}
+          customButtons={{
+            myCustomButton: {
+              text: "Create Event",
+              class: "btn-sm",
+              click: function () {
+                setCreateEvent(true);
+              },
+            },
+          }}
           headerToolbar={{
             start: "prev,next today",
             center: "title",
-            end: "dayGridMonth,timeGridWeek,timeGridDay",
+            end: "myCustomButton dayGridMonth,timeGridWeek,timeGridDay",
           }}
           views={{
             dayGridDay: {

@@ -1,48 +1,47 @@
 import {
   Box,
   Card,
-  Divider,
   Grid,
   Modal,
   TextField,
   Typography,
 } from "@mui/material";
 
-import React, {
-  useState,
-} from "react";
+import React, { useState } from "react";
+import { useGlobalContext } from "../../context/globalContext";
 
-import { useGlobalContext } from "../../../context/globalContext";
-
-const CreateChat = () => {
+const CreateEvent = () => {
   // store chat name
-  const [name, setName] = useState("");
+  const [event, setEvent] = useState("");
   // global function
-  const { createChat, setCreateChat, setAlert } =
-    useGlobalContext();
+  const {
+    createEvent,
+    setCreateEvent,
+    setAlert,
+  } = useGlobalContext();
   // submit created chat
   const HandleSubmit = async () => {
-    if (name === "") {
+    if (event === "") {
       setAlert({
         flag: true,
         type: "error",
-        msg: "Please enter Chat Room Name",
+        msg: "Please Event Event Name",
       });
-
       return;
     } else {
       setAlert({
         flag: true,
         type: "success",
-        msg: "Created a chat Successfully",
+        msg: "Event Created Successfully",
       });
     }
+    setCreateEvent(false);
   };
 
   return (
     <Modal
-      open={createChat}
-      onClose={() => setCreateChat(false)}
+      open={createEvent}
+      onClose={() => setCreateEvent(false)}
     >
       <Card className="center_modal_ui ">
         <Typography
@@ -52,7 +51,7 @@ const CreateChat = () => {
             padding: "10px",
           }}
         >
-          Create Chat
+          Create Event
         </Typography>
 
         <Grid container spacing={3}>
@@ -61,10 +60,10 @@ const CreateChat = () => {
               fullWidth
               required
               type="text"
-              label="Chat Room Name"
-              value={name}
+              label="Create Event"
+              value={event}
               onChange={(e) =>
-                setName(e.target.value)
+                setEvent(e.target.value)
               }
             />
           </Grid>
@@ -84,7 +83,7 @@ const CreateChat = () => {
               width: "15%",
             }}
             size="small"
-            onClick={() => setCreateChat(false)}
+            onClick={() => setCreateEvent(false)}
           >
             Cancel
           </button>
@@ -106,4 +105,4 @@ const CreateChat = () => {
   );
 };
 
-export default CreateChat;
+export default CreateEvent;

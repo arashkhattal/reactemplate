@@ -1,4 +1,4 @@
-/* reset password UI design */
+/*  UI design center */
 .center_modal_ui {
   position: absolute;
   top: 50%;
@@ -9,5 +9,4 @@
   box-shadow: 24px;
   border-radius: 1px solid;
   padding: 40px;
-
 }
