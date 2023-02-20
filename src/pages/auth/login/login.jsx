@@ -1,9 +1,4 @@
-import {
-  Box,
-  Divider,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Divider, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import Google from "../../../assets/icon/google.png";
 import { useGlobalContext } from "../../../context/globalContext";
@@ -121,14 +116,8 @@ const Login = () => {
                 gap: "10px",
               }}
             >
-              <img
-                style={{ width: "16px" }}
-                src={Google}
-                alt=""
-              />
-              <Typography>
-                Login with Google
-              </Typography>
+              <img style={{ width: "16px" }} src={Google} alt="" />
+              <Typography>Login with Google</Typography>
             </Box>
           </button>
         </Box>
@@ -149,9 +138,7 @@ const Login = () => {
           label="User Email"
           type="email"
           value={email}
-          onChange={(e) =>
-            setEmail(e.target.value)
-          }
+          onChange={(e) => setEmail(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
               handleSubmit();
@@ -169,9 +156,7 @@ const Login = () => {
           type="password"
           label="Password"
           value={password}
-          onChange={(e) =>
-            setPassword(e.target.value)
-          }
+          onChange={(e) => setPassword(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
               handleSubmit();
@@ -196,14 +181,8 @@ const Login = () => {
               gap: "5px",
             }}
           >
-            <input
-              type="checkbox"
-              size="10px"
-              defaultChecked
-            />
-            <Typography className="fs_13 ">
-              Remember me
-            </Typography>
+            <input type="checkbox" size="10px" defaultChecked />
+            <Typography className="fs_13 ">Remember me</Typography>
           </Box>
           <a
             className="fs_13 color_primary"
@@ -236,9 +215,7 @@ const Login = () => {
             marginBottom: "20px",
           }}
         >
-          <Typography className="fs_13">
-            Not registered yet?
-          </Typography>
+          <Typography className="fs_13">Not registered yet?</Typography>
           <a
             className="fs_13 color_primary"
             style={{
