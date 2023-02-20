@@ -8,28 +8,46 @@ import { useGlobalContext } from "../../context/globalContext";
 import noMsgo from "../../assets/image/nomsgblack.png";
 import CreateChat from "./createChat/createChat";
 import CreateGroup from "./createGroup/createGroup";
-
+import "./Messages.css";
 const message = [
-  { id: 1, name: "jabed" },
-  { id: 2, name: "jabed" },
-  { id: 3, name: "jabed" },
-  { id: 4, name: "jabed" },
-  { id: 5, name: "jabed" },
-  { id: 6, name: "jabed" },
-  { id: 7, name: "jabed" },
-  { id: 8, name: "jabed" },
-  { id: 9, name: "jabed" },
-  { id: 10, name: "jabed" },
+  {
+    id: 1,
+    name: "Snow",
+  },
+  {
+    id: 2,
+    name: "Lannister",
+  },
+  {
+    id: 3,
+    name: "Lannister",
+  },
+  {
+    id: 4,
+    name: "Stark",
+  },
+  {
+    id: 5,
+    name: "Targaryen",
+  },
+  {
+    id: 6,
+    name: "Melisandre",
+  },
+  {
+    id: 7,
+    name: "Clifford",
+  },
+  {
+    id: 8,
+    name: "Frances",
+  },
 ];
 const Messages = () => {
   const { setCreateChat, setCreateGroup } =
     useGlobalContext();
   return (
     <>
-      {/* <CreateChatRoomModal />
-      <EditChatRoomModal />
-      <DeleteChatRoomModal /> */}
-      {/* <AddSingleChat /> */}
       <CreateChat />
       <CreateGroup />
       <Box
@@ -37,7 +55,6 @@ const Messages = () => {
         height="80vh"
       >
         <Card>
-          {/* chat list card on left side */}
           <Box
             style={{
               display: "flex",
@@ -72,6 +89,7 @@ const Messages = () => {
                 color="dark"
                 style={{
                   color: "white",
+                  width: "120px",
                 }}
                 className="btn_primary btn_primary_hover"
                 onClick={() =>
@@ -85,12 +103,13 @@ const Messages = () => {
                 className="btn_primary btn_primary_hover"
                 style={{
                   color: "white",
+                  width: "120px",
                 }}
                 onClick={() =>
                   setCreateGroup(true)
                 }
               >
-                CreateGroup
+                Create Group
               </button>
             </Box>
           </Box>
@@ -126,9 +145,6 @@ const Messages = () => {
                     }}
                   >
                     <Badge
-                      // badgeContent={
-                      //     data?.unread
-                      // }
                       color="success"
                       style={{
                         display: "flex",
