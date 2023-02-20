@@ -46,7 +46,7 @@ const PushNotification = lazy(() =>
   )
 );
 const Messages = lazy(() =>
-  import("./pages/Messages")
+  import("./pages/Messages/Messages")
 );
 
 // @mui icons

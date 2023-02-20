@@ -4,53 +4,32 @@ import {
   Typography,
 } from "@mui/material";
 import Card from "@mui/material/Card";
-import { useState, useRef } from "react";
-// import Trashsvg from "assets/icon/dark/Trash.svg";
-// import send from "assets/icon/dark/send.svg";
+import { useGlobalContext } from "../../context/globalContext";
+import noMsgo from "../../assets/image/nomsgblack.png";
+import CreateChat from "./createChat/createChat";
 
-// this object will hold socket connection
-// once got socket connection on first load store the same in here..
-const socket = {
-  conn: null,
-  set: (conn) => {
-    socket.conn = conn;
-  },
-  close: () => {
-    socket.conn.close();
-  },
-};
-
+const message = [
+  { id: 1, name: "jabed" },
+  { id: 2, name: "jabed" },
+  { id: 3, name: "jabed" },
+  { id: 4, name: "jabed" },
+  { id: 5, name: "jabed" },
+  { id: 6, name: "jabed" },
+  { id: 7, name: "jabed" },
+  { id: 8, name: "jabed" },
+  { id: 9, name: "jabed" },
+  { id: 10, name: "jabed" },
+];
 const Messages = () => {
-  const isFirstLoad = useRef(true);
-  // const [roomIdState, setRoomIdState] = useState([]);  // used by roomId funtion, pls don't alter
-  const [allRoomIds, setAllRoomIds] = useState(
-    []
-  ); // stores all rooms available for this user
-  const [
-    currRoomUsersStatus,
-    setCurrRoomUsersStatus,
-  ] = useState([]);
-  const [listeningToRooms, setListeningToRooms] =
-    useState(new Set());
-  const conditionalRoomRef = useRef(null);
-  const [userIsTyping, setUserIsTyping] =
-    useState("");
-  const donotScrollToTop = useRef(false);
-  const isMsgWindowOpenRef = useRef(false);
-  const [allUsersId, setAllUsersId] = useState(
-    []
-  );
-  let isNewDateConten = null;
-
+  const { setCreateChat } = useGlobalContext();
   return (
     <>
       {/* <CreateChatRoomModal />
       <EditChatRoomModal />
       <DeleteChatRoomModal /> */}
       {/* <AddSingleChat /> */}
+      <CreateChat />
       <Box
-        width="70%"
-        mx={30}
         sx={{ overflowY: "hidden" }}
         height="80vh"
       >
@@ -60,7 +39,6 @@ const Messages = () => {
             style={{
               display: "flex",
               justifyContent: "space-between",
-              height: "70px",
             }}
           >
             <Typography
@@ -90,11 +68,9 @@ const Messages = () => {
                   paddingRight: "6px",
                   paddingLeft: "6px",
                 }}
-                // onClick={() =>
-                //     setAddSingleChat(
-                //         true
-                //     )
-                // }
+                onClick={() =>
+                  setCreateChat(true)
+                }
               >
                 {/* <Icon
                                     sx={{
@@ -153,102 +129,102 @@ const Messages = () => {
               }}
               id={"list_rooms"}
             >
-              <Card
-                sx={{
-                  height: "auto",
-                  width: "auto",
-                }}
-              >
-                <Box
-                  p={2}
+              {message.map((msg) => (
+                <Card
                   sx={{
-                    borderBottom:
-                      "1px solid lightgrey",
+                    height: "auto",
+                    width: "auto",
                   }}
                 >
-                  <Badge
-                    // badgeContent={
-                    //     data?.unread
-                    // }
-                    color="success"
-                    style={{
-                      display: "flex",
-                      width: "100%",
+                  <Box
+                    p={2}
+                    sx={{
+                      borderBottom:
+                        "1px solid lightgrey",
                     }}
                   >
-                    <Box
-                      display="flex"
+                    <Badge
+                      // badgeContent={
+                      //     data?.unread
+                      // }
+                      color="success"
                       style={{
-                        flex: "1 1 auto",
-                        cursor: "pointer",
-                        backgroundColor:
-                          "#FFF7ED",
-                        borderRadius: "5px",
-                        border:
-                          "1px solid #DA7651",
-                        borderRight:
-                          "1px solid #DA7651",
-                        padding: "5px",
-                        margin: "-5px",
+                        display: "flex",
+                        width: "100%",
                       }}
                     >
-                      <div
+                      <Box
+                        display="flex"
                         style={{
-                          display: "flex",
-                          flexDirection: "column",
-                          position: "relative",
-                          alignItems: "center",
+                          flex: "1 1 auto",
+                          cursor: "pointer",
+                          backgroundColor:
+                            "#FFF7ED",
+                          borderRadius: "5px",
+                          border:
+                            "1px solid #DA7651",
+                          borderRight:
+                            "1px solid #DA7651",
+                          padding: "5px",
+                          margin: "-5px",
                         }}
                       >
-                        <img
-                          alt=""
-                          src={
-                            "https://i.pinimg.com/474x/33/23/94/33239488ede380d4f02386460ed3adf3.jpg"
-                          }
+                        <div
                           style={{
-                            zIndex: "10",
-                            height: "24px",
-                            width: "24px",
-                            borderRadius: "50px",
+                            display: "flex",
+                            flexDirection:
+                              "column",
+                            position: "relative",
+                            alignItems: "center",
                           }}
-                        />
-                      </div>
-                      <Box pl={2}>
-                        <Box
-                          display="flex"
-                          justifyContent="space-between"
                         >
-                          <Typography
-                            variant="h6"
+                          <img
+                            alt=""
+                            src={
+                              "https://i.pinimg.com/474x/33/23/94/33239488ede380d4f02386460ed3adf3.jpg"
+                            }
                             style={{
-                              fontWeight: "600",
-                              display: "flex",
-                              justifyContent:
-                                "space-between",
+                              zIndex: "10",
+                              height: "24px",
+                              width: "24px",
+                              borderRadius:
+                                "50px",
                             }}
+                          />
+                        </div>
+                        <Box pl={2}>
+                          <Box
+                            display="flex"
+                            justifyContent="space-between"
                           >
-                            <span></span>
-                            {/* <span>{new Date(data?.latest_message_details &&
-                                data?.latest_message_details?.length >= 1
-                                && data?.latest_message_details[0]?.created_at).toString().substring(16, 21)}
-                              </span> */}
-                          </Typography>
+                            <Typography
+                              variant="h6"
+                              style={{
+                                fontWeight: "600",
+                                display: "flex",
+                                justifyContent:
+                                  "space-between",
+                              }}
+                            >
+                              {msg.name}
+                            </Typography>
+                          </Box>
                         </Box>
                       </Box>
-                    </Box>
-                  </Badge>
-                </Box>
-              </Card>
+                    </Badge>
+                  </Box>
+                </Card>
+              ))}
             </Box>
 
-            <>
+            <Box>
               <img
                 alt=""
-                // src={noMsgo}
+                src={noMsgo}
                 style={{
                   position: "absolute",
                   top: "48%",
-                  left: "58%",
+                  left: "67%",
                   height: "60px",
                   width: "60px",
                 }}
@@ -260,12 +236,12 @@ const Messages = () => {
                   fontSize: "15px",
                   fontWeight: "600",
                   top: "60%",
-                  left: "57%",
+                  left: "66%",
                 }}
               >
                 No Messages
               </Typography>
-            </>
+            </Box>
           </Box>
         </Card>
       </Box>

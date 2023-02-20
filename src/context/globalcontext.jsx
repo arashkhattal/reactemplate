@@ -22,7 +22,9 @@ const AppProvider = ({ children }) => {
   const [openMenu, setOpenMenu] = useState(true);
   const [resetModal, setResetModal] =
     useState(false);
-
+  // create chat
+  const [createChat, setCreateChat] =
+    useState(false);
   // default drawer width
   const drawerWidth = openMenu ? 210 : 75;
 
@@ -40,6 +42,8 @@ const AppProvider = ({ children }) => {
         setAlert,
         resetModal,
         setResetModal,
+        createChat,
+        setCreateChat,
       }}
     >
       {children}
