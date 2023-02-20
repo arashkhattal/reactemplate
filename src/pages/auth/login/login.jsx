@@ -193,7 +193,6 @@ const Login = () => {
             style={{
               display: "flex",
               alignItems: "center",
-              display: "flex",
               gap: "5px",
             }}
           >
