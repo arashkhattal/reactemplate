@@ -1,43 +1,89 @@
 import {
   Box,
   Card,
-  Divider,
   Grid,
   Modal,
   TextField,
   Typography,
 } from "@mui/material";
+import { DataGrid } from "@mui/x-data-grid";
 
-import React, {
-  useEffect,
-  useState,
-} from "react";
+import React, { useState } from "react";
 
 import { useGlobalContext } from "../../../context/globalContext";
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  width: "100%",
-  maxWidth: "664px",
-  maxHeight: "60vh",
-  overflow: "auto",
-  transform: "translate(-50%, -50%)",
-  boxShadow: 24,
-  borderRadius: 2,
-  p: 2,
-};
-
-const boxSX = {
-  background: "#DC6C43",
-  color: "#ffffff",
-  "&:hover": {
-    color: "#ffffff",
-    backgroundColor: "#e37a54",
+// column data
+const columns = [
+  { field: "id", headerName: "ID", width: 70 },
+  {
+    field: "firstName",
+    headerName: "First name",
+    width: 130,
   },
-};
+  {
+    field: "lastName",
+    headerName: "Last name",
+    width: 130,
+  },
+  {
+    field: "age",
+    headerName: "Age",
+    type: "number",
+    width: 90,
+  },
+];
 
+// table data
+const rows = [
+  {
+    id: 1,
+    lastName: "Snow",
+    firstName: "Jon",
+    age: 35,
+  },
+  {
+    id: 2,
+    lastName: "Lannister",
+    firstName: "Cersei",
+    age: 42,
+  },
+  {
+    id: 3,
+    lastName: "Lannister",
+    firstName: "Jaime",
+    age: 45,
+  },
+  {
+    id: 4,
+    lastName: "Stark",
+    firstName: "Arya",
+    age: 16,
+  },
+  {
+    id: 5,
+    lastName: "Targaryen",
+    firstName: "Daenerys",
+    age: 6,
+  },
+  {
+    id: 6,
+    lastName: "Melisandre",
+    firstName: null,
+    age: 150,
+  },
+  {
+    id: 7,
+    lastName: "Clifford",
+    firstName: "Ferrara",
+    age: 44,
+  },
+  {
+    id: 8,
+    lastName: "Frances",
+    firstName: "Rossini",
+    age: 36,
+  },
+];
 const createGroup = () => {
   // store chat name
   const [name, setName] = useState("");
@@ -71,7 +117,13 @@ const createGroup = () => {
       open={createGroup}
       onClose={() => setCreateGroup(false)}
     >
-      <Card sx={style}>
+      <Card
+        className="center_modal_ui"
+        style={{
+          maxHeight: "60vh",
+          overflow: "auto",
+        }}
+      >
         <Typography
           className="fs_24"
           style={{
@@ -79,7 +131,7 @@ const createGroup = () => {
             padding: "10px",
           }}
         >
-          Add Chat Room
+          Add Group Chat Room
         </Typography>
 
         <Grid container spacing={3}>
@@ -96,6 +148,18 @@ const createGroup = () => {
             />
           </Grid>
         </Grid>
+        <div
+          style={{ height: 400, width: "100%" }}
+        >
+          {/* tabel Data grid component  */}
+          <DataGrid
+            rows={rows}
+            columns={columns}
+            pageSize={5}
+            rowsPerPageOptions={[4]}
+            checkboxSelection
+          />
+        </div>
         <Box
           pt={3}
           style={{
@@ -122,7 +186,6 @@ const createGroup = () => {
               width: "15%",
             }}
             size="small"
-            sx={boxSX}
             onClick={() => {
               HandleSubmit();
             }}

@@ -15,29 +15,6 @@ import React, {
 
 import { useGlobalContext } from "../../../context/globalContext";
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  width: "100%",
-  maxWidth: "664px",
-  maxHeight: "60vh",
-  overflow: "auto",
-  transform: "translate(-50%, -50%)",
-  boxShadow: 24,
-  borderRadius: 2,
-  p: 2,
-};
-
-const boxSX = {
-  background: "#DC6C43",
-  color: "#ffffff",
-  "&:hover": {
-    color: "#ffffff",
-    backgroundColor: "#e37a54",
-  },
-};
-
 const CreateChat = () => {
   // store chat name
   const [name, setName] = useState("");
@@ -68,7 +45,7 @@ const CreateChat = () => {
       open={createChat}
       onClose={() => setCreateChat(false)}
     >
-      <Card sx={style}>
+      <Card className="center_modal_ui ">
         <Typography
           className="fs_24"
           style={{
@@ -118,8 +95,6 @@ const CreateChat = () => {
               color: "white",
               width: "15%",
             }}
-            size="small"
-            sx={boxSX}
             onClick={() => {
               HandleSubmit();
             }}
