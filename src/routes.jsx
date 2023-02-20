@@ -13,28 +13,57 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import NotificationsActiveRounded from "@material-ui/icons/NotificationsActiveRounded";
 
 // Import components using lazy to load the component
-const HomePage = lazy(() => import("./pages/home/HomePage"));
-const Chart = lazy(() => import("./pages/home/charts/Chart"));
-const Tables = lazy(() => import("./pages/home/tables/Tables"));
-const InputField = lazy(() => import("./pages/InputField/InputField"));
-const UploadFileList = lazy(() => import("./pages/UploadFiles/uploadFileList"));
-const Calendar = lazy(() => import("./pages/fullCalendar/FullCalendar"));
-const Profile = lazy(() => import("./pages/Profile/Profile"));
-const MuiIconsList = lazy(() => import("./pages/muiIcons/MuiIconsList"));
-const TooltipExample = lazy(() => import("./pages/Tooltips/Tooltips"));
+const HomePage = lazy(() =>
+  import("./pages/home/HomePage")
+);
+const Chart = lazy(() =>
+  import("./pages/home/charts/Chart")
+);
+const Tables = lazy(() =>
+  import("./pages/home/tables/Tables")
+);
+const InputField = lazy(() =>
+  import("./pages/InputField/InputField")
+);
+const UploadFileList = lazy(() =>
+  import("./pages/UploadFiles/uploadFileList")
+);
+const Calendar = lazy(() =>
+  import("./pages/fullCalendar/FullCalendar")
+);
+const Profile = lazy(() =>
+  import("./pages/Profile/Profile")
+);
+const MuiIconsList = lazy(() =>
+  import("./pages/muiIcons/MuiIconsList")
+);
+const TooltipExample = lazy(() =>
+  import("./pages/Tooltips/Tooltips")
+);
 const PushNotification = lazy(() =>
-  import("./pages/pushNotificaiton/PushNotification")
+  import(
+    "./pages/pushNotificaiton/PushNotification"
+  )
+);
+const Messages = lazy(() =>
+  import("./pages/Messages/Messages")
 );
 
 // @mui icons
-const Icon = lazy(() => import("@mui/material/Icon"));
+const Icon = lazy(() =>
+  import("@mui/material/Icon")
+);
 
 // This is routes available in side bar
 export const adminRoutes = [
   //object for normal option
   {
     type: "menu",
-    name: <Typography sx={{ fontSize: "14px" }}>Dashboard</Typography>,
+    name: (
+      <Typography sx={{ fontSize: "14px" }}>
+        Dashboard
+      </Typography>
+    ),
     key: "dashboard",
     route: "/dashboard",
     icon: <DashboardIcon fontSize="small" />,
@@ -43,7 +72,11 @@ export const adminRoutes = [
   //object for normal option
   {
     type: "menu",
-    name: <Typography sx={{ fontSize: "14px" }}>Chart</Typography>,
+    name: (
+      <Typography sx={{ fontSize: "14px" }}>
+        Chart
+      </Typography>
+    ),
     key: "chart",
     route: "/chart",
     icon: <InsightsIcon fontSize="small" />,
@@ -52,7 +85,11 @@ export const adminRoutes = [
   //object for normal option
   {
     type: "menu",
-    name: <Typography sx={{ fontSize: "14px" }}>Tables</Typography>,
+    name: (
+      <Typography sx={{ fontSize: "14px" }}>
+        Tables
+      </Typography>
+    ),
     key: "table",
     route: "/table",
     icon: <TableChartIcon fontSize="small" />,
@@ -61,69 +98,136 @@ export const adminRoutes = [
   //object for normal option
   {
     type: "menu",
-    name: <Typography sx={{ fontSize: "14px" }}>Mui Icons</Typography>,
+    name: (
+      <Typography sx={{ fontSize: "14px" }}>
+        Mui Icons
+      </Typography>
+    ),
     key: "muiicons",
     route: "/muiicons",
-    icon: <Icon sx={{ fontSize: "14px" }}>I</Icon>,
+    icon: (
+      <Icon sx={{ fontSize: "14px" }}>I</Icon>
+    ),
     component: <MuiIconsList />,
   },
   // object for collapse (dropdown)
   {
     type: "collapse",
-    name: <Typography sx={{ fontSize: "14px" }}>Options</Typography>,
+    name: (
+      <Typography sx={{ fontSize: "14px" }}>
+        Options
+      </Typography>
+    ),
     key: "setting",
     icon: <SettingsIcon fontSize="small" />,
     collapse: [
       {
-        name: <Typography sx={{ fontSize: "14px" }}>Sun Editor</Typography>,
+        name: (
+          <Typography sx={{ fontSize: "14px" }}>
+            Sun Editor
+          </Typography>
+        ),
         key: "suneditor",
         route: "/suneditor",
-        icon: <Icon sx={{ fontSize: "14px" }}>S</Icon>,
+        icon: (
+          <Icon sx={{ fontSize: "14px" }}>S</Icon>
+        ),
         component: <SunEditor />,
       },
       {
-        name: <Typography sx={{ fontSize: "14px" }}>Calendar</Typography>,
+        name: (
+          <Typography sx={{ fontSize: "14px" }}>
+            Calendar
+          </Typography>
+        ),
         key: "fullcalendar",
         route: "/fullcalendar",
-        icon: <CalendarMonthIcon sx={{ fontSize: "14px" }} />,
+        icon: (
+          <CalendarMonthIcon
+            sx={{ fontSize: "14px" }}
+          />
+        ),
         component: <Calendar />,
       },
     ],
   },
   {
-    name: <Typography sx={{ fontSize: "14px" }}>Input Field</Typography>,
+    name: (
+      <Typography sx={{ fontSize: "14px" }}>
+        Input Field
+      </Typography>
+    ),
     key: "inputfield",
     route: "/inputfield",
-    icon: <Icon sx={{ fontSize: "14px" }}>I</Icon>,
+    icon: (
+      <Icon sx={{ fontSize: "14px" }}>I</Icon>
+    ),
     component: <InputField />,
     noCollapse: true,
   },
   {
-    name: <Typography sx={{ fontSize: "14px" }}>Upload File</Typography>,
+    name: (
+      <Typography sx={{ fontSize: "14px" }}>
+        Upload File
+      </Typography>
+    ),
     key: "uploadfiles",
     route: "/uploadfiles",
-    icon: <Icon sx={{ fontSize: "14px" }}>U</Icon>,
+    icon: (
+      <Icon sx={{ fontSize: "14px" }}>U</Icon>
+    ),
     component: <UploadFileList />,
   },
   {
-    name: <Typography sx={{ fontSize: "14px" }}>Profile</Typography>,
+    name: (
+      <Typography sx={{ fontSize: "14px" }}>
+        Profile
+      </Typography>
+    ),
     key: "profile",
     route: "/profile",
-    icon: <Icon sx={{ fontSize: "14px" }}>P</Icon>,
+    icon: (
+      <Icon sx={{ fontSize: "14px" }}>P</Icon>
+    ),
     component: <Profile />,
   },
   {
-    name: <Typography sx={{ fontSize: "14px" }}>Tooltips</Typography>,
+    name: (
+      <Typography sx={{ fontSize: "14px" }}>
+        Tooltips
+      </Typography>
+    ),
     key: "tooltips",
     route: "/tooltips",
-    icon: <Icon sx={{ fontSize: "14px" }}>T</Icon>,
+    icon: (
+      <Icon sx={{ fontSize: "14px" }}>T</Icon>
+    ),
     component: <TooltipExample />,
   },
   {
-    name: <Typography sx={{ fontSize: "14px" }}>Notification</Typography>,
+    name: (
+      <Typography sx={{ fontSize: "14px" }}>
+        Notification
+      </Typography>
+    ),
     key: "pushnotification",
     route: "/pushnotification",
-    icon: <NotificationsActiveRounded fontSize="small" />,
+    icon: (
+      <NotificationsActiveRounded fontSize="small" />
+    ),
     component: <PushNotification />,
+  },
+  {
+    name: (
+      <Typography sx={{ fontSize: "14px" }}>
+        Messages
+      </Typography>
+    ),
+    key: "messages",
+    route: "/messages",
+    icon: (
+      <Icon sx={{ fontSize: "14px" }}>M</Icon>
+    ),
+    component: <Messages />,
   },
 ];
