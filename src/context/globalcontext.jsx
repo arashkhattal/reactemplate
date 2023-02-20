@@ -30,7 +30,9 @@ const AppProvider = ({ children }) => {
     useState(false);
   // default drawer width
   const drawerWidth = openMenu ? 210 : 75;
-
+  // create event
+  const [createEvent, setCreateEvent] =
+    useState(false);
   return (
     <AppContext.Provider
       value={{
@@ -49,6 +51,8 @@ const AppProvider = ({ children }) => {
         setCreateChat,
         createGroup,
         setCreateGroup,
+        createEvent,
+        setCreateEvent,
       }}
     >
       {children}
