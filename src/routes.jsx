@@ -10,10 +10,7 @@ import InsightsIcon from "@mui/icons-material/Insights";
 import InfoIcon from "@mui/icons-material/Info";
 import TableChartIcon from "@mui/icons-material/TableChart";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-// import Calendar from "./pages/fullCalendar/FullCalendar";
-// import Profile from "./pages/Profile/Profile";
-// import MuiIconsList from "./pages/muiIcons/MuiIconsList";
-// import TooltipExample from "./pages/Tooltips/Tooltips";
+import NotificationsActiveRounded from "@material-ui/icons/NotificationsActiveRounded";
 
 // Import components using lazy to load the component
 const HomePage = lazy(() => import("./pages/home/HomePage"));
@@ -25,6 +22,9 @@ const Calendar = lazy(() => import("./pages/fullCalendar/FullCalendar"));
 const Profile = lazy(() => import("./pages/Profile/Profile"));
 const MuiIconsList = lazy(() => import("./pages/muiIcons/MuiIconsList"));
 const TooltipExample = lazy(() => import("./pages/Tooltips/Tooltips"));
+const PushNotification = lazy(() =>
+  import("./pages/pushNotificaiton/PushNotification")
+);
 
 // @mui icons
 const Icon = lazy(() => import("@mui/material/Icon"));
@@ -119,7 +119,11 @@ export const adminRoutes = [
     icon: <Icon sx={{ fontSize: "14px" }}>T</Icon>,
     component: <TooltipExample />,
   },
-
-
-  
+  {
+    name: <Typography sx={{ fontSize: "14px" }}>Notification</Typography>,
+    key: "pushnotification",
+    route: "/pushnotification",
+    icon: <NotificationsActiveRounded fontSize="small" />,
+    component: <PushNotification />,
+  },
 ];
