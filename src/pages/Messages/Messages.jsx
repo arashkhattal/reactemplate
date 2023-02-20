@@ -7,6 +7,7 @@ import Card from "@mui/material/Card";
 import { useGlobalContext } from "../../context/globalContext";
 import noMsgo from "../../assets/image/nomsgblack.png";
 import CreateChat from "./createChat/createChat";
+import CreateGroup from "./createGroup/createGroup";
 
 const message = [
   { id: 1, name: "jabed" },
@@ -21,7 +22,8 @@ const message = [
   { id: 10, name: "jabed" },
 ];
 const Messages = () => {
-  const { setCreateChat } = useGlobalContext();
+  const { setCreateChat, setCreateGroup } =
+    useGlobalContext();
   return (
     <>
       {/* <CreateChatRoomModal />
@@ -29,6 +31,7 @@ const Messages = () => {
       <DeleteChatRoomModal /> */}
       {/* <AddSingleChat /> */}
       <CreateChat />
+      <CreateGroup />
       <Box
         sx={{ overflowY: "hidden" }}
         height="80vh"
@@ -48,67 +51,46 @@ const Messages = () => {
               fontSize="16px"
               style={{
                 fontWeight: "600",
+                padding: "10px",
               }}
               display="flex"
               alignItems="center"
             >
               Message
             </Typography>
-            <Box>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                marginRight: "20px",
+              }}
+            >
               <button
                 size="small"
                 variant="gradient"
                 color="dark"
-                sx={{
-                  fontSize: "10px",
-                  marginLeft: 2,
-                  margin: 2,
-                  paddingTop: "3px",
-                  paddingBottom: "3px",
-                  paddingRight: "6px",
-                  paddingLeft: "6px",
+                style={{
+                  color: "white",
                 }}
+                className="btn_primary btn_primary_hover"
                 onClick={() =>
                   setCreateChat(true)
                 }
               >
-                {/* <Icon
-                                    sx={{
-                                        fontWeight:
-                                            "bold",
-                                    }}
-                                >
-                                    mode_comment
-                                </Icon> */}
-                &nbsp;Create Chat
+                Create Chat
               </button>
               <button
                 size="small"
-                variant="gradient"
-                color="dark"
-                sx={{
-                  marginRight: 2,
-                  fontSize: "10px",
-                  paddingTop: "3px",
-                  paddingBottom: "3px",
-                  paddingRight: "6px",
-                  paddingLeft: "6px",
+                className="btn_primary btn_primary_hover"
+                style={{
+                  color: "white",
                 }}
-                // onClick={() =>
-                //     setOpenChatRoomAddModal(
-                //         true
-                //     )
-                // }
+                onClick={() =>
+                  setCreateGroup(true)
+                }
               >
-                {/* <Icon
-                                    sx={{
-                                        fontWeight:
-                                            "bold",
-                                    }}
-                                >
-                                    forum
-                                </Icon> */}
-                &nbsp;Create Group
+                CreateGroup
               </button>
             </Box>
           </Box>

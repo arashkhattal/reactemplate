@@ -76,7 +76,7 @@ const CreateChat = () => {
             padding: "10px",
           }}
         >
-          Add Chat Room
+          Create Chat
         </Typography>
 
         <Grid container spacing={3}>
