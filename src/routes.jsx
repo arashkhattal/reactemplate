@@ -13,7 +13,7 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import NotificationsActiveRounded from "@material-ui/icons/NotificationsActiveRounded";
 
 // Import components using lazy to load the component
-const HomePage = lazy(() => import("./pages/home/HomePage"));
+const Dashboard = lazy(() => import("./pages/dashboard/Dashboard"));
 const Chart = lazy(() => import("./pages/home/charts/Chart"));
 const Tables = lazy(() => import("./pages/home/tables/Tables"));
 const InputField = lazy(() => import("./pages/InputField/InputField"));
@@ -39,7 +39,7 @@ export const adminRoutes = [
     key: "dashboard",
     route: "/dashboard",
     icon: <DashboardIcon fontSize="small" />,
-    component: <HomePage />,
+    component: <Dashboard />,
   },
   //object for normal option
   {

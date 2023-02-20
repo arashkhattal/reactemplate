@@ -44,7 +44,7 @@ const uploadSingleFile = () => {
 
     if (files.length && files?.size < 10000000) {
       let file = files;
-      setProjectSheet([...projectSheet, file]);
+      setProjectSheet([...projectSheet, ...file]);
     }
     setPresentFile(e);
   };
@@ -60,6 +60,8 @@ const uploadSingleFile = () => {
   //     }
   //     setPresentFile(val);
   //   };
+
+
 
   const FileSelected = (val) => {
     console.log(val);
@@ -140,7 +142,7 @@ const uploadSingleFile = () => {
                 onDragOver={dragOver}
                 onDragEnter={dragEnter}
                 onDragLeave={dragLeave}
-                onDrop={(e) => FileDrop(e, "file")}
+                onDrop={(e) => FileSelected(e, "file")}
                 onClick={() => FileInputClicked("file")}
               >
                 <img alt="" src={FolderImg} className="drag_img" />

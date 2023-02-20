@@ -1,0 +1,40 @@
+.card {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-stats {
+  background-color: #f7f7f7;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.card-stats-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #333;
+}
+
+.card-stats-number {
+  margin: 10px 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: #007bff;
+}
+
+.card-stats-change {
+  font-size: 14px;
+  font-weight: 600;
+  color: #007bff;
+}
+
+.fa {
+  margin-right: 5px;
+}
