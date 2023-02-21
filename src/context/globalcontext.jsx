@@ -33,6 +33,8 @@ const AppProvider = ({ children }) => {
   // create event
   const [createEvent, setCreateEvent] = useState(false);
   const [viewEvent, setViewEvent] = useState({ state: false, data: null });
+  const [editEvent, setEditEvent] = useState({ state: false, data: null });
+
 
   return (
     <AppContext.Provider
@@ -56,6 +58,8 @@ const AppProvider = ({ children }) => {
         setCreateEvent,
         viewEvent,
         setViewEvent,
+        editEvent,
+        setEditEvent,
       }}
     >
       {children}

@@ -4,6 +4,7 @@ import TimePicker from "../../components/timePicker/TimePicker";
 
 import React, { useState } from "react";
 import { useGlobalContext } from "../../context/globalContext";
+import { getCurrentDate } from "../../helpers/globalFunction";
 
 const CreateEvent = ({ events, setEvents }) => {
   // store event info
@@ -13,6 +14,8 @@ const CreateEvent = ({ events, setEvents }) => {
   const [checked, setChecked] = useState(false);
   const [eventStartTime, setEventStartTime] = useState(null);
   const [eventEndTime, setEventEndTime] = useState(null);
+  const [activeEndDate, setActiveEndDate] = useState(false);
+  const [activeStartDate, setActiveStartDate] = useState(false);
 
   // global function
   const { createEvent, setCreateEvent, setAlert } = useGlobalContext();
@@ -54,8 +57,26 @@ const CreateEvent = ({ events, setEvents }) => {
       setEventEnd(null);
       setChecked(false);
     }
-    console.log("arash :", events);
     setCreateEvent(false);
+  };
+
+  const getformatedDate = (date) => {
+    if (date === null || date === "") return "";
+    var dateObj = moment(date).utc().toDate();
+    if (JSON.stringify(dateObj) !== "Invalid Date") {
+      var month = dateObj.getMonth() + 1; //months from 1-12
+      var day = dateObj.getDate();
+      var year = dateObj.getFullYear();
+      if (month < 10) {
+        month = `0${month}`;
+      }
+      if (day < 10) {
+        day = `0${day}`;
+      }
+      return day + "/" + month + "/" + year;
+    } else {
+      return "";
+    }
   };
 
   return (
@@ -96,11 +117,17 @@ const CreateEvent = ({ events, setEvents }) => {
           </Grid>
           <Grid item xs={12} md={6}>
             <TextField
+              type={activeStartDate ? "date" : "text"}
+              inputProps={{
+                min: getCurrentDate(),
+                max: eventEnd,
+              }}
               fullWidth
               required
-              type="date"
+              onFocus={() => setActiveStartDate(true)}
+              onBlur={() => setActiveStartDate(false)}
               label="Start Date"
-              value={eventStart}
+              value={activeStartDate ? eventStart : getformatedDate(eventStart)}
               onChange={(e) => setEventStart(e.target.value)}
             />
           </Grid>
@@ -108,9 +135,14 @@ const CreateEvent = ({ events, setEvents }) => {
             <TextField
               fullWidth
               required
-              type="date"
+              inputProps={{
+                min: eventStart ? eventStart : getCurrentDate(),
+              }}
+              type={activeEndDate ? "date" : "text"}
+              onFocus={() => setActiveEndDate(true)}
+              onBlur={() => setActiveEndDate(false)}
               label="End Date"
-              value={eventEnd}
+              value={activeEndDate ? eventEnd : getformatedDate(eventEnd)}
               onChange={(e) => setEventEnd(e.target.value)}
             />
           </Grid>

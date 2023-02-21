@@ -36,18 +36,13 @@ const style = {
 };
 
 const viewCalender = () => {
-  const { viewEvent, setViewEvent } = useGlobalContext();
+  const { viewEvent, setViewEvent,setEditEvent } =
+    useGlobalContext();
 
   const [taskSubject, setTaskSubject] = useState("");
 
   const [taskStartdate, setTaskStartDate] = useState("");
   const [taskEnddate, setTaskEndDate] = useState("");
-
-  //   const [url, setUrl] = useState("");
-  //   const [desc, setDesc] = useState("");
-
-  //   const [senderData, setSenderData] = useState([]);
-  //   const [eventUser, setEventUser] = useState([]);
 
   const [checked, setChecked] = useState(false);
 
@@ -139,11 +134,9 @@ const viewCalender = () => {
           <Box>
             <Typography
               variant="h4"
-              style={
-                {
-                  fontSize:'24px'
-                }
-              }
+              style={{
+                fontSize: "24px",
+              }}
               fontWeight="medium"
             >
               Event
@@ -152,13 +145,13 @@ const viewCalender = () => {
           <Box>
             <Icon
               fontSize="small"
-              //   onClick={() => {
-              //     setCalenderEdit({
-              //       state: true,
-              //       data: addCalenderView?.data?.event,
-              //     });
-              //     setViewEvent({ state: false, data: null });
-              //   }}
+                onClick={() => {
+                    setEditEvent({
+                      state: true,
+                      data: viewEvent?.data?.event,
+                    });
+                  setViewEvent({ state: false, data: null });
+                }}
               sx={{ cursor: "pointer" }}
             >
               edit
@@ -194,7 +187,7 @@ const viewCalender = () => {
         <Divider
           sx={{
             mx: 0,
-            my:3,
+            my: 3,
             position: "relative",
             zIndex: "3",
           }}

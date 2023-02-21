@@ -1,3 +1,5 @@
+import moment from "moment";
+
 // To validate Email
 export const validateEmail = (email) => {
   var re = /\S+@\S+\.\S+/;
@@ -31,4 +33,24 @@ export const fileSize = (size) => {
       sizes[i]
     );
   } else return "";
+};
+
+// to get current date
+
+export const getCurrentDate = () => {
+  var dateObj = moment().utc().toDate();
+  if (JSON.stringify(dateObj) !== "Invalid Date") {
+    var month = dateObj.getMonth() + 1; //months from 1-12
+    var day = dateObj.getDate();
+    var year = dateObj.getFullYear();
+    if (month < 10) {
+      month = `0${month}`;
+    }
+    if (day < 10) {
+      day = `0${day}`;
+    }
+    return year + "-" + month + "-" + day;
+  } else {
+    return "";
+  }
 };

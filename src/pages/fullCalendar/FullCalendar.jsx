@@ -8,6 +8,7 @@ import { Card, Typography } from "@mui/material";
 import CreateEvent from "./createEvent";
 import { useGlobalContext } from "../../context/globalContext";
 import ViewModal from "./ViewModal";
+import EditModal from "./EditModal";
 
 const Calendar = () => {
   // default events
@@ -50,6 +51,7 @@ const Calendar = () => {
     <div>
       <CreateEvent events={events} setEvents={setEvents} />
       <ViewModal />
+      <EditModal />
       {/* card component from mui  */}
       <Card
         style={{
