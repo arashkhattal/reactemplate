@@ -1,8 +1,4 @@
-import React, {
-  useState,
-  useContext,
-  createContext,
-} from "react";
+import React, { useState, useContext, createContext } from "react";
 const AppContext = createContext();
 const AppProvider = ({ children }) => {
   // loader component
@@ -20,19 +16,24 @@ const AppProvider = ({ children }) => {
 
   // state to maintain open close menu
   const [openMenu, setOpenMenu] = useState(true);
-  const [resetModal, setResetModal] =
-    useState(false);
+  const [resetModal, setResetModal] = useState(false);
+
   // create chat
-  const [createChat, setCreateChat] =
-    useState(false);
+  const [createChat, setCreateChat] = useState(false);
+
   // create chat group
-  const [createGroup, setCreateGroup] =
-    useState(false);
+  const [createGroup, setCreateGroup] = useState(false);
+
   // default drawer width
   const drawerWidth = openMenu ? 210 : 75;
+
+  ////////////////////////////////////////
+  //////// Calendar Component ////////////
+  ////////////////////////////////////////
   // create event
-  const [createEvent, setCreateEvent] =
-    useState(false);
+  const [createEvent, setCreateEvent] = useState(false);
+  const [viewEvent, setViewEvent] = useState({ state: false, data: null });
+
   return (
     <AppContext.Provider
       value={{
@@ -53,6 +54,8 @@ const AppProvider = ({ children }) => {
         setCreateGroup,
         createEvent,
         setCreateEvent,
+        viewEvent,
+        setViewEvent,
       }}
     >
       {children}

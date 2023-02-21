@@ -7,6 +7,7 @@ import "./fullCalendar.css";
 import { Card, Typography } from "@mui/material";
 import CreateEvent from "./createEvent";
 import { useGlobalContext } from "../../context/globalContext";
+import ViewModal from "./ViewModal";
 
 const Calendar = () => {
   // default events
@@ -27,7 +28,7 @@ const Calendar = () => {
     },
   ]);
   // global function for create event modal
-  const { setCreateEvent } = useGlobalContext();
+  const { setCreateEvent, setViewEvent } = useGlobalContext();
   // function to create event by drag (single & multiple)
   const handleDateSelect = (selectInfo) => {
     console.log(selectInfo);
@@ -47,8 +48,9 @@ const Calendar = () => {
 
   return (
     <div>
-      {/* card component from mui  */}
       <CreateEvent events={events} setEvents={setEvents} />
+      <ViewModal />
+      {/* card component from mui  */}
       <Card
         style={{
           padding: "20px",
@@ -76,6 +78,12 @@ const Calendar = () => {
           select={handleDateSelect}
           editable={true}
           droppable={true}
+          eventClick={(e) =>
+            setViewEvent({
+              state: true,
+              data: e,
+            })
+          }
           customButtons={{
             myCustomButton: {
               text: "Create Event",

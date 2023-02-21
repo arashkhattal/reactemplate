@@ -1,5 +1,6 @@
 import { Box, Card, Grid, Modal, TextField, Typography } from "@mui/material";
 import moment from "moment/moment";
+import TimePicker from "../../components/timePicker/TimePicker";
 
 import React, { useState } from "react";
 import { useGlobalContext } from "../../context/globalContext";
@@ -10,6 +11,8 @@ const CreateEvent = ({ events, setEvents }) => {
   const [eventStart, setEventStart] = useState(null);
   const [eventEnd, setEventEnd] = useState(null);
   const [checked, setChecked] = useState(false);
+  const [eventStartTime, setEventStartTime] = useState(null);
+  const [eventEndTime, setEventEndTime] = useState(null);
 
   // global function
   const { createEvent, setCreateEvent, setAlert } = useGlobalContext();
@@ -28,8 +31,16 @@ const CreateEvent = ({ events, setEvents }) => {
           id: events.length + 1,
           title: event,
           allDay: checked,
-          start: moment(eventStart, "YYYY-MM-DD").utc().format(),
-          end: moment(eventEnd, "YYYY-MM-DD").add(1, "days").utc().format(),
+          start: checked
+            ? moment(eventStart, "YYYY-MM-DD").utc().format()
+            : moment(eventStart + "T" + eventStartTime)
+                .utc()
+                .format(),
+          end: checked
+            ? moment(eventEnd, "YYYY-MM-DD").add(1, "days").utc().format()
+            : moment(eventEnd + "T" + eventEndTime)
+                .utc()
+                .format(),
         };
         setEvents([...events, newEvent]);
       }
@@ -43,6 +54,7 @@ const CreateEvent = ({ events, setEvents }) => {
       setEventEnd(null);
       setChecked(false);
     }
+    console.log("arash :", events);
     setCreateEvent(false);
   };
 
@@ -102,6 +114,29 @@ const CreateEvent = ({ events, setEvents }) => {
               onChange={(e) => setEventEnd(e.target.value)}
             />
           </Grid>
+          {checked ? (
+            ""
+          ) : (
+            <>
+              <Grid item xs={12} md={6}>
+                <TimePicker
+                  label="Start Time"
+                  required={true}
+                  value={eventStartTime}
+                  onChange={(e) => setEventStartTime(e.target.value)}
+                />
+              </Grid>
+
+              <Grid item xs={12} md={6}>
+                <TimePicker
+                  label="End Time"
+                  required={true}
+                  value={eventEndTime}
+                  onChange={(e) => setEventEndTime(e.target.value)}
+                />
+              </Grid>
+            </>
+          )}
         </Grid>
         <Box
           pt={3}
