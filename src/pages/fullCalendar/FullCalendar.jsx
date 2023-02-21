@@ -13,12 +13,14 @@ const Calendar = () => {
   const [events, setEvents] = useState([
     {
       id: 1,
+      allDay: true,
       title: "Event 1",
       start: "2023-02-16",
       end: "2023-02-17",
     },
     {
       id: 2,
+      allDay: false,
       title: "Event 2",
       start: "2023-02-20",
       end: "2023-02-22",
@@ -28,9 +30,9 @@ const Calendar = () => {
   const { setCreateEvent } = useGlobalContext();
   // function to create event by drag (single & multiple)
   const handleDateSelect = (selectInfo) => {
-    const title = prompt(
-      "Please enter a title for your event"
-    );
+    console.log(selectInfo);
+    console.log(selectInfo.startStr);
+    const title = prompt("Please enter a title for your event");
     if (title) {
       const newEvent = {
         id: events.length + 1,
@@ -46,7 +48,7 @@ const Calendar = () => {
   return (
     <div>
       {/* card component from mui  */}
-      <CreateEvent />
+      <CreateEvent events={events} setEvents={setEvents} />
       <Card
         style={{
           padding: "20px",
@@ -66,11 +68,7 @@ const Calendar = () => {
         {/* full calendar component  */}
         <FullCalendar
           aspectRatio={2}
-          plugins={[
-            dayGridPlugin,
-            timeGridPlugin,
-            interactionPlugin,
-          ]}
+          plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
           dayMaxEvents={2}
           initialView="dayGridMonth"
           selectable={true}
