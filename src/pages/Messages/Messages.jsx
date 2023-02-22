@@ -13,34 +13,50 @@ const message = [
   {
     id: 1,
     name: "Snow",
+    msg: "I will go",
+    date: "30 jan",
   },
   {
     id: 2,
     name: "Lannister",
+    msg: "I don't Know",
+    date: "12 feb",
   },
   {
     id: 3,
     name: "Lannister",
+    msg: "I have sent it",
+    date: "21 feb",
   },
   {
     id: 4,
     name: "Stark",
+    msg: "ok",
+    date: "23 Dec",
   },
   {
     id: 5,
     name: "Targaryen",
+    msg: "Up to you",
+    date: "14 Oct",
   },
   {
     id: 6,
     name: "Melisandre",
+    msg: "Check it",
+    date: "1 Oct",
   },
   {
     id: 7,
     name: "Clifford",
+    msg: "Ok",
+    date: "4 sep",
   },
   {
     id: 8,
     name: "Frances",
+    msg: "Check",
+    date: "1 Sep",
   },
 ];
 const Messages = () => {
@@ -74,7 +90,7 @@ const Messages = () => {
               display="flex"
               alignItems="center"
             >
-              Message
+              My Chats
             </Typography>
             <Box
               sx={{
@@ -123,7 +139,7 @@ const Messages = () => {
           >
             <Box
               style={{
-                flexBasis: "30%",
+                flexBasis: "25%",
                 overflow: "auto",
                 height: "calc(80vh - 50px)",
                 borderRight:
@@ -138,32 +154,25 @@ const Messages = () => {
                     width: "auto",
                   }}
                 >
-                  <Box
-                    p={2}
-                    sx={{
-                      borderBottom:
-                        "1px solid lightgrey",
-                    }}
-                  >
+                  <Box p={2}>
                     <Badge
                       color="success"
                       style={{
                         display: "flex",
-                        width: "100%",
                       }}
                     >
                       <Box
-                        display="flex"
+                        className="chat_hover"
                         style={{
-                          flex: "1 1 auto",
+                          display: "flex",
                           cursor: "pointer",
-                          backgroundColor:
-                            "#FFF7ED",
+                          width: "100%",
+
                           borderRadius: "5px",
-                          border:
-                            "1px solid #DA7651",
+                          // border:
+                          //   "1px solid #DA7651",
                           borderRight:
-                            "1px solid #DA7651",
+                            "1px solid #A9A9A9",
                           padding: "5px",
                           margin: "-5px",
                         }}
@@ -192,21 +201,25 @@ const Messages = () => {
                           />
                         </div>
                         <Box pl={2}>
-                          <Box
-                            display="flex"
-                            justifyContent="space-between"
-                          >
+                          <Box>
                             <Typography
-                              variant="h6"
                               style={{
                                 fontWeight: "600",
+                              }}
+                            >
+                              {msg.name}
+                            </Typography>
+                            <div
+                              style={{
                                 display: "flex",
                                 justifyContent:
                                   "space-between",
                               }}
                             >
-                              {msg.name}
-                            </Typography>
+                              <Typography>
+                                {msg.msg}
+                              </Typography>
+                            </div>
                           </Box>
                         </Box>
                       </Box>
