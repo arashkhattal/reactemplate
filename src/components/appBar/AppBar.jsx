@@ -7,7 +7,11 @@ import "./AppBar.css";
 
 //global context
 import { useGlobalContext } from "../../context/globalContext";
-import { Box, Menu, Typography } from "@mui/material";
+import {
+  Box,
+  Menu,
+  Typography,
+} from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 const AppBar = () => {
@@ -15,7 +19,8 @@ const AppBar = () => {
   const [search, setSearch] = useState("");
 
   // global context
-  const { setAlert, openMenu, setOpenMenu } = useGlobalContext();
+  const { setAlert, openMenu, setOpenMenu } =
+    useGlobalContext();
 
   // funciton for search bar
   const handleSearch = (e) => {
@@ -30,10 +35,12 @@ const AppBar = () => {
   //to navigate to another page
   const navigate = useNavigate();
 
-  const [openProfileMenu, setOpenProfileMenu] = useState(false);
+  const [openProfileMenu, setOpenProfileMenu] =
+    useState(false);
   const handleOpenProfileMenu = (event) =>
     setOpenProfileMenu(event.currentTarget);
-  const handleCloseProfileMenu = () => setOpenProfileMenu(false);
+  const handleCloseProfileMenu = () =>
+    setOpenProfileMenu(false);
 
   const renderProfile = () => (
     <Menu
@@ -69,7 +76,10 @@ const AppBar = () => {
           }}
           // onClick={navigate("/")}
         >
-          <Typography className="fs_12" style={{ textAlign: "center" }}>
+          <Typography
+            className="fs_12"
+            style={{ textAlign: "center" }}
+          >
             Log Out
           </Typography>
         </Box>
@@ -91,8 +101,15 @@ const AppBar = () => {
           />
 
           {/* option to close or open menu  */}
-          <div onClick={() => setOpenMenu(!openMenu)}>
-            {openMenu ? <MenuOpenIcon /> : <MenuIcon />}
+          <div
+            style={{ cursor: "pointer" }}
+            onClick={() => setOpenMenu(!openMenu)}
+          >
+            {openMenu ? (
+              <MenuOpenIcon />
+            ) : (
+              <MenuIcon />
+            )}
           </div>
         </div>
 
@@ -103,7 +120,9 @@ const AppBar = () => {
             placeholder="Search.."
             name="search"
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) =>
+              setSearch(e.target.value)
+            }
             onKeyDown={(e) => {
               if (e.key === "Enter") {
                 handleSearch(e);

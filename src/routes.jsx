@@ -4,6 +4,7 @@ import { Typography } from "@mui/material";
 import SunEditor from "./pages/sunEditor/SunEditor";
 
 // MUI icons
+import GridViewIcon from "@mui/icons-material/GridView";
 import SettingsIcon from "@mui/icons-material/Settings";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import InsightsIcon from "@mui/icons-material/Insights";
@@ -148,7 +149,7 @@ export const adminRoutes = [
       </Typography>
     ),
     key: "setting",
-    icon: <SettingsIcon fontSize="small" />,
+    icon: <GridViewIcon fontSize="small" />,
     collapse: [
       {
         name: (
