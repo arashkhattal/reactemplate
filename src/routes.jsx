@@ -37,6 +37,9 @@ const Profile = lazy(() =>
 const MuiIconsList = lazy(() =>
   import("./pages/muiIcons/MuiIconsList")
 );
+const Setting = lazy(() =>
+  import("./pages/Setting/Setting")
+);
 // const TooltipExample = lazy(() =>
 //   import("./pages/Tooltips/Tooltips")
 // );
@@ -115,12 +118,66 @@ export const adminRoutes = [
     type: "collapse",
     name: (
       <Typography sx={{ fontSize: "14px" }}>
-        Options
+        Setting
       </Typography>
     ),
     key: "setting",
     icon: <SettingsIcon fontSize="small" />,
-    collapse: [],
+    collapse: [
+      {
+        name: (
+          <Typography sx={{ fontSize: "14px" }}>
+            Setting
+          </Typography>
+        ),
+        key: "setting",
+        route: "/setting",
+        icon: (
+          <Icon sx={{ fontSize: "14px" }}>S</Icon>
+        ),
+        component: <Setting />,
+      },
+    ],
+  },
+  // components
+  {
+    type: "collapse",
+    name: (
+      <Typography sx={{ fontSize: "14px" }}>
+        Components
+      </Typography>
+    ),
+    key: "setting",
+    icon: <SettingsIcon fontSize="small" />,
+    collapse: [
+      {
+        name: (
+          <Typography sx={{ fontSize: "14px" }}>
+            Input Field
+          </Typography>
+        ),
+        key: "inputfield",
+        route: "/inputfield",
+        icon: (
+          <Icon sx={{ fontSize: "14px" }}>I</Icon>
+        ),
+        component: <InputField />,
+        noCollapse: true,
+      },
+      {
+        name: (
+          <Typography sx={{ fontSize: "14px" }}>
+            Tooltips
+          </Typography>
+        ),
+        key: "tooltips",
+        route: "/tooltips",
+        icon: (
+          <Icon sx={{ fontSize: "14px" }}>T</Icon>
+        ),
+        // component: <TooltipExample />,
+      },
+    ],
   },
   // sun editor
   {
@@ -152,20 +209,7 @@ export const adminRoutes = [
     ),
     component: <Calendar />,
   },
-  {
-    name: (
-      <Typography sx={{ fontSize: "14px" }}>
-        Input Field
-      </Typography>
-    ),
-    key: "inputfield",
-    route: "/inputfield",
-    icon: (
-      <Icon sx={{ fontSize: "14px" }}>I</Icon>
-    ),
-    component: <InputField />,
-    noCollapse: true,
-  },
+
   {
     name: (
       <Typography sx={{ fontSize: "14px" }}>
@@ -192,19 +236,7 @@ export const adminRoutes = [
     ),
     component: <Profile />,
   },
-  {
-    name: (
-      <Typography sx={{ fontSize: "14px" }}>
-        Tooltips
-      </Typography>
-    ),
-    key: "tooltips",
-    route: "/tooltips",
-    icon: (
-      <Icon sx={{ fontSize: "14px" }}>T</Icon>
-    ),
-    // component: <TooltipExample />,
-  },
+
   {
     name: (
       <Typography sx={{ fontSize: "14px" }}>
