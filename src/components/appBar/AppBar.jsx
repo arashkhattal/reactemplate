@@ -7,7 +7,7 @@ import "./AppBar.css";
 
 //global context
 import { useGlobalContext } from "../../context/globalContext";
-import { Box, Menu, Typography } from "@material-ui/core";
+import { Box, Menu, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 const AppBar = () => {

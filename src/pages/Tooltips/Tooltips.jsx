@@ -75,15 +75,10 @@
 // export default TooltipExample;
 
 import React from "react";
-import Tooltip from "@material-ui/core/Tooltip";
-import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import {
-  InfoOutlined,
-  HelpOutline,
-} from "@mui/icons-material";
-import { Card, Grid } from "@mui/material";
+
+
+import { Button, Card, Grid, IconButton, Tooltip, Typography } from "@mui/material";
+import { InfoOutlined } from "@mui/icons-material";
 
 const TooltipExample = () => {
   return (
@@ -199,9 +194,9 @@ const TooltipExample = () => {
               title="Tooltip on help icon"
               placement="top-end"
             >
-              <IconButton aria-label="help">
+              {/* <IconButton aria-label="help">
                 <HelpOutline />
-              </IconButton>
+              </IconButton> */}
             </Tooltip>
           </Grid>
         </Grid>

@@ -1,4 +1,4 @@
-import Typography from "@material-ui/core/Typography";
+
 import {
   Box,
   Card,
@@ -6,6 +6,7 @@ import {
   Grid,
   Modal,
   TextField,
+  Typography,
 } from "@mui/material";
 
 import React, { useState } from "react";

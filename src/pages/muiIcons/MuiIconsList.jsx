@@ -58,17 +58,18 @@
 // export default CustomTooltip;
 
 import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+
 import {
   Grid,
   Tooltip,
   Typography,
   InputBase,
   Paper,
-} from "@material-ui/core";
+} from "@mui/material";
 import * as Icons from "@mui/icons-material";
 import "./muiIcons.css";
 import ScrollToTopButton from "./ScrollBar";
+import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {

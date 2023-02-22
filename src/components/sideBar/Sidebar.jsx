@@ -24,7 +24,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useGlobalContext } from "../../context/globalContext";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@mui/styles";
 
 export default function PermanentDrawerLeft() {
   // global context

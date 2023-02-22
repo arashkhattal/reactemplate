@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import addNotification from "react-push-notification";
-import { Card } from "@material-ui/core";
-import { Typography } from "@mui/material";
+
+import { Card, Typography } from "@mui/material";
 
 const PushNotificationExample = () => {
   // notification fucntion after click
@@ -30,10 +30,14 @@ const PushNotificationExample = () => {
   }, []);
 
   return (
-    <Card style={{ padding: "20px", margin: "20px" }}>
+    <Card
+      style={{ padding: "20px", margin: "20px" }}
+    >
       <div>
         <h1>Welcome to our site!</h1>
-        <Typography>Thank you for visiting.</Typography>
+        <Typography>
+          Thank you for visiting.
+        </Typography>
         {/* button to trigger notification  */}
         <button
           onClick={buttonClick}

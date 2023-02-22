@@ -17,10 +17,10 @@ const Dashboard = lazy(() =>
   import("./pages/dashboard/Dashboard")
 );
 const Chart = lazy(() =>
-  import("./pages/home/charts/Chart")
+  import("./pages/charts/Chart")
 );
 const Tables = lazy(() =>
-  import("./pages/home/tables/Tables")
+  import("./pages/tables/Tables")
 );
 const InputField = lazy(() =>
   import("./pages/InputField/InputField")
@@ -37,9 +37,9 @@ const Profile = lazy(() =>
 const MuiIconsList = lazy(() =>
   import("./pages/muiIcons/MuiIconsList")
 );
-const TooltipExample = lazy(() =>
-  import("./pages/Tooltips/Tooltips")
-);
+// const TooltipExample = lazy(() =>
+//   import("./pages/Tooltips/Tooltips")
+// );
 const PushNotification = lazy(() =>
   import(
     "./pages/pushNotificaiton/PushNotification"
@@ -202,7 +202,7 @@ export const adminRoutes = [
     icon: (
       <Icon sx={{ fontSize: "14px" }}>T</Icon>
     ),
-    component: <TooltipExample />,
+    // component: <TooltipExample />,
   },
   {
     name: (
