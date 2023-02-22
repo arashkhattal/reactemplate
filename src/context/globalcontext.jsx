@@ -27,15 +27,6 @@ const AppProvider = ({ children }) => {
   // default drawer width
   const drawerWidth = openMenu ? 210 : 75;
 
-  ////////////////////////////////////////
-  //////// Calendar Component ////////////
-  ////////////////////////////////////////
-
-  // create event
-  const [createEvent, setCreateEvent] = useState(false);
-  const [viewEvent, setViewEvent] = useState({ state: false, data: null });
-  const [editEvent, setEditEvent] = useState({ state: false, data: null });
-  const [deleteEvent, setDeleteEvent] = useState({ state: false, data: null });
 
   return (
     <AppContext.Provider
@@ -55,14 +46,9 @@ const AppProvider = ({ children }) => {
         setCreateChat,
         createGroup,
         setCreateGroup,
-        createEvent,
-        setCreateEvent,
-        viewEvent,
-        setViewEvent,
-        editEvent,
-        setEditEvent,
-        deleteEvent,
-        setDeleteEvent,
+
+
+
       }}
     >
       {children}

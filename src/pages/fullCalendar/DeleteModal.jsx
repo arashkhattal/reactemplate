@@ -4,22 +4,23 @@ import moment from "moment/moment";
 import React, { useState } from "react";
 import { useGlobalContext } from "../../context/globalContext";
 
-const DeleteEvent = ({ events, setEvents }) => {
+const DeleteEvent = ({ events, setEvents, deleteEvent, setDeleteEvent }) => {
   // global function
-  const { deleteEvent, setDeleteEvent, setAlert } = useGlobalContext();
+  const { setAlert } = useGlobalContext();
   // submit created event
   const HandleSubmit = async () => {
     let allEventsDataNow = events?.filter((a) => a?.id !== deleteEvent?.data);
     setEvents([...allEventsDataNow]);
-    console.log("allEventsDataNow : ", allEventsDataNow);
-    console.log("Events : ", events);
     setAlert({
       flag: true,
       type: "success",
       msg: "Event Deleted Successfully",
     });
 
-    setDeleteEvent(false);
+    setDeleteEvent({
+      state: false,
+      data: null,
+    });
   };
 
   console.log("ID :", deleteEvent?.data);
@@ -27,7 +28,12 @@ const DeleteEvent = ({ events, setEvents }) => {
   return (
     <Modal
       open={deleteEvent}
-      onClose={() => setDeleteEvent({ state: false, data: null })}
+      onClose={() =>
+        setDeleteEvent({
+          state: false,
+          data: null,
+        })
+      }
     >
       <Card className="center_modal_ui ">
         <Typography
@@ -54,7 +60,12 @@ const DeleteEvent = ({ events, setEvents }) => {
               width: "15%",
             }}
             size="small"
-            onClick={() => setDeleteEvent({ state: false, data: null })}
+            onClick={() =>
+              setDeleteEvent({
+                state: false,
+                data: null,
+              })
+            }
           >
             Cancel
           </button>

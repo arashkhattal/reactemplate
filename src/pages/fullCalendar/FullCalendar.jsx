@@ -12,17 +12,24 @@ import EditModal from "./EditModal";
 import DeleteEvent from "./DeleteModal";
 
 const Calendar = () => {
+  const [createEvent, setCreateEvent] = useState(false);
+  const [viewEvent, setViewEvent] = useState({ state: false, data: null });
+  const [editEvent, setEditEvent] = useState({ state: false, data: null });
+  const [deleteEvent, setDeleteEvent] = useState({
+    state: false,
+    data: null,
+  });
   // default events
   const [events, setEvents] = useState([
     {
-      id: 1,
+      id: "1",
       allDay: true,
       title: "Event 1",
       start: "2023-02-16",
       end: "2023-02-17",
     },
     {
-      id: 2,
+      id: "2",
       allDay: false,
       title: "Event 2",
       start: "2023-02-20",
@@ -30,7 +37,6 @@ const Calendar = () => {
     },
   ]);
   // global function for create event modal
-  const { setCreateEvent, setViewEvent } = useGlobalContext();
 
   // function to create event by drag (single & multiple)
   const handleDateSelect = (selectInfo) => {
@@ -39,7 +45,7 @@ const Calendar = () => {
     const title = prompt("Please enter a title for your event");
     if (title) {
       const newEvent = {
-        id: events.length + 1,
+        id: (events.length + 1).toString(),
         title,
         start: selectInfo.startStr,
         end: selectInfo.endStr,
@@ -51,10 +57,30 @@ const Calendar = () => {
 
   return (
     <div>
-      <CreateEvent events={events} setEvents={setEvents} />
-      <ViewModal />
-      <EditModal events={events} setEvents={setEvents} />
-      <DeleteEvent events={events} setEvents={setEvents}/>
+      <CreateEvent
+        events={events}
+        setEvents={setEvents}
+        setCreateEvent={setCreateEvent}
+        createEvent={createEvent}
+      />
+      <ViewModal
+        setViewEvent={setViewEvent}
+        viewEvent={viewEvent}
+        setEditEvent={setEditEvent}
+        setDeleteEvent={setDeleteEvent}
+      />
+      <EditModal
+        events={events}
+        setEvents={setEvents}
+        setEditEvent={setEditEvent}
+        editEvent={editEvent}
+      />
+      <DeleteEvent
+        events={events}
+        setEvents={setEvents}
+        setDeleteEvent={setDeleteEvent}
+        deleteEvent={deleteEvent}
+      />
       {/* card component from mui  */}
       <Card
         style={{
