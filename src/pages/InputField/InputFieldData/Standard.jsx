@@ -1,13 +1,10 @@
-import Typography from "@material-ui/core/Typography";
-
 import {
   Box,
   MenuItem,
   TextField,
+  Typography,
 } from "@mui/material";
-import React from "react"; 
-
-
+import React from "react";
 
 // dummy data
 const currencies = [
@@ -29,9 +26,7 @@ const currencies = [
   },
 ];
 
-
 const Standard = () => {
-
   // select multiple item function
   return (
     <div>

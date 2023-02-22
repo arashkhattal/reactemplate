@@ -1,6 +1,7 @@
-import { Card, Grid, Typography } from "@material-ui/core";
+
+import { Card, Grid, Typography } from "@mui/material";
 import React, { useEffect } from "react";
-import { useGlobalContext } from "../../../context/globalContext";
+import { useGlobalContext } from "../../context/globalContext";
 import BasicTable from "./basicTable/BasicTable";
 import DataTable from "./dataTable/DataTable";
 import TableComponent from "./htmlTable/TableComponent";

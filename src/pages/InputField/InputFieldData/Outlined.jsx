@@ -1,4 +1,4 @@
-import Typography from "@material-ui/core/Typography";
+
 import {
   Visibility,
   VisibilityOff,
@@ -15,6 +15,7 @@ import {
   OutlinedInput,
   Select,
   TextField,
+  Typography,
 } from "@mui/material";
 import React, { useState } from "react";
 

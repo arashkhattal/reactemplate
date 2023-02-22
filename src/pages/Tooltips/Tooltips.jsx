@@ -4,7 +4,7 @@
 // import Button from "@material-ui/core/Button";
 // import IconButton from "@material-ui/core/IconButton";
 // import Typography from "@material-ui/core/Typography";
-// import { InfoOutlined, HelpOutline } from "@material-ui/icons";
+// import { InfoOutlined, HelpOutline } from "@mui/icons-material";
 
 // const useStyles = makeStyles((theme) => ({
 //   root: {
@@ -75,21 +75,20 @@
 // export default TooltipExample;
 
 import React from "react";
-import Tooltip from "@material-ui/core/Tooltip";
-import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import { InfoOutlined, HelpOutline } from "@material-ui/icons";
-import { Card, Grid } from "@mui/material";
 
 
+import { Button, Card, Grid, IconButton, Tooltip, Typography } from "@mui/material";
+import { InfoOutlined } from "@mui/icons-material";
 
 const TooltipExample = () => {
-
-
   return (
     <div>
-      <Card style={{ padding: "20px", margin: "20px" }}>
+      <Card
+        style={{
+          padding: "20px",
+          margin: "20px",
+        }}
+      >
         <Grid container spacing={8}>
           <Grid item xs={12} md={6} lg={6}>
             <Typography className=" fs_14 fw_600">
@@ -109,7 +108,10 @@ const TooltipExample = () => {
             <Typography className=" fs_14 fw_600">
               Arrow Tooltip
             </Typography>
-            <Tooltip title="Tooltip with arrow" arrow>
+            <Tooltip
+              title="Tooltip with arrow"
+              arrow
+            >
               <Button
                 variant="contained"
                 color="secondary"
@@ -143,7 +145,9 @@ const TooltipExample = () => {
             </Typography>
             <Tooltip
               title={
-                <Typography color="inherit">Tooltip with Typography</Typography>
+                <Typography color="inherit">
+                  Tooltip with Typography
+                </Typography>
               }
             >
               <Button
@@ -159,7 +163,10 @@ const TooltipExample = () => {
             <Typography className=" fs_14 fw_600">
               Disabled Tooltip
             </Typography>
-            <Tooltip title="Disabled Tooltip" disabled>
+            <Tooltip
+              title="Disabled Tooltip"
+              disabled
+            >
               <Button
                 variant="contained"
                 color="primary"
@@ -183,10 +190,13 @@ const TooltipExample = () => {
             <Typography className=" fs_14 fw_600">
               Tooltip on help icon
             </Typography>
-            <Tooltip title="Tooltip on help icon" placement="top-end">
-              <IconButton aria-label="help">
+            <Tooltip
+              title="Tooltip on help icon"
+              placement="top-end"
+            >
+              {/* <IconButton aria-label="help">
                 <HelpOutline />
-              </IconButton>
+              </IconButton> */}
             </Tooltip>
           </Grid>
         </Grid>

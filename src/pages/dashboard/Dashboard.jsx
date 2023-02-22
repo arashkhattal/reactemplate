@@ -2,7 +2,7 @@ import { Card, Grid, Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import { useGlobalContext } from "../../context/globalContext";
 import "./dashboard.css";
-import LineChart from "../home/charts/linechart/Linechart";
+import LineChart from "../charts/linechart/Linechart";
 
 const HomePage = () => {
   const { setLoading } = useGlobalContext();

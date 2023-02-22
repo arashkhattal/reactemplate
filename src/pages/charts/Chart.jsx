@@ -1,7 +1,7 @@
-import { Card, Grid } from "@material-ui/core";
+import { Card, Grid } from "@mui/material";
 import { Typography } from "@mui/material";
 import React, { useEffect } from "react";
-import { useGlobalContext } from "../../../context/globalContext";
+import { useGlobalContext } from "../../context/globalContext";
 import BarChart from "./barChart/BarChart";
 import StackedBarChart from "./barChart/StackedBarChart";
 import DonutChart from "./donutChart/DonutChart";

@@ -1,4 +1,4 @@
-import { Card, Typography } from "@material-ui/core";
+import { Card, Typography } from "@mui/material";
 import React, { useState } from "react";
 
 // "npm i suneditor-react" - to install suneditor-react
@@ -6,14 +6,23 @@ import SunEditor from "suneditor-react";
 import "suneditor/dist/css/suneditor.min.css";
 
 function SunEditorPage() {
-    // state to maintain the state of the editor data
-  const [editorData, setEditorData] = useState("");
+  // state to maintain the state of the editor data
+  const [editorData, setEditorData] =
+    useState("");
   return (
     <div>
-        {/* card component from mui  */}
-      <Card style={{ padding: "20px",margin:"20px" }}>
+      {/* card component from mui  */}
+      <Card
+        style={{
+          padding: "20px",
+          margin: "20px",
+        }}
+      >
         {/* Typography component from MUI  */}
-        <Typography className="global_display_flex fs_24 fw_600" style={{marginBottom:"10px"}}>
+        <Typography
+          className="global_display_flex fs_24 fw_600"
+          style={{ marginBottom: "10px" }}
+        >
           Sun Editor
         </Typography>
         {/* sun editor component for react */}
