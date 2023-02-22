@@ -32,7 +32,7 @@ const DeleteEvent = ({ events, setEvents, deleteEvent, setDeleteEvent }) => {
         })
       }
     >
-      <Card className="center_modal_ui ">
+      <Card className="center_modal_ui">
         <Typography
           className="fs_24"
           style={{

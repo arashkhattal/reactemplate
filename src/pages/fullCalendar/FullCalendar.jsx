@@ -5,7 +5,7 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import "./fullCalendar.css";
 import { Card, Typography } from "@mui/material";
-import CreateEvent from "./createEvent";
+import CreateEvent from "./CreateEventModal";
 import { useGlobalContext } from "../../context/globalContext";
 import ViewModal from "./ViewModal";
 import EditModal from "./EditModal";

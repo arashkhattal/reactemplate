@@ -1,14 +1,5 @@
-import {
-  Box,
-  Card,
-  Modal,
-  Typography,
-} from "@mui/material";
-import React, {
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { Box, Card, Modal, Typography } from "@mui/material";
+import React, { useEffect, useRef, useState } from "react";
 import FolderImg from "../../../assets/image/dragndrop.png";
 
 const uploadSingleFile = () => {
@@ -17,14 +8,11 @@ const uploadSingleFile = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   // get file and details
-  const [projectSheet, setProjectSheet] =
-    useState([]);
+  const [projectSheet, setProjectSheet] = useState([]);
   console.log(projectSheet[0]);
 
   // store present File
-  const [presentFile, setPresentFile] = useState(
-    []
-  );
+  const [presentFile, setPresentFile] = useState([]);
 
   // reference a value that’s not needed for rendering.
   const projectSheetRef = useRef();
@@ -41,9 +29,7 @@ const uploadSingleFile = () => {
 
   // filter data
   const handleDelete = (e) => {
-    const filteredData = projectSheet.filter(
-      (item, index) => index !== e
-    );
+    const filteredData = projectSheet.filter((item, index) => index !== e);
     setProjectSheet(filteredData);
   };
 
@@ -66,10 +52,7 @@ const uploadSingleFile = () => {
           newFile.push(t);
         }
       });
-      setProjectSheet([
-        ...projectSheet,
-        ...newFile,
-      ]);
+      setProjectSheet([...projectSheet, ...newFile]);
     }
   };
 
@@ -86,10 +69,7 @@ const uploadSingleFile = () => {
           newFile.push(t);
         }
       });
-      setProjectSheet([
-        ...projectSheet,
-        ...newFile,
-      ]);
+      setProjectSheet([...projectSheet, ...newFile]);
     }
   };
 
@@ -150,25 +130,13 @@ const uploadSingleFile = () => {
                 onDragOver={dragOver}
                 onDragEnter={dragEnter}
                 onDragLeave={dragLeave}
-                onDrop={(e) =>
-                  FileDrop(e, "file")
-                }
-                onClick={() =>
-                  FileInputClicked("file")
-                }
+                onDrop={(e) => FileDrop(e, "file")}
+                onClick={() => FileInputClicked("file")}
               >
-                <img
-                  alt=""
-                  src={FolderImg}
-                  className="drag_img"
-                />
-                <Typography
-                  variant="h6"
-                  className="drag_test"
-                >
+                <img alt="" src={FolderImg} className="drag_img" />
+                <Typography variant="h6" className="drag_test">
                   {" "}
-                  Drag and Drop your file here{" "}
-                  <br /> <u>or</u>
+                  Drag and Drop your file here <br /> <u>or</u>
                 </Typography>
 
                 <input
@@ -180,19 +148,13 @@ const uploadSingleFile = () => {
                   // accept=".xlsx, .xls .csv"
                   multiple
                   onChange={() =>
-                    FileSelected(
-                      projectSheetRef.current
-                        .files,
-                      "file"
-                    )
+                    FileSelected(projectSheetRef.current.files, "file")
                   }
                 />
               </section>
 
               <Typography
-                onClick={(e) =>
-                  FileInputClicked("file")
-                }
+                onClick={(e) => FileInputClicked("file")}
                 variant="p"
                 className="browser_text"
               >
@@ -204,15 +166,11 @@ const uploadSingleFile = () => {
           {projectSheet?.length !== 0
             ? projectSheet?.map((file, i) => (
                 <div>
-                  <Box
-                    className="upload_complete"
-                    my={1}
-                  >
+                  <Box className="upload_complete" my={1}>
                     <div
                       style={{
                         display: "flex",
-                        justifyContent:
-                          "space-between",
+                        justifyContent: "space-between",
                         alignItems: "center",
                       }}
                     >

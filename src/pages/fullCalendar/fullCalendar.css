@@ -4,6 +4,7 @@
   border-color: #3498db !important;
   color: #fff;
 }
+
 /* modal ui design center */
 .center_modal_ui {
   position: absolute;
@@ -15,5 +16,4 @@
   box-shadow: 24px;
   border-radius: 1px solid;
   padding: 40px;
-
 }
