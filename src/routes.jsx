@@ -120,36 +120,37 @@ export const adminRoutes = [
     ),
     key: "setting",
     icon: <SettingsIcon fontSize="small" />,
-    collapse: [
-      {
-        name: (
-          <Typography sx={{ fontSize: "14px" }}>
-            Sun Editor
-          </Typography>
-        ),
-        key: "suneditor",
-        route: "/suneditor",
-        icon: (
-          <Icon sx={{ fontSize: "14px" }}>S</Icon>
-        ),
-        component: <SunEditor />,
-      },
-      {
-        name: (
-          <Typography sx={{ fontSize: "14px" }}>
-            Calendar
-          </Typography>
-        ),
-        key: "fullcalendar",
-        route: "/fullcalendar",
-        icon: (
-          <CalendarMonthIcon
-            sx={{ fontSize: "14px" }}
-          />
-        ),
-        component: <Calendar />,
-      },
-    ],
+    collapse: [],
+  },
+  // sun editor
+  {
+    name: (
+      <Typography sx={{ fontSize: "14px" }}>
+        Sun Editor
+      </Typography>
+    ),
+    key: "suneditor",
+    route: "/suneditor",
+    icon: (
+      <Icon sx={{ fontSize: "14px" }}>S</Icon>
+    ),
+    component: <SunEditor />,
+  },
+  // calender
+  {
+    name: (
+      <Typography sx={{ fontSize: "14px" }}>
+        Calendar
+      </Typography>
+    ),
+    key: "fullcalendar",
+    route: "/fullcalendar",
+    icon: (
+      <CalendarMonthIcon
+        sx={{ fontSize: "14px" }}
+      />
+    ),
+    component: <Calendar />,
   },
   {
     name: (
