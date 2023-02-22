@@ -1,10 +1,9 @@
-import { Typography } from "@mui/material";
 import React from "react";
 
 const Setting = () => {
   return (
     <div>
-      <Typography>Setting</Typography>
+      <h1>Page One</h1>
     </div>
   );
 };

@@ -64,6 +64,7 @@ const SidebarWrapper = styled.div``;
 
 // style for main content
 const ContentWrapper = styled.div`
+  padding: 10px;
   height: 100%;
   max-height: 95vh;
   overflow: auto;

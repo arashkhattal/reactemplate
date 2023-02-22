@@ -30,14 +30,10 @@ const PushNotificationExample = () => {
   }, []);
 
   return (
-    <Card
-      style={{ padding: "20px", margin: "20px" }}
-    >
+    <Card style={{ padding: "10px" }}>
       <div>
         <h1>Welcome to our site!</h1>
-        <Typography>
-          Thank you for visiting.
-        </Typography>
+        <Typography>Thank you for visiting.</Typography>
         {/* button to trigger notification  */}
         <button
           onClick={buttonClick}

@@ -12,15 +12,15 @@ import TimeLineChartBasic from "./timelineChart/TimeLineChartBasic";
 
 const Contact = () => {
   const { setLoading } = useGlobalContext();
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(true);
-    }, 500);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setLoading(true);
+  //   }, 500);
+  // }, []);
 
-  setTimeout(() => {
-    setLoading(false);
-  }, 2000);
+  // setTimeout(() => {
+  //   setLoading(false);
+  // }, 2000);
   return (
     <>
       <div style={{ overflow: "hidden" }}>
@@ -28,7 +28,7 @@ const Contact = () => {
         <Grid container spacing={2}>
           <Grid item xs={12} md={6}>
             {/* card component from mui  */}
-            <Card style={{ padding: "20px", border: "1px solid lightgrey" }}>
+            <Card className="global_card">
               {/* Typography component from MUI */}
               <Typography className="global_display_flex fs_16 fw_600">
                 Apex chart - Line Chart
@@ -38,7 +38,7 @@ const Contact = () => {
             </Card>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Card style={{ padding: "20px", border: "1px solid lightgrey" }}>
+            <Card className="global_card">
               <Typography className="global_display_flex fs_16 fw_600">
                 Apex chart - Bar Chart
               </Typography>
@@ -47,7 +47,7 @@ const Contact = () => {
             </Card>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Card style={{ padding: "20px", border: "1px solid lightgrey" }}>
+            <Card className="global_card">
               <Typography className="global_display_flex fs_16 fw_600">
                 Apex chart - Stacked Bar chart
               </Typography>
@@ -56,7 +56,7 @@ const Contact = () => {
             </Card>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Card style={{ padding: "20px", border: "1px solid lightgrey" }}>
+            <Card className="global_card">
               <Typography className="global_display_flex fs_16 fw_600">
                 Apex chart - Time Line chart
               </Typography>
@@ -65,7 +65,7 @@ const Contact = () => {
             </Card>
           </Grid>
           <Grid item xs={12} md={12}>
-            <Card style={{ padding: "20px", border: "1px solid lightgrey" }}>
+            <Card className="global_card">
               <Typography className="global_display_flex fs_16 fw_600">
                 Apex chart - Time Line chart Basic
               </Typography>
@@ -74,7 +74,7 @@ const Contact = () => {
             </Card>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Card style={{ padding: "20px", border: "1px solid lightgrey" }}>
+            <Card className="global_card">
               <Typography className="global_display_flex fs_16 fw_600">
                 Apex chart - Donut chart
               </Typography>
@@ -83,7 +83,7 @@ const Contact = () => {
             </Card>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Card style={{ padding: "20px", border: "1px solid lightgrey" }}>
+            <Card className="global_card">
               <Typography className="global_display_flex fs_16 fw_600">
                 Apex chart - Pie chart
               </Typography>

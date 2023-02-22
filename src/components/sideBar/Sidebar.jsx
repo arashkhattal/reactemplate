@@ -1,7 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-} from "react";
+import React, { useState, useEffect } from "react";
 import Drawer from "@mui/material/Drawer";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
@@ -14,22 +11,14 @@ import MenuOpenIcon from "@mui/icons-material/MenuOpen";
 import MenuIcon from "@mui/icons-material/Menu";
 
 import { adminRoutes } from "../../routes";
-import {
-  ExpandLess,
-  ExpandMore,
-} from "@mui/icons-material";
-import {
-  Collapse,
-  Tooltip,
-  Typography,
-} from "@mui/material";
+import { ExpandLess, ExpandMore } from "@mui/icons-material";
+import { Collapse, Tooltip, Typography } from "@mui/material";
 import { useGlobalContext } from "../../context/globalContext";
 import { makeStyles } from "@mui/styles";
 
 export default function PermanentDrawerLeft() {
   // global context
-  const { drawerWidth, openMenu, setOpenMenu } =
-    useGlobalContext();
+  const { drawerWidth, openMenu, setOpenMenu } = useGlobalContext();
 
   // custom style for drawer
   const useStyles = makeStyles((theme) => ({
@@ -41,7 +30,7 @@ export default function PermanentDrawerLeft() {
       width: drawerWidth,
     },
     nested: {
-      paddingLeft: theme.spacing(4),
+      paddingLeft: theme.spacing(1),
     },
   }));
 
@@ -49,8 +38,7 @@ export default function PermanentDrawerLeft() {
   const classes = useStyles();
 
   // get routes data from global context
-  const [curRoute, setCurRoute] =
-    useState(adminRoutes);
+  const [curRoute, setCurRoute] = useState(adminRoutes);
 
   // state to maintain dropdown
   const [open, setOpen] = useState({});
@@ -59,18 +47,14 @@ export default function PermanentDrawerLeft() {
   // useEffects that will maintain state of dropdown when refresh
 
   useEffect(() => {
-    const localStorageOpenState =
-      localStorage.getItem("openState");
+    const localStorageOpenState = localStorage.getItem("openState");
     if (localStorageOpenState) {
       setOpen(JSON.parse(localStorageOpenState));
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem(
-      "openState",
-      JSON.stringify(open)
-    );
+    localStorage.setItem("openState", JSON.stringify(open));
   }, [open]);
 
   return (
@@ -109,11 +93,7 @@ export default function PermanentDrawerLeft() {
                 disablePadding
                 onClick={() =>
                   setOpen({
-                    state:
-                      open?.id === data?.key &&
-                      open?.state
-                        ? false
-                        : true,
+                    state: open?.id === data?.key && open?.state ? false : true,
                     id: data?.key,
                   })
                 }
@@ -121,30 +101,20 @@ export default function PermanentDrawerLeft() {
                 {/* ListItemButton - added button */}
                 <ListItemButton>
                   {openMenu ? (
-                    <ListItemIcon>
-                      {data?.icon}
-                    </ListItemIcon>
+                    <ListItemIcon>{data?.icon}</ListItemIcon>
                   ) : (
-                    <Tooltip
-                      title={data?.name}
-                      arrow
-                    >
-                      <ListItemIcon>
-                        {data?.icon}
-                      </ListItemIcon>
+                    <Tooltip title={data?.name} arrow>
+                      <ListItemIcon>{data?.icon}</ListItemIcon>
                     </Tooltip>
                   )}
                   {/* text */}
                   <ListItemText
                     primary={data?.name}
                     style={{
-                      display: openMenu
-                        ? "block"
-                        : "none",
+                      display: openMenu ? "block" : "none",
                     }}
                   />
-                  {open?.id === data?.key &&
-                  open?.state ? (
+                  {open?.id === data?.key && open?.state ? (
                     <ExpandLess />
                   ) : (
                     <ExpandMore />
@@ -152,22 +122,13 @@ export default function PermanentDrawerLeft() {
                 </ListItemButton>
               </ListItem>
               <Collapse
-                in={
-                  open?.id === data?.key &&
-                  open?.state
-                }
+                in={open?.id === data?.key && open?.state}
                 timeout="auto"
                 unmountOnExit
               >
                 {data?.collapse?.map((cdata) => (
-                  <List
-                    component="div"
-                    disablePadding
-                  >
-                    <ListItem
-                      key={cdata?.key}
-                      className={classes.nested}
-                    >
+                  <List component="div" disablePadding>
+                    <ListItem key={cdata?.key} className={classes.nested}>
                       <NavLink
                         to={cdata?.route}
                         style={{
@@ -179,17 +140,10 @@ export default function PermanentDrawerLeft() {
                         {/* ListItemButton - added button */}
                         <ListItemButton>
                           {openMenu ? (
-                            <ListItemIcon>
-                              {cdata?.icon}
-                            </ListItemIcon>
+                            <ListItemIcon>{cdata?.icon}</ListItemIcon>
                           ) : (
-                            <Tooltip
-                              title={cdata?.name}
-                              arrow
-                            >
-                              <ListItemIcon>
-                                {cdata?.icon}
-                              </ListItemIcon>
+                            <Tooltip title={cdata?.name} arrow>
+                              <ListItemIcon>{cdata?.icon}</ListItemIcon>
                             </Tooltip>
                           )}
 
@@ -197,9 +151,7 @@ export default function PermanentDrawerLeft() {
                           <ListItemText
                             primary={cdata?.name}
                             style={{
-                              display: openMenu
-                                ? "block"
-                                : "none",
+                              display: openMenu ? "block" : "none",
                             }}
                           />
                         </ListItemButton>
@@ -211,10 +163,7 @@ export default function PermanentDrawerLeft() {
             </>
           ) : (
             // sidebar option without dropdown
-            <ListItem
-              key={data?.key}
-              disablePadding
-            >
+            <ListItem key={data?.key} disablePadding>
               {/* addded NavLink to page */}
               <NavLink
                 to={data?.route}
@@ -227,17 +176,10 @@ export default function PermanentDrawerLeft() {
                 {/* ListItemButton - added button */}
                 <ListItemButton>
                   {openMenu ? (
-                    <ListItemIcon>
-                      {data?.icon}
-                    </ListItemIcon>
+                    <ListItemIcon>{data?.icon}</ListItemIcon>
                   ) : (
-                    <Tooltip
-                      title={data?.name}
-                      arrow
-                    >
-                      <ListItemIcon>
-                        {data?.icon}
-                      </ListItemIcon>
+                    <Tooltip title={data?.name} arrow>
+                      <ListItemIcon>{data?.icon}</ListItemIcon>
                     </Tooltip>
                   )}
 
@@ -245,9 +187,7 @@ export default function PermanentDrawerLeft() {
                   <ListItemText
                     primary={data?.name}
                     style={{
-                      display: openMenu
-                        ? "block"
-                        : "none",
+                      display: openMenu ? "block" : "none",
                     }}
                   />
                 </ListItemButton>

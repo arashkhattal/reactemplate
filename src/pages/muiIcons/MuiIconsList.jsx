@@ -68,7 +68,6 @@ import {
 } from "@mui/material";
 import * as Icons from "@mui/icons-material";
 import "./muiIcons.css";
-import ScrollToTopButton from "./ScrollBar";
 import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles((theme) => ({

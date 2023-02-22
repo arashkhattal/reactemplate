@@ -1,18 +1,8 @@
-.card {
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 30px;
-}
-
-.card-body {
-  padding: 20px;
-}
 
 .card-stats {
   background-color: #f7f7f7;
   border-radius: 5px;
-  padding: 20px;
+  padding: 10px;
 }
 
 .card-stats-title {

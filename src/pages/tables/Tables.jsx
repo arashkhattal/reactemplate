@@ -9,20 +9,19 @@ import SortSelectTable from "./sort&selectTable/SortSelectTable";
 
 const About = () => {
   const { setLoading } = useGlobalContext();
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(true);
-    }, 500);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setLoading(true);
+  //   }, 500);
+  // }, []);
 
-  setTimeout(() => {
-    setLoading(false);
-  }, 2000);
+  // setTimeout(() => {
+  //   setLoading(false);
+  // }, 2000);
   return (
     <>
       <div style={{ overflow: "hidden" }}>
         {/* Typography component from MUI  */}
-        <Typography variant="h5">Tables</Typography>
         {/* Grid component from MUI  */}
         <Grid container spacing={2}>
           <Grid item xs={6} md={12}>

@@ -6,19 +6,19 @@ import LineChart from "../charts/linechart/Linechart";
 
 const HomePage = () => {
   const { setLoading } = useGlobalContext();
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(true);
-    }, 500);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setLoading(true);
+  //   }, 500);
+  // }, []);
 
-  setTimeout(() => {
-    setLoading(false);
-  }, 2000);
+  // setTimeout(() => {
+  //   setLoading(false);
+  // }, 2000);
 
   return (
     <>
-      <div style={{ padding: "10px", margin: "10px" }}>
+      <div>
         <Grid container spacing={2}>
           <Grid item xs={12} md={4} lg={3}>
             <Card>
@@ -65,7 +65,7 @@ const HomePage = () => {
             </Card>
           </Grid>
           <Grid item xs={12} md={12} lg={12}>
-            <Card lassName="card">
+            <Card className="global_card">
               <LineChart />
             </Card>
           </Grid>

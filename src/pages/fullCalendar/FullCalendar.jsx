@@ -82,13 +82,7 @@ const Calendar = () => {
         deleteEvent={deleteEvent}
       />
       {/* card component from mui  */}
-      <Card
-        style={{
-          padding: "20px",
-          margin: "20px",
-        }}
-        className="test"
-      >
+      <Card className="global_card">
         {/* <button onClick={handleDateSelect}>Create Event</button> */}
 
         {/* Typography component from MUI  */}

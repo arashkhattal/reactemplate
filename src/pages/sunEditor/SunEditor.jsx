@@ -14,8 +14,7 @@ function SunEditorPage() {
       {/* card component from mui  */}
       <Card
         style={{
-          padding: "20px",
-          margin: "20px",
+          padding: "10px",
         }}
       >
         {/* Typography component from MUI  */}
