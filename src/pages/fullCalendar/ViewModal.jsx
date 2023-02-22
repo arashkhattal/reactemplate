@@ -35,10 +35,12 @@ const style = {
   p: 4,
 };
 
-const viewCalender = () => {
-  const { viewEvent, setViewEvent, setEditEvent, setDeleteEvent } =
-    useGlobalContext();
-
+const viewCalender = ({
+  viewEvent,
+  setViewEvent,
+  setEditEvent,
+  setDeleteEvent,
+}) => {
   const [taskSubject, setTaskSubject] = useState("");
 
   const [taskStartdate, setTaskStartDate] = useState("");

@@ -38,8 +38,8 @@ const boxSX = {
   },
 };
 
-const EditCalender = ({ events, setEvents }) => {
-  const { setEditEvent, editEvent, setAlert } = useGlobalContext();
+const EditCalender = ({ events, setEvents, editEvent, setEditEvent }) => {
+  const { setAlert } = useGlobalContext();
 
   // store event info
   const [event, setEvent] = useState("");

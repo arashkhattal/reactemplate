@@ -6,7 +6,7 @@ import React, { useState } from "react";
 import { useGlobalContext } from "../../context/globalContext";
 import { getCurrentDate } from "../../helpers/globalFunction";
 
-const CreateEvent = ({ events, setEvents }) => {
+const CreateEvent = ({ events, setEvents, createEvent, setCreateEvent }) => {
   // store event info
   const [event, setEvent] = useState("");
   const [eventStart, setEventStart] = useState(null);
@@ -18,7 +18,7 @@ const CreateEvent = ({ events, setEvents }) => {
   const [activeStartDate, setActiveStartDate] = useState(false);
 
   // global function
-  const { createEvent, setCreateEvent, setAlert } = useGlobalContext();
+  const { setAlert } = useGlobalContext();
   // submit created event
   const HandleSubmit = async () => {
     if (event === "") {
@@ -31,7 +31,7 @@ const CreateEvent = ({ events, setEvents }) => {
     } else {
       if (event) {
         const newEvent = {
-          id: events.length + 1,
+          id: (events.length + 1).toString(),
           title: event,
           allDay: checked,
           start: checked
@@ -59,6 +59,8 @@ const CreateEvent = ({ events, setEvents }) => {
     }
     setCreateEvent(false);
   };
+
+  console.log("events :", events);
 
   const getformatedDate = (date) => {
     if (date === null || date === "") return "";
