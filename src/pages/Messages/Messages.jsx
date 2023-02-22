@@ -69,13 +69,14 @@ const Messages = () => {
       <CreateGroup />
       <Box
         sx={{ overflowY: "hidden" }}
-        height="80vh"
+        height="90vh"
       >
         <Card>
           <Box
             style={{
               display: "flex",
               justifyContent: "space-between",
+              padding: "5px",
             }}
           >
             <Typography
@@ -148,7 +149,7 @@ const Messages = () => {
               id={"list_rooms"}
             >
               {message.map((msg) => (
-                <Card
+                <div
                   sx={{
                     height: "auto",
                     width: "auto",
@@ -225,10 +226,11 @@ const Messages = () => {
                       </Box>
                     </Badge>
                   </Box>
-                </Card>
+                </div>
               ))}
             </Box>
 
+            <div>
             <Box>
               <img
                 alt=""
@@ -254,6 +256,7 @@ const Messages = () => {
                 No Messages
               </Typography>
             </Box>
+            </div>
           </Box>
         </Card>
       </Box>
