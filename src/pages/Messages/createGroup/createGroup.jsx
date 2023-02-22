@@ -87,6 +87,8 @@ const rows = [
 const createGroup = () => {
   // store chat name
   const [name, setName] = useState("");
+  const [select, setSelect] = useState([]);
+  console.log(select);
   // global function
   const {
     createGroup,
@@ -158,6 +160,10 @@ const createGroup = () => {
             pageSize={5}
             rowsPerPageOptions={[4]}
             checkboxSelection
+            value={select}
+            onChange={(e) =>
+              setSelect(e.target.value)
+            }
           />
         </div>
         <Box
