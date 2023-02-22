@@ -38,89 +38,24 @@ const boxSX = {
   },
 };
 
-const EditCalender = () => {
-  const { setEditEvent, editEvent, calenderEdit } = useGlobalContext();
+const EditCalender = ({ events, setEvents }) => {
+  const { setEditEvent, editEvent, setAlert } = useGlobalContext();
 
-  const [taskSubject, setTaskSubject] = useState("");
-
-  const [taskStartdate, setTaskStartDate] = useState("");
-  const [taskEnddate, setTaskEndDate] = useState("");
-  const [taskStartTime, setTaskStartTime] = useState("");
-  const [taskEndTime, setTaskEndTime] = useState("");
+  // store event info
+  const [event, setEvent] = useState("");
+  const [eventStart, setEventStart] = useState(null);
+  const [eventEnd, setEventEnd] = useState(null);
+  const [checked, setChecked] = useState(false);
+  const [eventStartTime, setEventStartTime] = useState(null);
+  const [eventEndTime, setEventEndTime] = useState(null);
   const [activeEndDate, setActiveEndDate] = useState(false);
   const [activeStartDate, setActiveStartDate] = useState(false);
-  const [activeEndTime, setActiveEndTime] = useState(false);
-  const [activeStartTime, setActiveStartTime] = useState(false);
-
-  const [checked, setChecked] = useState(false);
-
-  const [senderData, setSenderData] = useState([]);
-
-  //   const addData = async () => {
-  //     setLoading(true);
-  //     try {
-  //       const response = await axiosInstance.post(`/backend/update_event`, {
-  //         id: calenderEdit?.data?._def?.publicId,
-  //         title: taskSubject,
-  //         description: desc,
-  //         startStr: checked
-  //           ? moment(taskStartdate, "YYYY-MM-DD").utc().format()
-  //           : moment(taskStartdate + "T" + taskStartTime)
-  //               .utc()
-  //               .format(),
-  //         endStr: checked
-  //           ? moment(taskEnddate, "YYYY-MM-DD").add(1, "days").utc().format()
-  //           : moment(taskEnddate + "T" + taskEndTime)
-  //               .utc()
-  //               .format(),
-  //         allDay: checked,
-  //         editable: true,
-  //         durationEditable: true,
-  //         display: "auto",
-  //         overlap: true,
-  //         extendedProps: {
-  //           attendees: filterUser,
-  //           url: url,
-  //         },
-  //       });
-  //       if (response.status === 200) {
-  //         setAlert({
-  //           flag: true,
-  //           type: "success",
-  //           msg: response?.data?.msg,
-  //         });
-  //         setReload(reload + 1);
-  //       } else if (response?.status === 203) {
-  //         handle203(response);
-  //       }
-  //     } catch (error) {
-  //       setAlert({
-  //         flag: true,
-  //         type: "error",
-  //         msg: "Something went wrong. Please try again",
-  //       });
-  //     } finally {
-  //       setTaskSubject("");
-  //       setTaskStartDate("");
-  //       setTaskEndDate("");
-  //       setTaskStartTime("");
-  //       setTaskEndTime("");
-  //       setActiveEndDate(false);
-  //       setActiveStartDate(false);
-  //       setAddModalTask(false);
-  //       setCalenderEdit({
-  //         state: false,
-  //         data: null,
-  //       });
-  //       setAddCalenderView({ state: false });
-  //       setLoading(false);
-  //     }
-  //   };
 
   useEffect(() => {
     if (editEvent?.state) {
       let data = editEvent?.data;
-      setTaskSubject(data?._def?.title);
+      console.log(editEvent?.data?._def?.publicId);
+      setEvent(data?._def?.title);
 
       // format : 2023-02-03T18:42
       // setTaskStartDate(data?._instance?.range?.start);
@@ -141,39 +76,69 @@ const EditCalender = () => {
 
       if (editEvent?.data?.allDay) {
         if (editEvent?.data?.dateStr) {
-          setTaskStartDate(editEvent?.data?.dateStr);
-          setTaskEndDate(editEvent?.data?.dateStr);
+          setEventStart(editEvent?.data?.dateStr);
+          setEventEnd(editEvent?.data?.dateStr);
         } else {
-          setTaskStartDate(editEvent?.data?.startStr);
-          setTaskEndDate(
+          setEventStart(editEvent?.data?.startStr);
+          setEventEnd(
             moment(editEvent?.data?.endStr, "YYYY-MM-DD")
               .subtract(1, "days")
               .format("YYYY-MM-DD")
           );
         }
-        setTaskEndTime("");
-        setTaskStartTime("");
+        setEventStartTime("");
+        setEventEndTime("");
         setChecked(true);
       } else {
         setChecked(false);
-        setTaskStartDate(
-          moment(editEvent?.data?.startStr).format("YYYY-MM-DD")
-        );
-        setTaskEndDate(moment(editEvent?.data?.endStr).format("YYYY-MM-DD"));
-        setTaskStartTime(moment(editEvent?.data?.startStr).format("HH:mm"));
-        setTaskEndTime(moment(editEvent?.data?.endStr).format("HH:mm"));
+        setEventStart(moment(editEvent?.data?.startStr).format("YYYY-MM-DD"));
+        setEventEnd(moment(editEvent?.data?.endStr).format("YYYY-MM-DD"));
+        setEventStartTime(moment(editEvent?.data?.startStr).format("HH:mm"));
+        setEventEndTime(moment(editEvent?.data?.endStr).format("HH:mm"));
       }
       setChecked(data?._def?.allDay);
     }
   }, [editEvent?.state, editEvent?.data]); //eslint-disable-line react-hooks/exhaustive-deps
 
-  const getSenderName = (option) => {
-    let dataNow = senderData?.filter(
-      (s) => s?.customer_user_email_id === option
-    );
-    if (dataNow?.length > 0) {
-      return dataNow[0]?.customer_user_full_name + " -";
-    } else return "";
+  // submit created event
+  const HandleSubmit = async () => {
+    if (event === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please Event Event Name",
+      });
+      return;
+    } else {
+      if (event) {
+        const newEvent = {
+          id: editEvent?.data?._def?.publicId,
+          title: event,
+          allDay: checked,
+          start: checked
+            ? moment(eventStart, "YYYY-MM-DD").utc().format()
+            : moment(eventStart + "T" + eventStartTime)
+                .utc()
+                .format(),
+          end: checked
+            ? moment(eventEnd, "YYYY-MM-DD").add(1, "days").utc().format()
+            : moment(eventEnd + "T" + eventEndTime)
+                .utc()
+                .format(),
+        };
+        setEvents([...events, newEvent]);
+      }
+      setAlert({
+        flag: true,
+        type: "success",
+        msg: "Event Created Successfully",
+      });
+      setEvent("");
+      setEventStart(null);
+      setEventEnd(null);
+      setChecked(false);
+    }
+    setEditEvent(false);
   };
 
   const getformatedDate = (date) => {
@@ -195,46 +160,6 @@ const EditCalender = () => {
     }
   };
 
-  const HandleSubmit = async () => {
-    if (taskSubject === "") {
-      setAlert({
-        flag: true,
-        type: "error",
-        msg: "Please Event Event Name",
-      });
-      return;
-    } else {
-      if (taskSubject) {
-        const newEvent = {
-          id: events.length + 1,
-          title: taskSubject,
-          allDay: checked,
-          start: checked
-            ? moment(eventStart, "YYYY-MM-DD").utc().format()
-            : moment(eventStart + "T" + eventStartTime)
-                .utc()
-                .format(),
-          end: checked
-            ? moment(eventEnd, "YYYY-MM-DD").add(1, "days").utc().format()
-            : moment(eventEnd + "T" + eventEndTime)
-                .utc()
-                .format(),
-        };
-        setEvents([...events, newEvent]);
-      }
-      setAlert({
-        flag: true,
-        type: "success",
-        msg: "Event Created Successfully",
-      });
-      setTaskSubject("");
-      setEventStart(null);
-      setEventEnd(null);
-      setChecked(false);
-    }
-    setEditEvent(false);
-  };
-
   return (
     <Modal
       open={editEvent?.state}
@@ -245,32 +170,26 @@ const EditCalender = () => {
         })
       }
     >
-      <Card sx={style}>
+      <Card className="center_modal_ui ">
         <Typography
-          variant="h4"
+          className="fs_24"
           style={{
             textAlign: "center",
+            padding: "10px",
           }}
-          fontWeight="medium"
         >
-          Edit Event
+          Create Event
         </Typography>
-        <Divider
-          sx={{
-            mx: 0,
-            position: "relative",
-            zIndex: "3",
-          }}
-        />
+
         <Grid container spacing={3}>
           <Grid item xs={12} md={10}>
-            <Input
+            <TextField
               fullWidth
               required
               type="text"
-              label="Title"
-              value={taskSubject}
-              onChange={(e) => setTaskSubject(e.target.value)}
+              label="Create Event"
+              value={event}
+              onChange={(e) => setEvent(e.target.value)}
             />
           </Grid>
           <Grid item xs={12} md={2} style={{ marginTop: "10px" }}>
@@ -285,131 +204,47 @@ const EditCalender = () => {
               &nbsp;All Day
             </Typography>
           </Grid>
-
           <Grid item xs={12} md={6}>
             <TextField
-              required
               type={activeStartDate ? "date" : "text"}
               inputProps={{
                 min: getCurrentDate(),
-                max: taskEnddate,
+                max: eventEnd,
               }}
-              sx={{
-                "& .MuiFormLabel-root.Mui-focused": {
-                  color: "#DC6C43",
-                },
-                "& .MuiInputBase-root": {
-                  "& fieldset": {},
-                  "&.Mui-focused fieldset": {
-                    borderColor: "#DC6C43",
-                  },
-                },
-                width: "100%",
-              }}
+              fullWidth
+              required
               onFocus={() => setActiveStartDate(true)}
               onBlur={() => setActiveStartDate(false)}
               label="Start Date"
-              value={
-                activeStartDate ? taskStartdate : getformatedDate(taskStartdate)
-              }
-              onChange={(e) => setTaskStartDate(e.target.value)}
+              value={activeStartDate ? eventStart : getformatedDate(eventStart)}
+              onChange={(e) => setEventStart(e.target.value)}
             />
           </Grid>
-
           <Grid item xs={12} md={6}>
             <TextField
+              fullWidth
               required
-              type={activeEndDate ? "date" : "text"}
               inputProps={{
-                min: taskStartdate ? taskStartdate : getCurrentDate(),
+                min: eventStart ? eventStart : getCurrentDate(),
               }}
+              type={activeEndDate ? "date" : "text"}
               onFocus={() => setActiveEndDate(true)}
               onBlur={() => setActiveEndDate(false)}
               label="End Date"
-              value={activeEndDate ? taskEnddate : getformatedDate(taskEnddate)}
-              onChange={(e) => setTaskEndDate(e.target.value)}
+              value={activeEndDate ? eventEnd : getformatedDate(eventEnd)}
+              onChange={(e) => setEventEnd(e.target.value)}
             />
           </Grid>
           {checked ? (
             ""
           ) : (
             <>
-              {/* <Grid item xs={12} md={6}>
-                <TextField
-                  format={"HH:mm"}
-                  required
-                  type={activeStartTime ? "time" : "text"}
-                  // inputProps={{
-                  //   min: taskStartdate
-                  //     ? taskStartdate
-                  //     : getFormatedDate(taskEnddate),
-                  // }}
-                  sx={{
-                    "& .MuiFormLabel-root.Mui-focused": {
-                      color: "#DC6C43",
-                    },
-                    "& .MuiInputBase-root": {
-                      "& fieldset": {},
-                      "&.Mui-focused fieldset": {
-                        borderColor: "#DC6C43",
-                      },
-                    },
-                    width: "100%",
-                  }}
-                  onFocus={() => setActiveStartTime(true)}
-                  onBlur={() => setActiveStartTime(false)}
-                  label="Start Time"
-                  value={
-                    activeStartTime
-                      ? taskStartTime
-                      : taskStartTime !== ""
-                      ? moment(taskStartTime, "HH:mm").format("LT")
-                      : ""
-                  }
-                  onChange={(e) => setTaskStartTime(e.target.value)}
-                />
-              </Grid>
-
-              <Grid item xs={12} md={6}>
-                <TextField
-                  required
-                  type={activeEndTime ? "time" : "text"}
-                  // inputProps={{
-                  //   min: taskEnddate
-                  //     ? taskEnddate
-                  //     : getFormatedDate(taskEnddate),
-                  // }}
-                  sx={{
-                    "& .MuiFormLabel-root.Mui-focused": {
-                      color: "#DC6C43",
-                    },
-                    "& .MuiInputBase-root": {
-                      "& fieldset": {},
-                      "&.Mui-focused fieldset": {
-                        borderColor: "#DC6C43",
-                      },
-                    },
-                    width: "100%",
-                  }}
-                  onFocus={() => setActiveEndTime(true)}
-                  onBlur={() => setActiveEndTime(false)}
-                  label="End Time"
-                  value={
-                    activeEndTime
-                      ? taskEndTime
-                      : taskEndTime !== ""
-                      ? moment(taskEndTime, "HH:mm").format("LT")
-                      : ""
-                  }
-                  onChange={(e) => setTaskEndTime(e.target.value)}
-                />
-              </Grid> */}
               <Grid item xs={12} md={6}>
                 <TimePicker
                   label="Start Time"
                   required={true}
-                  value={taskStartTime}
-                  onChange={(e) => setTaskStartTime(e.target.value)}
+                  value={eventStartTime}
+                  onChange={(e) => setEventStartTime(e.target.value)}
                 />
               </Grid>
 
@@ -417,22 +252,22 @@ const EditCalender = () => {
                 <TimePicker
                   label="End Time"
                   required={true}
-                  value={taskEndTime}
-                  onChange={(e) => setTaskEndTime(e.target.value)}
+                  value={eventEndTime}
+                  onChange={(e) => setEventEndTime(e.target.value)}
                 />
               </Grid>
             </>
           )}
         </Grid>
-
         <Box
           pt={3}
           style={{
             display: "flex",
             justifyContent: "space-between",
+            gap: "10px",
           }}
         >
-          <Button
+          <button
             className="btn_primary warning_btn "
             style={{
               color: "white",
@@ -447,17 +282,19 @@ const EditCalender = () => {
             }
           >
             Cancel
-          </Button>
-          <Button
-            className="sendbtn1"
-            size="small"
-            sx={boxSX}
+          </button>
+          <button
+            className="btn_primary btn_primary_hover"
+            style={{
+              color: "white",
+              width: "15%",
+            }}
             onClick={() => {
               HandleSubmit();
             }}
           >
             Save
-          </Button>
+          </button>
         </Box>
       </Card>
     </Modal>

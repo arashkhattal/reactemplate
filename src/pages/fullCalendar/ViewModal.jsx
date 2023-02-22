@@ -36,7 +36,7 @@ const style = {
 };
 
 const viewCalender = () => {
-  const { viewEvent, setViewEvent,setEditEvent } =
+  const { viewEvent, setViewEvent, setEditEvent, setDeleteEvent } =
     useGlobalContext();
 
   const [taskSubject, setTaskSubject] = useState("");
@@ -145,25 +145,26 @@ const viewCalender = () => {
           <Box>
             <Icon
               fontSize="small"
-                onClick={() => {
-                    setEditEvent({
-                      state: true,
-                      data: viewEvent?.data?.event,
-                    });
-                  setViewEvent({ state: false, data: null });
-                }}
+              onClick={() => {
+                setEditEvent({
+                  state: true,
+                  data: viewEvent?.data?.event,
+                });
+                setViewEvent({ state: false, data: null });
+              }}
               sx={{ cursor: "pointer" }}
             >
               edit
             </Icon>
             <Icon
               fontSize="small"
-              //   onClick={() =>
-              //     setCalenderDelete({
-              //       state: true,
-              //       data: addCalenderView?.data?.event?._def?.publicId,
-              //     })
-              //   }
+              onClick={() => {
+                setDeleteEvent({
+                  state: true,
+                  data: viewEvent?.data?.event?._def?.publicId,
+                });
+                setViewEvent({ state: false, data: null });
+              }}
               sx={{
                 color: "#f95770",
                 marginLeft: 2,
@@ -263,140 +264,7 @@ const viewCalender = () => {
                 : moment(taskEnddate).utc().format("MMMM Do YYYY, h:mm a")}
             </Typography>
           </Grid>
-          {/* <Grid item xs={12} md={2.5}>
-            <Typography
-              style={{
-                fontSize: "14.5px",
-                marginTop: "10px",
-                fontWeight: "bold",
-              }}
-            >
-              URL :
-            </Typography>
-          </Grid> */}
-          {/* <Grid item xs={11} md={8.5}>
-            <Typography
-              style={{
-                cursor: "pointer",
-                fontSize: "16px",
-                border: "3px dotted lightgrey",
-                borderRadius: "10px",
-                padding: "7px",
-              }}
-            >
-              {getFormatedString(url).length !== 0 ? (
-                <a href={url} style={{ textDecoration: "none" }}>
-                  {getFormatedString(url)}
-                </a>
-              ) : (
-                "No url...."
-              )}
-            </Typography>
-          </Grid> */}
-          {/* <Grid item xs={1} md={1} style={{ marginTop: "10px" }}>
-            <CopyToClipboard text={url}>
-              <Icon
-                fontSize="medium"
-                onClick={() =>
-                  getFormatedString(url).length !== 0 ? coptText() : ""
-                }
-                style={{ cursor: "pointer" }}
-              >
-                content_copy
-              </Icon>
-            </CopyToClipboard>
-          </Grid>
-          <Grid item xs={12} md={2.5}>
-            <Typography
-              style={{
-                fontSize: "14.5px",
-                marginTop: "10px",
-                fontWeight: "bold",
-              }}
-            >
-              Attendees :
-            </Typography>
-          </Grid>
-          <Grid item xs={12} md={9.5}>
-            <Autocomplete
-              disabled
-              freeSolo
-              sx={{
-                "& .MuiFormLabel-root.Mui-focused": {
-                  color: "#DC6C43",
-                },
-                "& .MuiInputBase-root": {
-                  "& fieldset": {},
-                  "&.Mui-focused fieldset": {
-                    borderColor: "#DC6C43",
-                  },
-                },
-              }}
-              fullWidth
-              multiple
-              id="tags-standard"
-              options={senderData.map(
-                (option) => option.customer_user_email_id
-              )}
-              renderOption={(props, option) => (
-                <Box component="li" {...props}>
-                  {getSenderName(option)}
-                  {option}
-                </Box>
-              )}
-              value={eventUser}
-              onChange={(event, newValue) => {
-                if (typeof event.target.value === "string") {
-                  if (validateEmail(event.target.value))
-                    setEventUser(newValue, event.target.value);
-                  else
-                    setAlert({
-                      flag: true,
-                      type: "error",
-                      msg: "Please enter a valid email",
-                    });
-                } else setEventUser(newValue, event.target.value);
-              }}
-              renderTags={(value, getTagProps) =>
-                value.map((option, index) => (
-                  <Chip
-                    variant="outlined"
-                    label={option}
-                    {...getTagProps({ index })}
-                  />
-                ))
-              }
-              renderInput={(params) => (
-                <TextField
-                  label={eventUser.length > 0 ? "" : "No attendees...."}
-                  {...params}
-                  variant="standard"
-                  size="medium"
-                  type="email"
-                />
-              )}
-            />
-          </Grid> */}
         </Grid>
-        {/* <Typography
-          style={{
-            marginTop: "10px ",
-            fontSize: "16px",
-            fontWeight: "bold",
-          }}
-        >
-          Description :
-        </Typography>
-        <textarea
-          disabled
-          style={{ outlineColor: "#DC6C43", padding: "10px" }}
-          fullWidth
-          rows="9"
-          required
-          type="text"
-          value={desc}
-          onChange={(e) => setDesc(e.target.value)}
-        /> */}
       </Card>
     </Modal>
   );
