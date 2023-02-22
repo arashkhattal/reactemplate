@@ -178,7 +178,7 @@ const EditCalender = ({ events, setEvents }) => {
             padding: "10px",
           }}
         >
-          Create Event
+          Edit Event
         </Typography>
 
         <Grid container spacing={3}>

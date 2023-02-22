@@ -14,14 +14,14 @@ const HomePage = () => {
 
   setTimeout(() => {
     setLoading(false);
-  }, 4000);
+  }, 2000);
 
   return (
     <>
       <div style={{ padding: "10px", margin: "10px" }}>
         <Grid container spacing={2}>
           <Grid item xs={12} md={4} lg={3}>
-            <Card >
+            <Card>
               <div class="card-stats">
                 <div class="card-stats-title">Revenue</div>
                 <div class="card-stats-number">$50,000</div>
