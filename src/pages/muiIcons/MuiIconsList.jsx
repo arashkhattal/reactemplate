@@ -1,7 +1,7 @@
 // import React, { useState } from "react";
 // import { makeStyles } from "@material-ui/core/styles";
 // import { Grid, Tooltip, Typography } from "@material-ui/core";
-// import * as Icons from "@material-ui/icons";
+// import * as Icons from "@mui/icons-material";
 // import "./muiIcons.css";
 
 // const useStyles = makeStyles((theme) => ({
@@ -24,7 +24,7 @@
 //   const [importLine, setImportLine] = useState(null);
 
 //   const handleIconClick = (iconName) => {
-//     setImportLine(`import ${iconName} from '@material-ui/icons/${iconName}';`);
+//     setImportLine(`import ${iconName} from '@mui/icons-material/${iconName}';`);
 //   };
 
 //   const icons = Object.keys(Icons).map((key) => {
@@ -59,8 +59,14 @@
 
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Grid, Tooltip, Typography, InputBase, Paper } from "@material-ui/core";
-import * as Icons from "@material-ui/icons";
+import {
+  Grid,
+  Tooltip,
+  Typography,
+  InputBase,
+  Paper,
+} from "@material-ui/core";
+import * as Icons from "@mui/icons-material";
 import "./muiIcons.css";
 import ScrollToTopButton from "./ScrollBar";
 
@@ -99,7 +105,9 @@ const useStyles = makeStyles((theme) => ({
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+    paddingLeft: `calc(1em + ${theme.spacing(
+      4
+    )}px)`,
     transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("md")]: {
@@ -110,13 +118,15 @@ const useStyles = makeStyles((theme) => ({
 
 const CustomTooltip = () => {
   const classes = useStyles();
-  const [importLine, setImportLine] = useState(null);
+  const [importLine, setImportLine] =
+    useState(null);
   const [iconName, setIconName] = useState(null);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] =
+    useState("");
 
   const handleIconClick = (iconName) => {
     setImportLine(
-      `Import : import ${iconName} from '@material-ui/icons/${iconName}';`
+      `Import : import ${iconName} from '@mui/icons-material/${iconName}';`
     );
     setIconName(`Icons : <${iconName}/>`);
   };
@@ -127,7 +137,11 @@ const CustomTooltip = () => {
 
   const displayIcons = () => {
     const filteredIcons = Object.keys(Icons)
-      .filter((key) => key.toLowerCase().includes(searchTerm.toLowerCase()))
+      .filter((key) =>
+        key
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase())
+      )
       .map((key) => {
         const IconComponent = Icons[key];
         return (
@@ -155,11 +169,16 @@ const CustomTooltip = () => {
 
   return (
     <div className={classes.root}>
-      <Paper component="form" className={classes.search}>
+      <Paper
+        component="form"
+        className={classes.search}
+      >
         <InputBase
           placeholder="Search icons"
           className={classes.inputInput}
-          inputProps={{ "aria-label": "search icons" }}
+          inputProps={{
+            "aria-label": "search icons",
+          }}
           value={searchTerm}
           onChange={handleSearchChange}
         />
