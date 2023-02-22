@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
@@ -9,6 +9,7 @@ import CreateEvent from "./createEvent";
 import { useGlobalContext } from "../../context/globalContext";
 import ViewModal from "./ViewModal";
 import EditModal from "./EditModal";
+import DeleteEvent from "./DeleteModal";
 
 const Calendar = () => {
   // default events
@@ -30,6 +31,7 @@ const Calendar = () => {
   ]);
   // global function for create event modal
   const { setCreateEvent, setViewEvent } = useGlobalContext();
+
   // function to create event by drag (single & multiple)
   const handleDateSelect = (selectInfo) => {
     console.log(selectInfo);
@@ -51,7 +53,8 @@ const Calendar = () => {
     <div>
       <CreateEvent events={events} setEvents={setEvents} />
       <ViewModal />
-      <EditModal />
+      <EditModal events={events} setEvents={setEvents} />
+      <DeleteEvent events={events} setEvents={setEvents}/>
       {/* card component from mui  */}
       <Card
         style={{

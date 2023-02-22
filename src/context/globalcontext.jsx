@@ -30,11 +30,12 @@ const AppProvider = ({ children }) => {
   ////////////////////////////////////////
   //////// Calendar Component ////////////
   ////////////////////////////////////////
+
   // create event
   const [createEvent, setCreateEvent] = useState(false);
   const [viewEvent, setViewEvent] = useState({ state: false, data: null });
   const [editEvent, setEditEvent] = useState({ state: false, data: null });
-
+  const [deleteEvent, setDeleteEvent] = useState({ state: false, data: null });
 
   return (
     <AppContext.Provider
@@ -60,6 +61,8 @@ const AppProvider = ({ children }) => {
         setViewEvent,
         editEvent,
         setEditEvent,
+        deleteEvent,
+        setDeleteEvent,
       }}
     >
       {children}
