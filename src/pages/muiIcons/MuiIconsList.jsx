@@ -62,7 +62,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Grid, Tooltip, Typography, InputBase, Paper } from "@material-ui/core";
 import * as Icons from "@material-ui/icons";
 import "./muiIcons.css";
-import ScrollToTopButton from "./ScrollBar";
 
 const useStyles = makeStyles((theme) => ({
   root: {

@@ -17,10 +17,7 @@ const DeleteEvent = ({ events, setEvents, deleteEvent, setDeleteEvent }) => {
       msg: "Event Deleted Successfully",
     });
 
-    setDeleteEvent({
-      state: false,
-      data: null,
-    });
+    setDeleteEvent(false);
   };
 
   console.log("ID :", deleteEvent?.data);
@@ -60,12 +57,7 @@ const DeleteEvent = ({ events, setEvents, deleteEvent, setDeleteEvent }) => {
               width: "15%",
             }}
             size="small"
-            onClick={() =>
-              setDeleteEvent({
-                state: false,
-                data: null,
-              })
-            }
+            onClick={() => setDeleteEvent(false)}
           >
             Cancel
           </button>
