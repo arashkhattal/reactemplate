@@ -10,3 +10,10 @@
   border-radius: 1px solid;
   padding: 40px;
 }
+/* mouser hover */
+.chat_hover {
+  background-color: #fafafa;
+}
+.chat_hover:hover {
+  background-color: #dbdbd9;
+}
