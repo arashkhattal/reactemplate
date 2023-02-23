@@ -1,37 +1,53 @@
 // @mui material components
 import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
-import React, { useState, useEffect } from "react";
+import React, {
+  useState,
+  useEffect,
+} from "react";
 // Data
 import { Card, TextField } from "@mui/material";
 import { useGlobalContext } from "../../context/globalContext";
 
 import { Box } from "@mui/system";
-import { validateEmail, validatePhone } from "../../helpers/globalFunction";
+import {
+  validateEmail,
+  validatePhone,
+} from "../../helpers/globalFunction";
 import ResetPasswordModal from "./ResetPasswordModal";
-
+import bg from "../../assets/profile/bg.jpg";
 function Profile() {
   // store email
-  const [email, setEmail] = useState("jabed@gmail.com");
+  const [email, setEmail] = useState(
+    "jabed@gmail.com"
+  );
   //   store name
-  const [fullName, setFullName] = useState("Jabed");
+  const [fullName, setFullName] =
+    useState("Jabed");
   // store phone number
-  const [phoneno, setPhoneno] = useState("01789274185");
+  const [phoneno, setPhoneno] = useState(
+    "01789274185"
+  );
   //   store address
-  const [address, setAdders] = useState("Dhaka, Bangladesh");
+  const [address, setAdders] = useState(
+    "Dhaka, Bangladesh"
+  );
   //   selected photo
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedFile, setSelectedFile] =
+    useState(null);
   // preview photo
   const [preview, setPreview] = useState(null);
   console.log(selectedFile);
   // global context
-  const { setResetModal, setAlert } = useGlobalContext();
+  const { setResetModal, setAlert } =
+    useGlobalContext();
   // make URL fOR PREVIEW
   useEffect(() => {
     if (!selectedFile) {
       //  setPreview(undefined);
       return;
     }
-    const objectUrl = URL.createObjectURL(selectedFile);
+    const objectUrl =
+      URL.createObjectURL(selectedFile);
     setPreview(objectUrl);
     // free memory when ever this component is unmounted
     return () => URL.revokeObjectURL(objectUrl);
@@ -39,7 +55,10 @@ function Profile() {
 
   //   select photo function
   const onSelectFile = (e) => {
-    if (!e.target.files || e.target.files.length === 0) {
+    if (
+      !e.target.files ||
+      e.target.files.length === 0
+    ) {
       setSelectedFile(undefined);
       return;
     }
@@ -115,43 +134,69 @@ function Profile() {
   return (
     <>
       <ResetPasswordModal />
-      <Card className="global_card">
+      <Card
+        className="global_card"
+        style={{
+          margin: "-10px",
+          marginTop: "-50px",
+        }}
+      >
         <Box mb={2} />
-        <div>
+        <div style={{ position: "relative" }}>
           <img
-            alt=""
-            src={
-              preview ||
-              "https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg"
-            }
             style={{
-              marginTop: "20px",
-              width: "70px",
-              height: "70px",
-              fontSize: "50px",
-              borderRadius: "50%",
-              marginLeft: "44%",
-            }}
-          ></img>
+              width: "100%",
 
-          <label>
-            <input
-              type="file"
-              onChange={onSelectFile}
-              accept=".png,.jpg,.jpeg"
-              style={{
-                display: "none",
-              }}
-            />
-            <ModeEditOutlineIcon
-              style={{
-                cursor: "pointer",
-              }}
-            />
-          </label>
+              height: "300px",
+            }}
+            src={bg}
+            alt=""
+          />
+          <div
+            style={{
+              position: "absolute",
+              left: "50%",
+              top: "70%",
+              transform: "translate(-50%, -50%)",
+            }}
+          >
+            <div>
+              <img
+                alt=""
+                src={
+                  preview ||
+                  "https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg"
+                }
+                style={{
+                  width: "90px",
+                  height: "90px",
+                  fontSize: "50px",
+                  borderRadius: "50%",
+                }}
+              ></img>
+
+              <label>
+                <input
+                  type="file"
+                  onChange={onSelectFile}
+                  accept=".png,.jpg,.jpeg"
+                  style={{
+                    display: "none",
+                  }}
+                />
+                <ModeEditOutlineIcon
+                  style={{
+                    cursor: "pointer",
+                    fontSize: "17px",
+                    color: "white",
+                  }}
+                />
+              </label>
+            </div>
+          </div>
         </div>
 
-        <Box mt={5} mb={3}>
+        <Box mx={5} mt={5} mb={3}>
           <Box
             style={{
               display: "grid",
@@ -165,7 +210,9 @@ function Profile() {
               type="text"
               fullWidth
               value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
+              onChange={(e) =>
+                setFullName(e.target.value)
+              }
             ></TextField>
 
             <TextField
@@ -174,7 +221,9 @@ function Profile() {
               type="text"
               fullWidth
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) =>
+                setEmail(e.target.value)
+              }
             ></TextField>
 
             <TextField
@@ -183,7 +232,9 @@ function Profile() {
               type="number"
               fullWidth
               value={phoneno}
-              onChange={(e) => setPhoneno(e.target.value)}
+              onChange={(e) =>
+                setPhoneno(e.target.value)
+              }
             />
 
             <TextField
@@ -192,7 +243,9 @@ function Profile() {
               type="text"
               fullWidth
               value={address}
-              onChange={(e) => setAdders(e.target.value)}
+              onChange={(e) =>
+                setAdders(e.target.value)
+              }
             />
           </Box>
           <Box
