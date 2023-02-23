@@ -187,8 +187,10 @@ function Profile() {
                 <ModeEditOutlineIcon
                   style={{
                     cursor: "pointer",
-                    fontSize: "17px",
+                    fontSize: "18px",
                     color: "white",
+
+                    marginLeft: "-10px",
                   }}
                 />
               </label>
