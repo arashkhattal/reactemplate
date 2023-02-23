@@ -1,9 +1,11 @@
-
 import {
+  CheckBox,
+  CheckBoxOutlineBlank,
   Visibility,
   VisibilityOff,
 } from "@mui/icons-material";
 import {
+  Autocomplete,
   Box,
   Checkbox,
   FormControl,
@@ -19,7 +21,6 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 
-// dummy data
 const currencies = [
   {
     value: "USD",
@@ -38,7 +39,19 @@ const currencies = [
     label: "¥",
   },
 ];
-
+// multiple select with delete button dummy data
+const multiData = [
+  {
+    title: "The Shawshank Redemption",
+    year: 1994,
+  },
+  { title: "The Godfather", year: 1972 },
+  { title: "The Godfather: Part II", year: 1974 },
+  { title: "The Dark Knight", year: 2008 },
+  { title: "12 Angry Men", year: 1957 },
+  { title: "Schindler's List", year: 1993 },
+  { title: "Pulp Fiction", year: 1994 },
+];
 // calculation of multiple select
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -252,26 +265,24 @@ const Outlined = () => {
             </MenuItem>
           ))}
         </TextField>
-        <TextField
-          id="outlined-select-currency-native"
-          select
-          label="Native select"
-          defaultValue="EUR"
-          SelectProps={{
-            native: true,
-          }}
-          helperText="Please select your currency"
-        >
-          {currencies.map((option) => (
-            <option
-              key={option.value}
-              value={option.value}
-            >
-              {option.label}
-            </option>
-          ))}
-        </TextField>
-
+        {/* multiple select with delete button */}
+        <Autocomplete
+          multiple
+          limitTags={3}
+          id="multiple-limit-tags"
+          options={multiData}
+          getOptionLabel={(option) =>
+            option?.title
+          }
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              label="Muli Data select"
+              placeholder="Favorites"
+            />
+          )}
+          sx={{ width: "800px" }}
+        />
         <FormControl sx={{ m: 1, width: 300 }}>
           <InputLabel id="demo-multiple-checkbox-label">
             Multiple Select

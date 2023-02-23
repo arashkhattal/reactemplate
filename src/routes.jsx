@@ -17,7 +17,9 @@ import UploadIcon from "@mui/icons-material/Upload";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import FormatSizeIcon from "@mui/icons-material/FormatSize";
 import AdjustIcon from "@mui/icons-material/Adjust";
-
+import BuildCircleOutlinedIcon from "@mui/icons-material/BuildCircleOutlined";
+import InputOutlinedIcon from "@mui/icons-material/InputOutlined";
+import ViewListOutlinedIcon from "@mui/icons-material/ViewListOutlined";
 // Import components using lazy to load the component
 const Dashboard = lazy(() =>
   import("./pages/dashboard/Dashboard")
@@ -54,6 +56,9 @@ const PushNotification = lazy(() =>
 );
 const Messages = lazy(() =>
   import("./pages/Messages/Messages")
+);
+const InputForm = lazy(() =>
+  import("./pages/inputForm/inputForm")
 );
 
 // @mui icons
@@ -163,7 +168,9 @@ export const adminRoutes = [
         key: "inputfield",
         route: "/inputfield",
         icon: (
-          <Icon sx={{ fontSize: "14px" }}>I</Icon>
+          <InputOutlinedIcon
+            sx={{ fontSize: "14px" }}
+          />
         ),
         component: <InputField />,
       },
@@ -176,7 +183,9 @@ export const adminRoutes = [
         key: "tooltips",
         route: "/tooltips",
         icon: (
-          <Icon sx={{ fontSize: "14px" }}>T</Icon>
+          <BuildCircleOutlinedIcon
+            sx={{ fontSize: "14px" }}
+          />
         ),
         // component: <TooltipExample />,
       },
@@ -261,5 +270,18 @@ export const adminRoutes = [
     route: "/messages",
     icon: <Message fontSize="small" />,
     component: <Messages />,
+  },
+  {
+    name: (
+      <Typography sx={{ fontSize: "14px" }}>
+        All Form
+      </Typography>
+    ),
+    key: "inputForm",
+    route: "/inputForm",
+    icon: (
+      <ViewListOutlinedIcon fontSize="small" />
+    ),
+    component: <InputForm />,
   },
 ];
