@@ -6,13 +6,29 @@ import App from "./App";
 //global css file
 import "./index.css";
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+const LoadingFallback = () => {
+  return (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+      }}
+    >
+      Loading...
+    </div>
+  );
+};
+ReactDOM.createRoot(
+  document.getElementById("root")
+).render(
   // BrowserRouter is a react-router-dom library.
   <BrowserRouter>
     {/* proviver getting from global context */}
     <AppProvider>
       {/* lazy loading  */}
-      <Suspense fallback="Loading...">
+      <Suspense fallback={<LoadingFallback />}>
         {/* main application component */}
         <App />
       </Suspense>
