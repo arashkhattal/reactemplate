@@ -9,16 +9,13 @@ import CreateEvent from "./CreateEventModal";
 import { useGlobalContext } from "../../context/globalContext";
 import ViewModal from "./ViewModal";
 import EditModal from "./EditModal";
-import DeleteEvent from "./DeleteModal";
+import DelEventModal from "./DelEventModal";
 
 const Calendar = () => {
   const [createEvent, setCreateEvent] = useState(false);
   const [viewEvent, setViewEvent] = useState({ state: false, data: null });
   const [editEvent, setEditEvent] = useState({ state: false, data: null });
-  const [deleteEvent, setDeleteEvent] = useState({
-    state: false,
-    data: null,
-  });
+  const [delEvent, setDelEvent] = useState({ state: false, data: null });
   // default events
   const [events, setEvents] = useState([
     {
@@ -36,7 +33,6 @@ const Calendar = () => {
       end: "2023-02-22",
     },
   ]);
-  // global function for create event modal
 
   // function to create event by drag (single & multiple)
   const handleDateSelect = (selectInfo) => {
@@ -67,7 +63,7 @@ const Calendar = () => {
         setViewEvent={setViewEvent}
         viewEvent={viewEvent}
         setEditEvent={setEditEvent}
-        setDeleteEvent={setDeleteEvent}
+        setDelEvent={setDelEvent}
       />
       <EditModal
         events={events}
@@ -75,15 +71,16 @@ const Calendar = () => {
         setEditEvent={setEditEvent}
         editEvent={editEvent}
       />
-      <DeleteEvent
+
+      <DelEventModal
+        delEvent={delEvent}
+        setDelEvent={setDelEvent}
         events={events}
         setEvents={setEvents}
-        setDeleteEvent={setDeleteEvent}
-        deleteEvent={deleteEvent}
       />
+
       {/* card component from mui  */}
       <Card className="global_card">
-        {/* <button onClick={handleDateSelect}>Create Event</button> */}
 
         {/* Typography component from MUI  */}
         <Typography
@@ -94,7 +91,7 @@ const Calendar = () => {
         </Typography>
         {/* full calendar component  */}
         <FullCalendar
-          aspectRatio={2}
+          aspectRatio={2.85}
           plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
           dayMaxEvents={2}
           initialView="dayGridMonth"

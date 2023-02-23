@@ -1,25 +1,10 @@
 import React from "react";
-import {
-  Grid,
-  Card,
-  Divider,
-  Icon,
-  Typography,
-  Box,
-  //   TextField,
-  //   Chip,
-  //   Box,
-  //   Autocomplete,
-} from "@mui/material";
+import { Grid, Card, Divider, Icon, Typography, Box } from "@mui/material";
 import moment from "moment";
 
 import { useGlobalContext } from "../../context/globalContext";
 import { useState, useEffect } from "react";
 import Modal from "@mui/material/Modal";
-
-// import { CopyToClipboard } from "react-copy-to-clipboard";
-// import axiosInstance from "helper/axiosInstance";
-// import { validateEmail } from "helper/globalFunction";
 
 const style = {
   position: "absolute",
@@ -39,7 +24,7 @@ const viewCalender = ({
   viewEvent,
   setViewEvent,
   setEditEvent,
-  setDeleteEvent,
+  setDelEvent,
 }) => {
   const [taskSubject, setTaskSubject] = useState("");
 
@@ -47,45 +32,6 @@ const viewCalender = ({
   const [taskEnddate, setTaskEndDate] = useState("");
 
   const [checked, setChecked] = useState(false);
-
-  //   const fetchSenderList = async () => {
-  //     try {
-  //       const response = await axiosInstance.get(
-  //         `/backend/dropdown_user_For_compose`
-  //       );
-
-  //       if (response?.status === 200) {
-  //         setSenderData(response?.data?.data);
-  //       } else if (response?.status === 203) {
-  //         handle203(response);
-  //       }
-  //     } catch (error) {
-  //       setAlert({
-  //         flag: true,
-  //         type: "error",
-  //         msg: "Something went wrong! please try again",
-  //       });
-  //     }
-  //   };
-
-  //   const getSenderName = (option) => {
-  //     let dataNow = senderData?.filter(
-  //       (s) => s?.customer_user_email_id === option
-  //     );
-  //     if (dataNow?.length > 0) {
-  //       return dataNow[0]?.customer_user_full_name + " -";
-  //     } else return "";
-  //   };
-
-  // Copy to clipboard
-
-  //   const coptText = (e) => {
-  //     setAlert({
-  //       flag: true,
-  //       type: "success",
-  //       msg: "Copied to clipboard",
-  //     });
-  //   };
 
   useEffect(() => {
     if (viewEvent?.state) {
@@ -161,7 +107,7 @@ const viewCalender = ({
             <Icon
               fontSize="small"
               onClick={() => {
-                setDeleteEvent({
+                setDelEvent({
                   state: true,
                   data: viewEvent?.data?.event?._def?.publicId,
                 });
