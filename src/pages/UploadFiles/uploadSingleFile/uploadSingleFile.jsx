@@ -59,16 +59,6 @@ const uploadSingleFile = () => {
       setProjectSheet([file]);
     }
   };
-  // for edit name
-  useEffect(() => {
-    const item = projectSheet[0]?.name;
-    const itemSplit = item?.split(".");
-    const filetype = itemSplit?.pop();
-    setFileType(filetype);
-    const onlyName = itemSplit?.join(".");
-    setUploadFileName(onlyName);
-  }, [projectSheet]);
-
   // upload file reset
   useEffect(() => {
     if (!open) {
@@ -205,7 +195,7 @@ const uploadSingleFile = () => {
                     <span
                       style={{ marginBottom: 1 }}
                     >
-                      {`${uploadFileName}.${fileType}`}
+                      {projectSheet[0]?.name}
                     </span>
                   </Typography>
                 </Box>
@@ -227,24 +217,7 @@ const uploadSingleFile = () => {
               </div>
             </Box>
           ) : null}
-          {/* Edit name of the file */}
-          {projectSheet?.length !== 0 &&
-          projectSheet[0]?.size < 10000000 ? (
-            <Box my={2}>
-              <TextField
-                variant="outlined"
-                fullWidth
-                required
-                type="text"
-                value={uploadFileName}
-                onChange={(e) =>
-                  setUploadFileName(
-                    e.target.value
-                  )
-                }
-              />
-            </Box>
-          ) : null}
+
           {/* if the file size is bigger then 10 mb it will show warning */}
           {projectSheet[0]?.size > 10000000 ? (
             <Box className="upload_error" my={1}>
