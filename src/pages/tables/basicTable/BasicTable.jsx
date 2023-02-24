@@ -33,6 +33,8 @@ const data = [
 ];
 
 const BasicTable = () => {
+
+  // state to maintain table data
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [searchTerm, setSearchTerm] = useState("");
@@ -40,6 +42,7 @@ const BasicTable = () => {
   const [sortColumn, setSortColumn] = useState("");
   const [sortDirection, setSortDirection] = useState("asc");
 
+  // function to handle page change
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -49,11 +52,13 @@ const BasicTable = () => {
     setPage(0);
   };
 
+  // function to handle search
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
     setPage(0);
   };
 
+  // filtered data
   const filteredData = data.filter((row) =>
     Object.values(row)
       .join(" ")
@@ -70,24 +75,6 @@ const BasicTable = () => {
     }
   };
 
-  // const filteredData = data
-  //   .filter((row) =>
-  //     Object.values(row)
-  //       .join(" ")
-  //       .toLowerCase()
-  //       .includes(searchTerm.toLowerCase())
-  //   )
-  //   .sort((a, b) => {
-  //     const aValue = a[sortColumn];
-  //     const bValue = b[sortColumn];
-  //     if (typeof aValue === "string") {
-  //       return sortDirection === "asc"
-  //         ? aValue.localeCompare(bValue)
-  //         : bValue.localeCompare(aValue);
-  //     } else {
-  //       return sortDirection === "asc" ? aValue - bValue : bValue - aValue;
-  //     }
-  //   });
 
   return (
     <div>
@@ -107,6 +94,7 @@ const BasicTable = () => {
           onChange={handleSearch}
         />
       </div>
+      {/* table container  */}
       <TableContainer>
         <Table>
           <TableHead>
@@ -130,6 +118,7 @@ const BasicTable = () => {
             </TableRow>
           </TableHead>
           <TableBody>
+            {/* filter data according to search and pagination  */}
             {filteredData
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
@@ -151,6 +140,7 @@ const BasicTable = () => {
           </TableBody>
         </Table>
       </TableContainer>
+      {/* pagination component  */}
       <TablePagination
         rowsPerPageOptions={[]}
         component="div"

@@ -84,7 +84,7 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import { InfoOutlined } from "@mui/icons-material";
+import { HelpOutline, InfoOutlined } from "@mui/icons-material";
 
 const TooltipExample = () => {
   return (
@@ -181,9 +181,9 @@ const TooltipExample = () => {
               Tooltip on help icon
             </Typography>
             <Tooltip title="Tooltip on help icon" placement="top-end">
-              {/* <IconButton aria-label="help">
+              <IconButton aria-label="help">
                 <HelpOutline />
-              </IconButton> */}
+              </IconButton>
             </Tooltip>
           </Grid>
         </Grid>

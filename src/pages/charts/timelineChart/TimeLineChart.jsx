@@ -3,6 +3,7 @@ import React from "react";
 import Chart from "react-apexcharts";
 
 const TimeLineChart = () => {
+  // chart data 
   const data = {
     series: [
       {
@@ -90,6 +91,7 @@ const TimeLineChart = () => {
 
   return (
     <div>
+      {/* chart option  */}
       <Chart options={data.options} series={data.series} type="rangeBar" />
     </div>
   );

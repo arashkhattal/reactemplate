@@ -1,20 +1,9 @@
-// import React from 'react'
-// import React from "react";
-// import ReactApexChart from "react-apexcharts";
-
-// const TimeLineChartBasic = () => {
-//   return (
-//     <div>TimeLineChartBasic</div>
-//   )
-// }
-
-// export default TimeLineChartBasic
-
 import React from "react";
 import Chart from "react-apexcharts";
 import moment from "moment";
 
 function TimelineChart() {
+  // chart options 
   const options = {
     chart: {
       type: "rangeBar",
@@ -70,6 +59,7 @@ function TimelineChart() {
     },
   };
 
+  // chart data
   const data = [
     {
       data: [
@@ -98,6 +88,7 @@ function TimelineChart() {
     },
   ];
 
+  // chart component
   return <Chart options={options} series={data} type="rangeBar" height={300}/>;
 }
 

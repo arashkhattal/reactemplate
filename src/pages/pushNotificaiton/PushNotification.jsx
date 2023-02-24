@@ -30,6 +30,7 @@ const PushNotificationExample = () => {
   }, []);
 
   return (
+    // card component from mui 
     <Card style={{ padding: "10px" }}>
       <div>
         <h1>Welcome to our site!</h1>

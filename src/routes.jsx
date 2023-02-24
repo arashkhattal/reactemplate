@@ -21,61 +21,31 @@ import BuildCircleOutlinedIcon from "@mui/icons-material/BuildCircleOutlined";
 import InputOutlinedIcon from "@mui/icons-material/InputOutlined";
 import ViewListOutlinedIcon from "@mui/icons-material/ViewListOutlined";
 // Import components using lazy to load the component
-const Dashboard = lazy(() =>
-  import("./pages/dashboard/Dashboard")
-);
-const Chart = lazy(() =>
-  import("./pages/charts/Chart")
-);
-const Tables = lazy(() =>
-  import("./pages/tables/Tables")
-);
-const InputField = lazy(() =>
-  import("./pages/InputField/InputField")
-);
-const UploadFileList = lazy(() =>
-  import("./pages/UploadFiles/uploadFileList")
-);
-const Calendar = lazy(() =>
-  import("./pages/fullCalendar/FullCalendar")
-);
-const Profile = lazy(() =>
-  import("./pages/Profile/Profile")
-);
-const MuiIconsList = lazy(() =>
-  import("./pages/muiIcons/MuiIconsList")
-);
-const Setting = lazy(() =>
-  import("./pages/Setting/Setting")
-);
-// const TooltipExample = lazy(() => import("./pages/Tooltips/Tooltips"));
+const Dashboard = lazy(() => import("./pages/dashboard/Dashboard"));
+const Chart = lazy(() => import("./pages/charts/Chart"));
+const Tables = lazy(() => import("./pages/tables/Tables"));
+const InputField = lazy(() => import("./pages/InputField/InputField"));
+const UploadFileList = lazy(() => import("./pages/UploadFiles/uploadFileList"));
+const Calendar = lazy(() => import("./pages/fullCalendar/FullCalendar"));
+const Profile = lazy(() => import("./pages/Profile/Profile"));
+const MuiIconsList = lazy(() => import("./pages/muiIcons/MuiIconsList"));
+const Setting = lazy(() => import("./pages/Setting/Setting"));
+const TooltipExample = lazy(() => import("./pages/Tooltips/Tooltips"));
 const PushNotification = lazy(() =>
-  import(
-    "./pages/pushNotificaiton/PushNotification"
-  )
+  import("./pages/pushNotificaiton/PushNotification")
 );
-const Messages = lazy(() =>
-  import("./pages/Messages/Messages")
-);
-const InputForm = lazy(() =>
-  import("./pages/inputForm/inputForm")
-);
+const Messages = lazy(() => import("./pages/Messages/Messages"));
+const InputForm = lazy(() => import("./pages/inputForm/inputForm"));
 
 // @mui icons
-const Icon = lazy(() =>
-  import("@mui/material/Icon")
-);
+const Icon = lazy(() => import("@mui/material/Icon"));
 
 // This is routes available in side bar
 export const adminRoutes = [
   //object for normal option
   {
     type: "menu",
-    name: (
-      <Typography sx={{ fontSize: "14px" }}>
-        Dashboard
-      </Typography>
-    ),
+    name: <Typography sx={{ fontSize: "14px" }}>Dashboard</Typography>,
     key: "dashboard",
     route: "/dashboard",
     icon: <DashboardIcon fontSize="small" />,
@@ -84,11 +54,7 @@ export const adminRoutes = [
   //object for normal option
   {
     type: "menu",
-    name: (
-      <Typography sx={{ fontSize: "14px" }}>
-        Chart
-      </Typography>
-    ),
+    name: <Typography sx={{ fontSize: "14px" }}>Chart</Typography>,
     key: "chart",
     route: "/chart",
     icon: <InsightsIcon fontSize="small" />,
@@ -97,11 +63,7 @@ export const adminRoutes = [
   //object for normal option
   {
     type: "menu",
-    name: (
-      <Typography sx={{ fontSize: "14px" }}>
-        Tables
-      </Typography>
-    ),
+    name: <Typography sx={{ fontSize: "14px" }}>Tables</Typography>,
     key: "table",
     route: "/table",
     icon: <TableChartIcon fontSize="small" />,
@@ -110,40 +72,24 @@ export const adminRoutes = [
   //object for normal option
   {
     type: "menu",
-    name: (
-      <Typography sx={{ fontSize: "14px" }}>
-        Mui Icons
-      </Typography>
-    ),
+    name: <Typography sx={{ fontSize: "14px" }}>Mui Icons</Typography>,
     key: "muiicons",
     route: "/muiicons",
-    icon: (
-      <AdjustIcon sx={{ fontSize: "14px" }} />
-    ),
+    icon: <AdjustIcon sx={{ fontSize: "14px" }} />,
     component: <MuiIconsList />,
   },
   // object for collapse (dropdown)
   {
     type: "collapse",
-    name: (
-      <Typography sx={{ fontSize: "14px" }}>
-        Setting
-      </Typography>
-    ),
+    name: <Typography sx={{ fontSize: "14px" }}>Setting</Typography>,
     key: "setting",
     icon: <SettingsIcon fontSize="small" />,
     collapse: [
       {
-        name: (
-          <Typography sx={{ fontSize: "14px" }}>
-            Page One
-          </Typography>
-        ),
+        name: <Typography sx={{ fontSize: "14px" }}>Page One</Typography>,
         key: "pagaone",
         route: "/pagaone",
-        icon: (
-          <Icon sx={{ fontSize: "14px" }}>S</Icon>
-        ),
+        icon: <Icon sx={{ fontSize: "14px" }}>S</Icon>,
         component: <Setting />,
       },
     ],
@@ -151,137 +97,77 @@ export const adminRoutes = [
   // components
   {
     type: "collapse",
-    name: (
-      <Typography sx={{ fontSize: "14px" }}>
-        Components
-      </Typography>
-    ),
+    name: <Typography sx={{ fontSize: "14px" }}>Components</Typography>,
     key: "components",
     icon: <GridViewIcon fontSize="small" />,
     collapse: [
       {
-        name: (
-          <Typography sx={{ fontSize: "14px" }}>
-            Input Field
-          </Typography>
-        ),
+        name: <Typography sx={{ fontSize: "14px" }}>Input Field</Typography>,
         key: "inputfield",
         route: "/inputfield",
-        icon: (
-          <InputOutlinedIcon
-            sx={{ fontSize: "14px" }}
-          />
-        ),
+        icon: <InputOutlinedIcon sx={{ fontSize: "14px" }} />,
         component: <InputField />,
       },
       {
-        name: (
-          <Typography sx={{ fontSize: "14px" }}>
-            Tooltips
-          </Typography>
-        ),
+        name: <Typography sx={{ fontSize: "14px" }}>Tooltips</Typography>,
         key: "tooltips",
         route: "/tooltips",
-        icon: (
-          <BuildCircleOutlinedIcon
-            sx={{ fontSize: "14px" }}
-          />
-        ),
-        // component: <TooltipExample />,
+        icon: <BuildCircleOutlinedIcon sx={{ fontSize: "14px" }} />,
+        component: <TooltipExample />,
       },
     ],
   },
   // sun editor
   {
-    name: (
-      <Typography sx={{ fontSize: "14px" }}>
-        Sun Editor
-      </Typography>
-    ),
+    name: <Typography sx={{ fontSize: "14px" }}>Sun Editor</Typography>,
     key: "suneditor",
     route: "/suneditor",
-    icon: (
-      <FormatSizeIcon sx={{ fontSize: "14px" }} />
-    ),
+    icon: <FormatSizeIcon sx={{ fontSize: "14px" }} />,
     component: <SunEditor />,
   },
   // calender
   {
-    name: (
-      <Typography sx={{ fontSize: "14px" }}>
-        Calendar
-      </Typography>
-    ),
+    name: <Typography sx={{ fontSize: "14px" }}>Calendar</Typography>,
     key: "fullcalendar",
     route: "/fullcalendar",
-    icon: (
-      <CalendarMonthIcon
-        sx={{ fontSize: "14px" }}
-      />
-    ),
+    icon: <CalendarMonthIcon sx={{ fontSize: "14px" }} />,
     component: <Calendar />,
   },
 
   {
-    name: (
-      <Typography sx={{ fontSize: "14px" }}>
-        Upload File
-      </Typography>
-    ),
+    name: <Typography sx={{ fontSize: "14px" }}>Upload File</Typography>,
     key: "uploadfiles",
     route: "/uploadfiles",
-    icon: (
-      <UploadIcon sx={{ fontSize: "18px" }} />
-    ),
+    icon: <UploadIcon sx={{ fontSize: "18px" }} />,
     component: <UploadFileList />,
   },
   {
     name: <Typography>Profile</Typography>,
     key: "profile",
     route: "/profile",
-    icon: (
-      <AccountCircleIcon
-        sx={{ fontSize: "14px" }}
-      />
-    ),
+    icon: <AccountCircleIcon sx={{ fontSize: "14px" }} />,
     component: <Profile />,
   },
 
   {
-    name: (
-      <Typography sx={{ fontSize: "14px" }}>
-        Notification
-      </Typography>
-    ),
+    name: <Typography sx={{ fontSize: "14px" }}>Notification</Typography>,
     key: "pushnotification",
     route: "/pushnotification",
-    icon: (
-      <NotificationsActiveRounded fontSize="small" />
-    ),
+    icon: <NotificationsActiveRounded fontSize="small" />,
     component: <PushNotification />,
   },
   {
-    name: (
-      <Typography sx={{ fontSize: "14px" }}>
-        Messages
-      </Typography>
-    ),
+    name: <Typography sx={{ fontSize: "14px" }}>Messages</Typography>,
     key: "messages",
     route: "/messages",
     icon: <Message fontSize="small" />,
     component: <Messages />,
   },
   {
-    name: (
-      <Typography sx={{ fontSize: "14px" }}>
-        All Form
-      </Typography>
-    ),
+    name: <Typography sx={{ fontSize: "14px" }}>All Form</Typography>,
     key: "inputForm",
     route: "/inputForm",
-    icon: (
-      <ViewListOutlinedIcon fontSize="small" />
-    ),
+    icon: <ViewListOutlinedIcon fontSize="small" />,
     component: <InputForm />,
   },
 ];
