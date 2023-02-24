@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import {
+  InputAdornment,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
-  TableRow,
-  Paper,
   TablePagination,
-} from "@material-ui/core";
-import { InputAdornment, TableSortLabel, TextField } from "@mui/material";
+  TableRow,
+  TableSortLabel,
+  TextField,
+} from "@mui/material";
 import { Search } from "@mui/icons-material";
 
 const columns = [
