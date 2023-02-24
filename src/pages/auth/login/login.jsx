@@ -5,7 +5,12 @@ import { useGlobalContext } from "../../../context/globalContext";
 import { useNavigate } from "react-router-dom";
 import { validateEmail } from "../../../helpers/globalFunction";
 import "../auth.css";
+import { useDispatch } from "react-redux";
+import { USER_SIGNIN } from "../../../redux/constant/AuthConstant";
+
 const Login = () => {
+  const dispatchRedux = useDispatch();
+
   //to navigate to another page
   const navigate = useNavigate();
   // global context
@@ -60,6 +65,12 @@ const Login = () => {
         flag: true,
         type: "success",
         msg: "Login successful",
+      });
+      dispatchRedux({
+        type: USER_SIGNIN,
+        payload: {
+          isLoggedIn: true,
+        },
       });
       navigate("/dashboard");
     }

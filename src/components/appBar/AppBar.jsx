@@ -7,25 +7,21 @@ import "./AppBar.css";
 
 //global context
 import { useGlobalContext } from "../../context/globalContext";
-import {
-  Avatar,
-  Box,
-  Menu,
-  Typography,
-} from "@mui/material";
+import { Avatar, Box, Menu, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { USER_SIGNIN } from "../../redux/constant/AuthConstant";
 
 const AppBar = () => {
+  const dispatchRedux = useDispatch();
+
   // state to maintain search results
   const [search, setSearch] = useState("");
-  const [userRole, setUserRole] =
-    useState("user");
+  const [userRole, setUserRole] = useState("user");
   // global context
-  const { setAlert, openMenu, setOpenMenu } =
-    useGlobalContext();
+  const { setAlert, openMenu, setOpenMenu } = useGlobalContext();
   // store profile menu
-  const [openProfileMenu, setOpenProfileMenu] =
-    useState(false);
+  const [openProfileMenu, setOpenProfileMenu] = useState(false);
   // function for search bar
   const handleSearch = (e) => {
     setSearch(e.target.value);
@@ -40,13 +36,18 @@ const AppBar = () => {
   const navigate = useNavigate();
   // logout function
   const handelLogout = () => {
+    dispatchRedux({
+      type: USER_SIGNIN,
+      payload: {
+        isLoggedIn: false,
+      },
+    });
     navigate("/");
   };
   // open profile menu
   const handleOpenProfileMenu = (event) =>
     setOpenProfileMenu(event.currentTarget);
-  const handleCloseProfileMenu = () =>
-    setOpenProfileMenu(false);
+  const handleCloseProfileMenu = () => setOpenProfileMenu(false);
 
   const renderProfile = () => (
     <Menu
@@ -271,11 +272,7 @@ const AppBar = () => {
             style={{ cursor: "pointer" }}
             onClick={() => setOpenMenu(!openMenu)}
           >
-            {openMenu ? (
-              <MenuOpenIcon />
-            ) : (
-              <MenuIcon />
-            )}
+            {openMenu ? <MenuOpenIcon /> : <MenuIcon />}
           </div>
         </div>
 
@@ -286,9 +283,7 @@ const AppBar = () => {
             placeholder="Search.."
             name="search"
             value={search}
-            onChange={(e) =>
-              setSearch(e.target.value)
-            }
+            onChange={(e) => setSearch(e.target.value)}
             onKeyDown={(e) => {
               if (e.key === "Enter") {
                 handleSearch(e);
