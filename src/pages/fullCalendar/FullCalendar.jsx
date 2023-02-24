@@ -12,9 +12,13 @@ import EditModal from "./EditModal";
 import DelEventModal from "./DelEventModal";
 
 const Calendar = () => {
+  // state to store craete modal
   const [createEvent, setCreateEvent] = useState(false);
+  // state to store view modal
   const [viewEvent, setViewEvent] = useState({ state: false, data: null });
+  // state to store edit modal
   const [editEvent, setEditEvent] = useState({ state: false, data: null });
+  // state to store delete modal
   const [delEvent, setDelEvent] = useState({ state: false, data: null });
   // default events
   const [events, setEvents] = useState([
@@ -81,7 +85,6 @@ const Calendar = () => {
 
       {/* card component from mui  */}
       <Card className="global_card">
-
         {/* Typography component from MUI  */}
         <Typography
           className="global_display_flex fs_24 fw_600"

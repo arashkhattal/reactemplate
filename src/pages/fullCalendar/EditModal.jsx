@@ -51,29 +51,12 @@ const EditCalender = ({ events, setEvents, editEvent, setEditEvent }) => {
   const [activeEndDate, setActiveEndDate] = useState(false);
   const [activeStartDate, setActiveStartDate] = useState(false);
 
+  // useeffect to prefill the data in modal
   useEffect(() => {
     if (editEvent?.state) {
       let data = editEvent?.data;
       console.log(editEvent?.data?._def?.publicId);
       setEvent(data?._def?.title);
-
-      // format : 2023-02-03T18:42
-      // setTaskStartDate(data?._instance?.range?.start);
-      // setTaskEndDate(data?._instance?.range?.end);
-
-      // setTaskStartDate(
-      //   moment(data?._instance?.range?.start).format("YYYY-MM-DD")
-      // );
-      // setTaskEndDate(
-      //   moment(data?._instance?.range?.end).format("YYYY-MM-DD")
-      // );
-      // setTaskStartTime(
-      //   moment(data?._instance?.range?.start).format("HH:mm")
-      // );
-      // setTaskEndTime(
-      //   moment(data?._instance?.range?.end).format("HH:mm")
-      // );
-
       if (editEvent?.data?.allDay) {
         if (editEvent?.data?.dateStr) {
           setEventStart(editEvent?.data?.dateStr);
@@ -100,7 +83,8 @@ const EditCalender = ({ events, setEvents, editEvent, setEditEvent }) => {
     }
   }, [editEvent?.state, editEvent?.data]); //eslint-disable-line react-hooks/exhaustive-deps
 
-  // submit created event
+  // function to edit the event
+
   const HandleSubmit = async () => {
     if (event === "") {
       setAlert({
@@ -141,6 +125,8 @@ const EditCalender = ({ events, setEvents, editEvent, setEditEvent }) => {
     setEditEvent(false);
   };
 
+  // function for specific date format
+
   const getformatedDate = (date) => {
     if (date === null || date === "") return "";
     var dateObj = moment(date).utc().toDate();
@@ -161,6 +147,7 @@ const EditCalender = ({ events, setEvents, editEvent, setEditEvent }) => {
   };
 
   return (
+    // modal component from mui
     <Modal
       open={editEvent?.state}
       onClose={() =>
@@ -170,7 +157,9 @@ const EditCalender = ({ events, setEvents, editEvent, setEditEvent }) => {
         })
       }
     >
+      {/* card component from mui  */}
       <Card className="center_modal_ui ">
+        {/* Typography component from mui */}
         <Typography
           className="fs_24"
           style={{
@@ -180,7 +169,7 @@ const EditCalender = ({ events, setEvents, editEvent, setEditEvent }) => {
         >
           Edit Event
         </Typography>
-
+        {/* grid component from mui */}
         <Grid container spacing={3}>
           <Grid item xs={12} md={10}>
             <TextField
@@ -235,6 +224,7 @@ const EditCalender = ({ events, setEvents, editEvent, setEditEvent }) => {
               onChange={(e) => setEventEnd(e.target.value)}
             />
           </Grid>
+          {/* condition to display time based on all day check box  */}
           {checked ? (
             ""
           ) : (

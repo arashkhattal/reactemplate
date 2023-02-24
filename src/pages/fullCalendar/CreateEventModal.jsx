@@ -19,7 +19,8 @@ const CreateEvent = ({ events, setEvents, createEvent, setCreateEvent }) => {
 
   // global function
   const { setAlert } = useGlobalContext();
-  // submit created event
+
+  // function to create event
   const HandleSubmit = async () => {
     if (event === "") {
       setAlert({
@@ -60,8 +61,7 @@ const CreateEvent = ({ events, setEvents, createEvent, setCreateEvent }) => {
     setCreateEvent(false);
   };
 
-  console.log("events :", events);
-
+// function for specific date format
   const getformatedDate = (date) => {
     if (date === null || date === "") return "";
     var dateObj = moment(date).utc().toDate();
@@ -83,7 +83,9 @@ const CreateEvent = ({ events, setEvents, createEvent, setCreateEvent }) => {
 
   return (
     <Modal open={createEvent} onClose={() => setCreateEvent(false)}>
+      {/* card component from mui  */}
       <Card className="center_modal_ui ">
+        {/* Typography component from mui */}
         <Typography
           className="fs_24"
           style={{
@@ -93,6 +95,7 @@ const CreateEvent = ({ events, setEvents, createEvent, setCreateEvent }) => {
         >
           Create Event
         </Typography>
+          {/* grid component from mui */}
 
         <Grid container spacing={3}>
           <Grid item xs={12} md={10}>
@@ -148,6 +151,7 @@ const CreateEvent = ({ events, setEvents, createEvent, setCreateEvent }) => {
               onChange={(e) => setEventEnd(e.target.value)}
             />
           </Grid>
+          {/* condition to display time based on all day check box  */}
           {checked ? (
             ""
           ) : (

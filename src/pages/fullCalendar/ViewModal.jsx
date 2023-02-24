@@ -26,6 +26,8 @@ const viewCalender = ({
   setEditEvent,
   setDelEvent,
 }) => {
+
+  // states to store event data
   const [taskSubject, setTaskSubject] = useState("");
 
   const [taskStartdate, setTaskStartDate] = useState("");
@@ -33,6 +35,7 @@ const viewCalender = ({
 
   const [checked, setChecked] = useState(false);
 
+  // useeffect to prefill event data
   useEffect(() => {
     if (viewEvent?.state) {
       let data = viewEvent?.data;
@@ -40,38 +43,22 @@ const viewCalender = ({
       setTaskSubject(data?.event?._def?.title);
       setTaskStartDate(data?.event?._instance?.range?.start);
       setTaskEndDate(data?.event?._instance?.range?.end);
-      //   setUrl(data?.event?._def?.extendedProps?.url);
-      //   setDesc(
-      //     data?.event?._def?.extendedProps?.description.length > 0
-      //       ? data?.event?._def?.extendedProps?.description
-      //       : "No Description..."
-      //   );
-      //   let fromArr = [];
-      //   data?.event?._def?.extendedProps?.attendees.forEach((t) => {
-      //     fromArr?.push(t?.email);
-      //   });
-      //   setEventUser([...fromArr]);
-
       setChecked(data?.event?._def?.allDay);
     }
   }, [viewEvent?.state]); //eslint-disable-line react-hooks/exhaustive-deps
 
-  const getFormatedString = (line) => {
-    if (line.length > 42) {
-      return line.substring(0, 55) + ".....";
-    } else {
-      return line;
-    }
-  };
+
 
   const newEndDate = moment(taskEnddate).format("YYYY/MM/DD");
   console.log(moment(newEndDate).format("MMMM Do YYYY, 11:30"));
 
   return (
+    // modal component from mui
     <Modal
       open={viewEvent?.state}
       onClose={() => setViewEvent({ state: false, data: null })}
     >
+      {/* card component from mui  */}
       <Card sx={style}>
         <Box
           style={{
@@ -80,6 +67,7 @@ const viewCalender = ({
           }}
         >
           <Box>
+            {/* Typography component from mui */}
             <Typography
               variant="h4"
               style={{
@@ -141,6 +129,7 @@ const viewCalender = ({
             zIndex: "3",
           }}
         />
+        {/* grid component from mui */}
         <Grid container spacing={3}>
           <Grid item xs={12} md={2.5}>
             <Typography

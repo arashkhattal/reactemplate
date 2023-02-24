@@ -17,7 +17,7 @@ const DelEventModal = ({ events, setEvents, delEvent, setDelEvent }) => {
   // global function
   const { setAlert } = useGlobalContext();
 
-  // submit created event
+  // function to delete event
   const HandleSubmit = async () => {
     let allEventsDataNow = events?.filter((a) => a?.id !== delEvent?.data);
     setEvents([...allEventsDataNow]);
@@ -34,6 +34,7 @@ const DelEventModal = ({ events, setEvents, delEvent, setDelEvent }) => {
   };
 
   return (
+    // modal component from mui
     <Modal
       open={delEvent?.state}
       onClose={() =>
@@ -43,7 +44,9 @@ const DelEventModal = ({ events, setEvents, delEvent, setDelEvent }) => {
         })
       }
     >
+      {/* card component from mui  */}
       <Card className="center_modal_ui ">
+        {/* Typography component from mui */}
         <Typography
           className="fs_24"
           style={{
