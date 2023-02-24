@@ -9,7 +9,7 @@ import {
   Paper,
   TablePagination,
 } from "@material-ui/core";
-import { InputAdornment, TextField } from "@mui/material";
+import { InputAdornment, TableSortLabel, TextField } from "@mui/material";
 import { Search } from "@mui/icons-material";
 
 const columns = [
@@ -36,6 +36,9 @@ const BasicTable = () => {
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [searchTerm, setSearchTerm] = useState("");
 
+  const [sortColumn, setSortColumn] = useState("");
+  const [sortDirection, setSortDirection] = useState("asc");
+
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -57,6 +60,34 @@ const BasicTable = () => {
       .includes(searchTerm.toLowerCase())
   );
 
+  const handleSort = (columnId) => {
+    if (sortColumn === columnId) {
+      setSortDirection(sortDirection === "asc" ? "desc" : "asc");
+    } else {
+      setSortColumn(columnId);
+      setSortDirection("asc");
+    }
+  };
+
+  // const filteredData = data
+  //   .filter((row) =>
+  //     Object.values(row)
+  //       .join(" ")
+  //       .toLowerCase()
+  //       .includes(searchTerm.toLowerCase())
+  //   )
+  //   .sort((a, b) => {
+  //     const aValue = a[sortColumn];
+  //     const bValue = b[sortColumn];
+  //     if (typeof aValue === "string") {
+  //       return sortDirection === "asc"
+  //         ? aValue.localeCompare(bValue)
+  //         : bValue.localeCompare(aValue);
+  //     } else {
+  //       return sortDirection === "asc" ? aValue - bValue : bValue - aValue;
+  //     }
+  //   });
+
   return (
     <div>
       <div className="table-head">
@@ -65,7 +96,6 @@ const BasicTable = () => {
           size="small"
           variant="outlined"
           placeholder="Search"
-          margin="dense"
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -76,7 +106,7 @@ const BasicTable = () => {
           onChange={handleSearch}
         />
       </div>
-      <TableContainer >
+      <TableContainer>
         <Table>
           <TableHead>
             <TableRow>
@@ -85,8 +115,15 @@ const BasicTable = () => {
                   key={column.id}
                   align="left"
                   style={{ minWidth: column.minWidth }}
+                  sortDirection={sortColumn === column.id ? true : false}
                 >
-                  {column.label}
+                  <TableSortLabel
+                    active={sortColumn === column.id}
+                    direction={sortColumn === column.id ? "desc" : "asc"}
+                    // onClick={handleSort(column.id)}
+                  >
+                    {column.label}
+                  </TableSortLabel>
                 </TableCell>
               ))}
             </TableRow>
@@ -114,7 +151,7 @@ const BasicTable = () => {
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={[5, 10, 25]}
+        rowsPerPageOptions={[]}
         component="div"
         count={data.length}
         rowsPerPage={rowsPerPage}
