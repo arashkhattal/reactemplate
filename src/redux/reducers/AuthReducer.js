@@ -1,7 +1,7 @@
-import { USER_SIGNIN, USER_SIGNOUT} from "../constant/AuthConstant";
+import { USER_SIGNIN, USER_SIGNOUT } from "../constant/AuthConstant";
 
 const initialState = {
-  user: null,
+  // user: null,
   isLoggedIn: false,
 };
 
@@ -11,13 +11,13 @@ const authReducer = (state = initialState, action) => {
     case USER_SIGNIN:
       return {
         ...state,
-        user: payload?.user,
+        // user: payload?.user,
         isLoggedIn: true,
       };
     case USER_SIGNOUT:
       return {
         ...state,
-        user: null,
+        // user: null,
         isLoggedIn: false,
       };
     default:

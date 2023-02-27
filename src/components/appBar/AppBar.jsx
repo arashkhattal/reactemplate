@@ -10,7 +10,7 @@ import { useGlobalContext } from "../../context/globalContext";
 import { Avatar, Box, Menu, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { USER_SIGNIN } from "../../redux/constant/AuthConstant";
+import { USER_SIGNOUT } from "../../redux/constant/AuthConstant";
 
 const AppBar = () => {
   const dispatchRedux = useDispatch();
@@ -37,10 +37,9 @@ const AppBar = () => {
   // logout function
   const handelLogout = () => {
     dispatchRedux({
-      type: USER_SIGNIN,
-      payload: {
-        isLoggedIn: false,
-      },
+      type: USER_SIGNOUT,
+      isLoggedIn: false,
+      // payload: {},
     });
     navigate("/");
   };

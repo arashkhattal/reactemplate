@@ -5,10 +5,11 @@ import { useGlobalContext } from "../../../context/globalContext";
 import { useNavigate } from "react-router-dom";
 import { validateEmail } from "../../../helpers/globalFunction";
 import "../auth.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { USER_SIGNIN } from "../../../redux/constant/AuthConstant";
 
 const Login = () => {
+  const { isLoggedIn } = useSelector((state) => state.AuthReducer);
   const dispatchRedux = useDispatch();
 
   //to navigate to another page
@@ -68,13 +69,14 @@ const Login = () => {
       });
       dispatchRedux({
         type: USER_SIGNIN,
-        payload: {
-          isLoggedIn: true,
-        },
+        isLoggedIn: true,
+        // payload: {},
       });
       navigate("/dashboard");
     }
   };
+
+  console.log("login :", isLoggedIn);
   return (
     <Box
       // component="form"
