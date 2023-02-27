@@ -40,11 +40,8 @@ const CreateChat = () => {
   };
 
   return (
-    <Modal
-      open={createChat}
-      onClose={() => setCreateChat(false)}
-    >
-      <Card className="center_modal_ui ">
+    <Modal open={createChat} onClose={() => setCreateChat(false)}>
+      <Card className="center_modal_ui global_modal">
         <Typography
           className="fs_24"
           style={{
@@ -63,9 +60,7 @@ const CreateChat = () => {
               type="text"
               label="Chat Room Name"
               value={name}
-              onChange={(e) =>
-                setName(e.target.value)
-              }
+              onChange={(e) => setName(e.target.value)}
             />
           </Grid>
         </Grid>

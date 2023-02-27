@@ -115,12 +115,9 @@ const createGroup = () => {
   };
 
   return (
-    <Modal
-      open={createGroup}
-      onClose={() => setCreateGroup(false)}
-    >
+    <Modal open={createGroup} onClose={() => setCreateGroup(false)}>
       <Card
-        className="center_modal_ui"
+        className="center_modal_ui global_modal"
         style={{
           maxHeight: "60vh",
           overflow: "auto",
@@ -144,15 +141,11 @@ const createGroup = () => {
               type="text"
               label="Chat Room Name"
               value={name}
-              onChange={(e) =>
-                setName(e.target.value)
-              }
+              onChange={(e) => setName(e.target.value)}
             />
           </Grid>
         </Grid>
-        <div
-          style={{ height: 400, width: "100%" }}
-        >
+        <div style={{ height: 400, width: "100%" }}>
           {/* tabel Data grid component  */}
           <DataGrid
             rows={rows}
@@ -161,9 +154,7 @@ const createGroup = () => {
             rowsPerPageOptions={[4]}
             checkboxSelection
             value={select}
-            onChange={(e) =>
-              setSelect(e.target.value)
-            }
+            onChange={(e) => setSelect(e.target.value)}
           />
         </div>
         <Box

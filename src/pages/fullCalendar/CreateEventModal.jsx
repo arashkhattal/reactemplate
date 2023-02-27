@@ -84,7 +84,7 @@ const CreateEvent = ({ events, setEvents, createEvent, setCreateEvent }) => {
   return (
     <Modal open={createEvent} onClose={() => setCreateEvent(false)}>
       {/* card component from mui  */}
-      <Card className="center_modal_ui ">
+      <Card className="center_modal_ui global_modal">
         {/* Typography component from mui */}
         <Typography
           className="fs_24"
@@ -95,7 +95,7 @@ const CreateEvent = ({ events, setEvents, createEvent, setCreateEvent }) => {
         >
           Create Event
         </Typography>
-          {/* grid component from mui */}
+        {/* grid component from mui */}
 
         <Grid container spacing={3}>
           <Grid item xs={12} md={10}>

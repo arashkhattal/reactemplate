@@ -74,11 +74,8 @@ const ResetPasswordModal = () => {
   };
 
   return (
-    <Modal
-      open={resetModal}
-      onClose={() => setResetModal(false)}
-    >
-      <Card className="reset_modal_ui">
+    <Modal open={resetModal} onClose={() => setResetModal(false)}>
+      <Card className="reset_modal_ui global_modal">
         <Typography
           className="fs_24"
           style={{
@@ -98,9 +95,7 @@ const ResetPasswordModal = () => {
               type="password"
               fullWidth
               value={currentPass}
-              onChange={(e) =>
-                setCurrentPass(e.target.value)
-              }
+              onChange={(e) => setCurrentPass(e.target.value)}
             />
           </Grid>
           <Grid item xs={12} md={12}>
@@ -110,9 +105,7 @@ const ResetPasswordModal = () => {
               type="password"
               fullWidth
               value={newPass}
-              onChange={(e) =>
-                setNewPass(e.target.value)
-              }
+              onChange={(e) => setNewPass(e.target.value)}
             />
           </Grid>
           <Grid item xs={12} md={12}>
@@ -122,9 +115,7 @@ const ResetPasswordModal = () => {
               type="password"
               fullWidth
               value={confirmPass}
-              onChange={(e) =>
-                setConfirmPass(e.target.value)
-              }
+              onChange={(e) => setConfirmPass(e.target.value)}
             />
           </Grid>
         </Grid>

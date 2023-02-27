@@ -111,7 +111,7 @@ const uploadSingleFile = () => {
         </button>
       </div>
       <Modal open={open} onClose={handleClose}>
-        <Card className="upload_ui_design">
+        <Card className="upload_ui_design global_modal">
           <Typography
             className="fs_24"
             style={{

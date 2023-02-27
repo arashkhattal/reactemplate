@@ -99,7 +99,7 @@ const uploadSingleFile = () => {
         </button>
       </div>
       <Modal open={open} onClose={handleClose}>
-        <Card className="upload_ui_design">
+        <Card className="upload_ui_design global_modal">
           <Typography
             className="fs_24"
             style={{
@@ -119,25 +119,13 @@ const uploadSingleFile = () => {
                   onDragOver={dragOver}
                   onDragEnter={dragEnter}
                   onDragLeave={dragLeave}
-                  onDrop={(e) =>
-                    FileDrop(e, "file")
-                  }
-                  onClick={() =>
-                    FileInputClicked("file")
-                  }
+                  onDrop={(e) => FileDrop(e, "file")}
+                  onClick={() => FileInputClicked("file")}
                 >
-                  <img
-                    alt=""
-                    src={FolderImg}
-                    className="drag_img"
-                  />
-                  <Typography
-                    variant="h6"
-                    className="drag_test"
-                  >
+                  <img alt="" src={FolderImg} className="drag_img" />
+                  <Typography variant="h6" className="drag_test">
                     {" "}
-                    Drag and Drop your file here{" "}
-                    <br /> <u>or</u>
+                    Drag and Drop your file here <br /> <u>or</u>
                   </Typography>
 
                   <input
@@ -149,19 +137,13 @@ const uploadSingleFile = () => {
                     // accept=".xlsx, .xls .csv"
                     multiple
                     onChange={() =>
-                      FileSelected(
-                        projectSheetRef.current
-                          .files,
-                        "file"
-                      )
+                      FileSelected(projectSheetRef.current.files, "file")
                     }
                   />
                 </section>
 
                 <Typography
-                  onClick={(e) =>
-                    FileInputClicked("file")
-                  }
+                  onClick={(e) => FileInputClicked("file")}
                   variant="p"
                   className="browser_text"
                 >
@@ -171,12 +153,8 @@ const uploadSingleFile = () => {
             </section>
           ) : null}
           {/* after upload show name and close icon */}
-          {projectSheet?.length !== 0 &&
-          projectSheet[0]?.size < 10000000 ? (
-            <Box
-              className="upload_complete"
-              my={1}
-            >
+          {projectSheet?.length !== 0 && projectSheet[0]?.size < 10000000 ? (
+            <Box className="upload_complete" my={1}>
               <div
                 style={{
                   display: "flex",
@@ -192,9 +170,7 @@ const uploadSingleFile = () => {
                       gap: "3px",
                     }}
                   >
-                    <span
-                      style={{ marginBottom: 1 }}
-                    >
+                    <span style={{ marginBottom: 1 }}>
                       {projectSheet[0]?.name}
                     </span>
                   </Typography>
@@ -230,8 +206,7 @@ const uploadSingleFile = () => {
                 <Box style={{ display: "flex" }}>
                   <Typography className="fs_14 fw_400">
                     Upload limit is 10 MB.
-                    <br /> Please resize and try
-                    again!
+                    <br /> Please resize and try again!
                   </Typography>
                 </Box>
                 <div>
@@ -239,8 +214,7 @@ const uploadSingleFile = () => {
                     type="submit"
                     style={{
                       color: "white",
-                      padding:
-                        "7px 12px 7px 12px",
+                      padding: "7px 12px 7px 12px",
                     }}
                     onClick={() => {
                       setProjectSheet([]);
@@ -248,9 +222,7 @@ const uploadSingleFile = () => {
                     className="btn_primary warning_btn "
                     value="Upload"
                   >
-                    <Typography>
-                      Try again
-                    </Typography>
+                    <Typography>Try again</Typography>
                   </button>
                 </div>
               </div>
@@ -286,9 +258,7 @@ const uploadSingleFile = () => {
                 className="btn_primary btn_primary_hover "
                 value="Upload"
               >
-                <Typography>
-                  Upload File
-                </Typography>
+                <Typography>Upload File</Typography>
               </button>
             </Box>
           )}

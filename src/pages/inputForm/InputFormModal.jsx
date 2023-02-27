@@ -155,11 +155,8 @@ const InputFormModal = () => {
   };
 
   return (
-    <Modal
-      open={inputModal}
-      onClose={() => setInputModal(false)}
-    >
-      <Card className="modal_ui">
+    <Modal open={inputModal} onClose={() => setInputModal(false)}>
+      <Card className="modal_ui global_modal">
         <Typography
           className="fs_24"
           style={{
@@ -181,9 +178,7 @@ const InputFormModal = () => {
               type="text"
               fullWidth
               value={names}
-              onChange={(e) =>
-                setName(e.target.value)
-              }
+              onChange={(e) => setName(e.target.value)}
             />
           </Box>
           <Box>
@@ -195,9 +190,7 @@ const InputFormModal = () => {
               type="text"
               fullWidth
               value={address}
-              onChange={(e) =>
-                setAdders(e.target.value)
-              }
+              onChange={(e) => setAdders(e.target.value)}
             />
           </Box>
 
@@ -214,9 +207,7 @@ const InputFormModal = () => {
                 shrink: true,
               }}
               value={phone}
-              onChange={(e) =>
-                setPhone(e.target.value)
-              }
+              onChange={(e) => setPhone(e.target.value)}
             />
           </Box>
           <Box>
@@ -232,9 +223,7 @@ const InputFormModal = () => {
                 shrink: true,
               }}
               value={age}
-              onChange={(e) =>
-                setAge(e.target.value)
-              }
+              onChange={(e) => setAge(e.target.value)}
             />
           </Box>
           <Box>
@@ -247,9 +236,7 @@ const InputFormModal = () => {
               type="email"
               fullWidth
               value={email}
-              onChange={(e) =>
-                setEmail(e.target.value)
-              }
+              onChange={(e) => setEmail(e.target.value)}
             />
           </Box>
 
@@ -263,15 +250,10 @@ const InputFormModal = () => {
               fullWidth
               size="small"
               defaultValue="EUR"
-              onChange={(e) =>
-                setCurrency(e.target.value)
-              }
+              onChange={(e) => setCurrency(e.target.value)}
             >
               {currencies.map((option) => (
-                <MenuItem
-                  key={option.value}
-                  value={option.value}
-                >
+                <MenuItem key={option.value} value={option.value}>
                   {option.label}
                 </MenuItem>
               ))}
@@ -289,25 +271,13 @@ const InputFormModal = () => {
                 value={personName}
                 onChange={handleChange}
                 input={<OutlinedInput />}
-                renderValue={(selected) =>
-                  selected.join(", ")
-                }
+                renderValue={(selected) => selected.join(", ")}
                 MenuProps={MenuProps}
               >
                 {allName.map((name) => (
-                  <MenuItem
-                    key={name}
-                    value={name}
-                  >
-                    <Checkbox
-                      checked={
-                        personName.indexOf(name) >
-                        -1
-                      }
-                    />
-                    <ListItemText
-                      primary={name}
-                    />
+                  <MenuItem key={name} value={name}>
+                    <Checkbox checked={personName.indexOf(name) > -1} />
+                    <ListItemText primary={name} />
                   </MenuItem>
                 ))}
               </Select>
@@ -345,9 +315,7 @@ const InputFormModal = () => {
             rows={4}
             maxRows={3}
             value={note}
-            onChange={(e) =>
-              setNote(e.target.value)
-            }
+            onChange={(e) => setNote(e.target.value)}
           />
         </Box>
         <Box

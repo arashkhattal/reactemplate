@@ -45,7 +45,7 @@ const DelEventModal = ({ events, setEvents, delEvent, setDelEvent }) => {
       }
     >
       {/* card component from mui  */}
-      <Card className="center_modal_ui ">
+      <Card className="center_modal_ui global_modal">
         {/* Typography component from mui */}
         <Typography
           className="fs_24"
