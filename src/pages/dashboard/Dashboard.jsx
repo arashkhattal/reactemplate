@@ -130,9 +130,14 @@ const HomePage = () => {
               </div>
             </Card>
           </Grid>
-          <Grid item xs={12} md={12} lg={8}>
+          <Grid item xs={12} md={12} lg={6}>
             <Card className="global_card">
               <Chart type="line" series={product} options={option}></Chart>
+            </Card>
+          </Grid>
+          <Grid item xs={12} md={12} lg={6}>
+            <Card className="global_card">
+              <Chart type="bar" series={product} options={option}></Chart>
             </Card>
           </Grid>
         </Grid>
