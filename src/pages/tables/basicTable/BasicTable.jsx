@@ -33,7 +33,6 @@ const data = [
 ];
 
 const BasicTable = () => {
-
   // state to maintain table data
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
@@ -41,6 +40,9 @@ const BasicTable = () => {
 
   const [sortColumn, setSortColumn] = useState("");
   const [sortDirection, setSortDirection] = useState("asc");
+  const [sortData, setSortData] = useState(data);
+
+  console.log("initial :", sortData);
 
   // function to handle page change
   const handleChangePage = (event, newPage) => {
@@ -66,16 +68,25 @@ const BasicTable = () => {
       .includes(searchTerm.toLowerCase())
   );
 
+  // function to handle sorting
   const handleSort = (columnId) => {
-    if (sortColumn === columnId) {
-      setSortDirection(sortDirection === "asc" ? "desc" : "asc");
-    } else {
-      setSortColumn(columnId);
-      setSortDirection("asc");
-    }
+    const isAsc = sortColumn === columnId && sortDirection === "asc";
+    setSortColumn(columnId);
+    setSortDirection(isAsc ? "desc" : "asc");
+    const sortedData = filteredData.sort((a, b) => {
+      if (a[columnId] < b[columnId]) {
+        return isAsc ? -1 : 1;
+      }
+      if (a[columnId] > b[columnId]) {
+        return isAsc ? 1 : -1;
+      }
+      return 0;
+    });
+    setSortData(sortedData);
   };
 
 
+  console.log("Arash :", sortData);
   return (
     <div>
       <div className="table-head">
@@ -106,10 +117,17 @@ const BasicTable = () => {
                   style={{ minWidth: column.minWidth }}
                   sortDirection={sortColumn === column.id ? true : false}
                 >
-                  <TableSortLabel
+                  {/* <TableSortLabel
                     active={sortColumn === column.id}
                     direction={sortColumn === column.id ? "desc" : "asc"}
-                    // onClick={handleSort(column.id)}
+                    onClick={handleSort(column.id)}
+                  >
+                    {column.label}
+                  </TableSortLabel> */}
+                  <TableSortLabel
+                    active={sortColumn === column.id}
+                    direction={sortColumn === column.id ? sortDirection : "asc"}
+                    onClick={() => handleSort(column.id)}
                   >
                     {column.label}
                   </TableSortLabel>
@@ -142,7 +160,7 @@ const BasicTable = () => {
       </TableContainer>
       {/* pagination component  */}
       <TablePagination
-        rowsPerPageOptions={[]}
+        rowsPerPageOptions={[5, 10]}
         component="div"
         count={data.length}
         rowsPerPage={rowsPerPage}
