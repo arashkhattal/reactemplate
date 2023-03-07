@@ -69,6 +69,10 @@ const BasicTable = () => {
         return 0;
       })
     );
+
+    if (event.target.value.length === 0) {
+      setSortData(data);
+    }
   };
 
   // filtered data
@@ -112,7 +116,7 @@ const BasicTable = () => {
               </InputAdornment>
             ),
           }}
-          onChange={handleSearch}
+          onChange={(e) => handleSearch(e)}
         />
       </div>
       {/* table container  */}
