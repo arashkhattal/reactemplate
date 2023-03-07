@@ -45,7 +45,7 @@ const BasicTable = () => {
   console.log("initial :", sortData);
 
   // function to handle page change
-  const handleChangePage = (event, newPage) => {
+  const handlePageChange = (event, newPage) => {
     setPage(newPage);
   };
 
@@ -85,7 +85,6 @@ const BasicTable = () => {
     setSortData(sortedData);
   };
 
-
   console.log("Arash :", sortData);
   return (
     <div>
@@ -124,6 +123,13 @@ const BasicTable = () => {
                   >
                     {column.label}
                   </TableSortLabel> */}
+                  {/* <TableSortLabel
+                    active={sortColumn === column.id}
+                    direction={sortColumn === column.id ? sortDirection : "asc"}
+                    onClick={() => handleSort(column.id)}
+                  >
+                    {column.label}
+                  </TableSortLabel> */}
                   <TableSortLabel
                     active={sortColumn === column.id}
                     direction={sortColumn === column.id ? sortDirection : "asc"}
@@ -137,7 +143,7 @@ const BasicTable = () => {
           </TableHead>
           <TableBody>
             {/* filter data according to search and pagination  */}
-            {filteredData
+            {sortData
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
                 return (
@@ -165,8 +171,8 @@ const BasicTable = () => {
         count={data.length}
         rowsPerPage={rowsPerPage}
         page={page}
-        onChangePage={handleChangePage}
-        onChangeRowsPerPage={handleChangeRowsPerPage}
+        onPageChange={handlePageChange}
+        onRowsPerPageChange={handleChangeRowsPerPage}
       />
     </div>
   );
