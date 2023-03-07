@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import {
+  Chip,
+  Icon,
   InputAdornment,
   Table,
   TableBody,
@@ -16,20 +18,212 @@ import { Search } from "@mui/icons-material";
 const columns = [
   { id: "name", label: "Name", minWidth: 150 },
   { id: "email", label: "Email", minWidth: 150 },
-  { id: "age", label: "Age", minWidth: 50 },
+  { id: "age", label: "Age", minWidth: 10 },
+  { id: "status", label: "Status", minWidth: 10 },
+  { id: "action", label: "Action", minWidth: 50 },
 ];
 
 const data = [
-  { name: "John Doe", email: "johndoe@example.com", age: 25 },
-  { name: "Jane Doe", email: "janedoe@example.com", age: 30 },
-  { name: "Bob Smith", email: "bobsmith@example.com", age: 40 },
-  { name: "Alice Johnson", email: "alicejohnson@example.com", age: 35 },
-  { name: "Tom Brown", email: "tombrown@example.com", age: 45 },
-  { name: "Sara Lee", email: "saralee@example.com", age: 20 },
-  { name: "Peter Parker", email: "peterparker@example.com", age: 28 },
-  { name: "Mary Jane", email: "maryjane@example.com", age: 26 },
-  { name: "Clark Kent", email: "clarkkent@example.com", age: 33 },
-  { name: "Bruce Wayne", email: "brucewayne@example.com", age: 38 },
+  {
+    name: "John Doe",
+    email: "johndoe@example.com",
+    age: 25,
+    status: <Chip size="small" label="Active" color="success" />,
+    action: (
+      <>
+        <Icon fontSize="small" sx={{ cursor: "pointer" }}>
+          edit
+        </Icon>
+
+        <Icon
+          fontSize="small"
+          sx={{ cursor: "pointer", color: "red", marginLeft: "10px" }}
+        >
+          delete
+        </Icon>
+      </>
+    ),
+  },
+  {
+    name: "Jane Doe",
+    email: "janedoe@example.com",
+    age: 30,
+    status: <Chip size="small" label="Active" color="success" />,
+    action: (
+      <>
+        <Icon fontSize="small" sx={{ cursor: "pointer" }}>
+          edit
+        </Icon>
+
+        <Icon
+          fontSize="small"
+          sx={{ cursor: "pointer", color: "red", marginLeft: "10px" }}
+        >
+          delete
+        </Icon>
+      </>
+    ),
+  },
+  {
+    name: "Bob Smith",
+    email: "bobsmith@example.com",
+    age: 40,
+    status: <Chip size="small" label="Active" color="error" />,
+    action: (
+      <>
+        <Icon fontSize="small" sx={{ cursor: "pointer" }}>
+          edit
+        </Icon>
+
+        <Icon
+          fontSize="small"
+          sx={{ cursor: "pointer", color: "red", marginLeft: "10px" }}
+        >
+          delete
+        </Icon>
+      </>
+    ),
+  },
+  {
+    name: "Alice Johnson",
+    email: "alicejohnson@example.com",
+    age: 35,
+    status: <Chip size="small" label="Active" color="success" />,
+    action: (
+      <>
+        <Icon fontSize="small" sx={{ cursor: "pointer" }}>
+          edit
+        </Icon>
+
+        <Icon
+          fontSize="small"
+          sx={{ cursor: "pointer", color: "red", marginLeft: "10px" }}
+        >
+          delete
+        </Icon>
+      </>
+    ),
+  },
+  {
+    name: "Tom Brown",
+    email: "tombrown@example.com",
+    age: 45,
+    status: <Chip size="small" label="Active" color="error" />,
+    action: (
+      <>
+        <Icon fontSize="small" sx={{ cursor: "pointer" }}>
+          edit
+        </Icon>
+
+        <Icon
+          fontSize="small"
+          sx={{ cursor: "pointer", color: "red", marginLeft: "10px" }}
+        >
+          delete
+        </Icon>
+      </>
+    ),
+  },
+  {
+    name: "Sara Lee",
+    email: "saralee@example.com",
+    age: 20,
+    status: <Chip size="small" label="Active" color="error" />,
+    action: (
+      <>
+        <Icon fontSize="small" sx={{ cursor: "pointer" }}>
+          edit
+        </Icon>
+
+        <Icon
+          fontSize="small"
+          sx={{ cursor: "pointer", color: "red", marginLeft: "10px" }}
+        >
+          delete
+        </Icon>
+      </>
+    ),
+  },
+  {
+    name: "Peter Parker",
+    email: "peterparker@example.com",
+    age: 28,
+    status: <Chip size="small" label="Active" color="success" />,
+    action: (
+      <>
+        <Icon fontSize="small" sx={{ cursor: "pointer" }}>
+          edit
+        </Icon>
+
+        <Icon
+          fontSize="small"
+          sx={{ cursor: "pointer", color: "red", marginLeft: "10px" }}
+        >
+          delete
+        </Icon>
+      </>
+    ),
+  },
+  {
+    name: "Mary Jane",
+    email: "maryjane@example.com",
+    age: 26,
+    status: <Chip size="small" label="Active" color="success" />,
+    action: (
+      <>
+        <Icon fontSize="small" sx={{ cursor: "pointer" }}>
+          edit
+        </Icon>
+
+        <Icon
+          fontSize="small"
+          sx={{ cursor: "pointer", color: "red", marginLeft: "10px" }}
+        >
+          delete
+        </Icon>
+      </>
+    ),
+  },
+  {
+    name: "Clark Kent",
+    email: "clarkkent@example.com",
+    age: 33,
+    status: <Chip size="small" label="Active" color="success" />,
+    action: (
+      <>
+        <Icon fontSize="small" sx={{ cursor: "pointer" }}>
+          edit
+        </Icon>
+
+        <Icon
+          fontSize="small"
+          sx={{ cursor: "pointer", color: "red", marginLeft: "10px" }}
+        >
+          delete
+        </Icon>
+      </>
+    ),
+  },
+  {
+    name: "Bruce Wayne",
+    email: "brucewayne@example.com",
+    age: 38,
+    status: <Chip size="small" label="Active" color="success" />,
+    action: (
+      <>
+        <Icon fontSize="small" sx={{ cursor: "pointer" }}>
+          edit
+        </Icon>
+
+        <Icon
+          fontSize="small"
+          sx={{ cursor: "pointer", color: "red", marginLeft: "10px" }}
+        >
+          delete
+        </Icon>
+      </>
+    ),
+  },
 ];
 
 const BasicTable = () => {
