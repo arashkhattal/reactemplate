@@ -18,18 +18,18 @@ import bg from "../../assets/profile/bg.jpg";
 function Profile() {
   // store email
   const [email, setEmail] = useState(
-    "jabed@gmail.com"
+    "arash@oyesters.in"
   );
   //   store name
   const [fullName, setFullName] =
-    useState("Jabed");
+    useState("Arash");
   // store phone number
   const [phoneno, setPhoneno] = useState(
     "01789274185"
   );
   //   store address
   const [address, setAdders] = useState(
-    "Dhaka, Bangladesh"
+    "Murdeshwar, India"
   );
   //   selected photo
   const [selectedFile, setSelectedFile] =
@@ -149,7 +149,9 @@ function Profile() {
 
               height: "300px",
             }}
-            src={bg}
+            src={
+              "https://static.vecteezy.com/system/resources/thumbnails/012/005/554/small/summer-seascape-beautiful-waves-blue-sea-water-in-sunny-day-top-view-from-drone-sea-aerial-view-amazing-tropical-nature-background-beautiful-bright-sea-waves-splashing-and-beach-sand-sunset-light-photo.jpg"
+            }
             alt=""
           />
           <div
@@ -212,9 +214,7 @@ function Profile() {
               type="text"
               fullWidth
               value={fullName}
-              onChange={(e) =>
-                setFullName(e.target.value)
-              }
+              onChange={(e) => setFullName(e.target.value)}
             ></TextField>
 
             <TextField
@@ -223,9 +223,7 @@ function Profile() {
               type="text"
               fullWidth
               value={email}
-              onChange={(e) =>
-                setEmail(e.target.value)
-              }
+              onChange={(e) => setEmail(e.target.value)}
             ></TextField>
 
             <TextField
@@ -234,9 +232,7 @@ function Profile() {
               type="number"
               fullWidth
               value={phoneno}
-              onChange={(e) =>
-                setPhoneno(e.target.value)
-              }
+              onChange={(e) => setPhoneno(e.target.value)}
             />
 
             <TextField
@@ -245,9 +241,7 @@ function Profile() {
               type="text"
               fullWidth
               value={address}
-              onChange={(e) =>
-                setAdders(e.target.value)
-              }
+              onChange={(e) => setAdders(e.target.value)}
             />
           </Box>
           <Box

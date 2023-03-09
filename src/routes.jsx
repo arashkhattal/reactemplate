@@ -20,7 +20,9 @@ import AdjustIcon from "@mui/icons-material/Adjust";
 import BuildCircleOutlinedIcon from "@mui/icons-material/BuildCircleOutlined";
 import InputOutlinedIcon from "@mui/icons-material/InputOutlined";
 import ViewListOutlinedIcon from "@mui/icons-material/ViewListOutlined";
+
 // Import components using lazy to load the component
+const Loading = lazy(() => import("./pages/loader/Loading"));
 const Dashboard = lazy(() => import("./pages/dashboard/Dashboard"));
 const Chart = lazy(() => import("./pages/charts/Chart"));
 const Tables = lazy(() => import("./pages/tables/Tables"));
@@ -77,6 +79,18 @@ export const adminRoutes = [
     route: "/muiicons",
     icon: <AdjustIcon sx={{ fontSize: "14px" }} />,
     component: <MuiIconsList />,
+  },
+  {
+    type: "menu",
+    name: <Typography sx={{ fontSize: "14px" }}>Loader</Typography>,
+    key: "loading",
+    route: "/loading",
+    icon: (
+      <Icon fontSize="small" sx={{ cursor: "pointer" }}>
+        hourglass_bottom
+      </Icon>
+    ),
+    component: <Loading />,
   },
   // object for collapse (dropdown)
   {

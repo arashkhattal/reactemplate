@@ -8,9 +8,10 @@ import "./AppBar.css";
 //global context
 import { useGlobalContext } from "../../context/globalContext";
 import { Avatar, Box, Menu, Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { USER_SIGNOUT } from "../../redux/constant/AuthConstant";
+import EditIcon from "@mui/icons-material/Edit";
 
 const AppBar = () => {
   const dispatchRedux = useDispatch();
@@ -108,6 +109,26 @@ const AppBar = () => {
                       borderRadius: "50%",
                     }}
                   ></img>
+                  <Box>
+                    <Link to="/profile">
+                      <EditIcon
+                        sx={{
+                          position: "absolute",
+                          marginTop: "60px",
+                          marginLeft: "60px",
+                          color: "#595959",
+                          width: "30px",
+                          height: "30px",
+                          backgroundColor: "#ffff",
+                          border: "1px solid #e3e3e3",
+                          padding: "5px",
+                          borderRadius: "50%",
+                          cursor: "pointer",
+                        }}
+                        onClick={() => setOpenProfileMenu(false)}
+                      />
+                    </Link>
+                  </Box>
                 </Box>
               </div>
               <Typography

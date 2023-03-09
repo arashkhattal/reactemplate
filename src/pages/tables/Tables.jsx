@@ -34,15 +34,14 @@ const About = () => {
               <BasicTable />
             </Card>
           </Grid>
-          <Grid item xs={6} md={12}>
+          {/* <Grid item xs={6} md={12}>
             <Card style={{ padding: "20px", border: "1px solid lightgrey" }}>
               <Typography className="global_display_flex fs_16 fw_600">
                 Data Table
               </Typography>
-              {/* Data table component  */}
               <DataTable />
             </Card>
-          </Grid>
+          </Grid> */}
           <Grid item xs={6} md={12}>
             <Card style={{ padding: "20px", border: "1px solid lightgrey" }}>
               <Typography className="global_display_flex fs_16 fw_600">
@@ -52,15 +51,14 @@ const About = () => {
               <SortSelectTable />
             </Card>
           </Grid>
-          <Grid item xs={6} md={12}>
+          {/* <Grid item xs={6} md={12}>
             <Card style={{ padding: "20px", border: "1px solid lightgrey" }}>
               <Typography className="global_display_flex fs_16 fw_600">
                 Html Table with Search & sort
               </Typography>
-              {/* custom table component  */}
               <TableComponent />
             </Card>
-          </Grid>
+          </Grid> */}
         </Grid>
       </div>
     </>
