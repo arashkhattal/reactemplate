@@ -13,6 +13,7 @@ import {
   ListItem,
   ListItemText,
   ListItemButton,
+  Icon,
 } from "@mui/material";
 
 import { useState, useEffect } from "react";
@@ -35,39 +36,228 @@ const style = {
 };
 
 const searchData = [
-  { id: 1, name: "Line Chart", link: "/chart" },
-  { id: 2, name: "Bar Chart", link: "/chart" },
-  { id: 3, name: "Stacked Bar Chart", link: "/chart" },
-  { id: 4, name: "TimeLine Chart", link: "/chart" },
-  { id: 5, name: "Basic TimeLine Chart", link: "/chart" },
-  { id: 6, name: "Donut Chart", link: "/chart" },
-  { id: 7, name: "Pie Chart", link: "/chart" },
+  {
+    id: 1,
+    name: "Line Chart",
+    link: "/chart",
+    icon: (
+      <Icon fontSize="small" sx={{ cursor: "pointer" }}>
+        insights
+      </Icon>
+    ),
+  },
+  {
+    id: 2,
+    name: "Bar Chart",
+    link: "/chart",
+    icon: (
+      <Icon fontSize="small" sx={{ cursor: "pointer" }}>
+        insights
+      </Icon>
+    ),
+  },
+  {
+    id: 3,
+    name: "Stacked Bar Chart",
+    link: "/chart",
+    icon: (
+      <Icon fontSize="small" sx={{ cursor: "pointer" }}>
+        insights
+      </Icon>
+    ),
+  },
+  {
+    id: 4,
+    name: "TimeLine Chart",
+    link: "/chart",
+    icon: (
+      <Icon fontSize="small" sx={{ cursor: "pointer" }}>
+        insights
+      </Icon>
+    ),
+  },
+  {
+    id: 5,
+    name: "Basic TimeLine Chart",
+    link: "/chart",
+    icon: (
+      <Icon fontSize="small" sx={{ cursor: "pointer" }}>
+        insights
+      </Icon>
+    ),
+  },
+  {
+    id: 6,
+    name: "Donut Chart",
+    link: "/chart",
+    icon: (
+      <Icon fontSize="small" sx={{ cursor: "pointer" }}>
+        insights
+      </Icon>
+    ),
+  },
+  {
+    id: 7,
+    name: "Pie Chart",
+    link: "/chart",
+    icon: (
+      <Icon fontSize="small" sx={{ cursor: "pointer" }}>
+        insights
+      </Icon>
+    ),
+  },
 
-  { id: 8, name: "Basic Table", link: "/table" },
-  { id: 9, name: "Sort & select Table", link: "/table" },
+  {
+    id: 8,
+    name: "Basic Table",
+    link: "/table",
+    icon: (
+      <Icon fontSize="small" sx={{ cursor: "pointer" }}>
+        table_chart
+      </Icon>
+    ),
+  },
+  {
+    id: 9,
+    name: "Sort & select Table",
+    link: "/table",
+    icon: (
+      <Icon fontSize="small" sx={{ cursor: "pointer" }}>
+        table_chart
+      </Icon>
+    ),
+  },
 
-  { id: 10, name: "Mui Icons", link: "/muiicons" },
+  {
+    id: 10,
+    name: "Mui Icons",
+    link: "/muiicons",
+    icon: (
+      <Icon fontSize="small" sx={{ cursor: "pointer" }}>
+        adjust
+      </Icon>
+    ),
+  },
 
-  { id: 11, name: "Loader", link: "/loading" },
+  {
+    id: 11,
+    name: "Loader",
+    link: "/loading",
+    icon: (
+      <Icon fontSize="small" sx={{ cursor: "pointer" }}>
+        hourglass_bottom
+      </Icon>
+    ),
+  },
 
-  { id: 12, name: "Input Fields", link: "/inputfield" },
+  {
+    id: 12,
+    name: "Input Fields",
+    link: "/inputfield",
+    icon: (
+      <Icon fontSize="small" sx={{ cursor: "pointer" }}>
+        input_circle
+      </Icon>
+    ),
+  },
 
-  { id: 13, name: "Tooltips", link: "/tooltips" },
+  {
+    id: 13,
+    name: "Tooltips",
+    link: "/tooltips",
+    icon: (
+      <Icon fontSize="small" sx={{ cursor: "pointer" }}>
+        pan_tool_alt
+      </Icon>
+    ),
+  },
 
-  { id: 14, name: "Sun Editor", link: "/suneditor" },
+  {
+    id: 14,
+    name: "Sun Editor",
+    link: "/suneditor",
+    icon: (
+      <Icon fontSize="small" sx={{ cursor: "pointer" }}>
+        format_size
+      </Icon>
+    ),
+  },
 
-  { id: 15, name: "Calendar", link: "/fullcalendar" },
+  {
+    id: 15,
+    name: "Calendar",
+    link: "/fullcalendar",
+    icon: (
+      <Icon fontSize="small" sx={{ cursor: "pointer" }}>
+        calendar_month
+      </Icon>
+    ),
+  },
 
-  { id: 16, name: "Upload single File", link: "/uploadfiles" },
-  { id: 17, name: "Upload Multiple File", link: "/uploadfiles" },
+  {
+    id: 16,
+    name: "Upload single File",
+    link: "/uploadfiles",
+    icon: (
+      <Icon fontSize="small" sx={{ cursor: "pointer" }}>
+        upload
+      </Icon>
+    ),
+  },
+  {
+    id: 17,
+    name: "Upload Multiple File",
+    link: "/uploadfiles",
+    icon: (
+      <Icon fontSize="small" sx={{ cursor: "pointer" }}>
+        upload
+      </Icon>
+    ),
+  },
 
-  { id: 18, name: "Profile", link: "/profile" },
+  {
+    id: 18,
+    name: "Profile",
+    link: "/profile",
+    icon: (
+      <Icon fontSize="small" sx={{ cursor: "pointer" }}>
+        account_circle
+      </Icon>
+    ),
+  },
 
-  { id: 19, name: "Notification", link: "/pushnotification" },
+  {
+    id: 19,
+    name: "Notification",
+    link: "/pushnotification",
+    icon: (
+      <Icon fontSize="small" sx={{ cursor: "pointer" }}>
+        notifications
+      </Icon>
+    ),
+  },
 
-  { id: 20, name: "Messages", link: "/messages" },
+  {
+    id: 20,
+    name: "Messages",
+    link: "/messages",
+    icon: (
+      <Icon fontSize="small" sx={{ cursor: "pointer" }}>
+        chat
+      </Icon>
+    ),
+  },
 
-  { id: 21, name: "Forms", link: "/inputForm" },
+  {
+    id: 21,
+    name: "Forms",
+    link: "/inputForm",
+    icon: (
+      <Icon fontSize="small" sx={{ cursor: "pointer" }}>
+        list
+      </Icon>
+    ),
+  },
 ];
 
 const SearchModal = ({ searchModal, setSearchModal }) => {
@@ -117,10 +307,10 @@ const SearchModal = ({ searchModal, setSearchModal }) => {
             textAlign: "center",
             padding: "10px",
             fontWeight: "bold",
-            fontSize:"14px"
+            fontSize: "14px",
           }}
         >
-            Search Your Component
+          Search Your Component
           {/* <Autocomplete
             id="search-autocomplete"
             options={searchData}
@@ -133,24 +323,27 @@ const SearchModal = ({ searchModal, setSearchModal }) => {
             )}
           /> */}
         </Typography>
-          <TextField
-            fullWidth
-            label="Search"
-            variant="outlined"
-            value={searchQuery}
-            onChange={handleSearch}
-          />
+        <TextField
+          fullWidth
+          label="Search"
+          variant="outlined"
+          value={searchQuery}
+          onChange={handleSearch}
+        />
         <List>
           {searchResults.map((result) => (
-            <ListItemButton
-              component={Link}
-              to={result.link}
-              onClick={() => handleResultClick(result)}
-              button
-              key={result.id}
-            >
-              <ListItemText primary={result.name} />
-            </ListItemButton>
+            <div style={{ display: "flex" }}>
+              <Box style={{ marginTop: "13px" }}>{result.icon}</Box>
+              <ListItemButton
+                component={Link}
+                to={result.link}
+                onClick={() => handleResultClick(result)}
+                button
+                key={result.id}
+              >
+                <ListItemText primary={result.name} />
+              </ListItemButton>
+            </div>
           ))}
         </List>
       </Card>
