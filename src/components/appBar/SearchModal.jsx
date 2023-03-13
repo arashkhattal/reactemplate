@@ -293,6 +293,8 @@ const SearchModal = ({ searchModal, setSearchModal }) => {
 
   const handleResultClick = (result) => {
     setSearchModal(false); // Close the search modal
+    setSearchResults([]);
+    setSearchQuery("");
   };
 
   return (
