@@ -40,6 +40,9 @@ const AppProvider = ({ children }) => {
   // primary color
   const primaryColor = "#0d80d8";
 
+
+
+
   return (
     <AppContext.Provider
       value={{

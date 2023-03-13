@@ -12,6 +12,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { USER_SIGNOUT } from "../../redux/constant/AuthConstant";
 import EditIcon from "@mui/icons-material/Edit";
+import SearchModal from "./SearchModal";
 
 const AppBar = () => {
   const dispatchRedux = useDispatch();
@@ -22,6 +23,8 @@ const AppBar = () => {
   // global context
   const { setAlert, openMenu, setOpenMenu } = useGlobalContext();
   // store profile menu
+
+  const [searchModal, setSearchModal] = useState(false);
   const [openProfileMenu, setOpenProfileMenu] = useState(false);
   // function for search bar
   const handleSearch = (e) => {
@@ -32,6 +35,8 @@ const AppBar = () => {
       msg: search,
     });
   };
+
+  const handleclick = () => {};
 
   //to navigate to another page
   const navigate = useNavigate();
@@ -276,6 +281,7 @@ const AppBar = () => {
 
   return (
     <>
+      <SearchModal searchModal={searchModal} setSearchModal={setSearchModal} />
       {/* simple app bar contain 3 options */}
       <div className="navbar">
         <div className="logo-openMenu">
@@ -297,18 +303,19 @@ const AppBar = () => {
         </div>
 
         <div className="search">
-          {/* search bar */}
           <input
             type="search"
             placeholder="Search.."
             name="search"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                handleSearch(e);
-              }
-            }}
+            onClick={() => setSearchModal(true)}
+            style={{ cursor: "pointer" }}
+            // value={search}
+            // onChange={(e) => setSearch(e.target.value)}
+            // onKeyDown={(e) => {
+            //   if (e.key === "Enter") {
+            //     handleSearch(e);
+            //   }
+            // }}
           />
         </div>
         <div>
