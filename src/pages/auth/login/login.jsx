@@ -1,5 +1,5 @@
 import { Box, Divider, TextField, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Google from "../../../assets/icon/google.png";
 import { useGlobalContext } from "../../../context/globalContext";
 import { useNavigate } from "react-router-dom";
@@ -7,7 +7,9 @@ import { validateEmail } from "../../../helpers/globalFunction";
 import "../auth.css";
 import { useDispatch, useSelector } from "react-redux";
 import { USER_SIGNIN } from "../../../redux/constant/AuthConstant";
-import { GoogleLogin } from "react-google-login";
+import { gapi } from "gapi-script";
+import GoogleLogin from "react-google-login";
+// import { GoogleLogin } from "@react-oauth/google";
 
 const Login = () => {
   const { isLoggedIn } = useSelector((state) => state.AuthReducer);
@@ -95,6 +97,36 @@ const Login = () => {
     }
   };
 
+  useEffect(() => {
+    function start() {
+      gapi.client.init({
+        clientId:
+          "338141788840-mdg0pr52mts8gssevcm49ukj262nrmk4.apps.googleusercontent.com",
+        scope: "email",
+      });
+    }
+
+    gapi.load("client:auth2", start);
+  }, []);
+
+  const onSuccess = (response) => {
+    dispatchRedux({
+      type: USER_SIGNIN,
+      isLoggedIn: true,
+      // payload: {},
+    });
+    navigate("/dashboard");
+    console.log("SUCCESS", response);
+    const name = response.profileObj.name;
+    const email = response.profileObj.email;
+
+    // Use the name and email to log the user into your website
+    console.log("User logged in successfully with Google:", name, email);
+  };
+  const onFailure = (response) => {
+    console.log("FAILED", response);
+  };
+
   return (
     <Box
       // component="form"
@@ -151,12 +183,17 @@ const Login = () => {
               <Typography>Login with Google</Typography>
             </Box>
           </button> */}
-          <GoogleLogin
-            clientId="1020638613550-dslqkkl6r9lctcilh7tuu1f9cjj1vfnp.apps.googleusercontent.com"
+          {/* <GoogleLogin
+            clientId="338141788840-mdg0pr52mts8gssevcm49ukj262nrmk4.apps.googleusercontent.com"
             buttonText="Sign in with Google"
             onSuccess={handleGoogleLoginSuccess}
             onFailure={handleGoogleLoginFailure}
             cookiePolicy={"single_host_origin"}
+          /> */}
+          <GoogleLogin
+            clientId="338141788840-mdg0pr52mts8gssevcm49ukj262nrmk4.apps.googleusercontent.com"
+            onSuccess={onSuccess}
+            onFailure={onFailure}
           />
         </Box>
         <Divider
