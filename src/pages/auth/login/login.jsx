@@ -7,6 +7,7 @@ import { validateEmail } from "../../../helpers/globalFunction";
 import "../auth.css";
 import { useDispatch, useSelector } from "react-redux";
 import { USER_SIGNIN } from "../../../redux/constant/AuthConstant";
+import { GoogleLogin } from "react-google-login";
 
 const Login = () => {
   const { isLoggedIn } = useSelector((state) => state.AuthReducer);
@@ -77,6 +78,23 @@ const Login = () => {
   };
 
   console.log("login :", isLoggedIn);
+
+  const handleGoogleLoginSuccess = (response) => {
+    const name = response.profileObj.name;
+    const email = response.profileObj.email;
+
+    // Use the name and email to log the user into your website
+    console.log("User logged in successfully with Google:", name, email);
+  };
+
+  const handleGoogleLoginFailure = (response) => {
+    if (response.error === "popup_closed_by_user") {
+      console.log("User closed the Google Sign-In popup.");
+    } else {
+      console.log("Failed to log in with Google:", response);
+    }
+  };
+
   return (
     <Box
       // component="form"
@@ -121,7 +139,7 @@ const Login = () => {
             alignItems: "center",
           }}
         >
-          <button className="btn_primary btn_google_hover">
+          {/* <button className="btn_primary btn_google_hover">
             <Box
               style={{
                 display: "flex",
@@ -132,7 +150,14 @@ const Login = () => {
               <img style={{ width: "16px" }} src={Google} alt="" />
               <Typography>Login with Google</Typography>
             </Box>
-          </button>
+          </button> */}
+          <GoogleLogin
+            clientId="1020638613550-dslqkkl6r9lctcilh7tuu1f9cjj1vfnp.apps.googleusercontent.com"
+            buttonText="Sign in with Google"
+            onSuccess={handleGoogleLoginSuccess}
+            onFailure={handleGoogleLoginFailure}
+            cookiePolicy={"single_host_origin"}
+          />
         </Box>
         <Divider
           style={{
