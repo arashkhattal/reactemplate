@@ -12,6 +12,7 @@ import {
   TableRow,
   TableSortLabel,
   TextField,
+  Typography,
 } from "@mui/material";
 import { Search } from "@mui/icons-material";
 
@@ -236,6 +237,8 @@ const BasicTable = () => {
   const [sortDirection, setSortDirection] = useState("asc");
   const [sortData, setSortData] = useState(data);
 
+  const [searchVal, setSearchVal] = useState(false);
+
   console.log("initial :", sortData);
 
   // function to handle page change
@@ -251,6 +254,7 @@ const BasicTable = () => {
   // function to handle search
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
+
     setPage(0);
     setSortData(
       filteredData.sort((a, b) => {
@@ -350,27 +354,40 @@ const BasicTable = () => {
               ))}
             </TableRow>
           </TableHead>
-          <TableBody>
-            {/* filter data according to search and pagination  */}
-            {sortData
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => {
-                return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
-                    {columns.map((column) => {
-                      const value = row[column.id];
-                      return (
-                        <TableCell key={column.id} align="left">
-                          {column.format && typeof value === "number"
-                            ? column.format(value)
-                            : value}
-                        </TableCell>
-                      );
-                    })}
-                  </TableRow>
-                );
-              })}
-          </TableBody>
+          {sortData.length > 0 ? (
+            <TableBody>
+              {/* filter data according to search and pagination  */}
+
+              {sortData
+                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                .map((row) => {
+                  return (
+                    <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
+                      {columns.map((column) => {
+                        const value = row[column.id];
+                        return (
+                          <TableCell key={column.id} align="left">
+                            {column.format && typeof value === "number"
+                              ? column.format(value)
+                              : value}
+                          </TableCell>
+                        );
+                      })}
+                    </TableRow>
+                  );
+                })}
+            </TableBody>
+          ) : (
+            <Typography
+              style={{
+                marginLeft: "500px",
+                marginTop: "100px",
+                marginBottom: "100px",
+              }}
+            >
+              No data Found
+            </Typography>
+          )}
         </Table>
       </TableContainer>
       {/* pagination component  */}
