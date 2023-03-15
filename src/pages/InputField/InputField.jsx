@@ -18,15 +18,7 @@ const Table = () => {
     setValue(newValue);
   };
   const { setLoading } = useGlobalContext();
-  React.useEffect(() => {
-    setTimeout(() => {
-      setLoading(true);
-    });
-  }, []);
-
-  setTimeout(() => {
-    setLoading(false);
-  }, 2000);
+  
   return (
     <Box
       sx={{ width: "100%", typography: "body1" }}

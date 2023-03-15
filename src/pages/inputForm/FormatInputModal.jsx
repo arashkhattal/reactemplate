@@ -52,7 +52,7 @@ const MenuProps = {
   },
 };
 
-const FormatInputFormModal = () => {
+const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
   // store current password
   const [names, setName] = useState("");
   // store new password
@@ -71,7 +71,7 @@ const FormatInputFormModal = () => {
   const [currency, setCurrency] = useState(true);
 
   // global function
-  const {formatInputModal, setFormatInputModal, setAlert } = useGlobalContext();
+  const { setAlert } = useGlobalContext();
 
   const handleToggleChange = (event) => {
     setChecked(event.target.checked);

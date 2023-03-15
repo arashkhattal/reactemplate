@@ -25,8 +25,7 @@ const AppProvider = ({ children }) => {
   const [createGroup, setCreateGroup] = useState(false);
   // Input field modal
   const [inputModal, setInputModal] = useState(false);
-  const [standardInputModal, setStandardInputModal] = useState(false);
-  const [formatInputModal, setFormatInputModal] = useState(false);
+
 
   // default drawer width
   const drawerWidth = openMenu ? 210 : 75;
@@ -55,10 +54,6 @@ const AppProvider = ({ children }) => {
         setCreateGroup,
         inputModal,
         setInputModal,
-        standardInputModal,
-        setStandardInputModal,
-        formatInputModal,
-        setFormatInputModal,
       }}
     >
       {children}

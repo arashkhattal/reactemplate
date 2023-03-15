@@ -1,10 +1,14 @@
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 import {
+  Autocomplete,
   Box,
   Card,
   Checkbox,
   Divider,
   FormControl,
   Grid,
+  IconButton,
+  InputAdornment,
   InputLabel,
   ListItemText,
   MenuItem,
@@ -38,8 +42,19 @@ const currencies = [
     label: "¥",
   },
 ];
-//  dummy names
-const allName = ["Chinmy", "Jabed", "Arash"];
+// multiple select with delete button dummy data
+const multiData = [
+  {
+    title: "The Shawshank Redemption",
+    year: 1994,
+  },
+  { title: "The Godfather", year: 1972 },
+  { title: "The Godfather: Part II", year: 1974 },
+  { title: "The Dark Knight", year: 2008 },
+  { title: "12 Angry Men", year: 1957 },
+  { title: "Schindler's List", year: 1993 },
+  { title: "Pulp Fiction", year: 1994 },
+];
 // calculation of multiple select
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -51,10 +66,15 @@ const MenuProps = {
     },
   },
 };
+//  dummy data of multiple select
+const names = ["Chinmy", "Jabed", "Arash"];
 
-const StandardInputFormModal = () => {
+const StandardInputFormModal = ({
+  standardInputModal,
+  setStandardInputModal,
+}) => {
   // store current password
-  const [names, setName] = useState("");
+  // const [names, setName] = useState("");
   // store new password
   const [address, setAdders] = useState("");
   // store
@@ -71,25 +91,8 @@ const StandardInputFormModal = () => {
   const [currency, setCurrency] = useState(true);
 
   // global function
-  const { standardInputModal, setStandardInputModal, setAlert } =
-    useGlobalContext();
+  const { setAlert } = useGlobalContext();
 
-  const handleToggleChange = (event) => {
-    setChecked(event.target.checked);
-  };
-  //store manege name
-  const [personName, setPersonName] = useState([]);
-  console.log(personName);
-  // select item function
-  const handleChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setPersonName(
-      // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
-  };
   // submit info function
   const handleSubmit = async (e) => {
     if (names === "") {
@@ -149,6 +152,28 @@ const StandardInputFormModal = () => {
     setStandardInputModal(false);
   };
 
+  // store show password
+  const [showPassword, setShowPassword] = useState(false);
+  // store multiple item
+  const [personName, setPersonName] = useState([]);
+  // show password function
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+  // select multiple item function
+
+  const handleChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setPersonName(
+      // On autofill we get a stringified value.
+      typeof value === "string" ? value.split(",") : value
+    );
+  };
+
   return (
     <Modal
       open={standardInputModal}
@@ -163,92 +188,167 @@ const StandardInputFormModal = () => {
           }}
           fontWeight="medium"
         >
-           Standard Input Form
+          Standard Input Form
         </Typography>
 
-        <Box className="input_field_display">
-          <Box>
-            <label>Name</label>
+        <Grid container spacing={1}>
+          <Grid item xs={12} md={12}>
+            <Typography className="fs_16 fw_600 text_Margin ">
+              Input Text
+            </Typography>
+          </Grid>
+          <Grid item xs={12} md={4}>
             <TextField
-              style={{ marginTop: "10px" }}
-              placeholder="Name"
-              size="small"
-              type="text"
               fullWidth
-              value={names}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </Box>
-          <Box>
-            <label>Address</label>
-            <TextField
-              style={{ marginTop: "10px" }}
-              size="small"
-              label="Address"
+              required
               type="text"
-              fullWidth
-              value={address}
-              onChange={(e) => setAdders(e.target.value)}
+              label="Full Name"
+              // value={fullName}
+              // onChange={(e) => setFullName(e.target.value)}
             />
-          </Box>
-
-          <Box>
-            <label>Phone Number</label>
+          </Grid>
+          <Grid item xs={12} md={4}>
             <TextField
-              style={{ marginTop: "10px" }}
+              id="outlined-basic"
+              label="Outlined"
+              variant="outlined"
+            />
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <TextField
+              required
+              id="outlined-required"
+              label="Required"
+              defaultValue="Hello World"
+            />
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <TextField
+              disabled
+              id="outlined-disabled"
+              label="Disabled"
+              defaultValue="Hello World"
+            />
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <TextField
+              id="outlined-read-only-input"
+              label="Read Only"
+              defaultValue="Hello World"
+              InputProps={{
+                readOnly: true,
+              }}
+            />{" "}
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <TextField
+              id="outlined-search"
+              label="Search field"
+              type="search"
+            />
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <TextField
+              id="outlined-helperText"
+              label="Helper text"
+              defaultValue="Default Value"
+              helperText="Some important text"
+            />
+          </Grid>
+          <Grid item xs={12} md={12}>
+            <Typography className="fs_16 fw_600 text_Margin ">
+              Input Password
+            </Typography>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <TextField
+              id="outlined-password-input"
+              label="Password"
+              type="password"
+              autoComplete="current-password"
+            />
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <FormControl sx={{ width: "25ch" }} variant="outlined">
+              <InputLabel htmlFor="outlined-adornment-password">
+                Password
+              </InputLabel>
+              <OutlinedInput
+                id="outlined-adornment-password"
+                type={showPassword ? "text" : "password"}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                      edge="end"
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
+                label="Password"
+              />
+            </FormControl>
+          </Grid>
+          <Grid item xs={12} md={12}>
+            <Typography className="fs_16 fw_600 text_Margin ">
+              Input Number
+            </Typography>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <TextField
               id="outlined-number"
-              placeholder="Phone Number"
+              label="Number"
               type="number"
-              fullWidth
-              size="small"
               InputLabelProps={{
                 shrink: true,
               }}
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
             />
-          </Box>
-          <Box>
-            <label>Age</label>
+          </Grid>
+          <Grid item xs={12} md={12}>
+            <Typography className="fs_16 fw_600 text_Margin ">
+              Input Multiline
+            </Typography>
+          </Grid>
+          <Grid item xs={12} md={4}>
             <TextField
-              style={{ marginTop: "10px" }}
-              id="outlined-number"
-              placeholder="Age"
-              type="number"
-              fullWidth
-              size="small"
-              InputLabelProps={{
-                shrink: true,
-              }}
-              value={age}
-              onChange={(e) => setAge(e.target.value)}
+              id="outlined-multiline-flexible"
+              label="Multiline"
+              multiline
             />
-          </Box>
-          <Box>
-            {" "}
-            <label>Email</label>
+          </Grid>
+          <Grid item xs={12} md={4}>
             <TextField
-              style={{ marginTop: "10px" }}
-              placeholder="Email"
-              size="small"
-              type="email"
-              fullWidth
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              id="outlined-textarea"
+              label="Multiline Placeholder"
+              placeholder="Placeholder"
+              multiline
+              maxRows={3}
             />
-          </Box>
-
-          <Box>
-            <label>Your Country Currency</label>
+          </Grid>
+          <Grid item xs={12} md={4}>
             <TextField
-              style={{ marginTop: "10px" }}
-              placeholder="Currency"
+              id="outlined-multiline-static"
+              label="Multiline"
+              multiline
+              rows={4}
+              defaultValue="Default Value"
+            />
+          </Grid>
+          <Grid item xs={12} md={12}>
+            <Typography className="fs_16 fw_600 text_Margin ">
+              Input Select Item
+            </Typography>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <TextField
               id="outlined-select-currency"
               select
-              fullWidth
-              size="small"
+              label="Select"
               defaultValue="EUR"
-              onChange={(e) => setCurrency(e.target.value)}
+              helperText="Please select your currency"
             >
               {currencies.map((option) => (
                 <MenuItem key={option.value} value={option.value}>
@@ -256,23 +356,40 @@ const StandardInputFormModal = () => {
                 </MenuItem>
               ))}
             </TextField>
-          </Box>
-
-          <Box>
-            <FormControl fullWidth size="small">
-              <label>Manager name</label>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Autocomplete
+              multiple
+              limitTags={3}
+              id="multiple-limit-tags"
+              options={multiData}
+              getOptionLabel={(option) => option?.title}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="Muli Data select"
+                  placeholder="Favorites"
+                />
+              )}
+              // sx={{ width: "800px" }}
+            />
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <FormControl sx={{  width: 230 }}>
+              <InputLabel id="demo-multiple-checkbox-label">
+                Multiple Select
+              </InputLabel>
               <Select
-                style={{ marginTop: "10px" }}
+                labelId="demo-multiple-checkbox-label"
                 id="demo-multiple-checkbox"
                 multiple
-                fullWidth
                 value={personName}
                 onChange={handleChange}
-                input={<OutlinedInput />}
+                input={<OutlinedInput label="Multiple Select" />}
                 renderValue={(selected) => selected.join(", ")}
                 MenuProps={MenuProps}
               >
-                {allName.map((name) => (
+                {names.map((name) => (
                   <MenuItem key={name} value={name}>
                     <Checkbox checked={personName.indexOf(name) > -1} />
                     <ListItemText primary={name} />
@@ -280,42 +397,9 @@ const StandardInputFormModal = () => {
                 ))}
               </Select>
             </FormControl>
-          </Box>
-          <Box>
-            <label></label>
-            <Stack
-              style={{ marginTop: "35px" }}
-              direction="row"
-              spacing={1}
-              alignItems="center"
-            >
-              <Typography>Off</Typography>
-              <Switch
-                defaultChecked={checked}
-                onChange={handleToggleChange}
-                inputProps={{
-                  "aria-label": "ant design",
-                }}
-              />
-              <Typography>On</Typography>
-            </Stack>
-          </Box>
-        </Box>
-        <Box>
-          {" "}
-          <label>Short Note</label>
-          <TextField
-            style={{ marginTop: "10px" }}
-            fullWidth
-            id="outlined-textarea"
-            placeholder="Short Note"
-            multiline
-            rows={4}
-            maxRows={3}
-            value={note}
-            onChange={(e) => setNote(e.target.value)}
-          />
-        </Box>
+          </Grid>
+        </Grid>
+
         <Box
           pt={3}
           style={{

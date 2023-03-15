@@ -1,5 +1,5 @@
 import { Card, Typography } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { useGlobalContext } from "../../context/globalContext";
 import FormatInputFormModal from "./FormatInputModal";
 import "./inputForm.css";
@@ -7,12 +7,20 @@ import InputFormModal from "./InputFormModal.jsx";
 import StandardInputFormModal from "./StandardInputFormModal";
 
 const inputForm = () => {
-  const { setInputModal, setFromatInputModal,setStandardInputModal } = useGlobalContext();
+  const { setInputModal} = useGlobalContext();
+    const [standardInputModal, setStandardInputModal] = useState(false);
+    const [formatInputModal, setFormatInputModal] = useState(false);
   return (
     <>
       <InputFormModal />
-      <StandardInputFormModal />
-      <FormatInputFormModal />
+      <StandardInputFormModal
+        standardInputModal={standardInputModal}
+        setStandardInputModal={setStandardInputModal}
+      />
+      <FormatInputFormModal
+        formatInputModal={formatInputModal}
+        setFormatInputModal={setFormatInputModal}
+      />
       <Card className="global_card" style={{ padding: "10px" }}>
         <h1 style={{ display: "flex", justifyContent: "center" }}>Forms</h1>
         <div className="display_Grid ">
@@ -47,7 +55,7 @@ const inputForm = () => {
                 color: "white",
               }}
               size="small"
-              onClick={() => setFromatInputModal(true)}
+              onClick={() => setFormatInputModal(true)}
             >
               Formated Input Form
             </button>
