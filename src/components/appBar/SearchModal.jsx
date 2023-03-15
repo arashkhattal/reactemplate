@@ -39,7 +39,7 @@ const searchData = [
   {
     id: 1,
     name: "Line Chart",
-    link: "/chart",
+    link: "/chart/#line-chart",
     icon: (
       <Icon fontSize="small" sx={{ cursor: "pointer" }}>
         insights
@@ -49,7 +49,7 @@ const searchData = [
   {
     id: 2,
     name: "Bar Chart",
-    link: "/chart",
+    link: "/chart/#bar-chart",
     icon: (
       <Icon fontSize="small" sx={{ cursor: "pointer" }}>
         insights
@@ -59,7 +59,7 @@ const searchData = [
   {
     id: 3,
     name: "Stacked Bar Chart",
-    link: "/chart",
+    link: "/chart/#stacked-bar-chart",
     icon: (
       <Icon fontSize="small" sx={{ cursor: "pointer" }}>
         insights
@@ -69,7 +69,7 @@ const searchData = [
   {
     id: 4,
     name: "TimeLine Chart",
-    link: "/chart",
+    link: "/chart/#time-line-chart",
     icon: (
       <Icon fontSize="small" sx={{ cursor: "pointer" }}>
         insights
@@ -79,7 +79,7 @@ const searchData = [
   {
     id: 5,
     name: "Basic TimeLine Chart",
-    link: "/chart",
+    link: "/chart/#basic-time-line-chart",
     icon: (
       <Icon fontSize="small" sx={{ cursor: "pointer" }}>
         insights
@@ -89,7 +89,7 @@ const searchData = [
   {
     id: 6,
     name: "Donut Chart",
-    link: "/chart",
+    link: "/chart/#donut-chart",
     icon: (
       <Icon fontSize="small" sx={{ cursor: "pointer" }}>
         insights
@@ -99,7 +99,7 @@ const searchData = [
   {
     id: 7,
     name: "Pie Chart",
-    link: "/chart",
+    link: "/chart/#pie-chart",
     icon: (
       <Icon fontSize="small" sx={{ cursor: "pointer" }}>
         insights
@@ -128,21 +128,21 @@ const searchData = [
     ),
   },
 
-  {
-    id: 10,
-    name: "Mui Icons",
-    link: "/muiicons",
-    icon: (
-      <Icon fontSize="small" sx={{ cursor: "pointer" }}>
-        adjust
-      </Icon>
-    ),
-  },
+  // {
+  //   id: 10,
+  //   name: "Mui Icons",
+  //   link: "/muiicons",
+  //   icon: (
+  //     <Icon fontSize="small" sx={{ cursor: "pointer" }}>
+  //       adjust
+  //     </Icon>
+  //   ),
+  // },
 
   {
     id: 11,
     name: "Loader",
-    link: "/loading",
+    link: "/loading/#loader",
     icon: (
       <Icon fontSize="small" sx={{ cursor: "pointer" }}>
         hourglass_bottom
@@ -153,7 +153,7 @@ const searchData = [
   {
     id: 12,
     name: "Input Fields",
-    link: "/inputfield",
+    link: "/inputfield/#input-fields",
     icon: (
       <Icon fontSize="small" sx={{ cursor: "pointer" }}>
         input_circle
@@ -164,7 +164,7 @@ const searchData = [
   {
     id: 13,
     name: "Tooltips",
-    link: "/tooltips",
+    link: "/tooltips/#tooltips",
     icon: (
       <Icon fontSize="small" sx={{ cursor: "pointer" }}>
         pan_tool_alt
@@ -175,7 +175,7 @@ const searchData = [
   {
     id: 14,
     name: "Sun Editor",
-    link: "/suneditor",
+    link: "/suneditor/#sun-editor",
     icon: (
       <Icon fontSize="small" sx={{ cursor: "pointer" }}>
         format_size
@@ -186,7 +186,7 @@ const searchData = [
   {
     id: 15,
     name: "Calendar",
-    link: "/fullcalendar",
+    link: "/fullcalendar/#calendar",
     icon: (
       <Icon fontSize="small" sx={{ cursor: "pointer" }}>
         calendar_month
@@ -197,7 +197,7 @@ const searchData = [
   {
     id: 16,
     name: "Upload single File",
-    link: "/uploadfiles",
+    link: "/uploadfiles/#upload-single-file",
     icon: (
       <Icon fontSize="small" sx={{ cursor: "pointer" }}>
         upload
@@ -207,7 +207,7 @@ const searchData = [
   {
     id: 17,
     name: "Upload Multiple File",
-    link: "/uploadfiles",
+    link: "/uploadfiles/#upload-multiple-file",
     icon: (
       <Icon fontSize="small" sx={{ cursor: "pointer" }}>
         upload
@@ -218,7 +218,7 @@ const searchData = [
   {
     id: 18,
     name: "Profile",
-    link: "/profile",
+    link: "/profile/#profile",
     icon: (
       <Icon fontSize="small" sx={{ cursor: "pointer" }}>
         account_circle
@@ -229,7 +229,7 @@ const searchData = [
   {
     id: 19,
     name: "Notification",
-    link: "/pushnotification",
+    link: "/pushnotification/#notification",
     icon: (
       <Icon fontSize="small" sx={{ cursor: "pointer" }}>
         notifications
@@ -240,7 +240,7 @@ const searchData = [
   {
     id: 20,
     name: "Messages",
-    link: "/messages",
+    link: "/messages/#messages",
     icon: (
       <Icon fontSize="small" sx={{ cursor: "pointer" }}>
         chat
@@ -251,7 +251,7 @@ const searchData = [
   {
     id: 21,
     name: "Forms",
-    link: "/inputForm",
+    link: "/inputForm/#forms",
     icon: (
       <Icon fontSize="small" sx={{ cursor: "pointer" }}>
         list
