@@ -162,11 +162,12 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
           Formated Input Form
         </Typography>
 
-        <Box className="input_field_display">
-          <Box>
+        <Grid container spacing={1}>
+          <Grid item xs={12} md={4}>
             <label>Name</label>
+          </Grid>
+          <Grid item xs={12} md={8}>
             <TextField
-              style={{ marginTop: "10px" }}
               placeholder="Name"
               size="small"
               type="text"
@@ -174,9 +175,12 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
               value={names}
               onChange={(e) => setName(e.target.value)}
             />
-          </Box>
-          <Box>
+          </Grid>
+
+          <Grid item xs={12} md={4}>
             <label>Address</label>
+          </Grid>
+          <Grid item xs={12} md={8}>
             <TextField
               style={{ marginTop: "10px" }}
               size="small"
@@ -186,10 +190,12 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
               value={address}
               onChange={(e) => setAdders(e.target.value)}
             />
-          </Box>
+          </Grid>
 
-          <Box>
+          <Grid item xs={12} md={4}>
             <label>Phone Number</label>
+          </Grid>
+          <Grid item xs={12} md={8}>
             <TextField
               style={{ marginTop: "10px" }}
               id="outlined-number"
@@ -203,9 +209,12 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
             />
-          </Box>
-          <Box>
+          </Grid>
+
+          <Grid item xs={12} md={4}>
             <label>Age</label>
+          </Grid>
+          <Grid item xs={12} md={8}>
             <TextField
               style={{ marginTop: "10px" }}
               id="outlined-number"
@@ -219,10 +228,12 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
               value={age}
               onChange={(e) => setAge(e.target.value)}
             />
-          </Box>
-          <Box>
-            {" "}
+          </Grid>
+
+          <Grid item xs={12} md={4}>
             <label>Email</label>
+          </Grid>
+          <Grid item xs={12} md={8}>
             <TextField
               style={{ marginTop: "10px" }}
               placeholder="Email"
@@ -232,10 +243,12 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-          </Box>
+          </Grid>
 
-          <Box>
+          <Grid item xs={12} md={4}>
             <label>Your Country Currency</label>
+          </Grid>
+          <Grid item xs={12} md={8}>
             <TextField
               style={{ marginTop: "10px" }}
               placeholder="Currency"
@@ -252,11 +265,13 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
                 </MenuItem>
               ))}
             </TextField>
-          </Box>
+          </Grid>
 
-          <Box>
+          <Grid item xs={12} md={4}>
+            <label>Manager name</label>
+          </Grid>
+          <Grid item xs={12} md={8}>
             <FormControl fullWidth size="small">
-              <label>Manager name</label>
               <Select
                 style={{ marginTop: "10px" }}
                 id="demo-multiple-checkbox"
@@ -276,8 +291,28 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
                 ))}
               </Select>
             </FormControl>
-          </Box>
-          <Box>
+          </Grid>
+
+          <Grid item xs={12} md={4}>
+            <label>Short Note</label>
+          </Grid>
+          <Grid item xs={12} md={8}>
+            <TextField
+              style={{ marginTop: "10px" }}
+              fullWidth
+              id="outlined-textarea"
+              placeholder="Short Note"
+              multiline
+              rows={4}
+              maxRows={3}
+              value={note}
+              onChange={(e) => setNote(e.target.value)}
+            />
+          </Grid>
+        </Grid>
+
+        <Box className="input_field_display">
+          {/* <Box>
             <label></label>
             <Stack
               style={{ marginTop: "35px" }}
@@ -295,23 +330,9 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
               />
               <Typography>On</Typography>
             </Stack>
-          </Box>
+          </Box> */}
         </Box>
-        <Box>
-          {" "}
-          <label>Short Note</label>
-          <TextField
-            style={{ marginTop: "10px" }}
-            fullWidth
-            id="outlined-textarea"
-            placeholder="Short Note"
-            multiline
-            rows={4}
-            maxRows={3}
-            value={note}
-            onChange={(e) => setNote(e.target.value)}
-          />
-        </Box>
+        <Box> </Box>
         <Box
           pt={3}
           style={{
