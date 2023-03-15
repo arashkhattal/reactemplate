@@ -1,4 +1,3 @@
-
 import { Card, Grid, Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import { useGlobalContext } from "../../context/globalContext";
@@ -31,7 +30,7 @@ const About = () => {
                 Basic Table
               </Typography>
               {/* Basic table component  */}
-              <BasicTable />
+              <BasicTable id="basic-table" />
             </Card>
           </Grid>
           {/* <Grid item xs={6} md={12}>
@@ -48,7 +47,7 @@ const About = () => {
                 Sort & Select Table
               </Typography>
               {/* sort & select table component */}
-              <SortSelectTable />
+              <SortSelectTable id="sort-table" />
             </Card>
           </Grid>
           {/* <Grid item xs={6} md={12}>

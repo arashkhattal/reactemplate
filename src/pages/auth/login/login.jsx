@@ -129,7 +129,6 @@ const Login = () => {
 
   return (
     <Box
-      // component="form"
       className="container_center"
       noValidate
       autoComplete="off"
@@ -183,13 +182,6 @@ const Login = () => {
               <Typography>Login with Google</Typography>
             </Box>
           </button> */}
-          {/* <GoogleLogin
-            clientId="338141788840-mdg0pr52mts8gssevcm49ukj262nrmk4.apps.googleusercontent.com"
-            buttonText="Sign in with Google"
-            onSuccess={handleGoogleLoginSuccess}
-            onFailure={handleGoogleLoginFailure}
-            cookiePolicy={"single_host_origin"}
-          /> */}
           <GoogleLogin
             clientId="338141788840-mdg0pr52mts8gssevcm49ukj262nrmk4.apps.googleusercontent.com"
             onSuccess={onSuccess}

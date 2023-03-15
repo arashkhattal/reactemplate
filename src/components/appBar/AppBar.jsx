@@ -26,15 +26,6 @@ const AppBar = () => {
 
   const [searchModal, setSearchModal] = useState(false);
   const [openProfileMenu, setOpenProfileMenu] = useState(false);
-  // function for search bar
-  const handleSearch = (e) => {
-    setSearch(e.target.value);
-    setAlert({
-      flag: true,
-      type: "success",
-      msg: search,
-    });
-  };
 
   const handleclick = () => {};
 
@@ -281,7 +272,12 @@ const AppBar = () => {
 
   return (
     <>
-      <SearchModal searchModal={searchModal} setSearchModal={setSearchModal} />
+      <SearchModal
+        search={search}
+        setSearch={setSearch}
+        searchModal={searchModal}
+        setSearchModal={setSearchModal}
+      />
       {/* simple app bar contain 3 options */}
       <div className="navbar">
         <div className="logo-openMenu">
@@ -307,15 +303,14 @@ const AppBar = () => {
             type="search"
             placeholder="Search.."
             name="search"
-            onClick={() => setSearchModal(true)}
             style={{ cursor: "pointer" }}
-            // value={search}
-            // onChange={(e) => setSearch(e.target.value)}
-            // onKeyDown={(e) => {
-            //   if (e.key === "Enter") {
-            //     handleSearch(e);
-            //   }
-            // }}
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                setSearchModal(true);
+              }
+            }}
           />
         </div>
         <div>

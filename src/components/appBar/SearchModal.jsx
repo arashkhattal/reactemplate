@@ -110,7 +110,7 @@ const searchData = [
   {
     id: 8,
     name: "Basic Table",
-    link: "/table",
+    link: "/table/#basic-table",
     icon: (
       <Icon fontSize="small" sx={{ cursor: "pointer" }}>
         table_chart
@@ -120,7 +120,7 @@ const searchData = [
   {
     id: 9,
     name: "Sort & select Table",
-    link: "/table",
+    link: "/table/#sort-table",
     icon: (
       <Icon fontSize="small" sx={{ cursor: "pointer" }}>
         table_chart
@@ -260,12 +260,12 @@ const searchData = [
   },
 ];
 
-const SearchModal = ({ searchModal, setSearchModal }) => {
+const SearchModal = ({ searchModal, setSearchModal, search, setSearch }) => {
   // global function
   const { setAlert } = useGlobalContext();
 
   const [searchResults, setSearchResults] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState(search);
 
   // const handleSearch = (event, value) => {
   //   if (!value) {
@@ -280,7 +280,7 @@ const SearchModal = ({ searchModal, setSearchModal }) => {
   // };
 
   const handleSearch = (event) => {
-    setSearchQuery(event.target.value);
+    setSearch(event.target.value);
     const filteredResults = searchData.filter((data) =>
       data.name.toLowerCase().includes(event.target.value.toLowerCase())
     );
@@ -294,7 +294,7 @@ const SearchModal = ({ searchModal, setSearchModal }) => {
   const handleResultClick = (result) => {
     setSearchModal(false); // Close the search modal
     setSearchResults([]);
-    setSearchQuery("");
+    setSearch("");
   };
 
   return (
@@ -329,7 +329,7 @@ const SearchModal = ({ searchModal, setSearchModal }) => {
           fullWidth
           label="Search"
           variant="outlined"
-          value={searchQuery}
+          value={search}
           onChange={handleSearch}
         />
         <List>
