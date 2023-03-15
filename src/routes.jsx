@@ -72,73 +72,14 @@ export const adminRoutes = [
     component: <Tables />,
   },
   //object for normal option
-  {
-    type: "menu",
-    name: <Typography sx={{ fontSize: "14px" }}>Mui Icons</Typography>,
-    key: "muiicons",
-    route: "/muiicons",
-    icon: <AdjustIcon sx={{ fontSize: "14px" }} />,
-    component: <MuiIconsList />,
-  },
-  {
-    type: "menu",
-    name: <Typography sx={{ fontSize: "14px" }}>Loader</Typography>,
-    key: "loading",
-    route: "/loading",
-    icon: (
-      <Icon fontSize="small" sx={{ cursor: "pointer" }}>
-        hourglass_bottom
-      </Icon>
-    ),
-    component: <Loading />,
-  },
-  // object for collapse (dropdown)
-  {
-    type: "collapse",
-    name: <Typography sx={{ fontSize: "14px" }}>Setting</Typography>,
-    key: "setting",
-    icon: <SettingsIcon fontSize="small" />,
-    collapse: [
-      {
-        name: <Typography sx={{ fontSize: "14px" }}>Page One</Typography>,
-        key: "pagaone",
-        route: "/pagaone",
-        icon: <Icon sx={{ fontSize: "14px" }}>S</Icon>,
-        component: <Setting />,
-      },
-    ],
-  },
-  // components
-  {
-    type: "collapse",
-    name: <Typography sx={{ fontSize: "14px" }}>Components</Typography>,
-    key: "components",
-    icon: <GridViewIcon fontSize="small" />,
-    collapse: [
-      {
-        name: <Typography sx={{ fontSize: "14px" }}>Input Field</Typography>,
-        key: "inputfield",
-        route: "/inputfield",
-        icon: <InputOutlinedIcon sx={{ fontSize: "14px" }} />,
-        component: <InputField />,
-      },
-      {
-        name: <Typography sx={{ fontSize: "14px" }}>Tooltips</Typography>,
-        key: "tooltips",
-        route: "/tooltips",
-        icon: <BuildCircleOutlinedIcon sx={{ fontSize: "14px" }} />,
-        component: <TooltipExample />,
-      },
-    ],
-  },
-  // sun editor
-  {
-    name: <Typography sx={{ fontSize: "14px" }}>Sun Editor</Typography>,
-    key: "suneditor",
-    route: "/suneditor",
-    icon: <FormatSizeIcon sx={{ fontSize: "14px" }} />,
-    component: <SunEditor />,
-  },
+  // {
+  //   type: "menu",
+  //   name: <Typography sx={{ fontSize: "14px" }}>Mui Icons</Typography>,
+  //   key: "muiicons",
+  //   route: "/muiicons",
+  //   icon: <AdjustIcon sx={{ fontSize: "14px" }} />,
+  //   component: <MuiIconsList />,
+  // },
   // calender
   {
     name: <Typography sx={{ fontSize: "14px" }}>Calendar</Typography>,
@@ -155,21 +96,7 @@ export const adminRoutes = [
     icon: <UploadIcon sx={{ fontSize: "18px" }} />,
     component: <UploadFileList />,
   },
-  {
-    name: <Typography>Profile</Typography>,
-    key: "profile",
-    route: "/profile",
-    icon: <AccountCircleIcon sx={{ fontSize: "14px" }} />,
-    component: <Profile />,
-  },
 
-  {
-    name: <Typography sx={{ fontSize: "14px" }}>Notification</Typography>,
-    key: "pushnotification",
-    route: "/pushnotification",
-    icon: <NotificationsActiveRounded fontSize="small" />,
-    component: <PushNotification />,
-  },
   {
     name: <Typography sx={{ fontSize: "14px" }}>Messages</Typography>,
     key: "messages",
@@ -177,11 +104,86 @@ export const adminRoutes = [
     icon: <Message fontSize="small" />,
     component: <Messages />,
   },
+
+  // components
   {
-    name: <Typography sx={{ fontSize: "14px" }}>All Form</Typography>,
-    key: "inputForm",
-    route: "/inputForm",
-    icon: <ViewListOutlinedIcon fontSize="small" />,
-    component: <InputForm />,
+    type: "collapse",
+    name: <Typography sx={{ fontSize: "14px" }}>Components</Typography>,
+    key: "components",
+    icon: <GridViewIcon fontSize="small" />,
+    collapse: [
+      {
+        name: <Typography sx={{ fontSize: "14px" }}>All Form</Typography>,
+        key: "inputForm",
+        route: "/inputForm",
+        icon: <ViewListOutlinedIcon fontSize="small" />,
+        component: <InputForm />,
+      },
+      // sun editor
+      {
+        name: <Typography sx={{ fontSize: "14px" }}>Sun Editor</Typography>,
+        key: "suneditor",
+        route: "/suneditor",
+        icon: <FormatSizeIcon sx={{ fontSize: "14px" }} />,
+        component: <SunEditor />,
+      },
+      {
+        type: "menu",
+        name: <Typography sx={{ fontSize: "14px" }}>Loader</Typography>,
+        key: "loading",
+        route: "/loading",
+        icon: (
+          <Icon fontSize="small" sx={{ cursor: "pointer" }}>
+            hourglass_bottom
+          </Icon>
+        ),
+        component: <Loading />,
+      },
+      {
+        name: <Typography sx={{ fontSize: "14px" }}>Notification</Typography>,
+        key: "pushnotification",
+        route: "/pushnotification",
+        icon: <NotificationsActiveRounded fontSize="small" />,
+        component: <PushNotification />,
+      },
+      {
+        name: <Typography sx={{ fontSize: "14px" }}>Input Field</Typography>,
+        key: "inputfield",
+        route: "/inputfield",
+        icon: <InputOutlinedIcon sx={{ fontSize: "14px" }} />,
+        component: <InputField />,
+      },
+      {
+        name: <Typography sx={{ fontSize: "14px" }}>Tooltips</Typography>,
+        key: "tooltips",
+        route: "/tooltips",
+        icon: <BuildCircleOutlinedIcon sx={{ fontSize: "14px" }} />,
+        component: <TooltipExample />,
+      },
+      {
+        name: <Typography>Profile</Typography>,
+        key: "profile",
+        route: "/profile",
+        icon: <AccountCircleIcon sx={{ fontSize: "14px" }} />,
+        component: <Profile />,
+      },
+    ],
+  },
+
+  // object for collapse (dropdown)
+  {
+    type: "collapse",
+    name: <Typography sx={{ fontSize: "14px" }}>Setting</Typography>,
+    key: "setting",
+    icon: <SettingsIcon fontSize="small" />,
+    collapse: [
+      {
+        name: <Typography sx={{ fontSize: "14px" }}>Page One</Typography>,
+        key: "pagaone",
+        route: "/pagaone",
+        icon: <Icon sx={{ fontSize: "14px" }}>S</Icon>,
+        component: <Setting />,
+      },
+    ],
   },
 ];

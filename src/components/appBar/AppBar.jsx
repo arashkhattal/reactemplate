@@ -105,25 +105,28 @@ const AppBar = () => {
                       borderRadius: "50%",
                     }}
                   ></img>
-                  <Box>
-                    <Link to="/profile">
-                      <EditIcon
-                        sx={{
-                          position: "absolute",
-                          marginTop: "60px",
-                          marginLeft: "60px",
-                          color: "#595959",
-                          width: "30px",
-                          height: "30px",
-                          backgroundColor: "#ffff",
-                          border: "1px solid #e3e3e3",
-                          padding: "5px",
-                          borderRadius: "50%",
-                          cursor: "pointer",
-                        }}
-                        onClick={() => setOpenProfileMenu(false)}
-                      />
-                    </Link>
+                  <Box >
+                    {/* <Link to="/profile"> */}
+                    <EditIcon
+                      sx={{
+                        position: "absolute",
+                        marginTop: "60px",
+                        marginLeft: "60px",
+                        color: "#595959",
+                        width: "30px",
+                        height: "30px",
+                        backgroundColor: "#ffff",
+                        border: "1px solid #e3e3e3",
+                        padding: "5px",
+                        borderRadius: "50%",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => {
+                        setOpenProfileMenu(false);
+                        navigate("/profile");
+                      }}
+                    />
+                    {/* </Link> */}
                   </Box>
                 </Box>
               </div>

@@ -119,8 +119,8 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 8px;
-  border-radius: 25px;
+  padding: 10px;
+  border-radius: 10px;
   border: 1px solid #e6e4e4;
   cursor: pointer;
 }
