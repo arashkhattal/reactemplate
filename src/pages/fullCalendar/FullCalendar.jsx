@@ -10,10 +10,15 @@ import { useGlobalContext } from "../../context/globalContext";
 import ViewModal from "./ViewModal";
 import EditModal from "./EditModal";
 import DelEventModal from "./DelEventModal";
+import CreateEventDragModal from "./CreateEventDragModal";
 
 const Calendar = () => {
   // state to store craete modal
   const [createEvent, setCreateEvent] = useState(false);
+  const [createEventDrag, setCreateEventDrag] = useState({
+    state: false,
+    data: null,
+  });
   // state to store view modal
   const [viewEvent, setViewEvent] = useState({ state: false, data: null });
   // state to store edit modal
@@ -38,22 +43,22 @@ const Calendar = () => {
     },
   ]);
 
-  // function to create event by drag (single & multiple)
-  const handleDateSelect = (selectInfo) => {
-    console.log(selectInfo);
-    console.log(selectInfo.startStr);
-    const title = prompt("Please enter a title for your event");
-    if (title) {
-      const newEvent = {
-        id: (events.length + 1).toString(),
-        title,
-        start: selectInfo.startStr,
-        end: selectInfo.endStr,
-      };
+  // // function to create event by drag (single & multiple)
+  // const handleDateSelect = (selectInfo) => {
+  //   console.log(selectInfo);
+  //   console.log(selectInfo.startStr);
+  //   const title = prompt("Please enter a title for your event");
+  //   if (title) {
+  //     const newEvent = {
+  //       id: (events.length + 1).toString(),
+  //       title,
+  //       start: selectInfo.startStr,
+  //       end: selectInfo.endStr,
+  //     };
 
-      setEvents([...events, newEvent]);
-    }
-  };
+  //     setEvents([...events, newEvent]);
+  //   }
+  // };
 
   return (
     <div>
@@ -62,6 +67,12 @@ const Calendar = () => {
         setEvents={setEvents}
         setCreateEvent={setCreateEvent}
         createEvent={createEvent}
+      />
+      <CreateEventDragModal
+        events={events}
+        setEvents={setEvents}
+        setCreateEventDrag={setCreateEventDrag}
+        createEventDrag={createEventDrag}
       />
       <ViewModal
         setViewEvent={setViewEvent}
@@ -100,7 +111,13 @@ const Calendar = () => {
           initialView="dayGridMonth"
           selectable={true}
           events={events}
-          select={handleDateSelect}
+          // select={handleDateSelect}
+          select={(info) => {
+            setCreateEventDrag({
+              state: true,
+              data: info,
+            });
+          }}
           editable={true}
           droppable={true}
           eventClick={(e) =>

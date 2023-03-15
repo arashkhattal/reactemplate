@@ -4,9 +4,6 @@ const AppProvider = ({ children }) => {
   // loader component
   const [loading, setLoading] = useState(false);
 
-  //division loading
-  // const [divLoading, setDivLoading] = useState(false);
-
   // reload state
   const [reload, setReload] = useState(2);
 
@@ -62,8 +59,6 @@ const AppProvider = ({ children }) => {
         setStandardInputModal,
         formatInputModal,
         setFormatInputModal,
-        divLoading,
-        setDivLoading,
       }}
     >
       {children}

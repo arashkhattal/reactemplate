@@ -297,7 +297,7 @@ const SearchModal = ({ searchModal, setSearchModal, search, setSearch }) => {
     setSearch("");
   };
 
-  
+
 
   return (
     // modal component from mui
@@ -333,7 +333,7 @@ const SearchModal = ({ searchModal, setSearchModal, search, setSearch }) => {
           variant="outlined"
           value={search}
           onChange={handleSearch}
-          onBlur={handleSearch}
+          // onBlur={handleSearch}
           onFocus={handleSearch}
         />
         <List>
