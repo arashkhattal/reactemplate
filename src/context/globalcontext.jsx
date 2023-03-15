@@ -1,12 +1,11 @@
-import React, {
-  useState,
-  useContext,
-  createContext,
-} from "react";
+import React, { useState, useContext, createContext } from "react";
 const AppContext = createContext();
 const AppProvider = ({ children }) => {
   // loader component
   const [loading, setLoading] = useState(false);
+
+  //division loading
+  // const [divLoading, setDivLoading] = useState(false);
 
   // reload state
   const [reload, setReload] = useState(2);
@@ -20,28 +19,23 @@ const AppProvider = ({ children }) => {
 
   // state to maintain open close menu
   const [openMenu, setOpenMenu] = useState(true);
-  const [resetModal, setResetModal] =
-    useState(false);
+  const [resetModal, setResetModal] = useState(false);
 
   // create chat
-  const [createChat, setCreateChat] =
-    useState(false);
+  const [createChat, setCreateChat] = useState(false);
 
   // create chat group
-  const [createGroup, setCreateGroup] =
-    useState(false);
+  const [createGroup, setCreateGroup] = useState(false);
   // Input field modal
-  const [inputModal, setInputModal] =
-    useState(false);
+  const [inputModal, setInputModal] = useState(false);
+  const [standardInputModal, setStandardInputModal] = useState(false);
+  const [formatInputModal, setFormatInputModal] = useState(false);
 
   // default drawer width
   const drawerWidth = openMenu ? 210 : 75;
 
   // primary color
   const primaryColor = "#0d80d8";
-
-
-
 
   return (
     <AppContext.Provider
@@ -64,6 +58,12 @@ const AppProvider = ({ children }) => {
         setCreateGroup,
         inputModal,
         setInputModal,
+        standardInputModal,
+        setStandardInputModal,
+        formatInputModal,
+        setFormatInputModal,
+        divLoading,
+        setDivLoading,
       }}
     >
       {children}

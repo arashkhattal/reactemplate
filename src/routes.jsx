@@ -82,89 +82,85 @@ export const adminRoutes = [
   // },
   // calender
   {
-    name: <Typography sx={{ fontSize: "14px" }}>Calendar</Typography>,
+    name: <Typography >Calendar</Typography>,
     key: "fullcalendar",
     route: "/fullcalendar",
-    icon: <CalendarMonthIcon sx={{ fontSize: "14px" }} />,
+    icon: <CalendarMonthIcon />,
     component: <Calendar />,
   },
 
   {
-    name: <Typography sx={{ fontSize: "14px" }}>Upload File</Typography>,
+    name: <Typography>Upload File</Typography>,
     key: "uploadfiles",
     route: "/uploadfiles",
-    icon: <UploadIcon sx={{ fontSize: "18px" }} />,
+    icon: <UploadIcon />,
     component: <UploadFileList />,
   },
 
   {
-    name: <Typography sx={{ fontSize: "14px" }}>Messages</Typography>,
+    name: <Typography>Messages</Typography>,
     key: "messages",
     route: "/messages",
-    icon: <Message fontSize="small" />,
+    icon: <Message />,
     component: <Messages />,
   },
 
   // components
   {
     type: "collapse",
-    name: <Typography sx={{ fontSize: "14px" }}>Components</Typography>,
+    name: <Typography>Components</Typography>,
     key: "components",
-    icon: <GridViewIcon fontSize="small" />,
+    icon: <GridViewIcon />,
     collapse: [
       {
         name: <Typography sx={{ fontSize: "14px" }}>All Form</Typography>,
         key: "inputForm",
         route: "/inputForm",
-        icon: <ViewListOutlinedIcon fontSize="small" />,
+        icon: <ViewListOutlinedIcon />,
         component: <InputForm />,
       },
       // sun editor
       {
-        name: <Typography sx={{ fontSize: "14px" }}>Sun Editor</Typography>,
+        name: <Typography>Sun Editor</Typography>,
         key: "suneditor",
         route: "/suneditor",
-        icon: <FormatSizeIcon sx={{ fontSize: "14px" }} />,
+        icon: <FormatSizeIcon />,
         component: <SunEditor />,
       },
       {
         type: "menu",
-        name: <Typography sx={{ fontSize: "14px" }}>Loader</Typography>,
+        name: <Typography>Loader</Typography>,
         key: "loading",
         route: "/loading",
-        icon: (
-          <Icon fontSize="small" sx={{ cursor: "pointer" }}>
-            hourglass_bottom
-          </Icon>
-        ),
+        icon: <Icon sx={{ cursor: "pointer" }}>hourglass_bottom</Icon>,
         component: <Loading />,
       },
       {
-        name: <Typography sx={{ fontSize: "14px" }}>Notification</Typography>,
+        name: <Typography>Notification</Typography>,
         key: "pushnotification",
         route: "/pushnotification",
-        icon: <NotificationsActiveRounded fontSize="small" />,
+        icon: <NotificationsActiveRounded />,
         component: <PushNotification />,
       },
       {
-        name: <Typography sx={{ fontSize: "14px" }}>Input Field</Typography>,
+        name: <Typography>Input Field</Typography>,
         key: "inputfield",
         route: "/inputfield",
-        icon: <InputOutlinedIcon sx={{ fontSize: "14px" }} />,
+        icon: <InputOutlinedIcon />,
         component: <InputField />,
       },
       {
-        name: <Typography sx={{ fontSize: "14px" }}>Tooltips</Typography>,
+        name: <Typography>Tooltips</Typography>,
         key: "tooltips",
         route: "/tooltips",
-        icon: <BuildCircleOutlinedIcon sx={{ fontSize: "14px" }} />,
+        icon: <BuildCircleOutlinedIcon />,
         component: <TooltipExample />,
       },
       {
         name: <Typography>Profile</Typography>,
         key: "profile",
         route: "/profile",
-        icon: <AccountCircleIcon sx={{ fontSize: "14px" }} />,
+        icon: <AccountCircleIcon />,
         component: <Profile />,
       },
     ],
