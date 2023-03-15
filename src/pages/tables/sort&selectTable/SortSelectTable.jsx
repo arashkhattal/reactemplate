@@ -19,6 +19,7 @@ import Tooltip from "@mui/material/Tooltip";
 import DeleteIcon from "@mui/icons-material/Delete";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import { visuallyHidden } from "@mui/utils";
+import { Menu } from "@mui/material";
 
 function createData(name, calories, fat, carbs, protein) {
   return {
@@ -125,7 +126,7 @@ function EnhancedTableHead(props) {
   };
 
   return (
-    <TableHead >
+    <TableHead>
       <TableRow>
         <TableCell padding="checkbox">
           <Checkbox
@@ -173,7 +174,41 @@ EnhancedTableHead.propTypes = {
   rowCount: PropTypes.number.isRequired,
 };
 
+// open profile menu
+
 function EnhancedTableToolbar(props) {
+  const [openFilterMenu, setOpenFilterMenu] = React.useState(false);
+  const handleOpenFilterMenu = (event) =>
+    setOpenFilterMenu(event.currentTarget);
+  const handleCloseFilterMenu = () => setOpenFilterMenu(false);
+
+  const renderFilter = () => (
+    <Menu
+      anchorEl={openFilterMenu}
+      anchorReference={null}
+      anchorOrigin={{
+        vertical: "bottom",
+        horizontal: "left",
+      }}
+      open={Boolean(openFilterMenu)}
+      onClose={handleCloseFilterMenu}
+      sx={{ mt: 2, borderRadius: "20px" }}
+    >
+      <Box
+        sx={{
+          // height: "480px",
+          width: "80px",
+          margin: "18px",
+          borderRadius: "5px",
+        }}
+      >
+        <div>
+          <Typography>option 1</Typography>
+        </div>
+      </Box>
+    </Menu>
+  );
+
   const { numSelected } = props;
 
   return (
@@ -209,7 +244,6 @@ function EnhancedTableToolbar(props) {
           Nutrition
         </Typography>
       )}
-
       {numSelected > 0 ? (
         <Tooltip title="Delete">
           <IconButton>
@@ -219,10 +253,11 @@ function EnhancedTableToolbar(props) {
       ) : (
         <Tooltip title="Filter list">
           <IconButton>
-            <FilterListIcon />
+            <FilterListIcon onClick={handleOpenFilterMenu} />
           </IconButton>
         </Tooltip>
       )}
+      {renderFilter()}
     </Toolbar>
   );
 }

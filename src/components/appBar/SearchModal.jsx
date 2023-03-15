@@ -297,6 +297,8 @@ const SearchModal = ({ searchModal, setSearchModal, search, setSearch }) => {
     setSearch("");
   };
 
+  
+
   return (
     // modal component from mui
     <Modal open={searchModal} onClose={() => setSearchModal(false)}>
@@ -331,6 +333,8 @@ const SearchModal = ({ searchModal, setSearchModal, search, setSearch }) => {
           variant="outlined"
           value={search}
           onChange={handleSearch}
+          onBlur={handleSearch}
+          onFocus={handleSearch}
         />
         <List>
           {searchResults.map((result) => (
