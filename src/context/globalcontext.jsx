@@ -35,10 +35,58 @@ const AppProvider = ({ children }) => {
   // primary color
   const primaryColor = "#0d80d8";
 
+
+  //  const [themeColor, setThemeColor] = useState(
+  //    localStorage.getItem("themeColor") || "#0d80d8"
+  //  );
+
+  //  useEffect(() => {
+  //    setColor(themeColor);
+  //  }, []);
+
+  //  useEffect(() => {
+  //    const color = getComputedStyle(document.documentElement).getPropertyValue(
+  //      "--color_primary"
+  //    );
+  //    console.log(`--color_primary: ${color}`);
+  //  }, []);
+
+  //  function hexToRgba(hex, opacity) {
+  //    hex = hex.replace("#", "");
+  //    if (hex.length === 3) {
+  //      hex = hex
+  //        .split("")
+  //        .map(function (h) {
+  //          return h + h;
+  //        })
+  //        .join("");
+  //    }
+  //    var r = parseInt(hex.substring(0, 2), 16);
+  //    var g = parseInt(hex.substring(2, 4), 16);
+  //    var b = parseInt(hex.substring(4, 6), 16);
+  //    return "rgba(" + r + ", " + g + ", " + b + ", " + opacity + ")";
+  //  }
+
+  //  const setColor = (themeColor) => {
+  //    console.log(`Updating --color_primary to: ${themeColor}`);
+  //    const secondaryColor = hexToRgba(themeColor, 0.203);
+  //    document.documentElement.style.setProperty("--color_primary", themeColor);
+  //    document.documentElement.style.setProperty(
+  //      "--color_secondary",
+  //      secondaryColor
+  //    );
+  //    localStorage.setItem("themeColor", themeColor);
+  //  };
+
+
+
   return (
     <AppContext.Provider
       value={{
-        primaryColor,
+        // setColor,
+        // themeColor,
+        //  setThemeColor,
+        // primaryColor,
         openMenu,
         setOpenMenu,
         drawerWidth,
