@@ -28,6 +28,9 @@ const ResetPassword = lazy(() =>
 );
 
 function App() {
+
+
+
   const { isLoggedIn } = useSelector((state) => state.AuthReducer);
 
   const navigate = useNavigate();
@@ -136,6 +139,7 @@ function App() {
           <Route path="/resetPassword" element={<ResetPassword />} />
         </Routes>
       </ThemeProvider>
+
     </>
   );
 }

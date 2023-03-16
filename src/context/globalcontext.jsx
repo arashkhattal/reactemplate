@@ -1,6 +1,9 @@
-import React, { useState, useContext, createContext } from "react";
+import React, { useState, useContext, createContext, useEffect } from "react";
 const AppContext = createContext();
 const AppProvider = ({ children }) => {
+
+
+
   // loader component
   const [loading, setLoading] = useState(false);
 
@@ -25,7 +28,6 @@ const AppProvider = ({ children }) => {
   const [createGroup, setCreateGroup] = useState(false);
   // Input field modal
   const [inputModal, setInputModal] = useState(false);
-
 
   // default drawer width
   const drawerWidth = openMenu ? 210 : 75;
