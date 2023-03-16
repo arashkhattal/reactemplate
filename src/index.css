@@ -63,6 +63,15 @@
   font-weight: 600 !important;
 }
 
+/* loader color */
+.MuiCircularProgress-colorPrimary {
+  color: var(--color_primary) !important;
+}
+
+.MuiFormLabel-root.Mui-focused {
+  color: var(--color_primary) !important;
+}
+
 /* css for scroll bar - hover */
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color_primary);

@@ -31,7 +31,7 @@ const UploadFileList = lazy(() => import("./pages/UploadFiles/uploadFileList"));
 const Calendar = lazy(() => import("./pages/fullCalendar/FullCalendar"));
 const Profile = lazy(() => import("./pages/Profile/Profile"));
 const MuiIconsList = lazy(() => import("./pages/muiIcons/MuiIconsList"));
-const Setting = lazy(() => import("./pages/Setting/Setting"));
+const Appearance = lazy(() => import("./pages/Setting/Appearance"));
 const TooltipExample = lazy(() => import("./pages/Tooltips/Tooltips"));
 const PushNotification = lazy(() =>
   import("./pages/pushNotificaiton/PushNotification")
@@ -82,7 +82,7 @@ export const adminRoutes = [
   // },
   // calender
   {
-    name: <Typography >Calendar</Typography>,
+    name: <Typography>Calendar</Typography>,
     key: "fullcalendar",
     route: "/fullcalendar",
     icon: <CalendarMonthIcon />,
@@ -174,11 +174,11 @@ export const adminRoutes = [
     icon: <SettingsIcon fontSize="small" />,
     collapse: [
       {
-        name: <Typography sx={{ fontSize: "14px" }}>Page One</Typography>,
-        key: "pagaone",
-        route: "/pagaone",
-        icon: <Icon sx={{ fontSize: "14px" }}>S</Icon>,
-        component: <Setting />,
+        name: <Typography>Appearance</Typography>,
+        key: "appearance",
+        route: "/appearance",
+        icon: <Icon>auto_awesome</Icon>,
+        component: <Appearance />,
       },
     ],
   },
