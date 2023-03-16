@@ -21,6 +21,8 @@ import BuildCircleOutlinedIcon from "@mui/icons-material/BuildCircleOutlined";
 import InputOutlinedIcon from "@mui/icons-material/InputOutlined";
 import ViewListOutlinedIcon from "@mui/icons-material/ViewListOutlined";
 
+import Profile from "./pages/Profile/Profile";
+
 // Import components using lazy to load the component
 const Loading = lazy(() => import("./pages/loader/Loading"));
 const Dashboard = lazy(() => import("./pages/dashboard/Dashboard"));
@@ -29,8 +31,8 @@ const Tables = lazy(() => import("./pages/tables/Tables"));
 const InputField = lazy(() => import("./pages/InputField/InputField"));
 const UploadFileList = lazy(() => import("./pages/UploadFiles/uploadFileList"));
 const Calendar = lazy(() => import("./pages/fullCalendar/FullCalendar"));
-const Profile = lazy(() => import("./pages/Profile/Profile"));
-const MuiIconsList = lazy(() => import("./pages/muiIcons/MuiIconsList"));
+// const Profile = lazy(() => import("./pages/Profile/Profile"));
+// const MuiIconsList = lazy(() => import("./pages/muiIcons/MuiIconsList"));
 const Appearance = lazy(() => import("./pages/Setting/Appearance"));
 const TooltipExample = lazy(() => import("./pages/Tooltips/Tooltips"));
 const PushNotification = lazy(() =>

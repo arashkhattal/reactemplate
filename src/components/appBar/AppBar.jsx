@@ -7,7 +7,7 @@ import "./AppBar.css";
 
 //global context
 import { useGlobalContext } from "../../context/globalContext";
-import { Avatar, Box, Menu, Typography } from "@mui/material";
+import { Avatar, Box, Menu, Popover, Typography } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { USER_SIGNOUT } from "../../redux/constant/AuthConstant";
@@ -45,233 +45,246 @@ const AppBar = () => {
     setOpenProfileMenu(event.currentTarget);
   const handleCloseProfileMenu = () => setOpenProfileMenu(false);
 
-  const renderProfile = () => (
-    <Menu
-      anchorEl={openProfileMenu}
-      anchorReference={null}
-      anchorOrigin={{
-        vertical: "bottom",
-        horizontal: "left",
-      }}
-      open={Boolean(openProfileMenu)}
-      onClose={handleCloseProfileMenu}
-      sx={{ mt: 2, borderRadius: "20px" }}
-    >
-      <Box
-        sx={{
-          // height: "480px",
-          width: "280px",
-          border: "1px solid #e3e3e3",
-          margin: "-8px",
-          borderRadius: "5px",
-        }}
-      >
-        <div
-          style={{
-            borderBottom: "1px solid lightgrey",
-          }}
-        >
-          {userRole === "user" ? (
-            <>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  marginTop: "20px",
-                }}
-              >
-                {" "}
-                <Box
-                  // className="border-gradient-rounded"
-                  sx={{
-                    width: "90px",
-                    height: "90px",
-                    fontSize: "50px",
-                    borderRadius: "50%",
-                    backgroundColor: "#e3e3e3",
-                    position: "relative",
-                  }}
-                >
-                  <img
-                    alt=""
-                    src="https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg"
-                    style={{
-                      position: "absolute",
-                      padding: "2px",
-                      width: "90px",
-                      height: "90px",
-                      fontSize: " 50px",
-                      borderRadius: "50%",
-                    }}
-                  ></img>
-                  <Box >
-                    {/* <Link to="/profile"> */}
-                    <EditIcon
-                      sx={{
-                        position: "absolute",
-                        marginTop: "60px",
-                        marginLeft: "60px",
-                        color: "#595959",
-                        width: "30px",
-                        height: "30px",
-                        backgroundColor: "#ffff",
-                        border: "1px solid #e3e3e3",
-                        padding: "5px",
-                        borderRadius: "50%",
-                        cursor: "pointer",
-                      }}
-                      onClick={() => {
-                        setOpenProfileMenu(false);
-                        navigate("/profile");
-                      }}
-                    />
-                    {/* </Link> */}
-                  </Box>
-                </Box>
-              </div>
-              <Typography
-                sx={{
-                  fontSize: "16px",
-                  textAlign: "center",
-                  fontWeight: 600,
-                  marginTop: "5px",
-                  color: "#313235",
-                }}
-              >
-                user
-              </Typography>
-              <Typography
-                sx={{
-                  fontSize: "14px",
-                  textAlign: "center",
-                  fontWeight: "light",
-                  color: "gray",
-                  marginBottom: "5px",
-                }}
-              >
-                demo@gmail.com
-              </Typography>
-            </>
-          ) : null}
-        </div>
+  // const renderProfile = () => (
+  //   <Menu
+  //     anchorEl={openProfileMenu}
+  //     anchorReference={null}
+  //     anchorOrigin={{
+  //       vertical: "bottom",
+  //       horizontal: "left",
+  //     }}
+  //     open={Boolean(openProfileMenu)}
+  //     onClose={handleCloseProfileMenu}
+  //     sx={{ mt: 2, borderRadius: "20px" }}
+  //   >
+  //     <Box
+  //       sx={{
+  //         // height: "480px",
+  //         width: "280px",
+  //         border: "1px solid #e3e3e3",
+  //         margin: "-8px",
+  //         borderRadius: "5px",
+  //       }}
+  //     >
+  //       <div
+  //         style={{
+  //           borderBottom: "1px solid lightgrey",
+  //         }}
+  //       >
+  //         {userRole === "user" ? (
+  //           <>
+  //             <div
+  //               style={{
+  //                 display: "flex",
+  //                 justifyContent: "center",
+  //                 alignItems: "center",
+  //                 marginTop: "20px",
+  //               }}
+  //             >
+  //               {" "}
+  //               <Box
+  //                 // className="border-gradient-rounded"
+  //                 sx={{
+  //                   width: "90px",
+  //                   height: "90px",
+  //                   fontSize: "50px",
+  //                   borderRadius: "50%",
+  //                   backgroundColor: "#e3e3e3",
+  //                   position: "relative",
+  //                 }}
+  //               >
+  //                 <img
+  //                   alt=""
+  //                   src="https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg"
+  //                   style={{
+  //                     position: "absolute",
+  //                     padding: "2px",
+  //                     width: "90px",
+  //                     height: "90px",
+  //                     fontSize: " 50px",
+  //                     borderRadius: "50%",
+  //                   }}
+  //                 ></img>
+  //                 <Box>
+  //                   {/* <Link to="/profile"> */}
+  //                   <EditIcon
+  //                     sx={{
+  //                       position: "absolute",
+  //                       marginTop: "60px",
+  //                       marginLeft: "60px",
+  //                       color: "#595959",
+  //                       width: "30px",
+  //                       height: "30px",
+  //                       backgroundColor: "#ffff",
+  //                       border: "1px solid #e3e3e3",
+  //                       padding: "5px",
+  //                       borderRadius: "50%",
+  //                       cursor: "pointer",
+  //                     }}
+  //                     onClick={() => {
+  //                       setOpenProfileMenu(false);
+  //                       navigate("/profile");
+  //                     }}
+  //                   />
+  //                   {/* </Link> */}
+  //                 </Box>
+  //               </Box>
+  //             </div>
+  //             <Typography
+  //               sx={{
+  //                 fontSize: "16px",
+  //                 textAlign: "center",
+  //                 fontWeight: 600,
+  //                 marginTop: "5px",
+  //                 color: "#313235",
+  //               }}
+  //             >
+  //               user
+  //             </Typography>
+  //             <Typography
+  //               sx={{
+  //                 fontSize: "14px",
+  //                 textAlign: "center",
+  //                 fontWeight: "light",
+  //                 color: "gray",
+  //                 marginBottom: "5px",
+  //               }}
+  //             >
+  //               demo@gmail.com
+  //             </Typography>
+  //           </>
+  //         ) : null}
+  //       </div>
 
-        <>
-          <Typography
-            sx={{
-              fontSize: "15px",
-              fontWeight: 700,
-              textAlign: "center",
-              marginTop: "10px",
-              cursor: "pointer",
-            }}
-          >
-            Switch Dashboard
-          </Typography>
-        </>
-        <div
-          style={{
-            padding: "5px 5px",
-            borderBottom: "1px solid lightgrey",
-          }}
-        >
-          {!userRole === "user" ? (
-            <>
-              <Box
-                sx={{
-                  margin: "0 15px",
-                  cursor: "pointer",
-                }}
-              >
-                <Box
-                  className="user-hover"
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "20px",
-                    padding: "10px 20px",
-                  }}
-                >
-                  <Avatar
-                    alt="Remy Sharp"
-                    src={<PermIdentityIcon />}
-                    sx={{
-                      height: "35px",
-                      width: "35px",
-                    }}
-                  />
-                  <Box>
-                    <Typography
-                      sx={{
-                        fontSize: "14px",
-                      }}
-                    >
-                      User
-                    </Typography>
-                  </Box>
-                </Box>
-              </Box>
-            </>
-          ) : (
-            <>
-              <Box
-                sx={{
-                  margin: "0 15px",
-                  cursor: "pointer",
-                }}
-              >
-                <Box
-                  className="user-hover"
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "20px",
-                    padding: "10px 20px",
-                  }}
-                >
-                  <Avatar
-                    alt="Remy Sharp"
-                    src={<PermIdentityIcon />}
-                    sx={{
-                      height: "35px",
-                      width: "35px",
-                    }}
-                  />
-                  <Box>
-                    <Typography
-                      sx={{
-                        fontSize: "14px",
-                      }}
-                    >
-                      Customer Admin
-                    </Typography>
-                  </Box>
-                </Box>
-              </Box>
-            </>
-          )}
-        </div>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
-          <div style={{ padding: "10px 0px" }}>
-            {/* <Link to="/"> */}
-            <button
-              className="btn_primary btn_primary_hover"
-              style={{ color: "white" }}
-              onClick={handelLogout}
-            >
-              Log Out
-            </button>
-            {/* </Link> */}
-          </div>
-        </Box>
-      </Box>
-    </Menu>
-  );
+  //       <>
+  //         <Typography
+  //           sx={{
+  //             fontSize: "15px",
+  //             fontWeight: 700,
+  //             textAlign: "center",
+  //             marginTop: "10px",
+  //             cursor: "pointer",
+  //           }}
+  //         >
+  //           Switch Dashboard
+  //         </Typography>
+  //       </>
+  //       <div
+  //         style={{
+  //           padding: "5px 5px",
+  //           borderBottom: "1px solid lightgrey",
+  //         }}
+  //       >
+  //         {!userRole === "user" ? (
+  //           <>
+  //             <Box
+  //               sx={{
+  //                 margin: "0 15px",
+  //                 cursor: "pointer",
+  //               }}
+  //             >
+  //               <Box
+  //                 className="user-hover"
+  //                 sx={{
+  //                   display: "flex",
+  //                   alignItems: "center",
+  //                   gap: "20px",
+  //                   padding: "10px 20px",
+  //                 }}
+  //               >
+  //                 <Avatar
+  //                   alt="Remy Sharp"
+  //                   src={<PermIdentityIcon />}
+  //                   sx={{
+  //                     height: "35px",
+  //                     width: "35px",
+  //                   }}
+  //                 />
+  //                 <Box>
+  //                   <Typography
+  //                     sx={{
+  //                       fontSize: "14px",
+  //                     }}
+  //                   >
+  //                     User
+  //                   </Typography>
+  //                 </Box>
+  //               </Box>
+  //             </Box>
+  //           </>
+  //         ) : (
+  //           <>
+  //             <Box
+  //               sx={{
+  //                 margin: "0 15px",
+  //                 cursor: "pointer",
+  //               }}
+  //             >
+  //               <Box
+  //                 className="user-hover"
+  //                 sx={{
+  //                   display: "flex",
+  //                   alignItems: "center",
+  //                   gap: "20px",
+  //                   padding: "10px 20px",
+  //                 }}
+  //               >
+  //                 <Avatar
+  //                   alt="Remy Sharp"
+  //                   src={<PermIdentityIcon />}
+  //                   sx={{
+  //                     height: "35px",
+  //                     width: "35px",
+  //                   }}
+  //                 />
+  //                 <Box>
+  //                   <Typography
+  //                     sx={{
+  //                       fontSize: "14px",
+  //                     }}
+  //                   >
+  //                     Customer Admin
+  //                   </Typography>
+  //                 </Box>
+  //               </Box>
+  //             </Box>
+  //           </>
+  //         )}
+  //       </div>
+  //       <Box
+  //         sx={{
+  //           display: "flex",
+  //           justifyContent: "center",
+  //         }}
+  //       >
+  //         <div style={{ padding: "10px 0px" }}>
+  //           {/* <Link to="/"> */}
+  //           <button
+  //             className="btn_primary btn_primary_hover"
+  //             style={{ color: "white" }}
+  //             onClick={handelLogout}
+  //           >
+  //             Log Out
+  //           </button>
+  //           {/* </Link> */}
+  //         </div>
+  //       </Box>
+  //     </Box>
+  //   </Menu>
+  // );
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
 
   return (
     <>
@@ -320,13 +333,239 @@ const AppBar = () => {
           {/* profile img */}
 
           <img
-            onClick={handleOpenProfileMenu}
+            // onClick={handleOpenProfileMenu}
+            aria-describedby={id}
+            onClick={handleClick}
             className="profile"
             src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
             alt="profile"
           />
         </div>
-        {renderProfile()}
+        <Popover
+          sx={{ overflow: "hidden" }}
+          id={id}
+          open={open}
+          anchorEl={anchorEl}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "left",
+          }}
+        >
+          <Box
+            sx={{
+              overflowY: "hidden",
+              width: "280px",
+              border: "1px solid #e3e3e3",
+              margin: "-8px",
+              borderRadius: "5px",
+            }}
+          >
+            <div
+              style={{
+                borderBottom: "1px solid lightgrey",
+              }}
+            >
+              {userRole === "user" ? (
+                <>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      marginTop: "20px",
+                    }}
+                  >
+                    {" "}
+                    <Box
+                      // className="border-gradient-rounded"
+                      sx={{
+                        width: "90px",
+                        height: "90px",
+                        fontSize: "50px",
+                        borderRadius: "50%",
+                        backgroundColor: "#e3e3e3",
+                        position: "relative",
+                      }}
+                    >
+                      <img
+                        alt=""
+                        src="https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg"
+                        style={{
+                          position: "absolute",
+                          padding: "2px",
+                          width: "90px",
+                          height: "90px",
+                          fontSize: " 50px",
+                          borderRadius: "50%",
+                        }}
+                      ></img>
+                      <Box>
+                        {/* <Link to="/profile"> */}
+                        <EditIcon
+                          sx={{
+                            position: "absolute",
+                            marginTop: "60px",
+                            marginLeft: "60px",
+                            color: "#595959",
+                            width: "30px",
+                            height: "30px",
+                            backgroundColor: "#ffff",
+                            border: "1px solid #e3e3e3",
+                            padding: "5px",
+                            borderRadius: "50%",
+                            cursor: "pointer",
+                          }}
+                          onClick={() => {
+                            setAnchorEl(null);
+                            navigate("/profile");
+                          }}
+                        />
+                        {/* </Link> */}
+                      </Box>
+                    </Box>
+                  </div>
+                  <Typography
+                    sx={{
+                      fontSize: "16px",
+                      textAlign: "center",
+                      fontWeight: 600,
+                      marginTop: "5px",
+                      color: "#313235",
+                    }}
+                  >
+                    user
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontSize: "14px",
+                      textAlign: "center",
+                      fontWeight: "light",
+                      color: "gray",
+                      marginBottom: "5px",
+                    }}
+                  >
+                    demo@gmail.com
+                  </Typography>
+                </>
+              ) : null}
+            </div>
+
+            <>
+              <Typography
+                sx={{
+                  fontSize: "15px",
+                  fontWeight: 700,
+                  textAlign: "center",
+                  marginTop: "10px",
+                  cursor: "pointer",
+                }}
+              >
+                Switch Dashboard
+              </Typography>
+            </>
+            <div
+              style={{
+                padding: "5px 5px",
+                borderBottom: "1px solid lightgrey",
+              }}
+            >
+              {!userRole === "user" ? (
+                <>
+                  <Box
+                    sx={{
+                      margin: "0 15px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    <Box
+                      className="user-hover"
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "20px",
+                        padding: "10px 20px",
+                      }}
+                    >
+                      <Avatar
+                        alt="Remy Sharp"
+                        src={<PermIdentityIcon />}
+                        sx={{
+                          height: "35px",
+                          width: "35px",
+                        }}
+                      />
+                      <Box>
+                        <Typography
+                          sx={{
+                            fontSize: "14px",
+                          }}
+                        >
+                          User
+                        </Typography>
+                      </Box>
+                    </Box>
+                  </Box>
+                </>
+              ) : (
+                <>
+                  <Box
+                    sx={{
+                      margin: "0 15px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    <Box
+                      className="user-hover"
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "20px",
+                        padding: "10px 20px",
+                      }}
+                    >
+                      <Avatar
+                        alt="Remy Sharp"
+                        src={<PermIdentityIcon />}
+                        sx={{
+                          height: "35px",
+                          width: "35px",
+                        }}
+                      />
+                      <Box>
+                        <Typography
+                          sx={{
+                            fontSize: "14px",
+                          }}
+                        >
+                          Customer Admin
+                        </Typography>
+                      </Box>
+                    </Box>
+                  </Box>
+                </>
+              )}
+            </div>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <div style={{ padding: "10px 0px" }}>
+                {/* <Link to="/"> */}
+                <button
+                  className="btn_primary btn_primary_hover"
+                  style={{ color: "white" }}
+                  onClick={handelLogout}
+                >
+                  Log Out
+                </button>
+                {/* </Link> */}
+              </div>
+            </Box>
+          </Box>
+        </Popover>
       </div>
     </>
   );

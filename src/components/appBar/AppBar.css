@@ -37,3 +37,13 @@ input[type="search"]:focus {
   justify-content: space-between;
   gap: 40px;
 }
+
+.MuiPopover-paper {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  overflow: -moz-scrollbars-none; /* Firefox */
+}
+
+.MuiPopover-paper::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
