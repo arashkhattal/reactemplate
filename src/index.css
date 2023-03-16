@@ -68,6 +68,12 @@
   color: var(--color_primary) !important;
 }
 
+.MuiButtonBase-root.MuiButton-root.MuiButton-contained {
+  color: var(--color_primary) !important;
+  background-color: var(--color_primary) !important;
+}
+
+/* text field color  */
 .MuiFormLabel-root.Mui-focused {
   color: var(--color_primary) !important;
 }
@@ -137,7 +143,7 @@
   background-color: var(--color_primary);
 }
 .btn_primary_hover:hover {
-  background-color: var(--color_primary_btn_hover);
+  background-color: var(--color_primary);
 }
 .warning_btn {
   background-color: var(--color_warning);
