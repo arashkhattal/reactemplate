@@ -24,11 +24,8 @@ body {
 }
 .bg{
   background-color: var(--background_color) !important;
-  color: var(--text_color) !important;
+  /* color: var(--text_color) !important; */
 }
- /* *{
-  color: #fff !important;
- } */
 
 /* /////////////////////////////// */
 /* ////////////////Global Class/////// */

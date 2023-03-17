@@ -25,11 +25,24 @@ const Setting = () => {
   };
 
   const handleTheme = (bgColor) => {
-    const textColor = hexToRgba(bgColor, 0.2);
-    const cardColor = hexToRgba(bgColor, 0.203);
-    document.documentElement.style.setProperty("--background_color", bgColor);
-    document.documentElement.style.setProperty("--text_color", "#fff");
-    document.documentElement.style.setProperty("--card_color", cardColor);
+    // const textColor = hexToRgba("#fff", 0.900);
+    // const cardColor = hexToRgba(bgColor, 0.203);
+    // document.documentElement.style.setProperty("--background_color", bgColor);
+    // document.documentElement.style.setProperty("--text_color", textColor);
+    // document.documentElement.style.setProperty("--card_color", "red");
+      if (bgColor) {
+        const textColor = hexToRgba("#fff", 0.9);
+        const cardColor = hexToRgba(bgColor, 0.203);
+        document.documentElement.style.setProperty(
+          "--background_color",
+          bgColor
+        );
+        document.documentElement.style.setProperty("--text_color", textColor);
+        document.documentElement.style.setProperty("--card_color", "lightgrey");
+      } else {
+        document.documentElement.style.setProperty("--text_color", "#fff");
+        document.documentElement.style.setProperty("--card_color", "#f7f7f7");
+      }
   };
 
   const [themeColor, setThemeColor] = useState(

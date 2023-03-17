@@ -45,11 +45,14 @@ function App() {
     let bgColor = localStorage.getItem("bgColor");
     console.log("color :", bgColor);
     if (bgColor) {
-      // const textColor = hexToRgba(bgColor, 0.103);
-      const cardColor = hexToRgba("#132f4c", 0.403);
+      const textColor = hexToRgba("#fff", 0.9);
+      const cardColor = hexToRgba(bgColor, 0.203);
       document.documentElement.style.setProperty("--background_color", bgColor);
+      document.documentElement.style.setProperty("--text_color", textColor);
+      document.documentElement.style.setProperty("--card_color", "lightgrey");
+    } else {
       document.documentElement.style.setProperty("--text_color", "#fff");
-      document.documentElement.style.setProperty("--card_color", cardColor);
+      document.documentElement.style.setProperty("--card_color", "#f7f7f7");
     }
   }, []);
 
@@ -150,7 +153,7 @@ function App() {
         </Snackbar>
 
         {/* for routing from one page to another */}
-        <Routes >
+        <Routes>
           <Route path="/" element={<Login />} />
 
           {/* added layout feature */}
