@@ -163,12 +163,11 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
         </Typography>
 
         <Grid container spacing={1}>
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={4} style={{ marginTop: "5px" }}>
             <label>Name</label>
           </Grid>
           <Grid item xs={12} md={8}>
             <TextField
-              placeholder="Name"
               size="small"
               type="text"
               fullWidth
@@ -177,14 +176,13 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
             />
           </Grid>
 
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={4} style={{ marginTop: "5px" }}>
             <label>Address</label>
           </Grid>
           <Grid item xs={12} md={8}>
             <TextField
               style={{ marginTop: "10px" }}
               size="small"
-              label="Address"
               type="text"
               fullWidth
               value={address}
@@ -192,14 +190,13 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
             />
           </Grid>
 
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
             <label>Phone Number</label>
           </Grid>
           <Grid item xs={12} md={8}>
             <TextField
               style={{ marginTop: "10px" }}
               id="outlined-number"
-              placeholder="Phone Number"
               type="number"
               fullWidth
               size="small"
@@ -211,14 +208,13 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
             />
           </Grid>
 
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
             <label>Age</label>
           </Grid>
           <Grid item xs={12} md={8}>
             <TextField
               style={{ marginTop: "10px" }}
               id="outlined-number"
-              placeholder="Age"
               type="number"
               fullWidth
               size="small"
@@ -230,13 +226,12 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
             />
           </Grid>
 
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
             <label>Email</label>
           </Grid>
           <Grid item xs={12} md={8}>
             <TextField
               style={{ marginTop: "10px" }}
-              placeholder="Email"
               size="small"
               type="email"
               fullWidth
@@ -245,13 +240,12 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
             />
           </Grid>
 
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
             <label>Your Country Currency</label>
           </Grid>
           <Grid item xs={12} md={8}>
             <TextField
               style={{ marginTop: "10px" }}
-              placeholder="Currency"
               id="outlined-select-currency"
               select
               fullWidth
@@ -267,7 +261,7 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
             </TextField>
           </Grid>
 
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
             <label>Manager name</label>
           </Grid>
           <Grid item xs={12} md={8}>
@@ -293,7 +287,7 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
             </FormControl>
           </Grid>
 
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
             <label>Short Note</label>
           </Grid>
           <Grid item xs={12} md={8}>

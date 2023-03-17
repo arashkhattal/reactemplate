@@ -1,4 +1,9 @@
-import { Visibility, VisibilityOff } from "@mui/icons-material";
+import {
+  Visibility,
+  VisibilityOff,
+  VolumeDown,
+  VolumeUp,
+} from "@mui/icons-material";
 import {
   Autocomplete,
   Box,
@@ -15,6 +20,7 @@ import {
   Modal,
   OutlinedInput,
   Select,
+  Slider,
   Switch,
   TextField,
   Typography,
@@ -85,10 +91,12 @@ const StandardInputFormModal = ({
   const [email, setEmail] = useState("");
   // store sleeted item
   const [note, setNote] = useState("");
-  //  store toggle value
-  const [checked, setChecked] = useState(true);
-  //  store toggle value
-  const [currency, setCurrency] = useState(true);
+
+  const [value, setValue] = useState(30);
+
+  const handleChange1 = (event, newValue) => {
+    setValue(newValue);
+  };
 
   // global function
   const { setAlert } = useGlobalContext();
@@ -207,29 +215,7 @@ const StandardInputFormModal = ({
               // onChange={(e) => setFullName(e.target.value)}
             />
           </Grid>
-          <Grid item xs={12} md={4}>
-            <TextField
-              id="outlined-basic"
-              label="Outlined"
-              variant="outlined"
-            />
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <TextField
-              required
-              id="outlined-required"
-              label="Required"
-              defaultValue="Hello World"
-            />
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <TextField
-              disabled
-              id="outlined-disabled"
-              label="Disabled"
-              defaultValue="Hello World"
-            />
-          </Grid>
+
           <Grid item xs={12} md={4}>
             <TextField
               id="outlined-read-only-input"
@@ -334,7 +320,7 @@ const StandardInputFormModal = ({
               label="Multiline"
               multiline
               rows={4}
-              defaultValue="Default Value"
+              // defaultValue="Default Value"
             />
           </Grid>
           <Grid item xs={12} md={12}>
@@ -375,7 +361,7 @@ const StandardInputFormModal = ({
             />
           </Grid>
           <Grid item xs={12} md={4}>
-            <FormControl sx={{  width: 230 }}>
+            <FormControl sx={{ width: 230 }}>
               <InputLabel id="demo-multiple-checkbox-label">
                 Multiple Select
               </InputLabel>
@@ -397,6 +383,28 @@ const StandardInputFormModal = ({
                 ))}
               </Select>
             </FormControl>
+          </Grid>
+          <Grid item xs={12} md={12}>
+            {" "}
+            <Typography className="fs_16 fw_600 text_Margin ">
+              Slider Input
+            </Typography>
+          </Grid>
+          <Grid item xs={12} md={12}>
+            <Stack
+              spacing={2}
+              direction="row"
+              sx={{ mb: 1 }}
+              alignItems="center"
+            >
+              <VolumeDown />
+              <Slider
+                aria-label="Volume"
+                value={value}
+                onChange={handleChange1}
+              />
+              <VolumeUp />
+            </Stack>
           </Grid>
         </Grid>
 

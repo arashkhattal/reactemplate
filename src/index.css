@@ -114,6 +114,13 @@
   /* box-shadow: 5px 2px 9px var(--background_color) !important; */
 }
 
+.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper{
+  background-color: var(--background_color) !important;
+}
+.css-qzbt6i-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-popupIndicator{
+  background-color: var(--background_color) !important;
+}
+
 /* css for scroll bar - hover */
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color_primary);
