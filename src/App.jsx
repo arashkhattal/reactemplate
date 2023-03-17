@@ -29,9 +29,6 @@ const ResetPassword = lazy(() =>
 );
 
 function App() {
-
-
-
   useEffect(() => {
     let themeColor = localStorage.getItem("themeColor");
     if (themeColor) {
@@ -41,6 +38,18 @@ function App() {
         "--color_secondary",
         secondaryColor
       );
+    }
+  }, []);
+
+  useEffect(() => {
+    let bgColor = localStorage.getItem("bgColor");
+    console.log("color :", bgColor);
+    if (bgColor) {
+      // const textColor = hexToRgba(bgColor, 0.103);
+      const cardColor = hexToRgba("#132f4c", 0.403);
+      document.documentElement.style.setProperty("--background_color", bgColor);
+      document.documentElement.style.setProperty("--text_color", "#fff");
+      document.documentElement.style.setProperty("--card_color", cardColor);
     }
   }, []);
 
@@ -109,7 +118,7 @@ function App() {
       return null;
     });
   return (
-    <div>
+    <div className="bg">
       <ThemeProvider theme={theme}>
         <CssBaseline />
 
@@ -141,7 +150,7 @@ function App() {
         </Snackbar>
 
         {/* for routing from one page to another */}
-        <Routes>
+        <Routes >
           <Route path="/" element={<Login />} />
 
           {/* added layout feature */}

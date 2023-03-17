@@ -13,22 +13,22 @@
   --color_primary_btn_hover: #0a73c4;
   --color_warning: #ef5350;
 
+  --card_color:#f7f7f7;
+  --background_color: #ffffff;
+  --text_color: #000000;
 }
+
 
 body {
   background-color: var(--background-color) !important;
-  color: var(--text-color) !important;
 }
-
-.dark {
-  background-color: #000000 !important;
-  color: #ffffff !important;
+.bg{
+  background-color: var(--background_color) !important;
+  color: var(--text_color) !important;
 }
-
-.light {
-  background-color: #ffffff !important;
-  color: #000000 !important;
-}
+ /* *{
+  color: #fff !important;
+ } */
 
 /* /////////////////////////////// */
 /* ////////////////Global Class/////// */
@@ -83,9 +83,8 @@ body {
 /* //////////////////////////////// */
 
 .css-10ppyuh-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked {
-    color: var(--color_primary) !important ;
+  color: var(--color_primary) !important ;
 }
-
 
 /* loader color */
 .MuiCircularProgress-colorPrimary {
@@ -102,7 +101,12 @@ body {
   color: var(--color_primary) !important;
 }
 
-switch color
+.MuiDrawer-paper {
+  background-color: var(--background_color) !important;
+  /* box-shadow: 5px 2px 9px var(--background_color) !important; */
+}
+
+
 
 /* css for scroll bar - hover */
 ::-webkit-scrollbar-thumb:hover {
@@ -131,7 +135,7 @@ switch color
 
 /* card css */
 .global_card {
-  background-color: #f7f7f7 !important;
+  background-color: var(--card_color) !important;
   border-radius: 5px;
   padding: 10px;
   border: "1px solid lightgrey";
@@ -149,6 +153,7 @@ switch color
   box-shadow: 24;
   border-radius: 2;
   padding: 2;
+  background-color: var(--background_color) !important;
 }
 
 input[type="color"] {
@@ -160,6 +165,24 @@ input[type="color"] {
   padding: "5px 5px";
   display: " inline-block";
   border-radius: "5px";
+}
+
+/* css for navbar */
+.navbar {
+  width: 100%;
+  border-bottom: 1px solid lightgrey;
+  background-color: var(--background_color) !important;
+  overflow: auto;
+  display: flex;
+  justify-content: space-between;
+  height: 55px;
+  padding: 10px 20px;
+}
+
+
+/* sidebar-drawer */
+.sidebar-drawer{
+  background-color: #ef5350 !important;
 }
 
 /* /////////////////////////////// */

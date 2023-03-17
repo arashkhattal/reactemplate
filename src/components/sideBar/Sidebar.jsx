@@ -60,6 +60,7 @@ export default function PermanentDrawerLeft() {
   return (
     // drawer component imported from mui
     <Drawer
+    className="sidebar-drawer"
       sx={{
         marginTop: 64,
         width: drawerWidth,
@@ -69,6 +70,7 @@ export default function PermanentDrawerLeft() {
           marginTop: 6.9,
           width: drawerWidth,
           boxSizing: "border-box",
+         
         },
       }}
       variant="permanent"

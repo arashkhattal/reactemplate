@@ -1,14 +1,4 @@
-/* css for navbar */
-.navbar {
-  width: 100%;
-  border-bottom: 1px solid lightgrey;
-  background-color: #ffffff !important;
-  overflow: auto;
-  display: flex;
-  justify-content: space-between;
-  height: 55px;
-  padding: 10px 20px;
-}
+
 
 /* profile photo */
 .profile {

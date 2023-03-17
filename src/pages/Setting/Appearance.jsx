@@ -10,19 +10,27 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
-import { useGlobalContext } from "../../context/globalContext";
-import {hexToRgba} from "../../../src/helpers/globalFunction"
+import { hexToRgba } from "../../../src/helpers/globalFunction";
 
 const Setting = () => {
   //light - dark mode
-  const { isDarkMode, setIsDarkMode } = useGlobalContext();
+  // const [isDarkMode, setIsDarkMode] = useState(
+  //   localStorage.getItem("toggleState") || false
+  // );
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const handleToggleTheme = () => {
     setIsDarkMode(!isDarkMode);
+    localStorage.setItem("toggleState", !isDarkMode);
   };
 
-  //  const { setColor, themeColor, setThemeColor } = useGlobalContext();
-  // const [themeColor, setThemeColor] = useState("#0d80d8");
+  const handleTheme = (bgColor) => {
+    const textColor = hexToRgba(bgColor, 0.2);
+    const cardColor = hexToRgba(bgColor, 0.203);
+    document.documentElement.style.setProperty("--background_color", bgColor);
+    document.documentElement.style.setProperty("--text_color", "#fff");
+    document.documentElement.style.setProperty("--card_color", cardColor);
+  };
 
   const [themeColor, setThemeColor] = useState(
     localStorage.getItem("themeColor") || "#0d80d8"
@@ -31,7 +39,6 @@ const Setting = () => {
   useEffect(() => {
     setColor(themeColor);
   }, []);
-
 
   function setColor(themeColor) {
     const secondaryColor = hexToRgba(themeColor, 0.203);
@@ -42,11 +49,6 @@ const Setting = () => {
     );
     localStorage.setItem("themeColor", themeColor);
   }
-
-  //to handle toggler
-  const handleToggleChange = (event) => {
-    setChecked(event.target.checked);
-  };
 
   return (
     <div>
@@ -243,7 +245,10 @@ const Setting = () => {
                   <Typography>Light</Typography>
                   <Switch
                     checked={isDarkMode}
-                    onChange={handleToggleTheme}
+                    onChange={() => {
+                      handleToggleTheme();
+                      handleTheme(isDarkMode ? "#fff" : "#071b2f");
+                    }}
                     inputProps={{
                       "aria-label": "ant design",
                     }}

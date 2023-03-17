@@ -55,8 +55,8 @@ const Wrapper = styled.div`
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: stretch;
-  margin-top: 64px;
-  height: calc(100vh - 64px);
+  margin-top: 55px;
+  height: calc(100vh - 56px);
 `;
 
 // style for sidebar
