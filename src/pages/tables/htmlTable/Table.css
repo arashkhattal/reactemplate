@@ -32,3 +32,19 @@
   justify-content: space-between;
   margin: 10px;
 }
+
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+th,
+td {
+  padding: 0.75rem;
+  border: 1px solid #dee2e6;
+}

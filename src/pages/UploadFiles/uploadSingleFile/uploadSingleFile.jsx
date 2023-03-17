@@ -1,15 +1,5 @@
-import {
-  Box,
-  Card,
-  Modal,
-  TextField,
-  Typography,
-} from "@mui/material";
-import React, {
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { Box, Card, Modal, TextField, Typography } from "@mui/material";
+import React, { useEffect, useRef, useState } from "react";
 import { fileSize } from "../../../helpers/globalFunction";
 import FolderImg from "../../../assets/image/dragndrop.png";
 
@@ -19,11 +9,9 @@ const uploadSingleFile = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   // get file and details
-  const [projectSheet, setProjectSheet] =
-    useState([]);
+  const [projectSheet, setProjectSheet] = useState([]);
   // store the file name and edit
-  const [uploadFileName, setUploadFileName] =
-    useState("");
+  const [uploadFileName, setUploadFileName] = useState("");
   // store file type name
   const [fileType, setFileType] = useState("");
   // reference a value that’s not needed for rendering.
@@ -67,14 +55,8 @@ const uploadSingleFile = () => {
   }, [open]);
   // upload file function
   const handleSubmit = async (e) => {
-    console.log(
-      "File_name:",
-      `${uploadFileName}.${fileType}`
-    );
-    console.log(
-      "File_size:",
-      fileSize(projectSheet[0]?.size)
-    );
+    console.log("File_name:", `${uploadFileName}.${fileType}`);
+    console.log("File_size:", fileSize(projectSheet[0]?.size));
     console.log("File_Type:", fileType);
     setOpen(false);
   };

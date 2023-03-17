@@ -22,6 +22,7 @@ import InputOutlinedIcon from "@mui/icons-material/InputOutlined";
 import ViewListOutlinedIcon from "@mui/icons-material/ViewListOutlined";
 
 import Profile from "./pages/Profile/Profile";
+import ExportFile from "./pages/export file/Export";
 
 // Import components using lazy to load the component
 const Loading = lazy(() => import("./pages/loader/Loading"));
@@ -114,6 +115,13 @@ export const adminRoutes = [
     key: "components",
     icon: <GridViewIcon />,
     collapse: [
+      {
+        name: <Typography sx={{ fontSize: "14px" }}>Export</Typography>,
+        key: "export",
+        route: "/export",
+        icon: <Icon>ios_share</Icon>,
+        component: <ExportFile />,
+      },
       {
         name: <Typography sx={{ fontSize: "14px" }}>All Form</Typography>,
         key: "inputForm",
