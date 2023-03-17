@@ -13,6 +13,7 @@ import DelEventModal from "./DelEventModal";
 import CreateEventDragModal from "./CreateEventDragModal";
 
 const Calendar = () => {
+ 
   // state to store craete modal
   const [createEvent, setCreateEvent] = useState(false);
   const [createEventDrag, setCreateEventDrag] = useState({

@@ -11,19 +11,17 @@ import React, { useEffect, useState } from "react";
 // import { useGlobalContext } from "../../context/globalContext";
 
 const Setting = () => {
-
-    //  const { setColor, themeColor, setThemeColor } = useGlobalContext();
-
+  //  const { setColor, themeColor, setThemeColor } = useGlobalContext();
 
   // const [themeColor, setThemeColor] = useState("#0d80d8");
 
-   const [themeColor, setThemeColor] = useState(
-     localStorage.getItem("themeColor") || "#0d80d8"
-   );
+  const [themeColor, setThemeColor] = useState(
+    localStorage.getItem("themeColor") || "#0d80d8"
+  );
 
-   useEffect(() => {
-     setColor(themeColor);
-   }, []);
+  useEffect(() => {
+    setColor(themeColor);
+  }, []);
 
   useEffect(() => {
     const color = getComputedStyle(document.documentElement).getPropertyValue(
@@ -56,7 +54,7 @@ const Setting = () => {
       "--color_secondary",
       secondaryColor
     );
-     localStorage.setItem("themeColor", themeColor);
+    localStorage.setItem("themeColor", themeColor);
   }
 
   return (
@@ -226,7 +224,7 @@ const Setting = () => {
                 edit
               </Icon>
               <input
-              style={{cursor:'pointer',borderRadius:'5px'}}
+                style={{ cursor: "pointer", borderRadius: "5px" }}
                 type="color"
                 id="head"
                 name="head"

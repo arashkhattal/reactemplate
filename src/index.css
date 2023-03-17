@@ -136,6 +136,27 @@ input[type="color"] {
   border-radius: "5px";
 }
 
+/* /////////////////////////////// */
+/* //////////////// Calendar /////// */
+/* //////////////////////////////// */
+
+.fc .fc-button-primary {
+  background-color: var(--color_primary) !important;
+  border-color: var(--color_primary) !important;
+  color: #fff;
+  font-size: 16px !important;
+}
+.fc-toolbar-title {
+  font-size: 16px !important;
+}
+
+ .fc .fc-event{
+  background-color: var(--color_primary) !important;
+   border-color: var(--color_primary) !important;
+ }
+
+
+
 
 /* /////////////////////////////// */
 /* ////////////////Global Class/////// */

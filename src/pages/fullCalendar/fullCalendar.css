@@ -1,6 +1,6 @@
 /* custom css for full calendar */
 :root{
-  --fc-event-bg-color:#0d80d8;
+  /* --fc-event-bg-color:#0d80d8; */
   /* --fc-small-font-size: .85em;
     --fc-page-bg-color: #fff;
     --fc-neutral-bg-color: hsla(0,0%,82%,.3);
@@ -30,7 +30,7 @@
     --fc-now-indicator-color: red; */
 }
 /* css for buttons in calendar */
-.fc .fc-button-primary {
+/* .fc .fc-button-primary {
   background-color: #0d80d8 !important;
   border-color: #3498db !important;
   color: #fff;
@@ -38,7 +38,7 @@
 }
 .fc-toolbar-title {
   font-size: 16px !important;
-}
+} */
 
 /* modal ui design center */
 .center_modal_ui {
