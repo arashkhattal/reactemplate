@@ -303,7 +303,7 @@ const SearchModal = ({ searchModal, setSearchModal, search, setSearch }) => {
     // modal component from mui
     <Modal open={searchModal} onClose={() => setSearchModal(false)}>
       {/* card component from mui  */}
-      <Card sx={style}>
+      <Card sx={style} className="global_card">
         {/* Typography component from mui */}
         <Typography
           className="fs_24"

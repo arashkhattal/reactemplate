@@ -42,18 +42,21 @@ function App() {
   }, []);
 
   useEffect(() => {
-    let bgColor = localStorage.getItem("bgColor");
-    console.log("color :", bgColor);
-    if (bgColor) {
-      const textColor = hexToRgba("#fff", 0.9);
-      const cardColor = hexToRgba(bgColor, 0.203);
-      document.documentElement.style.setProperty("--background_color", bgColor);
-      document.documentElement.style.setProperty("--text_color", textColor);
-      // document.documentElement.style.setProperty(
-      //   "--color_secondary",
-      //   "lightgrey"
-      // );
-    } 
+    let toggleState = JSON.parse(localStorage.getItem("toggleState"));
+    if (toggleState) {
+      document.documentElement.style.setProperty(
+        "--background_color",
+        toggleState ? "#071b2f" : "#fff"
+      );
+      document.documentElement.style.setProperty(
+        "--text_color",
+        toggleState ? "#fff" : "#000"
+      );
+      document.documentElement.style.setProperty(
+        "--card_color",
+        toggleState ? "#001e3c" : "#f7f7f7"
+      );
+    }
   }, []);
 
   const { isLoggedIn } = useSelector((state) => state.AuthReducer);

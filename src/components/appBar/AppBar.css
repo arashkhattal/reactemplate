@@ -9,13 +9,7 @@
 }
 
 /* search bar in app bar */
-.search input[type="search"] {
-  width: 700px;
-  padding: 9px;
-  font-size: 12px;
-  border: 1px solid lightgray;
-  border-radius: 5px;
-}
+
 /* border of search bar when focus */
 input[type="search"]:focus {
   outline: none;

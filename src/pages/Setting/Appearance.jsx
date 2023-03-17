@@ -17,13 +17,17 @@ const Setting = () => {
   // const [isDarkMode, setIsDarkMode] = useState(
   //   localStorage.getItem("toggleState") || false
   // );
-    let BolVal = JSON.parse(localStorage.getItem("toggleState"));
-  const [isDarkMode, setIsDarkMode] = useState(BolVal || false);
+   const [isDarkMode, setIsDarkMode] = useState(
+     localStorage.getItem("toggleState") === "true" ? true : false
+   );
+
+  useEffect(() => {
+    localStorage.setItem("toggleState", isDarkMode);
+  }, [isDarkMode]);
 
   console.log("arash :", localStorage.getItem("toggleState"));
 
   const handleTheme = (val) => {
-    console.log(val);
     setIsDarkMode(!isDarkMode);
     document.documentElement.style.setProperty(
       "--background_color",
@@ -46,6 +50,8 @@ const Setting = () => {
       setIsDarkMode(BolVal);
     }
   }, []);
+
+
 
   const [themeColor, setThemeColor] = useState(
     localStorage.getItem("themeColor") || "#0d80d8"
