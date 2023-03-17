@@ -40,7 +40,7 @@
   font-size: 12px;
   border: 1px solid lightgray;
   border-radius: 5px;
-background-color: var(--background_color) !important;
+  background-color: var(--background_color) !important;
 }
 /* active link for side bar */
 .active {
@@ -87,7 +87,7 @@ background-color: var(--background_color) !important;
 /* ////// MUI Global Class /// */
 /* //////////////////////////////// */
 .css-32eswy {
-background-color: var(--background_color) !important;
+  background-color: var(--background_color) !important;
 }
 
 .css-10ppyuh-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked {
