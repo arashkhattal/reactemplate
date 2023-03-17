@@ -86,6 +86,9 @@ background-color: var(--background_color) !important;
 /* /////////////////////////// */
 /* ////// MUI Global Class /// */
 /* //////////////////////////////// */
+.css-32eswy {
+background-color: var(--background_color) !important;
+}
 
 .css-10ppyuh-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked {
   color: var(--color_primary) !important ;
