@@ -4,15 +4,24 @@ import {
   Divider,
   Icon,
   IconButton,
+  Stack,
+  Switch,
   Typography,
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
-// import { useGlobalContext } from "../../context/globalContext";
+import { useGlobalContext } from "../../context/globalContext";
+import {hexToRgba} from "../../../src/helpers/globalFunction"
 
 const Setting = () => {
-  //  const { setColor, themeColor, setThemeColor } = useGlobalContext();
+  //light - dark mode
+  const { isDarkMode, setIsDarkMode } = useGlobalContext();
 
+  const handleToggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
+  //  const { setColor, themeColor, setThemeColor } = useGlobalContext();
   // const [themeColor, setThemeColor] = useState("#0d80d8");
 
   const [themeColor, setThemeColor] = useState(
@@ -23,31 +32,8 @@ const Setting = () => {
     setColor(themeColor);
   }, []);
 
-  useEffect(() => {
-    const color = getComputedStyle(document.documentElement).getPropertyValue(
-      "--color_primary"
-    );
-    console.log(`--color_primary: ${color}`);
-  }, []);
-
-  function hexToRgba(hex, opacity) {
-    hex = hex.replace("#", "");
-    if (hex.length === 3) {
-      hex = hex
-        .split("")
-        .map(function (h) {
-          return h + h;
-        })
-        .join("");
-    }
-    var r = parseInt(hex.substring(0, 2), 16);
-    var g = parseInt(hex.substring(2, 4), 16);
-    var b = parseInt(hex.substring(4, 6), 16);
-    return "rgba(" + r + ", " + g + ", " + b + ", " + opacity + ")";
-  }
 
   function setColor(themeColor) {
-    console.log(`Updating --color_primary to: ${themeColor}`);
     const secondaryColor = hexToRgba(themeColor, 0.203);
     document.documentElement.style.setProperty("--color_primary", themeColor);
     document.documentElement.style.setProperty(
@@ -56,6 +42,11 @@ const Setting = () => {
     );
     localStorage.setItem("themeColor", themeColor);
   }
+
+  //to handle toggler
+  const handleToggleChange = (event) => {
+    setChecked(event.target.checked);
+  };
 
   return (
     <div>
@@ -79,11 +70,11 @@ const Setting = () => {
         <Box sx={{ mx: 3 }}>
           <Box mb={0.5} mt={3} ml={1}>
             <Typography
-              variant="body2"
+              variant="body1"
               color="text"
               style={{ padding: "10px 10px 10px 0px" }}
             >
-              Pick a Default color
+              Pick a default color
             </Typography>
             <button
               style={{
@@ -214,7 +205,7 @@ const Setting = () => {
             ></button>
             <div>
               <Typography
-                variant="body2"
+                variant="body1"
                 color="text"
                 style={{ padding: "10px 10px 10px 0px" }}
               >
@@ -234,6 +225,36 @@ const Setting = () => {
                   setColor(e.target.value);
                 }}
               />
+            </div>
+            <div>
+              <Typography
+                variant="body1"
+                color="text"
+                style={{ padding: "10px 10px 10px 0px" }}
+              >
+                Choose your theme
+              </Typography>
+              {/* <Typography style={{ fontSize: "14px", fontWeight: "bold" }}>
+                Light
+
+              </Typography> */}
+              <Box>
+                <Stack direction="row" spacing={1} alignItems="center">
+                  <Typography>Light</Typography>
+                  <Switch
+                    checked={isDarkMode}
+                    onChange={handleToggleTheme}
+                    inputProps={{
+                      "aria-label": "ant design",
+                    }}
+                  />
+                  <Typography>Dark</Typography>
+                </Stack>
+              </Box>
+              {/* <h1>{isDarkMode ? "Dark Theme" : "Light Theme"}</h1>
+              <button onClick={handleToggleTheme}>
+                {isDarkMode ? "Switch to Light Theme" : "Switch to Dark Theme"}
+              </button> */}
             </div>
           </Box>
         </Box>

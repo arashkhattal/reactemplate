@@ -18,6 +18,7 @@ import {
   Snackbar,
 } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { hexToRgba } from "../src/helpers/globalFunction";
 
 //added lazy loading
 const PrimaryLayout = lazy(() => import("./layouts/primaryLayout/Index"));
@@ -30,6 +31,18 @@ const ResetPassword = lazy(() =>
 function App() {
 
 
+
+  useEffect(() => {
+    let themeColor = localStorage.getItem("themeColor");
+    if (themeColor) {
+      const secondaryColor = hexToRgba(themeColor, 0.203);
+      document.documentElement.style.setProperty("--color_primary", themeColor);
+      document.documentElement.style.setProperty(
+        "--color_secondary",
+        secondaryColor
+      );
+    }
+  }, []);
 
   const { isLoggedIn } = useSelector((state) => state.AuthReducer);
 
@@ -96,7 +109,7 @@ function App() {
       return null;
     });
   return (
-    <>
+    <div>
       <ThemeProvider theme={theme}>
         <CssBaseline />
 
@@ -139,8 +152,7 @@ function App() {
           <Route path="/resetPassword" element={<ResetPassword />} />
         </Routes>
       </ThemeProvider>
-
-    </>
+    </div>
   );
 }
 

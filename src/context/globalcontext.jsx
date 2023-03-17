@@ -1,9 +1,6 @@
 import React, { useState, useContext, createContext, useEffect } from "react";
 const AppContext = createContext();
 const AppProvider = ({ children }) => {
-
-
-
   // loader component
   const [loading, setLoading] = useState(false);
 
@@ -35,6 +32,8 @@ const AppProvider = ({ children }) => {
   // primary color
   const primaryColor = "#0d80d8";
 
+  //light - dark theme
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   //  const [themeColor, setThemeColor] = useState(
   //    localStorage.getItem("themeColor") || "#0d80d8"
@@ -78,8 +77,6 @@ const AppProvider = ({ children }) => {
   //    localStorage.setItem("themeColor", themeColor);
   //  };
 
-
-
   return (
     <AppContext.Provider
       value={{
@@ -87,6 +84,8 @@ const AppProvider = ({ children }) => {
         // themeColor,
         //  setThemeColor,
         // primaryColor,
+        isDarkMode,
+        setIsDarkMode,
         openMenu,
         setOpenMenu,
         drawerWidth,

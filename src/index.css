@@ -12,8 +12,23 @@
   --font_12: 12px !important;
   --color_primary_btn_hover: #0a73c4;
   --color_warning: #ef5350;
+
 }
-/* default tags */
+
+body {
+  background-color: var(--background-color) !important;
+  color: var(--text-color) !important;
+}
+
+.dark {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+.light {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
 
 /* /////////////////////////////// */
 /* ////////////////Global Class/////// */
@@ -63,6 +78,15 @@
   font-weight: 600 !important;
 }
 
+/* /////////////////////////// */
+/* ////// MUI Global Class /// */
+/* //////////////////////////////// */
+
+.css-10ppyuh-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked {
+    color: var(--color_primary) !important ;
+}
+
+
 /* loader color */
 .MuiCircularProgress-colorPrimary {
   color: var(--color_primary) !important;
@@ -77,6 +101,8 @@
 .MuiFormLabel-root.Mui-focused {
   color: var(--color_primary) !important;
 }
+
+switch color
 
 /* css for scroll bar - hover */
 ::-webkit-scrollbar-thumb:hover {
@@ -150,13 +176,10 @@ input[type="color"] {
   font-size: 16px !important;
 }
 
- .fc .fc-event{
+.fc .fc-event {
   background-color: var(--color_primary) !important;
-   border-color: var(--color_primary) !important;
- }
-
-
-
+  border-color: var(--color_primary) !important;
+}
 
 /* /////////////////////////////// */
 /* ////////////////Global Class/////// */
