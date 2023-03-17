@@ -51,18 +51,18 @@ const PushNotificationExample = () => {
           <Typography>Thank you for visiting.</Typography>
           {/* button to trigger notification  */}
           <button
-            onClick={buttonClick}
+            className="btn_primary btn_primary_hover"
+            size="small"
             style={{
-              padding: "5px",
-              margin: "5px",
-              background: "black",
-              color: "#fff",
-              borderRadius: "5px",
-              cursor: "pointer",
+              marginTop: "10px",
+              color: "white",
+              width: "15%",
             }}
+            onClick={buttonClick}
           >
             Trigger Notification
           </button>
+
         </div>
       </Card>
       <Card
@@ -73,44 +73,57 @@ const PushNotificationExample = () => {
         <Typography> &nbsp;</Typography>
         <Grid container spacing={2}>
           <Grid item xs={3} md={3} lg={3}>
-            <Button
+            <button
+              className="btn_primary btn_primary_hover"
+              style={{
+                color: "white",
+              }}
               color="success"
               variant="contained"
               onClick={() => handleButtonClick("success")}
             >
               Success Alert
-            </Button>
+            </button>
           </Grid>
           <Grid item xs={3} md={3} lg={3}>
             {" "}
-            <Button
+            <button
+              className="btn_primary btn_primary_hover"
+              style={{
+                color: "white",
+              }}
               color="info"
               variant="contained"
               onClick={() => handleButtonClick("info")}
             >
               Info Alert
-            </Button>
+            </button>
           </Grid>
 
           <Grid item xs={3} md={3} lg={3}>
             {" "}
-            <Button
-              color="warning"
-              variant="contained"
+            <button
+              className="btn_primary btn_primary_hover"
+              style={{
+                color: "white",
+              }}
               onClick={() => handleButtonClick("warning")}
             >
               Warning Alert
-            </Button>
+            </button>
           </Grid>
           <Grid item xs={3} md={3} lg={3}>
             {" "}
-            <Button
-              color="error"
+            <button
+              className="btn_primary btn_primary_hover"
+              style={{
+                color: "white",
+              }}
               variant="contained"
               onClick={() => handleButtonClick("error")}
             >
               Error Alert
-            </Button>
+            </button>
           </Grid>
         </Grid>
       </Card>

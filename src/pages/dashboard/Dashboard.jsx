@@ -87,7 +87,7 @@ const HomePage = () => {
       <div>
         <Grid container spacing={2}>
           <Grid item xs={12} md={4} lg={3}>
-            <Card>
+            <Card className="global_card">
               <div class="card-stats">
                 <div class="card-stats-title">Revenue</div>
                 <div class="card-stats-number color_primary">$50,000</div>
@@ -98,7 +98,7 @@ const HomePage = () => {
             </Card>
           </Grid>
           <Grid item xs={12} md={4} lg={3}>
-            <Card>
+            <Card className="global_card">
               <div class="card-stats">
                 <div class="card-stats-title">Orders</div>
                 <div class="card-stats-number color_primary">500</div>
@@ -109,7 +109,7 @@ const HomePage = () => {
             </Card>
           </Grid>
           <Grid item xs={12} md={4} lg={3}>
-            <Card>
+            <Card className="global_card">
               <div class="card-stats">
                 <div class="card-stats-title">Customers</div>
                 <div class="card-stats-number color_primary">2,000</div>
@@ -120,7 +120,7 @@ const HomePage = () => {
             </Card>
           </Grid>
           <Grid item xs={12} md={4} lg={3}>
-            <Card>
+            <Card className="global_card">
               <div class="card-stats">
                 <div class="card-stats-title">Average Order Value</div>
                 <div class="card-stats-number color_primary">$100</div>

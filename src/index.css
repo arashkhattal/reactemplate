@@ -7,22 +7,23 @@
 }
 /* css variables */
 :root {
+  --background_color: #ffffff;
+  --text_color: #878787;
+
   --color_primary: #0d80d8;
   --color_secondary: rgba(173, 216, 230, 0.573);
   --font_12: 12px !important;
   --color_primary_btn_hover: #0a73c4;
   --color_warning: #ef5350;
 
-  --card_color:#f7f7f7;
-  --background_color: #ffffff;
-  --text_color: #000000;
+  --card_color: #f7f7f7;
 }
 
-
-body {
-  background-color: var(--background-color) !important;
+* {
+  color: var(--text_color) !important;
 }
-.bg{
+
+.bg {
   background-color: var(--background_color) !important;
   /* color: var(--text_color) !important; */
 }
@@ -103,8 +104,6 @@ body {
   /* box-shadow: 5px 2px 9px var(--background_color) !important; */
 }
 
-
-
 /* css for scroll bar - hover */
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color_primary);
@@ -176,9 +175,8 @@ input[type="color"] {
   padding: 10px 20px;
 }
 
-
 /* sidebar-drawer */
-.sidebar-drawer{
+.sidebar-drawer {
   background-color: #ef5350 !important;
 }
 

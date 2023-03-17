@@ -67,11 +67,8 @@ const Messages = () => {
     <>
       <CreateChat />
       <CreateGroup />
-      <Box
-        sx={{ overflowY: "hidden" }}
-        height="90vh"
-      >
-        <Card>
+      <Box sx={{ overflowY: "hidden" }} height="90vh">
+        <Card className="global_card">
           <Box
             style={{
               display: "flex",
@@ -110,9 +107,7 @@ const Messages = () => {
                   width: "120px",
                 }}
                 className="btn_primary btn_primary_hover"
-                onClick={() =>
-                  setCreateChat(true)
-                }
+                onClick={() => setCreateChat(true)}
               >
                 Create Chat
               </button>
@@ -123,9 +118,7 @@ const Messages = () => {
                   color: "white",
                   width: "120px",
                 }}
-                onClick={() =>
-                  setCreateGroup(true)
-                }
+                onClick={() => setCreateGroup(true)}
               >
                 Create Group
               </button>
@@ -143,8 +136,7 @@ const Messages = () => {
                 flexBasis: "25%",
                 overflow: "auto",
                 height: "calc(80vh - 50px)",
-                borderRight:
-                  "1px solid lightgrey",
+                borderRight: "1px solid lightgrey",
               }}
               id={"list_rooms"}
             >
@@ -172,8 +164,7 @@ const Messages = () => {
                           borderRadius: "5px",
                           // border:
                           //   "1px solid #DA7651",
-                          borderRight:
-                            "1px solid #A9A9A9",
+                          borderRight: "1px solid #A9A9A9",
                           padding: "5px",
                           margin: "-5px",
                         }}
@@ -181,8 +172,7 @@ const Messages = () => {
                         <div
                           style={{
                             display: "flex",
-                            flexDirection:
-                              "column",
+                            flexDirection: "column",
                             position: "relative",
                             alignItems: "center",
                           }}
@@ -196,8 +186,7 @@ const Messages = () => {
                               zIndex: "10",
                               height: "24px",
                               width: "24px",
-                              borderRadius:
-                                "50px",
+                              borderRadius: "50px",
                             }}
                           />
                         </div>
@@ -213,13 +202,10 @@ const Messages = () => {
                             <div
                               style={{
                                 display: "flex",
-                                justifyContent:
-                                  "space-between",
+                                justifyContent: "space-between",
                               }}
                             >
-                              <Typography>
-                                {msg.msg}
-                              </Typography>
+                              <Typography>{msg.msg}</Typography>
                             </div>
                           </Box>
                         </Box>
@@ -231,31 +217,31 @@ const Messages = () => {
             </Box>
 
             <div>
-            <Box>
-              <img
-                alt=""
-                src={noMsgo}
-                style={{
-                  position: "absolute",
-                  top: "48%",
-                  left: "67%",
-                  height: "60px",
-                  width: "60px",
-                }}
-              />
-              <Typography
-                style={{
-                  color: "#000",
-                  position: "absolute",
-                  fontSize: "15px",
-                  fontWeight: "600",
-                  top: "60%",
-                  left: "66%",
-                }}
-              >
-                No Messages
-              </Typography>
-            </Box>
+              <Box>
+                <img
+                  alt=""
+                  src={noMsgo}
+                  style={{
+                    position: "absolute",
+                    top: "48%",
+                    left: "67%",
+                    height: "60px",
+                    width: "60px",
+                  }}
+                />
+                <Typography
+                  style={{
+                    color: "#000",
+                    position: "absolute",
+                    fontSize: "15px",
+                    fontWeight: "600",
+                    top: "60%",
+                    left: "66%",
+                  }}
+                >
+                  No Messages
+                </Typography>
+              </Box>
             </div>
           </Box>
         </Card>

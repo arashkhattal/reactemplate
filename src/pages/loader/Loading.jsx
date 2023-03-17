@@ -35,19 +35,18 @@ function Loading() {
         <Grid container spacing={2}>
           <Grid item xs={6} md={12}>
             {/* Card component from MUI */}
-            <Card style={{ padding: "20px", border: "1px solid lightgrey" }}>
+            <Card className="global_card">
               <Typography className="fs_16 fw_600">Loading Example</Typography>
               {/* Loading Example  */}
               <button
-                onClick={buttonClick}
+                className="btn_primary btn_primary_hover"
+                size="small"
                 style={{
-                  padding: "5px",
-                  margin: "5px",
-                  background: "black",
-                  color: "#fff",
-                  borderRadius: "5px",
-                  cursor: "pointer",
+                  marginTop: "10px",
+                  color: "white",
+                  width: "15%",
                 }}
+                onClick={buttonClick}
               >
                 Trigger Loader..
               </button>
@@ -55,7 +54,7 @@ function Loading() {
           </Grid>
           <Grid item xs={6} md={12}>
             {/* Card component from MUI */}
-            <Card style={{ padding: "20px", border: "1px solid lightgrey" }}>
+            <Card className="global_card">
               {divLoading ? (
                 <div
                   style={{
@@ -75,15 +74,14 @@ function Loading() {
                   </Typography>
 
                   <button
-                    onClick={divButtonClick}
+                    className="btn_primary btn_primary_hover"
+                    size="small"
                     style={{
-                      padding: "5px",
-                      margin: "5px",
-                      background: "black",
-                      color: "#fff",
-                      borderRadius: "5px",
-                      cursor: "pointer",
+                      marginTop: "10px",
+                      color: "white",
+                      width: "15%",
                     }}
+                    onClick={divButtonClick}
                   >
                     Trigger Loader..
                   </button>

@@ -77,7 +77,7 @@ function SunEditorPage() {
   return (
     <div>
       {/* card component from mui  */}
-      <Card style={{ padding: "10px" }}>
+      <Card className="global_card">
         {/* Typography component from MUI  */}
         <Typography
           className="global_display_flex fs_24 fw_600"

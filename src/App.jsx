@@ -49,11 +49,11 @@ function App() {
       const cardColor = hexToRgba(bgColor, 0.203);
       document.documentElement.style.setProperty("--background_color", bgColor);
       document.documentElement.style.setProperty("--text_color", textColor);
-      document.documentElement.style.setProperty("--card_color", "lightgrey");
-    } else {
-      document.documentElement.style.setProperty("--text_color", "#fff");
-      document.documentElement.style.setProperty("--card_color", "#f7f7f7");
-    }
+      // document.documentElement.style.setProperty(
+      //   "--color_secondary",
+      //   "lightgrey"
+      // );
+    } 
   }, []);
 
   const { isLoggedIn } = useSelector((state) => state.AuthReducer);

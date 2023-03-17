@@ -17,33 +17,35 @@ const Setting = () => {
   // const [isDarkMode, setIsDarkMode] = useState(
   //   localStorage.getItem("toggleState") || false
   // );
-  const [isDarkMode, setIsDarkMode] = useState(false);
+    let BolVal = JSON.parse(localStorage.getItem("toggleState"));
+  const [isDarkMode, setIsDarkMode] = useState(BolVal || false);
 
-  const handleToggleTheme = () => {
+  console.log("arash :", localStorage.getItem("toggleState"));
+
+  const handleTheme = (val) => {
+    console.log(val);
     setIsDarkMode(!isDarkMode);
-    localStorage.setItem("toggleState", !isDarkMode);
+    document.documentElement.style.setProperty(
+      "--background_color",
+      val ? "#071b2f" : "#fff"
+    );
+    document.documentElement.style.setProperty(
+      "--text_color",
+      val ? "#fff" : "#000"
+    );
+    document.documentElement.style.setProperty(
+      "--card_color",
+      val ? "#001e3c" : "#f7f7f7"
+    );
+    localStorage.setItem("toggleState",val);
   };
 
-  const handleTheme = (bgColor) => {
-    // const textColor = hexToRgba("#fff", 0.900);
-    // const cardColor = hexToRgba(bgColor, 0.203);
-    // document.documentElement.style.setProperty("--background_color", bgColor);
-    // document.documentElement.style.setProperty("--text_color", textColor);
-    // document.documentElement.style.setProperty("--card_color", "red");
-      if (bgColor) {
-        const textColor = hexToRgba("#fff", 0.9);
-        const cardColor = hexToRgba(bgColor, 0.203);
-        document.documentElement.style.setProperty(
-          "--background_color",
-          bgColor
-        );
-        document.documentElement.style.setProperty("--text_color", textColor);
-        document.documentElement.style.setProperty("--card_color", "lightgrey");
-      } else {
-        document.documentElement.style.setProperty("--text_color", "#fff");
-        document.documentElement.style.setProperty("--card_color", "#f7f7f7");
-      }
-  };
+  useEffect(() => {
+    let BolVal = JSON.parse(localStorage.getItem("toggleState"));
+    if (BolVal) {
+      setIsDarkMode(BolVal);
+    }
+  }, []);
 
   const [themeColor, setThemeColor] = useState(
     localStorage.getItem("themeColor") || "#0d80d8"
@@ -258,10 +260,7 @@ const Setting = () => {
                   <Typography>Light</Typography>
                   <Switch
                     checked={isDarkMode}
-                    onChange={() => {
-                      handleToggleTheme();
-                      handleTheme(isDarkMode ? "#fff" : "#071b2f");
-                    }}
+                    onChange={() => handleTheme(!isDarkMode)}
                     inputProps={{
                       "aria-label": "ant design",
                     }}

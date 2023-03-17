@@ -25,7 +25,7 @@ const About = () => {
         <Grid container spacing={2}>
           <Grid item xs={6} md={12}>
             {/* Card component from MUI */}
-            <Card style={{ padding: "20px", border: "1px solid lightgrey" }}>
+            <Card className="global_card">
               <Typography className="global_display_flex fs_16 fw_600">
                 Basic Table
               </Typography>
@@ -42,7 +42,7 @@ const About = () => {
             </Card>
           </Grid> */}
           <Grid item xs={6} md={12}>
-            <Card style={{ padding: "20px", border: "1px solid lightgrey" }}>
+            <Card className="global_card">
               <Typography className="global_display_flex fs_16 fw_600">
                 Sort & Select Table
               </Typography>
