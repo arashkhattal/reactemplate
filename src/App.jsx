@@ -29,6 +29,7 @@ const ResetPassword = lazy(() =>
 );
 
 function App() {
+  //TO store the theme
   useEffect(() => {
     let themeColor = localStorage.getItem("themeColor");
     if (themeColor) {
@@ -40,6 +41,8 @@ function App() {
       );
     }
   }, []);
+
+  // To store dark mode settings
 
   useEffect(() => {
     let toggleState = JSON.parse(localStorage.getItem("toggleState"));

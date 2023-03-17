@@ -90,6 +90,7 @@ function SunEditorPage() {
           setContents={editorData}
           onChange={(e) => setEditorData(e)}
           setOptions={{
+            color: "#fff",
             minHeight: "40vh",
             height: "auto",
             code: "en",

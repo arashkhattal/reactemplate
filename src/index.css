@@ -256,3 +256,9 @@ input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+
+/* upload file  */
+.combine_section_input_group{
+  background-color:var(--card_color) !important;
+}

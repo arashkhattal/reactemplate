@@ -45,10 +45,8 @@ const ExportFile = () => {
   return (
     <div>
       <Card className="global_card">
-        {/* <button onClick={handleExportPdf}>Export to PDF</button> */}
-
         <h1>Example for all types export</h1>
-        <br/>
+        <br />
         <Grid container spacing={2}>
           <Grid item xs={4} md={4} lg={4}>
             <button
@@ -86,9 +84,7 @@ const ExportFile = () => {
             />
           </Grid>
         </Grid>
-
-        {/* <button onClick={handleExportPpt}>Export as PPT</button> */}
-<br/>
+        <br />
         <table id="myTable">
           <thead>
             <tr>

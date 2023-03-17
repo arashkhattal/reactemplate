@@ -4,6 +4,7 @@
   padding: 20px;
   border: 2px dashed #9d9d9d;
   background: #fafafa;
+  border-radius: 10px;
 }
 /* center the upload icon center */
 .drag_img {
@@ -61,6 +62,7 @@
 .border-dashed {
   border: 2px dashed #9d9d9d;
   padding: 20px;
+  border-radius: 7px;
 }
 /* display grid */
 .display_Grid {
