@@ -1,4 +1,5 @@
 import {
+  Autocomplete,
   Box,
   Card,
   Checkbox,
@@ -40,6 +41,20 @@ const currencies = [
 ];
 //  dummy names
 const allName = ["Chinmy", "Jabed", "Arash"];
+
+// multiple select with delete button dummy data
+const multiData = [
+  {
+    title: "The Shawshank Redemption",
+    year: 1994,
+  },
+  { title: "The Godfather", year: 1972 },
+  { title: "The Godfather: Part II", year: 1974 },
+  { title: "The Dark Knight", year: 2008 },
+  { title: "12 Angry Men", year: 1957 },
+  { title: "Schindler's List", year: 1993 },
+  { title: "Pulp Fiction", year: 1994 },
+];
 // calculation of multiple select
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -423,30 +438,6 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
             </form>
           </Grid>
 
-          {/* <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
-            <label for="radio-input-1">Radio Input 1:</label>
-          </Grid>
-          <Grid item xs={12} md={8} style={{ marginTop: "10px" }}>
-            <input
-              type="radio"
-              id="radio-input-1"
-              name="radio-input"
-              value="option-1"
-            />
-          </Grid>
-
-          <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
-            <label for="radio-input-2">Radio Input 2:</label>
-          </Grid>
-          <Grid item xs={12} md={8} style={{ marginTop: "10px" }}>
-            <input
-              type="radio"
-              id="radio-input-2"
-              name="radio-input"
-              value="option-2"
-            />
-          </Grid> */}
-
           <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
             <label>Your Country Currency</label>
           </Grid>
@@ -471,6 +462,21 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
 
           <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
             <label>Multi Select Input</label>
+          </Grid>
+          <Grid item xs={12} md={8}>
+            <Autocomplete
+              multiple
+              limitTags={3}
+              id="multiple-limit-tags"
+              options={multiData}
+              getOptionLabel={(option) => option?.title}
+              renderInput={(params) => <TextField {...params} />}
+              // sx={{ width: "800px" }}
+            />
+          </Grid>
+
+          <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
+            <label>Manager name</label>
           </Grid>
           <Grid item xs={12} md={8}>
             <FormControl fullWidth size="small">
