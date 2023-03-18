@@ -120,7 +120,7 @@ function SunEditorPage() {
         />
       </Card>
       {/* card to display editor data */}
-      {editorData.length === 0 ? (
+      {/* {editorData.length === 0 ? (
         ""
       ) : (
         <Card
@@ -130,7 +130,7 @@ function SunEditorPage() {
             __html: editorData,
           }}
         ></Card>
-      )}
+      )} */}
     </div>
   );
 }

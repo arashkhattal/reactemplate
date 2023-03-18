@@ -5,6 +5,9 @@ import PptxGenJS from "pptxgenjs";
 import ReactHTMLTableToExcel from "react-html-table-to-excel";
 import { Card, Grid } from "@mui/material";
 import "../tables/htmlTable/Table.css";
+
+// import * as XLSX from "xlsx";
+// import * as FileSaver from "file-saver";
 // import ApexCharts from "apexcharts";
 
 const ExportFile = () => {
@@ -101,17 +104,52 @@ const ExportFile = () => {
   };
 
   //   export as excel function
-  const exportToExcel = () => {
-    const table = document.getElementById("myTable");
-    const html = table.outerHTML;
-    const url = "data:application/vnd.ms-excel," + encodeURIComponent(html);
-    const downloadLink = document.createElement("a");
-    downloadLink.href = url;
-    downloadLink.download = "myData.xls";
-    document.body.appendChild(downloadLink);
-    downloadLink.click();
-    document.body.removeChild(downloadLink);
-  };
+   const exportToExcel = () => {
+     const table = document.getElementById("myTable");
+     const html = table.outerHTML;
+     const url = "data:application/vnd.ms-excel," + encodeURIComponent(html);
+     const downloadLink = document.createElement("a");
+     downloadLink.href = url;
+     downloadLink.download = "myData.xls";
+     document.body.appendChild(downloadLink);
+     downloadLink.click();
+     document.body.removeChild(downloadLink);
+   };
+
+
+
+  //  const exportToExcel = () => {
+  //    const wb = XLSX.utils.book_new();
+
+  //    // create the first sheet
+  //    const ws1 = XLSX.utils.json_to_sheet([
+  //      { name: "John", age: 35 },
+  //      { name: "Jane", age: 25 },
+  //      { name: "Bob", age: 45 },
+  //    ]);
+  //    XLSX.utils.book_append_sheet(wb, ws1, "Sheet 1");
+
+  //    // create the second sheet
+  //    const ws2 = XLSX.utils.json_to_sheet([
+  //      { country: "USA", population: 330000000 },
+  //      { country: "China", population: 1400000000 },
+  //      { country: "India", population: 1360000000 },
+  //    ]);
+  //    XLSX.utils.book_append_sheet(wb, ws2, "Sheet 2");
+
+  //    // save the file
+  //    const wbout = XLSX.write(wb, { bookType: "xlsx", type: "binary" });
+  //    const file = new Blob([s2ab(wbout)], { type: "application/octet-stream" });
+  //    FileSaver.saveAs(file, "export.xlsx");
+  //  };
+
+  //  // utility function to convert string to ArrayBuffer
+  //  const s2ab = (s) => {
+  //    const buf = new ArrayBuffer(s.length);
+  //    const view = new Uint8Array(buf);
+  //    for (let i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xff;
+  //    return buf;
+  //  };
 
   return (
     <div>
@@ -149,7 +187,8 @@ const ExportFile = () => {
               size="small"
               table="myTable"
               filename="myData"
-              sheet="Sheet"
+              // sheet="Sheet 1"
+              sheet={["Sheet 1", "Sheet 2"]}
               buttonText="Export to Excel"
               onClick={exportToExcel}
             />
