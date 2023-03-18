@@ -20,6 +20,8 @@ import { Stack } from "@mui/system";
 
 import React, { useState } from "react";
 import { useGlobalContext } from "../../context/globalContext";
+import { validateEmail, validatePhone } from "./../../helpers/globalFunction";
+
 // dummy data
 const currencies = [
   {
@@ -69,15 +71,34 @@ const MenuProps = {
 
 const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
   // store current password
-  const [names, setName] = useState("");
+  const [text, setText] = useState("");
   // store new password
-  const [address, setAdders] = useState("");
-  // store
-  const [phone, setPhone] = useState("");
-  // store
-  const [age, setAge] = useState("");
-  // store sleeted item
+  const [password, setPassword] = useState("");
+  // store email item
   const [email, setEmail] = useState("");
+  // store url item
+  const [url, setUrl] = useState("");
+  // store search item
+  const [search, setSearch] = useState("");
+  // store tel item
+  const [tel, setTel] = useState("");
+  // store number item
+  const [number, setNumber] = useState("");
+  // store date item
+  const [date, setDate] = useState("");
+  // store time item
+  const [time, setTime] = useState("");
+  // store DAtetime item
+  const [dateTime, setDateTime] = useState("");
+  // store month item
+  const [month, setMonth] = useState("");
+  // store week item
+  const [week, setWeek] = useState("");
+  //store color
+  const [color, setColor] = useState("");
+  // store File
+  const [file, setFile] = useState("");
+
   // store sleeted item
   const [note, setNote] = useState("");
   //  store toggle value
@@ -106,27 +127,11 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
   };
   // submit info function
   const handleSubmit = async (e) => {
-    if (names === "") {
+    if (text === "") {
       setAlert({
         flag: true,
         type: "error",
-        msg: "Please enter Name ",
-      });
-      return;
-    }
-    if (phone === "") {
-      setAlert({
-        flag: true,
-        type: "error",
-        msg: "Please Phone Number",
-      });
-      return;
-    }
-    if (age === "") {
-      setAlert({
-        flag: true,
-        type: "error",
-        msg: "Please Enter Age",
+        msg: "Please enter Text value",
       });
       return;
     }
@@ -138,6 +143,121 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
       });
       return;
     }
+    if (!validateEmail(email)) {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please Enter valid email address",
+      });
+      return;
+    }
+    if (password === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please enter Password value",
+      });
+      return;
+    }
+    if (url === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please Enter url value",
+      });
+      return;
+    }
+
+    if (search === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please Enter search value",
+      });
+      return;
+    }
+    if (tel === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please Enter Phone number value",
+      });
+      return;
+    }
+    if (!validatePhone(tel)) {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please Enter valid Phone number value",
+      });
+      return;
+    }
+    if (number === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please Enter Number value",
+      });
+      return;
+    }
+    if (date === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please select Date value",
+      });
+      return;
+    }
+    if (time === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please Select Time value",
+      });
+      return;
+    }
+    if (dateTime === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please Select Date-Time value",
+      });
+      return;
+    }
+    if (month === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please select month value",
+      });
+      return;
+    }
+    if (week === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please select week value",
+      });
+      return;
+    }
+    if (color === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please select color value",
+      });
+      return;
+    }
+
+    if (file === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please select file",
+      });
+      return;
+    }
+
     if (personName?.length === 0) {
       setAlert({
         flag: true,
@@ -182,7 +302,15 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
             <label for="text-input">Text Input:</label>
           </Grid>
           <Grid item xs={12} md={8}>
-            <TextField size="small" type="text" fullWidth />
+            <TextField
+              size="small"
+              type="text"
+              fullWidth
+              value={text}
+              onChange={(e) => {
+                setText(e.target.value);
+              }}
+            />
           </Grid>
 
           <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
@@ -194,6 +322,10 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
               size="small"
               type="password"
               fullWidth
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
             />
           </Grid>
 
@@ -207,8 +339,9 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
               type="email"
               fullWidth
               size="small"
-              InputLabelProps={{
-                shrink: true,
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
               }}
             />
           </Grid>
@@ -223,8 +356,9 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
               type="url"
               fullWidth
               size="small"
-              InputLabelProps={{
-                shrink: true,
+              value={url}
+              onChange={(e) => {
+                setUrl(e.target.value);
               }}
             />
           </Grid>
@@ -238,11 +372,15 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
               size="small"
               type="search"
               fullWidth
+              value={search}
+              onChange={(e) => {
+                setSearch(e.target.value);
+              }}
             />
           </Grid>
 
           <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
-            <label for="tel-input">Telephone Input:</label>
+            <label for="tel-input">Mobile Number Input:</label>
           </Grid>
           <Grid item xs={12} md={8}>
             <TextField
@@ -250,6 +388,10 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
               size="small"
               type="tel"
               fullWidth
+              value={tel}
+              onChange={(e) => {
+                setTel(e.target.value);
+              }}
             />
           </Grid>
 
@@ -262,6 +404,10 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
               size="small"
               type="number"
               fullWidth
+              value={number}
+              onChange={(e) => {
+                setNumber(e.target.value);
+              }}
             />
           </Grid>
 
@@ -274,6 +420,10 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
               size="small"
               type="date"
               fullWidth
+              value={date}
+              onChange={(e) => {
+                setDate(e.target.value);
+              }}
             />
           </Grid>
 
@@ -286,6 +436,10 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
               size="small"
               type="time"
               fullWidth
+              value={time}
+              onChange={(e) => {
+                setTime(e.target.value);
+              }}
             />
           </Grid>
 
@@ -298,6 +452,10 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
               size="small"
               type="datetime-local"
               fullWidth
+              value={dateTime}
+              onChange={(e) => {
+                setDateTime(e.target.value);
+              }}
             />
           </Grid>
 
@@ -310,6 +468,10 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
               size="small"
               type="month"
               fullWidth
+              value={month}
+              onChange={(e) => {
+                setMonth(e.target.value);
+              }}
             />
           </Grid>
 
@@ -322,6 +484,10 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
               size="small"
               type="week"
               fullWidth
+              value={week}
+              onChange={(e) => {
+                setWeek(e.target.value);
+              }}
             />
           </Grid>
 
@@ -347,6 +513,10 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
               size="small"
               type="color"
               fullWidth
+              value={color}
+              onChange={(e) => {
+                setColor(e.target.value);
+              }}
             />
           </Grid>
 
@@ -366,6 +536,10 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
               size="small"
               type="file"
               fullWidth
+              value={file}
+              onChange={(e) => {
+                setFile(e.target.value);
+              }}
             />
           </Grid>
 
