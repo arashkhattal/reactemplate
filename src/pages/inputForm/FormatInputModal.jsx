@@ -164,85 +164,255 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
 
         <Grid container spacing={1}>
           <Grid item xs={12} md={4} style={{ marginTop: "5px" }}>
-            <label>Name</label>
+            <label for="text-input">Text Input:</label>
           </Grid>
           <Grid item xs={12} md={8}>
-            <TextField
-              size="small"
-              type="text"
-              fullWidth
-              value={names}
-              onChange={(e) => setName(e.target.value)}
-            />
+            <TextField size="small" type="text" fullWidth />
           </Grid>
 
-          <Grid item xs={12} md={4} style={{ marginTop: "5px" }}>
-            <label>Address</label>
+          <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
+            <label for="password-input">Password Input:</label>
           </Grid>
           <Grid item xs={12} md={8}>
             <TextField
               style={{ marginTop: "10px" }}
               size="small"
-              type="text"
+              type="password"
               fullWidth
-              value={address}
-              onChange={(e) => setAdders(e.target.value)}
             />
           </Grid>
 
           <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
-            <label>Phone Number</label>
+            <label for="email-input">Email Input:</label>
           </Grid>
           <Grid item xs={12} md={8}>
             <TextField
               style={{ marginTop: "10px" }}
               id="outlined-number"
-              type="number"
-              fullWidth
-              size="small"
-              InputLabelProps={{
-                shrink: true,
-              }}
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-            />
-          </Grid>
-
-          <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
-            <label>Age</label>
-          </Grid>
-          <Grid item xs={12} md={8}>
-            <TextField
-              style={{ marginTop: "10px" }}
-              id="outlined-number"
-              type="number"
-              fullWidth
-              size="small"
-              InputLabelProps={{
-                shrink: true,
-              }}
-              value={age}
-              onChange={(e) => setAge(e.target.value)}
-            />
-          </Grid>
-
-          <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
-            <label>Email</label>
-          </Grid>
-          <Grid item xs={12} md={8}>
-            <TextField
-              style={{ marginTop: "10px" }}
-              size="small"
               type="email"
               fullWidth
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              size="small"
+              InputLabelProps={{
+                shrink: true,
+              }}
             />
           </Grid>
+
+          <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
+            <label for="url-input">URL Input:</label>
+          </Grid>
+          <Grid item xs={12} md={8}>
+            <TextField
+              style={{ marginTop: "10px" }}
+              id="outlined-number"
+              type="url"
+              fullWidth
+              size="small"
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+          </Grid>
+
+          <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
+            <label for="search-input">Search Input:</label>
+          </Grid>
+          <Grid item xs={12} md={8}>
+            <TextField
+              style={{ marginTop: "10px" }}
+              size="small"
+              type="search"
+              fullWidth
+            />
+          </Grid>
+
+          <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
+            <label for="tel-input">Telephone Input:</label>
+          </Grid>
+          <Grid item xs={12} md={8}>
+            <TextField
+              style={{ marginTop: "10px" }}
+              size="small"
+              type="tel"
+              fullWidth
+            />
+          </Grid>
+
+          <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
+            <label for="number-input">Number Input:</label>
+          </Grid>
+          <Grid item xs={12} md={8}>
+            <TextField
+              style={{ marginTop: "10px" }}
+              size="small"
+              type="number"
+              fullWidth
+            />
+          </Grid>
+
+          <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
+            <label for="date-input">Date Input:</label>
+          </Grid>
+          <Grid item xs={12} md={8}>
+            <TextField
+              style={{ marginTop: "10px" }}
+              size="small"
+              type="date"
+              fullWidth
+            />
+          </Grid>
+
+          <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
+            <label for="time-input">Time Input:</label>
+          </Grid>
+          <Grid item xs={12} md={8}>
+            <TextField
+              style={{ marginTop: "10px" }}
+              size="small"
+              type="time"
+              fullWidth
+            />
+          </Grid>
+
+          <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
+            <label for="datetime-local-input">Datetime-Local Input:</label>
+          </Grid>
+          <Grid item xs={12} md={8}>
+            <TextField
+              style={{ marginTop: "10px" }}
+              size="small"
+              type="datetime-local"
+              fullWidth
+            />
+          </Grid>
+
+          <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
+            <label for="month-input">Month Input:</label>
+          </Grid>
+          <Grid item xs={12} md={8}>
+            <TextField
+              style={{ marginTop: "10px" }}
+              size="small"
+              type="month"
+              fullWidth
+            />
+          </Grid>
+
+          <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
+            <label for="week-input">Week Input:</label>
+          </Grid>
+          <Grid item xs={12} md={8}>
+            <TextField
+              style={{ marginTop: "10px" }}
+              size="small"
+              type="week"
+              fullWidth
+            />
+          </Grid>
+
+          <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
+            <label for="week-input">Color Input:</label>
+          </Grid>
+          <Grid item xs={12} md={8}>
+            <TextField
+              style={{ marginTop: "10px" }}
+              size="small"
+              type="color"
+              fullWidth
+            />
+          </Grid>
+
+          <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
+            <label for="range-input">Range Input:</label>
+          </Grid>
+          <Grid item xs={12} md={8} style={{ marginTop: "10px" }}>
+            <input type="range" id="range-input" name="range-input" />
+          </Grid>
+
+          <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
+            <label for="file-input">File Input:</label>
+          </Grid>
+          <Grid item xs={12} md={8}>
+            <TextField
+              style={{ marginTop: "10px" }}
+              size="small"
+              type="file"
+              fullWidth
+            />
+          </Grid>
+
+          <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
+            <label for="checkbox-input">Checkbox Input:</label>
+          </Grid>
+          <Grid item xs={12} md={8} style={{ marginTop: "10px" }}>
+            <input type="checkbox" id="checkbox-input" name="checkbox-input" />
+          </Grid>
+
+          <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
+            <label for="checkbox-input">Checkbox Input:</label>
+          </Grid>
+          <Grid item xs={12} md={8} style={{ marginTop: "10px" }}>
+            <form>
+              <label for="gender-male">
+                <input
+                  type="radio"
+                  id="gender-male"
+                  name="gender"
+                  value="male"
+                />
+                Male
+              </label>
+              &nbsp;
+              <label for="gender-female">
+                <input
+                  type="radio"
+                  id="gender-female"
+                  name="gender"
+                  value="female"
+                />
+                Female
+              </label>
+              &nbsp;
+              <label for="gender-other">
+                <input
+                  type="radio"
+                  id="gender-other"
+                  name="gender"
+                  value="other"
+                />
+                Other
+              </label>
+            </form>
+          </Grid>
+
+          {/* <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
+            <label for="radio-input-1">Radio Input 1:</label>
+          </Grid>
+          <Grid item xs={12} md={8} style={{ marginTop: "10px" }}>
+            <input
+              type="radio"
+              id="radio-input-1"
+              name="radio-input"
+              value="option-1"
+            />
+          </Grid>
+
+          <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
+            <label for="radio-input-2">Radio Input 2:</label>
+          </Grid>
+          <Grid item xs={12} md={8} style={{ marginTop: "10px" }}>
+            <input
+              type="radio"
+              id="radio-input-2"
+              name="radio-input"
+              value="option-2"
+            />
+          </Grid> */}
 
           <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
             <label>Your Country Currency</label>
           </Grid>
+
           <Grid item xs={12} md={8}>
             <TextField
               style={{ marginTop: "10px" }}
