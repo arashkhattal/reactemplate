@@ -1,11 +1,18 @@
-import { Card, CircularProgress, Grid, Typography } from "@mui/material";
+import {
+  Card,
+  CircularProgress,
+  Grid,
+  Skeleton,
+  Typography,
+} from "@mui/material";
 // import { useGlobalContext } from "../../context/globalcontext";
 import { useGlobalContext } from "../../context/globalContext";
 import React, { useState } from "react";
 
 function Loading() {
   const { setLoading } = useGlobalContext();
-    const [divLoading, setDivLoading] = useState(false);
+  const [divLoading, setDivLoading] = useState(false);
+  const [skeletonLoading, setSkeletonLoading] = useState(false);
 
   const buttonClick = () => {
     setTimeout(() => {
@@ -16,14 +23,23 @@ function Loading() {
     }, 3000);
   };
 
-    const divButtonClick = () => {
-      setTimeout(() => {
-        setDivLoading(true);
-      }, 500);
-      setTimeout(() => {
-        setDivLoading(false);
-      }, 2000);
-    };
+  const divButtonClick = () => {
+    setTimeout(() => {
+      setDivLoading(true);
+    }, 500);
+    setTimeout(() => {
+      setDivLoading(false);
+    }, 2000);
+  };
+
+  const divSkeletonButtonClick = () => {
+    setTimeout(() => {
+      setSkeletonLoading(true);
+    }, 300);
+    setTimeout(() => {
+      setSkeletonLoading(false);
+    }, 4000);
+  };
 
   return (
     <>
@@ -82,6 +98,45 @@ function Loading() {
                       width: "15%",
                     }}
                     onClick={divButtonClick}
+                  >
+                    Trigger Loader..
+                  </button>
+                </>
+              )}
+            </Card>
+          </Grid>
+
+          <Grid item xs={6} md={12}>
+            {/* Card component from MUI */}
+            <Card className="global_card">
+              {skeletonLoading ? (
+                <div
+                  style={{
+                    height: "100%",
+                    width: "20%",
+                    // display: "flex",
+                    // justifyContent: "center",
+                    // alignItems: "center",
+                  }}
+                >
+                  <Skeleton variant="h1" sx={{ fontSize: "1rem",marginBottom:1 }} />
+                  <Skeleton variant="rounded" width={210} height={60} />
+                </div>
+              ) : (
+                <>
+                  <Typography className="fs_16 fw_600">
+                    Division Loading Example (Skeleton)
+                  </Typography>
+
+                  <button
+                    className="btn_primary btn_primary_hover"
+                    size="small"
+                    style={{
+                      marginTop: "10px",
+                      color: "white",
+                      width: "15%",
+                    }}
+                    onClick={divSkeletonButtonClick}
                   >
                     Trigger Loader..
                   </button>
