@@ -311,6 +311,19 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
           </Grid>
 
           <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
+            <label for="week-input">Date Range Input:</label>
+          </Grid>
+          <Grid item xs={12} md={8} style={{ marginTop: "10px" }}>
+            <form>
+              <label for="start-date">Start Date:</label>&nbsp;
+              <input type="date" id="start-date" name="start-date" />
+              &nbsp;&nbsp;
+              <label for="end-date">End Date:</label>&nbsp;
+              <input type="date" id="end-date" name="end-date" />
+            </form>
+          </Grid>
+
+          <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
             <label for="week-input">Color Input:</label>
           </Grid>
           <Grid item xs={12} md={8}>
@@ -342,6 +355,31 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
           </Grid>
 
           <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
+            <label for="checkbox-input">Toggle Input:</label>
+          </Grid>
+          <Grid item xs={12} md={8} style={{ marginTop: "5px" }}>
+            <Box>
+              <label></label>
+              <Stack
+                style={{ marginTop: "5px" }}
+                direction="row"
+                spacing={1}
+                alignItems="center"
+              >
+                <Typography>Off</Typography>
+                <Switch
+                  defaultChecked={checked}
+                  onChange={handleToggleChange}
+                  inputProps={{
+                    "aria-label": "ant design",
+                  }}
+                />
+                <Typography>On</Typography>
+              </Stack>
+            </Box>
+          </Grid>
+
+          <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
             <label for="checkbox-input">Checkbox Input:</label>
           </Grid>
           <Grid item xs={12} md={8} style={{ marginTop: "10px" }}>
@@ -349,7 +387,7 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
           </Grid>
 
           <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
-            <label for="checkbox-input">Checkbox Input:</label>
+            <label for="checkbox-input">Radio Group Input:</label>
           </Grid>
           <Grid item xs={12} md={8} style={{ marginTop: "10px" }}>
             <form>
@@ -432,7 +470,7 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
           </Grid>
 
           <Grid item xs={12} md={4} style={{ marginTop: "10px" }}>
-            <label>Manager name</label>
+            <label>Multi Select Input</label>
           </Grid>
           <Grid item xs={12} md={8}>
             <FormControl fullWidth size="small">
