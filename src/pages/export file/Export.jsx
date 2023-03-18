@@ -1,10 +1,11 @@
 import React from "react";
-import { Document, Page, Text, pdf } from "@react-pdf/renderer";
+import { pdf, Document, Page, Text, View } from "@react-pdf/renderer";
 import { saveAs } from "file-saver";
 import PptxGenJS from "pptxgenjs";
 import ReactHTMLTableToExcel from "react-html-table-to-excel";
 import { Card, Grid } from "@mui/material";
 import "../tables/htmlTable/Table.css";
+// import ApexCharts from "apexcharts";
 
 const ExportFile = () => {
   // export pdf function
@@ -12,7 +13,35 @@ const ExportFile = () => {
     const MyDocument = () => (
       <Document>
         <Page>
-          <Text>Hello, World!</Text>
+          <View>
+            <Text>Table</Text>
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Age</th>
+                  <th>Address</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>John Doe</td>
+                  <td>35</td>
+                  <td>123 Main St</td>
+                </tr>
+                <tr>
+                  <td>Jane Smith</td>
+                  <td>28</td>
+                  <td>456 Oak Ave</td>
+                </tr>
+                <tr>
+                  <td>Bob Johnson</td>
+                  <td>42</td>
+                  <td>789 Pine St</td>
+                </tr>
+              </tbody>
+            </table>
+          </View>
         </Page>
       </Document>
     );
@@ -24,8 +53,50 @@ const ExportFile = () => {
   //   export as ppt function
   const handleExportPpt = () => {
     const pptx = new PptxGenJS();
-    const slide = pptx.addSlide();
-    slide.addText("Hello, World!", { x: 1, y: 1 });
+
+    // Add first slide with chart
+    const slide1 = pptx.addSlide();
+    const chartData = [
+      {
+        name: "Series 1",
+        labels: ["January", "February", "March"],
+        values: [5, 8, 3],
+      },
+      {
+        name: "Series 2",
+        labels: ["January", "February", "March"],
+        values: [3, 2, 7],
+      },
+    ];
+    slide1.addChart(pptx.ChartType.line, chartData, {
+      x: 0.5,
+      y: 0.5,
+      w: 8,
+      h: 5,
+    });
+
+    // Add second slide with table
+    const slide2 = pptx.addSlide();
+    const table = [
+      [
+        { text: "Name", options: { fontFace: "Arial", bold: true } },
+        { text: "Age", options: { fontFace: "Arial", bold: true } },
+        { text: "Address", options: { fontFace: "Arial", bold: true } },
+      ],
+      ["John Doe", 35, "123 Main St"],
+      ["Jane Smith", 28, "456 Oak Ave"],
+      ["Bob Johnson", 42, "789 Pine St"],
+    ];
+    slide2.addTable(table, {
+      x: 0.5,
+      y: 0.5,
+      w: 8,
+      fill: "F7F7F7",
+      autoPage: true,
+      margin: [0.2, 0.2, 0.2, 0.2],
+    });
+
+    // Write the PowerPoint presentation to a file
     pptx.writeFile("myPresentation.pptx");
   };
 
