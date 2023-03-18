@@ -1,53 +1,37 @@
 // @mui material components
 import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
-import React, {
-  useState,
-  useEffect,
-} from "react";
+import React, { useState, useEffect } from "react";
 // Data
 import { Card, TextField } from "@mui/material";
 import { useGlobalContext } from "../../context/globalContext";
 
 import { Box } from "@mui/system";
-import {
-  validateEmail,
-  validatePhone,
-} from "../../helpers/globalFunction";
+import { validateEmail, validatePhone } from "../../helpers/globalFunction";
 import ResetPasswordModal from "./ResetPasswordModal";
 import bg from "../../assets/profile/bg.jpg";
 function Profile() {
   // store email
-  const [email, setEmail] = useState(
-    "arash@oyesters.in"
-  );
+  const [email, setEmail] = useState("");
   //   store name
-  const [fullName, setFullName] =
-    useState("Arash");
+  const [fullName, setFullName] = useState("");
   // store phone number
-  const [phoneno, setPhoneno] = useState(
-    "01789274185"
-  );
+  const [phoneno, setPhoneno] = useState("");
   //   store address
-  const [address, setAdders] = useState(
-    "Murdeshwar, India"
-  );
+  const [address, setAdders] = useState("");
   //   selected photo
-  const [selectedFile, setSelectedFile] =
-    useState(null);
+  const [selectedFile, setSelectedFile] = useState(null);
   // preview photo
   const [preview, setPreview] = useState(null);
   console.log(selectedFile);
   // global context
-  const { setResetModal, setAlert } =
-    useGlobalContext();
+  const { setResetModal, setAlert } = useGlobalContext();
   // make URL fOR PREVIEW
   useEffect(() => {
     if (!selectedFile) {
       //  setPreview(undefined);
       return;
     }
-    const objectUrl =
-      URL.createObjectURL(selectedFile);
+    const objectUrl = URL.createObjectURL(selectedFile);
     setPreview(objectUrl);
     // free memory when ever this component is unmounted
     return () => URL.revokeObjectURL(objectUrl);
@@ -55,16 +39,21 @@ function Profile() {
 
   //   select photo function
   const onSelectFile = (e) => {
-    if (
-      !e.target.files ||
-      e.target.files.length === 0
-    ) {
+    if (!e.target.files || e.target.files.length === 0) {
       setSelectedFile(undefined);
       return;
     }
 
     setSelectedFile(e.target.files[0]);
   };
+
+  useEffect(() => {
+    setFullName("Arash");
+    setPhoneno("97323923823");
+    setAdders("Murdeshwar");
+    setEmail("arash@oye.in");
+  }, [window.location.pathname === "/profile"]);
+
   // submit function
   const handleSubmit = () => {
     if (fullName === "") {
@@ -130,8 +119,6 @@ function Profile() {
       );
     }
   };
-
-  
 
   return (
     <>

@@ -8,7 +8,7 @@
 /* css variables */
 :root {
   --background_color: #ffffff;
-  --text_color: #878787;
+  --text_color: #000000;
 
   --color_primary: #0d80d8;
   --color_secondary: rgba(173, 216, 230, 0.573);
