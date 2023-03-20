@@ -121,6 +121,30 @@
   background-color: var(--background_color) !important;
 }
 
+/* sun editor */
+
+.sun-editor-editable{
+  background-color: var(--background_color);
+  color: var(--text_color);
+}
+
+.sun-editor button {
+  background-color: var(--background_color);
+  color: #fff;
+}
+
+.sun-editor button:hover {
+  background-color: var(--background_color);
+}
+
+.sun-editor .se-btn-tray {
+  background-color: var(--card_color);
+}
+
+.sun-editor .se-resizing-bar .se-navigation{
+    background-color: var(--card_color);
+}
+
 /* css for scroll bar - hover */
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color_primary);

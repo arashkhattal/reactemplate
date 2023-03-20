@@ -693,27 +693,7 @@ const FormatInputFormModal = ({ formatInputModal, setFormatInputModal }) => {
           </Grid>
         </Grid>
 
-        <Box className="input_field_display">
-          {/* <Box>
-            <label></label>
-            <Stack
-              style={{ marginTop: "35px" }}
-              direction="row"
-              spacing={1}
-              alignItems="center"
-            >
-              <Typography>Off</Typography>
-              <Switch
-                defaultChecked={checked}
-                onChange={handleToggleChange}
-                inputProps={{
-                  "aria-label": "ant design",
-                }}
-              />
-              <Typography>On</Typography>
-            </Stack>
-          </Box> */}
-        </Box>
+       
         <Box> </Box>
         <Box
           pt={3}

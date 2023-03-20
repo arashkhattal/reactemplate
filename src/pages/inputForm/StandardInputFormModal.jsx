@@ -155,6 +155,7 @@ const StandardInputFormModal = ({
       typeof value === "string" ? value.split(",") : value
     );
   };
+  
   // submit info function
   const handleSubmit = async (e) => {
     if (text === "") {
