@@ -114,16 +114,15 @@
   /* box-shadow: 5px 2px 9px var(--background_color) !important; */
 }
 
-.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper{
+.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
   background-color: var(--background_color) !important;
 }
-.css-qzbt6i-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-popupIndicator{
+.css-qzbt6i-MuiButtonBase-root-MuiIconButton-root-MuiAutocomplete-popupIndicator {
   background-color: var(--background_color) !important;
 }
 
 /* sun editor */
-
-.sun-editor-editable{
+.sun-editor-editable {
   background-color: var(--background_color);
   color: var(--text_color);
 }
@@ -138,12 +137,11 @@
 }
 
 .sun-editor .se-btn-tray {
-  background-color: var(--card_color);
+  background-color: var(--card_color) !important;
 }
 
-.sun-editor .se-resizing-bar .se-navigation{
-    background-color: var(--card_color);
-}
+/* notification  */
+
 
 /* css for scroll bar - hover */
 ::-webkit-scrollbar-thumb:hover {
@@ -288,8 +286,7 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 0;
 }
 
-
 /* upload file  */
-.combine_section_input_group{
-  background-color:var(--card_color) !important;
+.combine_section_input_group {
+  background-color: var(--card_color) !important;
 }

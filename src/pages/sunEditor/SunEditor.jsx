@@ -86,7 +86,7 @@ function SunEditorPage() {
           Sun Editor
         </Typography>
         {/* sun editor component for react */}
-        {/* <SunEditor
+        <SunEditor
           setContents={editorData}
           onChange={(e) => setEditorData(e)}
           setOptions={{
@@ -117,38 +117,8 @@ function SunEditorPage() {
             ],
             // plugins: plugins,
           }}
-        /> */}
-        <SunEditor
-          setContents={editorData}
-          onChange={(e) => setEditorData(e)}
-          setOptions={{
-            color: "#fff",
-            minHeight: "40vh",
-            height: "auto",
-            code: "en",
-            buttonList: [
-              ["undo", "redo"],
-              [
-                "fontSize",
-                "bold",
-                "italic",
-                "underline",
-                "strike",
-                "subscript",
-                "superscript",
-                "fontColor",
-                "hiliteColor",
-                "align",
-                "outdent",
-                "indent",
-                "list",
-                "removeFormat",
-              ],
-              ["image", "table"],
-              ["showBlocks", "codeView"],
-            ],
-          }}
         />
+
       </Card>
       {/* card to display editor data */}
       {/* {editorData.length === 0 ? (

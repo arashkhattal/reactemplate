@@ -99,24 +99,61 @@ const ExportFile = () => {
       margin: [0.2, 0.2, 0.2, 0.2],
     });
 
+    // Add second slide with table
+    const slide3 = pptx.addSlide();
+    const chartAndTable = [
+      [
+        { text: "Name", options: { fontFace: "Arial", bold: true } },
+        { text: "Age", options: { fontFace: "Arial", bold: true } },
+        { text: "Address", options: { fontFace: "Arial", bold: true } },
+      ],
+      ["John Doe", 35, "123 Main St"],
+      ["Jane Smith", 28, "456 Oak Ave"],
+      ["Bob Johnson", 42, "789 Pine St"],
+    ];
+    const chartData2 = [
+      {
+        name: "Series 1",
+        labels: ["January", "February", "March"],
+        values: [5, 8, 3],
+      },
+      {
+        name: "Series 2",
+        labels: ["January", "February", "March"],
+        values: [3, 2, 7],
+      },
+    ];
+    slide3.addChart(pptx.ChartType.line, chartData2, {
+      x: 0.5,
+      y: 0.5,
+      w: 4,
+      h: 2,
+    });
+    slide3.addTable(chartAndTable, {
+      x: 0.5,
+      y: 2.7,
+      w: 4,
+      fill: "F7F7F7",
+      autoPage: true,
+      margin: [0.2, 0.2, 0.2, 0.2],
+    });
+
     // Write the PowerPoint presentation to a file
     pptx.writeFile("myPresentation.pptx");
   };
 
   //   export as excel function
-   const exportToExcel = () => {
-     const table = document.getElementById("myTable");
-     const html = table.outerHTML;
-     const url = "data:application/vnd.ms-excel," + encodeURIComponent(html);
-     const downloadLink = document.createElement("a");
-     downloadLink.href = url;
-     downloadLink.download = "myData.xls";
-     document.body.appendChild(downloadLink);
-     downloadLink.click();
-     document.body.removeChild(downloadLink);
-   };
-
-
+  const exportToExcel = () => {
+    const table = document.getElementById("myTable");
+    const html = table.outerHTML;
+    const url = "data:application/vnd.ms-excel," + encodeURIComponent(html);
+    const downloadLink = document.createElement("a");
+    downloadLink.href = url;
+    downloadLink.download = "myData.xls";
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
+  };
 
   //  const exportToExcel = () => {
   //    const wb = XLSX.utils.book_new();
