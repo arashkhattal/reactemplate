@@ -1,4 +1,5 @@
 import {
+  Autocomplete,
   Box,
   Card,
   Checkbox,
@@ -19,6 +20,7 @@ import { Stack } from "@mui/system";
 
 import React, { useState } from "react";
 import { useGlobalContext } from "../../context/globalContext";
+
 // dummy data
 const currencies = [
   {
@@ -40,30 +42,61 @@ const currencies = [
 ];
 //  dummy names
 const allName = ["Chinmy", "Jabed", "Arash"];
+
+// multiple select with delete button dummy data
+const multiData = [
+  {
+    title: "The Shawshank Redemption",
+    year: 1994,
+  },
+  { title: "The Godfather", year: 1972 },
+  { title: "The Godfather: Part II", year: 1974 },
+  { title: "The Dark Knight", year: 2008 },
+  { title: "12 Angry Men", year: 1957 },
+  { title: "Schindler's List", year: 1993 },
+  { title: "Pulp Fiction", year: 1994 },
+];
 // calculation of multiple select
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
   PaperProps: {
     style: {
-      maxHeight:
-        ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
       width: 250,
     },
   },
 };
-
 const InputFormModal = () => {
   // store current password
-  const [names, setName] = useState("");
+  const [text, setText] = useState("");
   // store new password
-  const [address, setAdders] = useState("");
-  // store
-  const [phone, setPhone] = useState("");
-  // store
-  const [age, setAge] = useState("");
-  // store sleeted item
+  const [password, setPassword] = useState("");
+  // store email item
   const [email, setEmail] = useState("");
+  // store url item
+  const [url, setUrl] = useState("");
+  // store search item
+  const [search, setSearch] = useState("");
+  // store tel item
+  const [tel, setTel] = useState("");
+  // store number item
+  const [number, setNumber] = useState("");
+  // store date item
+  const [date, setDate] = useState("");
+  // store time item
+  const [time, setTime] = useState("");
+  // store DAtetime item
+  const [dateTime, setDateTime] = useState("");
+  // store month item
+  const [month, setMonth] = useState("");
+  // store week item
+  const [week, setWeek] = useState("");
+  //store color
+  const [color, setColor] = useState("");
+  // store File
+  const [file, setFile] = useState("");
+
   // store sleeted item
   const [note, setNote] = useState("");
   //  store toggle value
@@ -72,16 +105,13 @@ const InputFormModal = () => {
   const [currency, setCurrency] = useState(true);
 
   // global function
-  const { inputModal, setInputModal, setAlert } =
-    useGlobalContext();
+  const { setAlert, inputModal, setInputModal } = useGlobalContext();
 
   const handleToggleChange = (event) => {
     setChecked(event.target.checked);
   };
   //store manege name
-  const [personName, setPersonName] = useState(
-    []
-  );
+  const [personName, setPersonName] = useState([]);
   console.log(personName);
   // select item function
   const handleChange = (event) => {
@@ -90,34 +120,16 @@ const InputFormModal = () => {
     } = event;
     setPersonName(
       // On autofill we get a stringified value.
-      typeof value === "string"
-        ? value.split(",")
-        : value
+      typeof value === "string" ? value.split(",") : value
     );
   };
   // submit info function
   const handleSubmit = async (e) => {
-    if (names === "") {
+    if (text === "") {
       setAlert({
         flag: true,
         type: "error",
-        msg: "Please enter Name ",
-      });
-      return;
-    }
-    if (phone === "") {
-      setAlert({
-        flag: true,
-        type: "error",
-        msg: "Please Phone Number",
-      });
-      return;
-    }
-    if (age === "") {
-      setAlert({
-        flag: true,
-        type: "error",
-        msg: "Please Enter Age",
+        msg: "Please enter Text value",
       });
       return;
     }
@@ -129,6 +141,121 @@ const InputFormModal = () => {
       });
       return;
     }
+    if (!validateEmail(email)) {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please Enter valid email address",
+      });
+      return;
+    }
+    if (password === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please enter Password value",
+      });
+      return;
+    }
+    if (url === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please Enter url value",
+      });
+      return;
+    }
+
+    if (search === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please Enter search value",
+      });
+      return;
+    }
+    if (tel === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please Enter Phone number value",
+      });
+      return;
+    }
+    if (!validatePhone(tel)) {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please Enter valid Phone number value",
+      });
+      return;
+    }
+    if (number === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please Enter Number value",
+      });
+      return;
+    }
+    if (date === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please select Date value",
+      });
+      return;
+    }
+    if (time === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please Select Time value",
+      });
+      return;
+    }
+    if (dateTime === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please Select Date-Time value",
+      });
+      return;
+    }
+    if (month === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please select month value",
+      });
+      return;
+    }
+    if (week === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please select week value",
+      });
+      return;
+    }
+    if (color === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please select color value",
+      });
+      return;
+    }
+
+    if (file === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please select file",
+      });
+      return;
+    }
+
     if (personName?.length === 0) {
       setAlert({
         flag: true,
@@ -170,81 +297,252 @@ const InputFormModal = () => {
 
         <Box className="input_field_display">
           <Box>
-            <label>Name</label>
+            <label for="text-input">Text Input:</label>
             <TextField
-              style={{ marginTop: "10px" }}
-              placeholder="Name"
               size="small"
               type="text"
               fullWidth
-              value={names}
-              onChange={(e) => setName(e.target.value)}
+              value={text}
+              onChange={(e) => {
+                setText(e.target.value);
+              }}
             />
           </Box>
           <Box>
-            <label>Address</label>
+            <label for="password-input">Password Input:</label>
             <TextField
               style={{ marginTop: "10px" }}
               size="small"
-              label="Address"
-              type="text"
+              type="password"
               fullWidth
-              value={address}
-              onChange={(e) => setAdders(e.target.value)}
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
             />
           </Box>
 
           <Box>
-            <label>Phone Number</label>
+            <label for="email-input">Email Input:</label>
             <TextField
               style={{ marginTop: "10px" }}
               id="outlined-number"
-              placeholder="Phone Number"
-              type="number"
+              type="email"
               fullWidth
               size="small"
-              InputLabelProps={{
-                shrink: true,
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
               }}
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
             />
           </Box>
           <Box>
-            <label>Age</label>
+            <label for="url-input">URL Input:</label>
             <TextField
               style={{ marginTop: "10px" }}
               id="outlined-number"
-              placeholder="Age"
-              type="number"
+              type="url"
               fullWidth
               size="small"
-              InputLabelProps={{
-                shrink: true,
+              value={url}
+              onChange={(e) => {
+                setUrl(e.target.value);
               }}
-              value={age}
-              onChange={(e) => setAge(e.target.value)}
             />
           </Box>
           <Box>
             {" "}
-            <label>Email</label>
+            <label for="search-input">Search Input:</label>
             <TextField
               style={{ marginTop: "10px" }}
-              placeholder="Email"
               size="small"
-              type="email"
+              type="search"
               fullWidth
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={search}
+              onChange={(e) => {
+                setSearch(e.target.value);
+              }}
             />
+          </Box>
+
+          <Box>
+            <label for="tel-input">Mobile Number Input:</label>
+            <TextField
+              style={{ marginTop: "10px" }}
+              size="small"
+              type="tel"
+              fullWidth
+              value={tel}
+              onChange={(e) => {
+                setTel(e.target.value);
+              }}
+            />
+          </Box>
+
+          <Box>
+            <label for="number-input">Number Input:</label>
+            <TextField
+              style={{ marginTop: "10px" }}
+              size="small"
+              type="number"
+              fullWidth
+              value={number}
+              onChange={(e) => {
+                setNumber(e.target.value);
+              }}
+            />
+          </Box>
+
+          <Box>
+            <label for="date-input">Date Input:</label>
+            <TextField
+              style={{ marginTop: "10px" }}
+              size="small"
+              type="date"
+              fullWidth
+              value={date}
+              onChange={(e) => {
+                setDate(e.target.value);
+              }}
+            />
+          </Box>
+
+          <Box>
+            <label for="time-input">Time Input:</label>
+            <TextField
+              style={{ marginTop: "10px" }}
+              size="small"
+              type="time"
+              fullWidth
+              value={time}
+              onChange={(e) => {
+                setTime(e.target.value);
+              }}
+            />
+          </Box>
+
+          <Box>
+            <label for="datetime-local-input">Datetime-Local Input:</label>
+            <TextField
+              style={{ marginTop: "10px" }}
+              size="small"
+              type="datetime-local"
+              fullWidth
+              value={dateTime}
+              onChange={(e) => {
+                setDateTime(e.target.value);
+              }}
+            />
+          </Box>
+
+          <Box>
+            <label for="month-input">Month Input:</label>
+            <TextField
+              style={{ marginTop: "10px" }}
+              size="small"
+              type="month"
+              fullWidth
+              value={month}
+              onChange={(e) => {
+                setMonth(e.target.value);
+              }}
+            />
+          </Box>
+
+          <Box>
+            <label for="week-input">Week Input:</label>
+            <TextField
+              style={{ marginTop: "10px" }}
+              size="small"
+              type="week"
+              fullWidth
+              value={week}
+              onChange={(e) => {
+                setWeek(e.target.value);
+              }}
+            />
+          </Box>
+
+          <Box>
+            <label for="week-input">Date Range Input:</label><br/>
+            <form>
+              <br/>
+              <label for="start-date">Start Date:</label>&nbsp;
+              <input type="date" id="start-date" name="start-date" />
+              &nbsp;&nbsp;
+              <br /><br/>
+              <label for="end-date">End Date:</label>&nbsp;
+              <input type="date" id="end-date" name="end-date" />
+            </form>
+          </Box>
+
+          <Box>
+            <label for="week-input">Color Input:</label>
+            <TextField
+              style={{ marginTop: "10px" }}
+              size="small"
+              type="color"
+              fullWidth
+              value={color}
+              onChange={(e) => {
+                setColor(e.target.value);
+              }}
+            />
+          </Box>
+
+          <Box>
+            <label for="file-input">File Input:</label>
+            <TextField
+              style={{ marginTop: "10px" }}
+              size="small"
+              type="file"
+              fullWidth
+              value={file}
+              onChange={(e) => {
+                setFile(e.target.value);
+              }}
+            />
+          </Box>
+
+          <Box style={{ marginTop: "15px" }}>
+            <label for="checkbox-input">Radio Group Input:</label>
+            <form>
+              <label for="gender-male">
+                <input
+                  type="radio"
+                  id="gender-male"
+                  name="gender"
+                  value="male"
+                />
+                Male
+              </label>
+              &nbsp;
+              <label for="gender-female">
+                <input
+                  type="radio"
+                  id="gender-female"
+                  name="gender"
+                  value="female"
+                />
+                Female
+              </label>
+              &nbsp;
+              <label for="gender-other">
+                <input
+                  type="radio"
+                  id="gender-other"
+                  name="gender"
+                  value="other"
+                />
+                Other
+              </label>
+            </form>
           </Box>
 
           <Box>
             <label>Your Country Currency</label>
             <TextField
               style={{ marginTop: "10px" }}
-              placeholder="Currency"
               id="outlined-select-currency"
               select
               fullWidth
@@ -261,8 +559,21 @@ const InputFormModal = () => {
           </Box>
 
           <Box>
+            <label>Multi Select Input</label>
+            <Autocomplete
+              multiple
+              limitTags={3}
+              id="multiple-limit-tags"
+              options={multiData}
+              getOptionLabel={(option) => option?.title}
+              renderInput={(params) => <TextField {...params} />}
+              // sx={{ width: "800px" }}
+            />
+          </Box>
+
+          <Box>
+            <label>Manager name</label>
             <FormControl fullWidth size="small">
-              <label>Manager name</label>
               <Select
                 style={{ marginTop: "10px" }}
                 id="demo-multiple-checkbox"
@@ -283,10 +594,16 @@ const InputFormModal = () => {
               </Select>
             </FormControl>
           </Box>
+
+          <Box style={{ marginTop: "35px" }}>
+            <label for="range-input">Range Input:</label>
+            <input type="range" id="range-input" name="range-input" />
+          </Box>
+
           <Box>
-            <label></label>
+            <label>Toggle Input</label>
             <Stack
-              style={{ marginTop: "35px" }}
+
               direction="row"
               spacing={1}
               alignItems="center"
