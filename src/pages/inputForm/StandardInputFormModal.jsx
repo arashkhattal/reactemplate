@@ -29,6 +29,7 @@ import { Stack } from "@mui/system";
 
 import React, { useState } from "react";
 import { useGlobalContext } from "../../context/globalContext";
+
 // dummy data
 const currencies = [
   {
@@ -48,6 +49,10 @@ const currencies = [
     label: "¥",
   },
 ];
+
+//  dummy names
+const allName = ["Chinmy", "Jabed", "Arash"];
+
 // multiple select with delete button dummy data
 const multiData = [
   {
@@ -72,6 +77,7 @@ const MenuProps = {
     },
   },
 };
+
 //  dummy data of multiple select
 const names = ["Chinmy", "Jabed", "Arash"];
 
@@ -79,20 +85,52 @@ const StandardInputFormModal = ({
   standardInputModal,
   setStandardInputModal,
 }) => {
-  // store current password
-  // const [names, setName] = useState("");
-  // store new password
-  const [address, setAdders] = useState("");
-  // store
-  const [phone, setPhone] = useState("");
-  // store
-  const [age, setAge] = useState("");
-  // store sleeted item
-  const [email, setEmail] = useState("");
-  // store sleeted item
-  const [note, setNote] = useState("");
+  // store show password
+  const [showPassword, setShowPassword] = useState(false);
+
+  // show password function
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+    const handleMouseDownPassword = (event) => {
+      event.preventDefault();
+    };
 
   const [value, setValue] = useState(30);
+
+  // store current password
+  const [text, setText] = useState("");
+  // store new password
+  const [password, setPassword] = useState("");
+  // store email item
+  const [email, setEmail] = useState("");
+  // store url item
+  const [url, setUrl] = useState("");
+  // store search item
+  const [search, setSearch] = useState("");
+  // store tel item
+  const [tel, setTel] = useState("");
+  // store number item
+  const [number, setNumber] = useState("");
+  // store date item
+  const [date, setDate] = useState("");
+  // store time item
+  const [time, setTime] = useState("");
+  // store DAtetime item
+  const [dateTime, setDateTime] = useState("");
+  // store month item
+  const [month, setMonth] = useState("");
+  // store week item
+  const [week, setWeek] = useState("");
+  //store color
+  const [color, setColor] = useState("");
+  // store File
+  const [file, setFile] = useState("");
+
+  // store sleeted item
+  const [note, setNote] = useState("");
+  //  store toggle value
+  const [checked, setChecked] = useState(true);
+  //  store toggle value
+  const [currency, setCurrency] = useState(true);
 
   const handleChange1 = (event, newValue) => {
     setValue(newValue);
@@ -101,29 +139,29 @@ const StandardInputFormModal = ({
   // global function
   const { setAlert } = useGlobalContext();
 
+  const handleToggleChange = (event) => {
+    setChecked(event.target.checked);
+  };
+  //store manege name
+  const [personName, setPersonName] = useState([]);
+  console.log(personName);
+  // select item function
+  const handleChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setPersonName(
+      // On autofill we get a stringified value.
+      typeof value === "string" ? value.split(",") : value
+    );
+  };
   // submit info function
   const handleSubmit = async (e) => {
-    if (names === "") {
+    if (text === "") {
       setAlert({
         flag: true,
         type: "error",
-        msg: "Please enter Name ",
-      });
-      return;
-    }
-    if (phone === "") {
-      setAlert({
-        flag: true,
-        type: "error",
-        msg: "Please Phone Number",
-      });
-      return;
-    }
-    if (age === "") {
-      setAlert({
-        flag: true,
-        type: "error",
-        msg: "Please Enter Age",
+        msg: "Please enter Text value",
       });
       return;
     }
@@ -135,6 +173,121 @@ const StandardInputFormModal = ({
       });
       return;
     }
+    if (!validateEmail(email)) {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please Enter valid email address",
+      });
+      return;
+    }
+    if (password === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please enter Password value",
+      });
+      return;
+    }
+    if (url === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please Enter url value",
+      });
+      return;
+    }
+
+    if (search === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please Enter search value",
+      });
+      return;
+    }
+    if (tel === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please Enter Phone number value",
+      });
+      return;
+    }
+    if (!validatePhone(tel)) {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please Enter valid Phone number value",
+      });
+      return;
+    }
+    if (number === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please Enter Number value",
+      });
+      return;
+    }
+    if (date === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please select Date value",
+      });
+      return;
+    }
+    if (time === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please Select Time value",
+      });
+      return;
+    }
+    if (dateTime === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please Select Date-Time value",
+      });
+      return;
+    }
+    if (month === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please select month value",
+      });
+      return;
+    }
+    if (week === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please select week value",
+      });
+      return;
+    }
+    if (color === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please select color value",
+      });
+      return;
+    }
+
+    if (file === "") {
+      setAlert({
+        flag: true,
+        type: "error",
+        msg: "Please select file",
+      });
+      return;
+    }
+
     if (personName?.length === 0) {
       setAlert({
         flag: true,
@@ -160,28 +313,6 @@ const StandardInputFormModal = ({
     setStandardInputModal(false);
   };
 
-  // store show password
-  const [showPassword, setShowPassword] = useState(false);
-  // store multiple item
-  const [personName, setPersonName] = useState([]);
-  // show password function
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
-  // select multiple item function
-
-  const handleChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setPersonName(
-      // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
-  };
-
   return (
     <Modal
       open={standardInputModal}
@@ -205,136 +336,177 @@ const StandardInputFormModal = ({
               Input Text
             </Typography>
           </Grid>
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={12}>
             <TextField
               fullWidth
               required
               type="text"
               label="Full Name"
-              // value={fullName}
-              // onChange={(e) => setFullName(e.target.value)}
+              value={text}
+              onChange={(e) => {
+                setText(e.target.value);
+              }}
             />
           </Grid>
 
-          <Grid item xs={12} md={4}>
-            <TextField
-              id="outlined-read-only-input"
-              label="Read Only"
-              defaultValue="Hello World"
-              InputProps={{
-                readOnly: true,
-              }}
-            />{" "}
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <TextField
-              id="outlined-search"
-              label="Search field"
-              type="search"
-            />
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <TextField
-              id="outlined-helperText"
-              label="Helper text"
-              defaultValue="Default Value"
-              helperText="Some important text"
-            />
-          </Grid>
           <Grid item xs={12} md={12}>
-            <Typography className="fs_16 fw_600 text_Margin ">
-              Input Password
-            </Typography>
-          </Grid>
-          <Grid item xs={12} md={4}>
             <TextField
-              id="outlined-password-input"
-              label="Password"
+              label="password"
+              style={{ marginTop: "5px" }}
               type="password"
-              autoComplete="current-password"
-            />
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <FormControl sx={{ width: "25ch" }} variant="outlined">
-              <InputLabel htmlFor="outlined-adornment-password">
-                Password
-              </InputLabel>
-              <OutlinedInput
-                id="outlined-adornment-password"
-                type={showPassword ? "text" : "password"}
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                      edge="end"
-                    >
-                      {showPassword ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  </InputAdornment>
-                }
-                label="Password"
-              />
-            </FormControl>
-          </Grid>
-          <Grid item xs={12} md={12}>
-            <Typography className="fs_16 fw_600 text_Margin ">
-              Input Number
-            </Typography>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <TextField
-              id="outlined-number"
-              label="Number"
-              type="number"
-              InputLabelProps={{
-                shrink: true,
+              fullWidth
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
               }}
             />
           </Grid>
+
           <Grid item xs={12} md={12}>
-            <Typography className="fs_16 fw_600 text_Margin ">
-              Input Multiline
-            </Typography>
-          </Grid>
-          <Grid item xs={12} md={4}>
             <TextField
-              id="outlined-multiline-flexible"
-              label="Multiline"
-              multiline
+              label="Email"
+              style={{ marginTop: "5px" }}
+              type="email"
+              fullWidth
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
             />
           </Grid>
-          <Grid item xs={12} md={4}>
-            <TextField
-              id="outlined-textarea"
-              label="Multiline Placeholder"
-              placeholder="Placeholder"
-              multiline
-              maxRows={3}
-            />
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <TextField
-              id="outlined-multiline-static"
-              label="Multiline"
-              multiline
-              rows={4}
-              // defaultValue="Default Value"
-            />
-          </Grid>
+
           <Grid item xs={12} md={12}>
-            <Typography className="fs_16 fw_600 text_Margin ">
-              Input Select Item
-            </Typography>
-          </Grid>
-          <Grid item xs={12} md={4}>
             <TextField
+              label="Url"
+              style={{ marginTop: "5px" }}
+              type="url"
+              fullWidth
+              value={url}
+              onChange={(e) => {
+                setUrl(e.target.value);
+              }}
+            />
+          </Grid>
+
+          <Grid item xs={12} md={12}>
+            <TextField
+              label="Search"
+              style={{ marginTop: "5px" }}
+              type="search"
+              fullWidth
+              value={search}
+              onChange={(e) => {
+                setSearch(e.target.value);
+              }}
+            />
+          </Grid>
+
+          <Grid item xs={12} md={12}>
+            <TextField
+              style={{ marginTop: "5px" }}
+              type="number"
+              fullWidth
+              label="Mobile Number"
+              value={tel}
+              onChange={(e) => {
+                setTel(e.target.value);
+              }}
+            />
+          </Grid>
+
+          <Grid item xs={12} md={12}>
+            <TextField
+              style={{ marginTop: "5px" }}
+              type="date"
+              fullWidth
+              value={date}
+              onChange={(e) => {
+                setDate(e.target.value);
+              }}
+            />
+          </Grid>
+
+          <Grid item xs={12} md={12}>
+            <TextField
+              style={{ marginTop: "5px" }}
+              type="time"
+              fullWidth
+              value={time}
+              onChange={(e) => {
+                setTime(e.target.value);
+              }}
+            />
+          </Grid>
+
+          <Grid item xs={12} md={12}>
+            <TextField
+              style={{ marginTop: "5px" }}
+              type="datetime-local"
+              fullWidth
+              value={dateTime}
+              onChange={(e) => {
+                setDateTime(e.target.value);
+              }}
+            />
+          </Grid>
+
+          <Grid item xs={12} md={12}>
+            <TextField
+              style={{ marginTop: "5px" }}
+              type="month"
+              fullWidth
+              value={month}
+              onChange={(e) => {
+                setMonth(e.target.value);
+              }}
+            />
+          </Grid>
+
+          <Grid item xs={12} md={12}>
+            <TextField
+              style={{ marginTop: "5px" }}
+              type="week"
+              fullWidth
+              value={week}
+              onChange={(e) => {
+                setWeek(e.target.value);
+              }}
+            />
+          </Grid>
+
+          <Grid item xs={12} md={12}>
+            <TextField
+              style={{ marginTop: "5px" }}
+              label="color"
+              type="color"
+              fullWidth
+              value={color}
+              onChange={(e) => {
+                setColor(e.target.value);
+              }}
+            />
+          </Grid>
+
+          <Grid item xs={12} md={12}>
+            <TextField
+              type="file"
+              fullWidth
+              value={file}
+              onChange={(e) => {
+                setFile(e.target.value);
+              }}
+            />
+          </Grid>
+
+          <Grid item xs={12} md={12}>
+            <TextField
+              label="currency"
+              style={{ marginTop: "5px" }}
               id="outlined-select-currency"
               select
-              label="Select"
+              fullWidth
               defaultValue="EUR"
-              helperText="Please select your currency"
+              onChange={(e) => setCurrency(e.target.value)}
             >
               {currencies.map((option) => (
                 <MenuItem key={option.value} value={option.value}>
@@ -343,39 +515,34 @@ const StandardInputFormModal = ({
               ))}
             </TextField>
           </Grid>
-          <Grid item xs={12} md={4}>
+
+          <Grid item xs={12} md={12}>
+            <Typography>Multiselect chip</Typography>
             <Autocomplete
               multiple
               limitTags={3}
               id="multiple-limit-tags"
               options={multiData}
               getOptionLabel={(option) => option?.title}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Muli Data select"
-                  placeholder="Favorites"
-                />
-              )}
-              // sx={{ width: "800px" }}
+              renderInput={(params) => <TextField {...params} />}
             />
           </Grid>
-          <Grid item xs={12} md={4}>
-            <FormControl sx={{ width: 230 }}>
-              <InputLabel id="demo-multiple-checkbox-label">
-                Multiple Select
-              </InputLabel>
+
+          <Grid item xs={12} md={12}>
+            <Typography>check box</Typography>
+            <FormControl fullWidth label="check">
               <Select
-                labelId="demo-multiple-checkbox-label"
+                style={{ marginTop: "5px" }}
                 id="demo-multiple-checkbox"
                 multiple
+                fullWidth
                 value={personName}
                 onChange={handleChange}
-                input={<OutlinedInput label="Multiple Select" />}
+                input={<OutlinedInput />}
                 renderValue={(selected) => selected.join(", ")}
                 MenuProps={MenuProps}
               >
-                {names.map((name) => (
+                {allName.map((name) => (
                   <MenuItem key={name} value={name}>
                     <Checkbox checked={personName.indexOf(name) > -1} />
                     <ListItemText primary={name} />
@@ -384,11 +551,24 @@ const StandardInputFormModal = ({
               </Select>
             </FormControl>
           </Grid>
+
           <Grid item xs={12} md={12}>
-            {" "}
-            <Typography className="fs_16 fw_600 text_Margin ">
-              Slider Input
-            </Typography>
+            <TextField
+            label="short note"
+              style={{ marginTop: "5px" }}
+              fullWidth
+              id="outlined-textarea"
+              placeholder="Short Note"
+              multiline
+              rows={4}
+              maxRows={3}
+              value={note}
+              onChange={(e) => setNote(e.target.value)}
+            />
+          </Grid>
+
+          <Grid item xs={12} md={12}>
+            <Typography>Slider Input</Typography>
           </Grid>
           <Grid item xs={12} md={12}>
             <Stack
