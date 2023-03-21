@@ -458,6 +458,12 @@ function SelectSortTable() {
             onClick: handleDeleteSelectedRows,
             disabled: selectedRows.length === 0,
           },
+          // {
+          //   icon: "filter",
+          //   tooltip: "Filter",
+          //   onClick: handleDeleteSelectedRows,
+          //   disabled: false,
+          // },
         ]}
       />
     </div>
