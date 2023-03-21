@@ -4,7 +4,7 @@ import { useGlobalContext } from "../../context/globalContext";
 import BasicTable from "./basicTable/BasicTable";
 import DataTable from "./dataTable/DataTable";
 import TableComponent from "./htmlTable/TableComponent";
-import SortSelectTable from "./sort&selectTable/SortSelectTable";
+import SelectSortTable from "./sort&selectTable/SortSelectTable";
 
 const About = () => {
   const { setLoading } = useGlobalContext();
@@ -47,7 +47,7 @@ const About = () => {
                 Sort & Select Table
               </Typography>
               {/* sort & select table component */}
-              <SortSelectTable id="sort-table" />
+              <SelectSortTable id="sort-table" />
             </Card>
           </Grid>
           {/* <Grid item xs={6} md={12}>

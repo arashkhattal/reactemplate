@@ -1,10 +1,151 @@
 import React from "react";
-import { pdf, Document, Page, Text, View } from "@react-pdf/renderer";
+// import { Chart,Bar } from "./ReactPdf";
+// import {
+//   Page,
+//   Document,
+//   StyleSheet,
+//   Text,
+//   View,
+//   pdf,
+//   Chart,
+//   Bar,
+// } from "@react-pdf/renderer";
+import * as allImp from "@react-pdf/renderer";
 import { saveAs } from "file-saver";
 import PptxGenJS from "pptxgenjs";
 import ReactHTMLTableToExcel from "react-html-table-to-excel";
 import { Card, Grid } from "@mui/material";
 import "../tables/htmlTable/Table.css";
+
+const { Document, Page, View, Text, StyleSheet, pdf } = allImp;
+
+// style for table in pdf export
+const styles = StyleSheet.create({
+  page: {
+    fontFamily: "Helvetica",
+    fontSize: 11,
+    paddingTop: 10,
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingBottom: 40,
+    lineHeight: 1.5,
+    flexDirection: "column",
+  },
+  pageTitle: {
+    fontSize: 16,
+    textAlign: "center",
+    backgroundColor: "#DFECFF",
+    color: "black",
+    fontWeight: "bold",
+    marginBottom: 10,
+    paddingTop: 10,
+  },
+  mainRow: {
+    display: "flex",
+    flexDirection: "columns",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  row: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    maxWidth: 500,
+  },
+  value: {
+    color: "#00a2b5",
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  topRow: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  topDateDetails: {
+    flexBasis: "40%",
+  },
+  topOtherDetails: {
+    flexBasis: "59%",
+  },
+  topDetailsPart: {
+    flexBasis: "49%",
+  },
+  dateDiv: {
+    marginTop: 5,
+    marginBottom: 5,
+  },
+  old: {
+    fontSize: 14,
+    fontWeight: "bold",
+    color: "red",
+  },
+  new: {
+    fontSize: 14,
+    fontWeight: "bold",
+    color: "#00a2b5",
+  },
+  tableContainer: {
+    marginTop: 20,
+    flexBasis: "32%",
+    borderColor: "gray",
+    borderWidth: 0.5,
+    minHeight: "700px",
+    minWidth: "100%",
+  },
+  table_header: {
+    display: "flex",
+    flexDirection: "row",
+    borderBottomWidth: 1,
+    alignItems: "left",
+    textAlign: "left",
+    fontStyle: "bold",
+    backgroundColor: "#eeeeee",
+    padding: 3,
+  },
+  table_row: {
+    flexDirection: "row",
+    borderBottomColor: "gray",
+    borderBottomWidth: 0.5,
+    alignItems: "left",
+    padding: 4,
+  },
+  table_tt: {
+    width: "48%",
+    textAlign: "left",
+    fontSize: 10,
+  },
+  row_table_tt: {
+    width: "48%",
+    textAlign: "left",
+    fontSize: 8,
+  },
+  start_date: {
+    width: "26%",
+    textAlign: "center",
+    fontSize: 10,
+  },
+  row_start_date: {
+    width: "26%",
+    textAlign: "center",
+    fontSize: 8,
+  },
+  end_date: {
+    width: "26%",
+    textAlign: "center",
+    fontSize: 10,
+  },
+  row_end_date: {
+    width: "26%",
+    textAlign: "center",
+    fontSize: 8,
+  },
+  empty_table: {
+    textAlign: "center",
+    marginTop: "80px",
+    fontSize: 8,
+  },
+});
 
 // import * as XLSX from "xlsx";
 // import * as FileSaver from "file-saver";
@@ -13,37 +154,52 @@ import "../tables/htmlTable/Table.css";
 const ExportFile = () => {
   // export pdf function
   const handleExportPdf = async () => {
+    const data = [
+      { label: "January", value: 10 },
+      { label: "February", value: 20 },
+      { label: "March", value: 15 },
+      { label: "April", value: 25 },
+      { label: "May", value: 30 },
+    ];
     const MyDocument = () => (
       <Document>
-        <Page>
+        <Page size="A4" orientation="portrait" style={styles.page}>
+          <View style={styles.topRow}>
+            <View style={styles.tableContainer}>
+              <View style={styles.table_header}>
+                <Text style={styles.table_tt}>Name</Text>
+                <Text style={styles.start_date}>Gender</Text>
+                <Text style={styles.end_date}>Age</Text>
+              </View>
+              <>
+                <View style={styles.table_row}>
+                  <Text style={styles.row_table_tt}>Arash</Text>
+                  <Text style={styles.row_start_date}>M</Text>
+                  <Text style={styles.row_end_date}>21</Text>
+                </View>
+                <View style={styles.table_row}>
+                  <Text style={styles.row_table_tt}>chinmay</Text>
+                  <Text style={styles.row_start_date}>M</Text>
+                  <Text style={styles.row_end_date}>21</Text>
+                </View>
+                <View style={styles.table_row}>
+                  <Text style={styles.row_table_tt}>vedant</Text>
+                  <Text style={styles.row_start_date}>M</Text>
+                  <Text style={styles.row_end_date}>21</Text>
+                </View>
+              </>
+            </View>
+          </View>
+        </Page>
+        <Page size="A4" orientation="portrait" style={styles.page}>
+          {/* <View style={styles.topRow}>
+            <Text style={styles.row_table_tt}>Arash</Text>
+          </View> */}
           <View>
-            <Text>Table</Text>
-            <table>
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Age</th>
-                  <th>Address</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>John Doe</td>
-                  <td>35</td>
-                  <td>123 Main St</td>
-                </tr>
-                <tr>
-                  <td>Jane Smith</td>
-                  <td>28</td>
-                  <td>456 Oak Ave</td>
-                </tr>
-                <tr>
-                  <td>Bob Johnson</td>
-                  <td>42</td>
-                  <td>789 Pine St</td>
-                </tr>
-              </tbody>
-            </table>
+            <Text>Bar Chart Example</Text>
+            {/* <Chart data={data}>
+              <Bar dataKey="value" fill="#8884d8" />
+            </Chart> */}
           </View>
         </Page>
       </Document>
@@ -99,7 +255,7 @@ const ExportFile = () => {
       margin: [0.2, 0.2, 0.2, 0.2],
     });
 
-    // Add second slide with table
+    // Add Third slide with table
     const slide3 = pptx.addSlide();
     const chartAndTable = [
       [

@@ -114,6 +114,38 @@
   /* box-shadow: 5px 2px 9px var(--background_color) !important; */
 }
 
+/* mui table  */
+
+.MuiTableCell-root.MuiTableCell-head.MuiTableCell-paddingNone.MuiTableCell-sizeMedium.MTableHeader2-header-106.css-10dfkli-MuiTableCell-root {
+  background-color: var(--background_color) !important;
+  color: var(--text_color) !important;
+}
+
+.css-1ygcj2i-MuiTableCell-root {
+  background-color: var(--background_color) !important;
+  color: var(--text_color) !important;
+}
+.css-hyum1k-MuiToolbar-root {
+  background-color: var(--background_color) !important;
+  color: var(--text_color) !important;
+}
+.css-fikjyc-MuiTableCell-root-MuiTablePagination-root {
+  background-color: var(--background_color) !important;
+  color: var(--text_color) !important;
+}
+.css-bhp9pd-MuiPaper-root-MuiCard-root {
+  background-color: var(--background_color) !important;
+  color: var(--text_color) !important;
+}
+.css-1mbunh-MuiPaper-root {
+  background-color: var(--background_color) !important;
+  color: var(--text_color) !important;
+}
+.css-1ex1afd-MuiTableCell-root {
+  background-color: var(--background_color) !important;
+  color: var(--text_color) !important;
+}
+
 .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
   background-color: var(--background_color) !important;
 }
@@ -141,7 +173,6 @@
 }
 
 /* notification  */
-
 
 /* css for scroll bar - hover */
 ::-webkit-scrollbar-thumb:hover {

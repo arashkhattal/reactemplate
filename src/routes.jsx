@@ -23,12 +23,13 @@ import ViewListOutlinedIcon from "@mui/icons-material/ViewListOutlined";
 
 import Profile from "./pages/Profile/Profile";
 import ExportFile from "./pages/export file/Export";
+import Tables from "./pages/tables/Tables";
 
 // Import components using lazy to load the component
 const Loading = lazy(() => import("./pages/loader/Loading"));
 const Dashboard = lazy(() => import("./pages/dashboard/Dashboard"));
 const Chart = lazy(() => import("./pages/charts/Chart"));
-const Tables = lazy(() => import("./pages/tables/Tables"));
+// const Tables = lazy(() => import("./pages/tables/Tables"));
 const InputField = lazy(() => import("./pages/InputField/InputField"));
 const UploadFileList = lazy(() => import("./pages/UploadFiles/uploadFileList"));
 const Calendar = lazy(() => import("./pages/fullCalendar/FullCalendar"));
