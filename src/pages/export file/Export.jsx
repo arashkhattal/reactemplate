@@ -1,23 +1,25 @@
 import React from "react";
-// import { Chart,Bar } from "./ReactPdf";
-// import {
-//   Page,
-//   Document,
-//   StyleSheet,
-//   Text,
-//   View,
-//   pdf,
-//   Chart,
-//   Bar,
-// } from "@react-pdf/renderer";
-import * as allImp from "@react-pdf/renderer";
+import {
+  Document,
+  Page,
+  View,
+  Text,
+  StyleSheet,
+  pdf,
+  Svg,
+  Canvas,
+  PDFViewer,
+  Image,
+} from "@react-pdf/renderer";
 import { saveAs } from "file-saver";
 import PptxGenJS from "pptxgenjs";
 import ReactHTMLTableToExcel from "react-html-table-to-excel";
 import { Card, Grid } from "@mui/material";
 import "../tables/htmlTable/Table.css";
-
-const { Document, Page, View, Text, StyleSheet, pdf } = allImp;
+import Chart from "./ChartPdf";
+import ApexCharts from "react-apexcharts";
+import { Line } from "react-chartjs-2";
+import ChartPdf from "./ChartPdf";
 
 // style for table in pdf export
 const styles = StyleSheet.create({
@@ -145,11 +147,27 @@ const styles = StyleSheet.create({
     marginTop: "80px",
     fontSize: 8,
   },
+  chart_container: {
+    marginTop: 20,
+    marginLeft: 70,
+    height: 180,
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "flex-end",
+    justifyContent: "space-around",
+  },
+  chart_bar: {
+    width: 70,
+    minHeight: "30px",
+    backgroundColor: "#969696",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "end",
+    textAlign: "center",
+    justifyContent: "flex-end",
+    overflow: "visible",
+  },
 });
-
-// import * as XLSX from "xlsx";
-// import * as FileSaver from "file-saver";
-// import ApexCharts from "apexcharts";
 
 const ExportFile = () => {
   // export pdf function
@@ -192,14 +210,39 @@ const ExportFile = () => {
           </View>
         </Page>
         <Page size="A4" orientation="portrait" style={styles.page}>
-          {/* <View style={styles.topRow}>
-            <Text style={styles.row_table_tt}>Arash</Text>
+          {/* <View>
+            <Text>My Sales Chart</Text>
+            <MyChart />
           </View> */}
-          <View>
-            <Text>Bar Chart Example</Text>
-            {/* <Chart data={data}>
-              <Bar dataKey="value" fill="#8884d8" />
-            </Chart> */}
+          <View
+            style={{
+              ...styles.chart_bar,
+              backgroundColor: "red",
+              height: `50%`,
+            }}
+          >
+            <Text>asd</Text>
+            <Text>12</Text>
+          </View>
+          <View
+            style={{
+              ...styles.chart_bar,
+              backgroundColor: "red",
+              height: `50%`,
+            }}
+          >
+            <Text>sdff</Text>
+            <Text>34</Text>
+          </View>
+          <View
+            style={{
+              ...styles.chart_bar,
+              backgroundColor: "red",
+              height: `50%`,
+            }}
+          >
+            <Text>fgfg</Text>
+            <Text>56</Text>
           </View>
         </Page>
       </Document>
@@ -311,39 +354,6 @@ const ExportFile = () => {
     document.body.removeChild(downloadLink);
   };
 
-  //  const exportToExcel = () => {
-  //    const wb = XLSX.utils.book_new();
-
-  //    // create the first sheet
-  //    const ws1 = XLSX.utils.json_to_sheet([
-  //      { name: "John", age: 35 },
-  //      { name: "Jane", age: 25 },
-  //      { name: "Bob", age: 45 },
-  //    ]);
-  //    XLSX.utils.book_append_sheet(wb, ws1, "Sheet 1");
-
-  //    // create the second sheet
-  //    const ws2 = XLSX.utils.json_to_sheet([
-  //      { country: "USA", population: 330000000 },
-  //      { country: "China", population: 1400000000 },
-  //      { country: "India", population: 1360000000 },
-  //    ]);
-  //    XLSX.utils.book_append_sheet(wb, ws2, "Sheet 2");
-
-  //    // save the file
-  //    const wbout = XLSX.write(wb, { bookType: "xlsx", type: "binary" });
-  //    const file = new Blob([s2ab(wbout)], { type: "application/octet-stream" });
-  //    FileSaver.saveAs(file, "export.xlsx");
-  //  };
-
-  //  // utility function to convert string to ArrayBuffer
-  //  const s2ab = (s) => {
-  //    const buf = new ArrayBuffer(s.length);
-  //    const view = new Uint8Array(buf);
-  //    for (let i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xff;
-  //    return buf;
-  //  };
-
   return (
     <div>
       <Card className="global_card">
@@ -375,7 +385,7 @@ const ExportFile = () => {
             </button>
           </Grid>
           <Grid item xs={4} md={4} lg={4}>
-            <ReactHTMLTableToExcel
+            {/* <ReactHTMLTableToExcel
               className="btn_primary btn_primary_hover"
               size="small"
               table="myTable"
@@ -384,7 +394,17 @@ const ExportFile = () => {
               sheet={["Sheet 1", "Sheet 2"]}
               buttonText="Export to Excel"
               onClick={exportToExcel}
-            />
+            /> */}
+            <button
+              className="btn_primary btn_primary_hover"
+              size="small"
+              style={{
+                color: "white",
+              }}
+              onClick={exportToExcel}
+            >
+              Export to Excel
+            </button>
           </Grid>
         </Grid>
         <br />
